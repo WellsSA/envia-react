@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { lighten } from 'polished';
 import { getColor } from '../../utils/themeHelper';
 import { fonts } from '../../styles/scale';
 
@@ -29,29 +28,5 @@ export const Container = styled.div`
   nav {
     background: ${props => getColor(props, 'backgroundHighlight')};
     height: calc(100% - 80px);
-
-    a {
-      display: flex;
-      height: 70px;
-      color: ${props => lighten(0.01, getColor(props, 'primary'))};
-      padding: 0 20px;
-      font-size: 18px;
-
-      div {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        margin-right: 15px;
-        /* padding-right: 15px; */
-        /* border-right: 1px solid #c3c3c3; */
-      }
-
-      strong {
-        display: flex;
-        justify-content: flex-start;
-        align-items: center;
-        flex: 1;
-      }
-    }
   }
 `;

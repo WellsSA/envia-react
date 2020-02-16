@@ -2,10 +2,10 @@ import React, { useEffect } from 'react';
 
 import PropTypes from 'prop-types';
 
-import { Link } from 'react-router-dom';
 import { FaHome } from 'react-icons/fa';
 
 import { Container } from './styles';
+import NavLink from './NavLink';
 
 export default function Sidebar({ isOpen, onSetOpen }) {
   useEffect(() => {
@@ -23,60 +23,19 @@ export default function Sidebar({ isOpen, onSetOpen }) {
         <FaHome onClick={closeSidebar} />
       </aside>
       <nav>
-        <Link to="/">
-          <div>
-            <FaHome />
-          </div>
-          <strong>Home</strong>
-        </Link>
-        <Link to="/EnviarMensagens" onClick={closeSidebar}>
-          <div>
-            <FaHome />
-          </div>
-          <strong>Enviar Mensagem</strong>
-        </Link>
-        <Link to="/">
-          <div>
-            <FaHome />
-          </div>
-          <strong>Ultimos Envios</strong>
-        </Link>
-        <Link to="/">
-          <div>
-            <FaHome />
-          </div>
-          <strong>Modelos de Mensagens</strong>
-        </Link>
-        <Link to="/">
-          <div>
-            <FaHome />
-          </div>
-          <strong>Cursos</strong>
-        </Link>
-        <Link to="/">
-          <div>
-            <FaHome />
-          </div>
-          <strong>Professores</strong>
-        </Link>
-        <Link to="/">
-          <div>
-            <FaHome />
-          </div>
-          <strong>Turmas</strong>
-        </Link>
-        <Link to="/">
-          <div>
-            <FaHome />
-          </div>
-          <strong>Alunos</strong>
-        </Link>
-        <Link to="/">
-          <div>
-            <FaHome />
-          </div>
-          <strong>Configurações</strong>
-        </Link>
+        <NavLink to="/" label="Home" icon={FaHome} />
+        <NavLink
+          to="/EnviarMensagens"
+          label="Enviar Mensagens"
+          icon={FaHome}
+          onClick={closeSidebar}
+        />
+        <NavLink to="/" label="Últimos Envios" icon={FaHome} />
+        <NavLink to="/" label="Modelos de Mensagens" icon={FaHome} />
+        <NavLink to="/" label="Professores" icon={FaHome} />
+        <NavLink to="/" label="Turmas" icon={FaHome} />
+        <NavLink to="/" label="Alunos" icon={FaHome} />
+        <NavLink to="/" label="Configurações" icon={FaHome} />
       </nav>
     </Container>
   );
