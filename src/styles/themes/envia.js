@@ -2,8 +2,8 @@ export default {
   title: 'envia',
 
   colors: {
-    primary: '#f00',
-    highlight: '#0f0',
+    primary: '#558FC6',
+    highlight: '#33B5E5',
 
     text: '#FFF',
 

@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { darken } from 'polished';
 import { getColor } from '../../utils/themeHelper';
+import { fonts } from '../../styles/scale';
 
 export const Container = styled.div`
   /* background: #fff; */
@@ -52,6 +53,6 @@ export const NavItem = styled.div`
   /* background: radial-gradient(#eee, #e3e3e3); */
   background: ${props => darken(0.2, getColor(props, 'primary'))};
   cursor: pointer;
-  font-size: 33px;
+  font-size: ${fonts.iconFontSize};
   color: ${props => darken(0.15, getColor(props, 'text'))};
 `;

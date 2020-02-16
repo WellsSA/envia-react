@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { lighten } from 'polished';
 import { getColor } from '../../utils/themeHelper';
+import { fonts } from '../../styles/scale';
 
 export const Container = styled.div`
   display: ${props => (props.isOpen ? 'block' : 'none')};
@@ -13,6 +14,15 @@ export const Container = styled.div`
   aside {
     height: 80px;
     background: ${props => getColor(props, 'primary')};
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    color: ${props => getColor(props, 'text')};
+    svg {
+      font-size: ${fonts.iconFontSize};
+      cursor: pointer;
+    }
   }
 
   nav {

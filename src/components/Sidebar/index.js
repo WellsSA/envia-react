@@ -19,6 +19,7 @@ export default function Sidebar({ isOpen, onSetOpen }) {
   return (
     <Container isOpen={isOpen}>
       <aside>
+        <div />
         <FaHome onClick={closeSidebar} />
       </aside>
       <nav>
