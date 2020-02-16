@@ -5,8 +5,8 @@ export default {
     primary: '#558FC6',
     highlight: '#33B5E5',
 
-    text: '#FFF',
-
+    text: '#333',
+    strongText: '#406589',
     background: '#FFF',
     backgroundHighlight: '#ecf0f1',
   },

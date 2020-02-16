@@ -29,7 +29,7 @@ export default function Sidebar({ isOpen, onSetOpen }) {
           </div>
           <strong>Home</strong>
         </Link>
-        <Link to="/">
+        <Link to="/EnviarMensagens" onClick={closeSidebar}>
           <div>
             <FaHome />
           </div>
