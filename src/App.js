@@ -3,7 +3,8 @@ import React from 'react';
 // import { PersistGate } from 'redux-persist/integration/react';
 // import { Provider } from 'react-redux';
 import { Router } from 'react-router-dom';
-
+import { ThemeProvider } from 'styled-components';
+import envia from './styles/themes/envia';
 import './config/ReactotronConfig';
 
 import Routes from './routes';
@@ -13,10 +14,12 @@ import GlobalStyle from './styles/global';
 
 function App() {
   return (
-    <Router history={history}>
-      <Routes />
-      <GlobalStyle />
-    </Router>
+    <ThemeProvider theme={envia}>
+      <Router history={history}>
+        <Routes />
+        <GlobalStyle />
+      </Router>
+    </ThemeProvider>
   );
 }
 
