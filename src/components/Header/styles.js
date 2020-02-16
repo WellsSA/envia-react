@@ -54,5 +54,5 @@ export const NavItem = styled.div`
   background: ${props => darken(0.2, getColor(props, 'primary'))};
   cursor: pointer;
   font-size: ${fonts.iconFontSize};
-  color: ${props => darken(0.15, getColor(props, 'text'))};
+  color: ${props => darken(0.15, getColor(props, 'icon'))};
 `;

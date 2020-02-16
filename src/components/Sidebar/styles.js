@@ -22,6 +22,7 @@ export const Container = styled.div`
     svg {
       font-size: ${fonts.iconFontSize};
       cursor: pointer;
+      color: ${props => getColor(props, 'icon')};
     }
   }
 

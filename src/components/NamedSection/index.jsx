@@ -18,5 +18,8 @@ export default function NamedSection({ name, icon: Icon, children }) {
 NamedSection.propTypes = {
   name: PropTypes.string.isRequired,
   icon: PropTypes.func.isRequired,
-  children: PropTypes.element.isRequired,
+  children: PropTypes.oneOfType([
+    PropTypes.element,
+    PropTypes.arrayOf(PropTypes.element),
+  ]).isRequired,
 };
