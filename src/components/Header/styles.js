@@ -1,9 +1,11 @@
 import styled from 'styled-components';
 import { darken } from 'polished';
+import { getColor } from '../../utils/themeHelper';
 
 export const Container = styled.div`
   /* background: #fff; */
-  background: linear-gradient(-90deg, #558fc6, #33b5e5);
+  background: ${({ theme: { colors } }) =>
+    `linear-gradient(-90deg, ${colors.primary}, ${colors.highlight})`};
   /* padding: 2px; */
 `;
 
@@ -26,7 +28,7 @@ export const ProfileAvatar = styled.div`
     position: absolute;
     width: 140%;
     height: 140%;
-    border: 2px solid #33b5e5;
+    border: 2px solid ${props => getColor(props, 'highlight')};
     border-radius: 50%;
     image-rendering: optimizeSpeed;
     background-repeat: no-repeat;
@@ -48,8 +50,8 @@ export const NavItem = styled.div`
   height: 100%;
   display: flex;
   /* background: radial-gradient(#eee, #e3e3e3); */
-  background: ${darken(0.2, '#558fc6')};
+  background: ${props => darken(0.2, getColor(props, 'primary'))};
   cursor: pointer;
   font-size: 33px;
-  color: ${darken(0.15, '#fefefe')};
+  color: ${props => darken(0.15, getColor(props, 'text'))};
 `;

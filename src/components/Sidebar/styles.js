@@ -1,9 +1,10 @@
 import styled from 'styled-components';
+import { lighten } from 'polished';
+import { getColor } from '../../utils/themeHelper';
 
 export const Container = styled.div`
   display: ${props => (props.isOpen ? 'block' : 'none')};
   position: absolute;
-  background: #ccc;
   height: 100vh;
   width: 460px;
   top: 0;
@@ -11,16 +12,17 @@ export const Container = styled.div`
 
   aside {
     height: 80px;
-    background: #558fc6;
+    background: ${props => getColor(props, 'primary')};
   }
+
   nav {
-    background: #ecf0f1;
+    background: ${props => getColor(props, 'backgroundHighlight')};
     height: calc(100% - 80px);
 
     a {
       display: flex;
       height: 70px;
-      color: #337ab7;
+      color: ${props => lighten(0.01, getColor(props, 'primary'))};
       padding: 0 20px;
       font-size: 18px;
 
