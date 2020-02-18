@@ -55,6 +55,10 @@ export default function Professores() {
     });
   }
 
+  function handleDeleteAll(evt, data) {
+    alert(`Olha só, ${data.length} a menos`);
+  }
+
   return (
     <Container>
       <NamedSection name="Professores" icon={FaGraduationCap}>
@@ -72,6 +76,14 @@ export default function Professores() {
             onRowUpdate: (newData, oldData) => handleUpdate(newData, oldData),
             onRowDelete: oldData => handleDelete(oldData),
           }}
+          isSelectable
+          actions={[
+            {
+              tooltip: 'Apagar todos os Professores',
+              icon: 'delete',
+              onClick: (evt, data) => handleDeleteAll(evt, data),
+            },
+          ]}
         />
       </NamedSection>
     </Container>

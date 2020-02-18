@@ -13,6 +13,8 @@ export default function EnviaDataTable({
   tableData,
   dataVisualization,
   editableOptions,
+  isSelectable,
+  actions,
 }) {
   const { singular, plural } = dataVisualization;
   return (
@@ -61,15 +63,9 @@ export default function EnviaDataTable({
       // onSearchChange={data => alert(data)}
       // onRowSelected={row => alert(row)}
       options={{
-        selection: true,
+        selection: isSelectable,
       }}
-      actions={[
-        {
-          tooltip: 'Apagar todos os Professores',
-          icon: 'delete',
-          onClick: (evt, data) => alert(`Olha só, ${data.length} a menos`),
-        },
-      ]}
+      actions={actions}
     />
   );
 }
@@ -81,9 +77,13 @@ EnviaDataTable.propTypes = {
   // setTableData: PropTypes.func.isRequired,
   dataVisualization: PropTypes.objectOf(PropTypes.string),
   editableOptions: PropTypes.objectOf(PropTypes.func),
+  isSelectable: PropTypes.bool,
+  actions: PropTypes.arrayOf(PropTypes.object),
 };
 
 EnviaDataTable.defaultProps = {
   dataVisualization: { singular: 'linha', plural: 'linhas' },
   editableOptions: {},
+  isSelectable: false,
+  actions: [],
 };
