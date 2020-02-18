@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 
 import PropTypes from 'prop-types';
 
-import { FaHome } from 'react-icons/fa';
+import { FaHome, FaGraduationCap } from 'react-icons/fa';
 
 import { Container } from './styles';
 import NavLink from './NavLink';
@@ -32,7 +32,7 @@ export default function Sidebar({ isOpen, onSetOpen }) {
         />
         <NavLink to="/" label="Últimos Envios" icon={FaHome} />
         <NavLink to="/" label="Modelos de Mensagens" icon={FaHome} />
-        <NavLink to="/professores" label="Professores" icon={FaHome} />
+        <NavLink to="/professores" label="Professores" icon={FaGraduationCap} />
         <NavLink to="/" label="Turmas" icon={FaHome} />
         <NavLink to="/" label="Alunos" icon={FaHome} />
         <NavLink to="/" label="Configurações" icon={FaHome} />

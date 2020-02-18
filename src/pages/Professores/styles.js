@@ -5,5 +5,4 @@ export const Container = styled.div`
   margin: 50px auto;
   display: flex;
   flex-direction: column;
-  background: #ccc;
 `;
