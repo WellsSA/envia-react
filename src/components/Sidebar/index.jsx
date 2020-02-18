@@ -25,14 +25,14 @@ export default function Sidebar({ isOpen, onSetOpen }) {
       <nav>
         <NavLink to="/" label="Home" icon={FaHome} />
         <NavLink
-          to="/EnviarMensagens"
+          to="/enviarMensagens"
           label="Enviar Mensagens"
           icon={FaHome}
           onClick={closeSidebar}
         />
         <NavLink to="/" label="Últimos Envios" icon={FaHome} />
         <NavLink to="/" label="Modelos de Mensagens" icon={FaHome} />
-        <NavLink to="/" label="Professores" icon={FaHome} />
+        <NavLink to="/professores" label="Professores" icon={FaHome} />
         <NavLink to="/" label="Turmas" icon={FaHome} />
         <NavLink to="/" label="Alunos" icon={FaHome} />
         <NavLink to="/" label="Configurações" icon={FaHome} />
