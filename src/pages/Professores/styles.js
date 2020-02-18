@@ -6,3 +6,8 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
 `;
+
+export const Actions = styled.div`
+  background: #f00;
+  height: 60px;
+`;

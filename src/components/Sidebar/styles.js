@@ -9,6 +9,7 @@ export const Container = styled.div`
   width: 460px;
   top: 0;
   right: 0;
+  z-index: 100;
 
   aside {
     height: 80px;
