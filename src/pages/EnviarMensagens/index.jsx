@@ -1,18 +1,23 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { MdAccessAlarm } from 'react-icons/md';
-import { Container, ProgressBar, MessageStep } from './styles';
-
 import NamedSection from '../../components/NamedSection';
-import MessageForm from './MessageForm';
 import Title from '../../components/Title';
+import MessageForm from './MessageForm';
 import SelectSendForm from './SelectSendForm';
+import Criteria from './Criteria';
+import { Container, MessageStep, ProgressBar } from './styles';
 
 export default function EnviarMensagens() {
-  const [step, setStep] = useState(2);
+  const [step, setStep] = useState(3);
   const [sendTo, setSendTo] = useState({
     alunos: true,
     responsaveis: false,
   });
+  const [criteria, setCriteria] = useState('');
+
+  useEffect(() => {
+    console.log(criteria);
+  }, [criteria, step]);
 
   function handleSubmit(data) {
     console.log(data);
@@ -33,8 +38,8 @@ export default function EnviarMensagens() {
         </MessageStep>
 
         <MessageStep active={step === 3}>
-          <Title>QUAL É O CRITÉRIO PARA A SELEÇÃO DOS ALUNOS?</Title>
-          <Title>SELECIONE OS ALUNOS QUE DESEJA</Title>
+          <Criteria setCriteria={setCriteria} />
+          <Title>Selecione os alunos que deseja:</Title>
         </MessageStep>
 
         <div>

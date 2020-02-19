@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-// import { transparentize, darken } from 'polished';
+// import { darken, transparentize } from 'polished';
 // import { fonts } from '../../styles/scale';
 // import { getColor } from '../../utils/themeHelper';
 
@@ -18,6 +18,7 @@ export const ProgressBar = styled.div`
 `;
 
 export const MessageStep = styled.div`
-  width: 100%;
+  width: 90%;
+  margin: 0 auto;
   display: ${props => (props.active ? 'block' : 'none')};
 `;
