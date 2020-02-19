@@ -1,18 +1,26 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import { useDispatch } from 'react-redux';
 import { Form, Input } from '@rocketseat/unform';
 import { Container } from './styles';
+import { setupMessage } from '../../../store/modules/message/actions';
 
-export default function MessageForm({ onSubmit, next }) {
+export default function MessageForm() {
+  const dispatch = useDispatch();
+
+  function handleSubmit({ titulo, saudacao, mensagem }) {
+    dispatch(setupMessage({ titulo, saudacao, mensagem }));
+  }
+
   const placeholder = {
     titulo: 'ex.: Informativo inicio de turma',
     saudacao: 'ex.: Olá [NOME], como você está?',
-    mensagem: '',
+    mensagem:
+      'ex: estamos passando só pra te lembrar que no dia 04/01 suas aulas vão começar e estamos ansiosos para recebê-lo! Não se esqueça de trazer o seu material didático pois você fará os exercícios contidos nele ao final da aula. Até mais :)',
   };
 
   return (
     <Container>
-      <Form onSubmit={onSubmit}>
+      <Form onSubmit={handleSubmit}>
         <div className="form__header">Escolher modelos de mensagens</div>
         <div className="form__body">
           <div className="form__body__input-section">
@@ -54,7 +62,3 @@ export default function MessageForm({ onSubmit, next }) {
     </Container>
   );
 }
-
-MessageForm.propTypes = {
-  onSubmit: PropTypes.func.isRequired,
-};

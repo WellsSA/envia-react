@@ -1,18 +1,18 @@
 import React, { useState, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { MdAccessAlarm } from 'react-icons/md';
-import { helloWorld } from '../../store/modules/message/actions';
+import { nextStep, prevStep } from '../../store/modules/message/actions';
 import NamedSection from '../../components/NamedSection';
 import Title from '../../components/Title';
 import MessageForm from './MessageForm';
 import SelectSendForm from './SelectSendForm';
 import Criteria from './Criteria';
 import { Container, MessageStep, ProgressBar } from './styles';
+// import { store } from '../../store';
 
 export default function EnviarMensagens() {
   const dispatch = useDispatch();
-  const loading = useSelector(state => state.message.loading);
-  const [step, setStep] = useState(3);
+  const step = useSelector(state => state.message.curStep);
   const [sendTo, setSendTo] = useState({
     alunos: true,
     responsaveis: false,
@@ -21,14 +21,8 @@ export default function EnviarMensagens() {
 
   useEffect(() => {
     console.log({ criteria });
-    console.log({ loading });
-  }, [criteria, loading, step]);
-
-  function handleSubmit(data) {
-    console.log(data);
-    setStep(2);
-    dispatch(helloWorld('aquiiiiiiii'));
-  }
+    console.log({ step });
+  }, [criteria, step]);
 
   return (
     <Container>
@@ -36,7 +30,7 @@ export default function EnviarMensagens() {
         <ProgressBar step="1">ProgressBar</ProgressBar>
 
         <MessageStep active={step === 1}>
-          <MessageForm onSubmit={handleSubmit} />
+          <MessageForm />
         </MessageStep>
 
         <MessageStep active={step === 2}>
@@ -54,10 +48,10 @@ export default function EnviarMensagens() {
         </MessageStep>
 
         <div>
-          <button type="button" onClick={() => setStep(step - 1)}>
+          <button type="button" onClick={() => dispatch(prevStep())}>
             Prev
           </button>
-          <button type="button" onClick={() => setStep(step + 1)}>
+          <button type="button" onClick={() => dispatch(nextStep())}>
             next
           </button>
         </div>

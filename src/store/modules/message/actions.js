@@ -1,6 +1,18 @@
-export function helloWorld(data) {
+export function setupMessage({ titulo, saudacao, mensagem }) {
   return {
-    type: '@message/HELLO_WORLD',
-    payload: { data },
+    type: '@message/SETUP_MESSAGE',
+    payload: { titulo, saudacao, mensagem },
+  };
+}
+
+export function nextStep() {
+  return {
+    type: '@message/NEXT_STEP',
+  };
+}
+
+export function prevStep() {
+  return {
+    type: '@message/PREV_STEP',
   };
 }
