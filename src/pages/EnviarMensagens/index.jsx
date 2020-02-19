@@ -38,7 +38,12 @@ export default function EnviarMensagens() {
         </MessageStep>
 
         <MessageStep active={step === 3}>
+          <Title>Alunos do(a): Professor(Juliano, zezim)</Title>
+
           <Criteria setCriteria={setCriteria} />
+        </MessageStep>
+
+        <MessageStep active={step === 4}>
           <Title>Selecione os alunos que deseja:</Title>
         </MessageStep>
 
