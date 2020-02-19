@@ -17,4 +17,7 @@ export const ProgressBar = styled.div`
   margin: 0 auto;
 `;
 
-export const MessageStep = styled.div``;
+export const MessageStep = styled.div`
+  width: 100%;
+  display: ${props => (props.active ? 'block' : 'none')};
+`;

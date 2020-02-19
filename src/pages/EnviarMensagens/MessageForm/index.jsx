@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Form, Input } from '@rocketseat/unform';
 import { Container } from './styles';
 
-export default function MessageForm({ onSubmit }) {
+export default function MessageForm({ onSubmit, next }) {
   const placeholder = {
     titulo: 'ex.: Informativo inicio de turma',
     saudacao: 'ex.: Olá [NOME], como você está?',
