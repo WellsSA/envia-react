@@ -6,7 +6,7 @@ export default reducers => {
     {
       key: 'envia',
       storage,
-      whitelist: [], // 'auth', 'user'
+      whitelist: ['message'], // 'auth', 'user'
     },
     reducers
   );

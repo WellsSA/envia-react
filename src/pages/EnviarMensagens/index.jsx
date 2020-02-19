@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { MdAccessAlarm } from 'react-icons/md';
+import { helloWorld } from '../../store/modules/message/actions';
 import NamedSection from '../../components/NamedSection';
 import Title from '../../components/Title';
 import MessageForm from './MessageForm';
@@ -8,6 +10,8 @@ import Criteria from './Criteria';
 import { Container, MessageStep, ProgressBar } from './styles';
 
 export default function EnviarMensagens() {
+  const dispatch = useDispatch();
+  const loading = useSelector(state => state.message.loading);
   const [step, setStep] = useState(3);
   const [sendTo, setSendTo] = useState({
     alunos: true,
@@ -16,12 +20,14 @@ export default function EnviarMensagens() {
   const [criteria, setCriteria] = useState('');
 
   useEffect(() => {
-    console.log(criteria);
-  }, [criteria, step]);
+    console.log({ criteria });
+    console.log({ loading });
+  }, [criteria, loading, step]);
 
   function handleSubmit(data) {
     console.log(data);
     setStep(2);
+    dispatch(helloWorld('aquiiiiiiii'));
   }
 
   return (
