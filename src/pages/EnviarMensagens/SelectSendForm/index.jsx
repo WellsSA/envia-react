@@ -1,10 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
 import Title from '../../../components/Title';
+import StepNavigator from '../StepNatigator';
+import { setupSendTo, prevStep } from '../../../store/modules/message/actions';
 
 import { Container, Content, SendToOption } from './styles';
 
-export default function SelectSendForm({ sendTo, setSendTo }) {
+export default function SelectSendForm({ sendTo: _sendTo }) {
+  const dispatch = useDispatch();
+  const [sendTo, setSendTo] = useState(_sendTo);
   function displayOptions() {
     const { alunos, responsaveis } = sendTo;
 
@@ -29,11 +34,18 @@ export default function SelectSendForm({ sendTo, setSendTo }) {
           Responsável
         </SendToOption>
       </Content>
+      <StepNavigator>
+        <button type="button" onClick={() => dispatch(prevStep())}>
+          Anterior
+        </button>
+        <button type="button" onClick={() => dispatch(setupSendTo(sendTo))}>
+          Próximo
+        </button>
+      </StepNavigator>
     </Container>
   );
 }
 
 SelectSendForm.propTypes = {
   sendTo: PropTypes.objectOf(PropTypes.bool).isRequired,
-  setSendTo: PropTypes.func.isRequired,
 };

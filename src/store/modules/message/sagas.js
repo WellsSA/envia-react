@@ -25,7 +25,22 @@ export function* handleSetupMessage({ payload }) {
   }
 }
 
+export function* handleSetupSendTo({ payload: { sendTo } }) {
+  try {
+    const { alunos, responsaveis } = sendTo;
+    if (!alunos && !responsaveis) {
+      throw Error('Selecione ao menos uma opção.');
+    }
+
+    yield put(nextStep());
+  } catch (err) {
+    console.tron.error(err);
+    console.log(err.message);
+  }
+}
+
 export default all([
   takeLatest('@message/HELLO_WORLD', handleHelloWorld),
   takeLatest('@message/SETUP_MESSAGE', handleSetupMessage),
+  takeLatest('@message/SETUP_SEND_TO', handleSetupSendTo),
 ]);

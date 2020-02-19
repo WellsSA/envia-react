@@ -2,7 +2,11 @@ import produce from 'immer';
 
 const INITIAL_STATE = {
   loading: false,
-  curStep: 1,
+  curStep: 3,
+  sendTo: {
+    alunos: true,
+    responsaveis: false,
+  },
 };
 
 export default function message(state = INITIAL_STATE, action) {
@@ -14,6 +18,10 @@ export default function message(state = INITIAL_STATE, action) {
       }
       case '@message/PREV_STEP': {
         draft.curStep = state.curStep - 1;
+        break;
+      }
+      case '@message/SETUP_SEND_TO': {
+        draft.sendTo = action.payload.sendTo;
         break;
       }
       default:

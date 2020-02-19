@@ -13,16 +13,13 @@ import { Container, MessageStep, ProgressBar } from './styles';
 export default function EnviarMensagens() {
   const dispatch = useDispatch();
   const step = useSelector(state => state.message.curStep);
-  const [sendTo, setSendTo] = useState({
-    alunos: true,
-    responsaveis: false,
-  });
+  const sendTo = useSelector(state => state.message.sendTo);
   const [criteria, setCriteria] = useState('');
 
   useEffect(() => {
-    console.log({ criteria });
+    console.log({ sendTo });
     console.log({ step });
-  }, [criteria, step]);
+  }, [sendTo, step]);
 
   return (
     <Container>
@@ -34,7 +31,7 @@ export default function EnviarMensagens() {
         </MessageStep>
 
         <MessageStep active={step === 2}>
-          <SelectSendForm sendTo={sendTo} setSendTo={setSendTo} />
+          <SelectSendForm sendTo={sendTo} />
         </MessageStep>
 
         <MessageStep active={step === 3}>

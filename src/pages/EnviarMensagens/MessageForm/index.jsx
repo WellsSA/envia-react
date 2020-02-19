@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 import { Form, Input } from '@rocketseat/unform';
 import { Container } from './styles';
 import { setupMessage } from '../../../store/modules/message/actions';
+import StepNavigator from '../StepNatigator';
 
 export default function MessageForm() {
   const dispatch = useDispatch();
@@ -55,9 +56,10 @@ export default function MessageForm() {
           </div>
         </div>
 
-        <div className="form__footer">
+        <StepNavigator>
+          <div />
           <button type="submit">Next</button>
-        </div>
+        </StepNavigator>
       </Form>
     </Container>
   );

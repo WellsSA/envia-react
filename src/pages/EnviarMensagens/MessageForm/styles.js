@@ -51,16 +51,6 @@ export const Container = styled.div`
           }
         }
       }
-
-      &__footer {
-        width: 100%;
-        height: 50px;
-        background: #f00;
-        display: flex;
-        justify-content: flex-end;
-        align-items: center;
-        padding: 0 20px;
-      }
     }
   }
 `;

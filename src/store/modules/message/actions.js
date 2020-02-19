@@ -5,6 +5,13 @@ export function setupMessage({ titulo, saudacao, mensagem }) {
   };
 }
 
+export function setupSendTo(sendTo) {
+  return {
+    type: '@message/SETUP_SEND_TO',
+    payload: { sendTo },
+  };
+}
+
 export function nextStep() {
   return {
     type: '@message/NEXT_STEP',
