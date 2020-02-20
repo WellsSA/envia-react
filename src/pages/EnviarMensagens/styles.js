@@ -13,7 +13,7 @@ export const Container = styled.div`
 export const ProgressBar = styled.div`
   height: 100px;
   max-width: 800px;
-  background: #0f0;
+  background: #ccc;
   margin: 0 auto;
 `;
 

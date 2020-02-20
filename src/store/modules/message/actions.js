@@ -12,6 +12,20 @@ export function setupSendTo(sendTo) {
   };
 }
 
+export function setupFilters({ criteria, data }) {
+  return {
+    type: '@message/SETUP_FILTERS',
+    payload: { criteria, data },
+  };
+}
+
+export function setupFiltersSuccess({ criteria, data }) {
+  return {
+    type: '@message/SETUP_FILTERS_SUCCESS',
+    payload: { criteria, data },
+  };
+}
+
 export function nextStep() {
   return {
     type: '@message/NEXT_STEP',

@@ -7,6 +7,7 @@ import Title from '../../components/Title';
 import MessageForm from './MessageForm';
 import SelectSendForm from './SelectSendForm';
 import Criteria from './Criteria';
+import CriteriaTableGenerator from './CriteriaTableGenerator';
 import { Container, MessageStep, ProgressBar } from './styles';
 // import { store } from '../../store';
 
@@ -17,9 +18,9 @@ export default function EnviarMensagens() {
   const [criteria, setCriteria] = useState('');
 
   useEffect(() => {
-    console.log({ sendTo });
+    console.log({ sendTo, criteria });
     console.log({ step });
-  }, [sendTo, step]);
+  }, [criteria, sendTo, step]);
 
   return (
     <Container>
@@ -38,10 +39,11 @@ export default function EnviarMensagens() {
           <Title>Alunos do(a): Professor(Juliano, zezim)</Title>
 
           <Criteria setCriteria={setCriteria} />
+          <CriteriaTableGenerator criteria={criteria} />
         </MessageStep>
 
         <MessageStep active={step === 4}>
-          <Title>Selecione os alunos que deseja:</Title>
+          {/* <Title>Selecione os alunos que deseja:</Title> */}
         </MessageStep>
 
         <div>

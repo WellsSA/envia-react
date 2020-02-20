@@ -7,6 +7,10 @@ const INITIAL_STATE = {
     alunos: true,
     responsaveis: false,
   },
+  filter: {
+    criteria: '',
+    data: [],
+  },
 };
 
 export default function message(state = INITIAL_STATE, action) {
@@ -24,6 +28,15 @@ export default function message(state = INITIAL_STATE, action) {
         draft.sendTo = action.payload.sendTo;
         break;
       }
+      case '@message/SETUP_FILTERS_SUCCESS': {
+        const { criteria, data } = action.payload;
+        draft.filter = {
+          criteria,
+          data,
+        };
+        break;
+      }
+
       default:
         return state;
     }
