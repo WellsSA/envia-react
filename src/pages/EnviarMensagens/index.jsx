@@ -15,6 +15,8 @@ export default function EnviarMensagens() {
   const dispatch = useDispatch();
   const step = useSelector(state => state.message.curStep);
   const sendTo = useSelector(state => state.message.sendTo);
+  const filter = useSelector(state => state.message.filter);
+
   const [criteria, setCriteria] = useState('');
 
   useEffect(() => {
@@ -43,9 +45,23 @@ export default function EnviarMensagens() {
         </MessageStep>
 
         <MessageStep active={step === 4}>
-          {/* <Title>Selecione os alunos que deseja:</Title> */}
+          <Title>Selecione os alunos que deseja enviar:</Title>
+          <div>Data table de alunos</div>
+          <div>Filtro: {filter.criteria}</div>
+          <div>Data: {filter.data}</div>
         </MessageStep>
 
+        <MessageStep active={step === 5}>
+          <Title>Selecione a forma de envio:</Title>
+          <div>Email</div>
+          <div>SMS</div>
+          <div>Whatsapp</div>
+        </MessageStep>
+
+        <MessageStep active={step === 6}>
+          <Title>Confirme as informações do seu envio:</Title>
+          Mensagem / Criterio / Plataforma
+        </MessageStep>
         <div>
           <button type="button" onClick={() => dispatch(prevStep())}>
             Prev
