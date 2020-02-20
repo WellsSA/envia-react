@@ -62,6 +62,7 @@ export default function EnviarMensagens() {
           <Title>Confirme as informações do seu envio:</Title>
           Mensagem / Criterio / Plataforma
         </MessageStep>
+
         <div>
           <button type="button" onClick={() => dispatch(prevStep())}>
             Prev
