@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { FaGraduationCap } from 'react-icons/fa';
 
 import NamedSection from '../../components/NamedSection';
-import EnviaDataTable from '../../components/EnviaDataTable';
+import ProfessoresTable from './ProfessoresTable';
 import { Container, Actions } from './styles';
 import {
   handleInsert,
@@ -12,8 +12,6 @@ import {
 } from './handlers.data';
 
 export default function Professores() {
-  const columns = [{ title: 'Professor', field: 'name' }];
-
   const [tableData, setTableData] = useState([
     { name: 'Zezim' },
     { name: 'Maria' },
@@ -24,22 +22,15 @@ export default function Professores() {
     <Container>
       <NamedSection name="Professores" icon={FaGraduationCap}>
         <Actions>Adicionar/importar</Actions>
-        <EnviaDataTable
-          title="Envia - Professores"
-          columns={columns}
+        <ProfessoresTable
           tableData={tableData}
           setTableData={setTableData}
-          dataVisualization={{
-            singular: 'professor(a)',
-            plural: 'professores(as)',
-          }}
           editableOptions={{
             onRowAdd: newData => handleInsert(newData, setTableData),
             onRowUpdate: (newData, oldData) =>
               handleUpdate(newData, oldData, setTableData),
             onRowDelete: oldData => handleDelete(oldData, setTableData),
           }}
-          isSelectable
           actions={[
             {
               tooltip: 'Apagar os professores(as) selecionados',

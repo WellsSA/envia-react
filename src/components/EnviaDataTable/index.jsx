@@ -27,10 +27,10 @@ export default function EnviaDataTable({
   const theme = createMuiTheme({
     palette: {
       primary: {
-        main: '#558FC6',
+        main: colors.primary,
       },
       secondary: {
-        main: '#33B5E5',
+        main: colors.highlight,
       },
     },
   });
@@ -91,6 +91,7 @@ export default function EnviaDataTable({
           },
           rowStyle: {
             backgroundColor: transparentize(0.3, colors.backgroundHighlight),
+            textAlign: 'center',
           },
         }}
         actions={actions}

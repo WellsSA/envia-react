@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { FaUser } from 'react-icons/fa';
 
 import NamedSection from '../../components/NamedSection';
-import EnviaDataTable from '../../components/EnviaDataTable';
+import AlunosTable from './AlunosTable';
 import { Container, Actions } from './styles';
 import {
   handleInsert,
@@ -11,22 +11,7 @@ import {
   handleDeleteAll,
 } from './handlers.data';
 
-export default function Professores() {
-  const columns = [
-    { title: 'Nome', field: 'name' },
-    { title: 'Data de Nascimento', field: 'birthDate', type: 'date' },
-    { title: 'E-mail', field: 'email' },
-    { title: 'Celular', field: 'phone', type: 'numeric' },
-    { title: 'Responsável', field: 'responsible' },
-    { title: 'E-mail Responsável ', field: 'responsible_email' },
-    {
-      title: 'Celular Responsável',
-      field: 'responsible_phone',
-      type: 'numeric',
-    },
-    { title: 'Turma', field: 'turmas' },
-  ];
-
+export default function Alunos() {
   const [tableData, setTableData] = useState([
     {
       name: 'Zezim',
@@ -64,22 +49,15 @@ export default function Professores() {
     <Container>
       <NamedSection name="Alunos" icon={FaUser}>
         <Actions>Adicionar/importar</Actions>
-        <EnviaDataTable
-          title="Envia - Alunos"
-          columns={columns}
+        <AlunosTable
           tableData={tableData}
           setTableData={setTableData}
-          dataVisualization={{
-            singular: 'aluno(a)',
-            plural: 'alunos(as)',
-          }}
           editableOptions={{
             onRowAdd: newData => handleInsert(newData, setTableData),
             onRowUpdate: (newData, oldData) =>
               handleUpdate(newData, oldData, setTableData),
             onRowDelete: oldData => handleDelete(oldData, setTableData),
           }}
-          isSelectable
           actions={[
             {
               tooltip: 'Apagar os alunos(as) selecionados',
