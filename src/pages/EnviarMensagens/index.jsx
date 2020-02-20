@@ -9,6 +9,7 @@ import SelectSendForm from './SelectSendForm';
 import Criteria from './Criteria';
 import CriteriaTableGenerator from './CriteriaTableGenerator';
 import { Container, MessageStep, ProgressBar } from './styles';
+import AlunosTable from '../Alunos/AlunosTable';
 // import { store } from '../../store';
 
 export default function EnviarMensagens() {
@@ -16,7 +17,28 @@ export default function EnviarMensagens() {
   const step = useSelector(state => state.message.curStep);
   const sendTo = useSelector(state => state.message.sendTo);
   const filter = useSelector(state => state.message.filter);
-
+  const filteredAlunos = [
+    {
+      name: 'Zezim',
+      birthDate: '12/12/2012',
+      email: 'zezim@zezim',
+      phone: '11977440233',
+      responsible: 'zezim father',
+      responsible_email: 'pai@pai.com',
+      responsible_phone: '11977440233',
+      turmas: 'Zezim v1, Zezim v2',
+    },
+    {
+      name: 'Zuleide',
+      birthDate: '12/12/2012',
+      email: 'zezim@zezim',
+      phone: '11977440233',
+      responsible: 'Creusa',
+      responsible_email: 'pai@pai.com',
+      responsible_phone: '11977440233',
+      turmas: 'Zuleide v1, Zuleide v2',
+    },
+  ];
   const [criteria, setCriteria] = useState('');
 
   useEffect(() => {
@@ -46,7 +68,19 @@ export default function EnviarMensagens() {
 
         <MessageStep active={step === 4}>
           <Title>Selecione os alunos que deseja enviar:</Title>
-          <div>Data table de alunos</div>
+          <AlunosTable
+            tableData={filteredAlunos}
+            actions={[
+              {
+                tooltip: 'Selecionar estes alunos(as)',
+                icon: 'check',
+                onClick: (evt, data) => {
+                  console.log(evt, data);
+                  return null;
+                },
+              },
+            ]}
+          />
           <div>Filtro: {filter.criteria}</div>
           <div>Data: {filter.data}</div>
         </MessageStep>
