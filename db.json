@@ -1,0 +1,25 @@
+{
+  "professores": [
+    {
+      "id": 1,
+      "name": "Wellington"
+    }
+  ],
+  "alunos": [
+    {
+      "id": 1,
+      "name": "Zezim",
+      "birthDate": "12/12/2012",
+      "email": "zezim@zezim",
+      "phone": "11977440233",
+      "responsible": "zezim father",
+      "responsible_email": "pai@pai.com",
+      "responsible_phone": "11977440233",
+      "turmas": [
+        1,
+        2,
+        3
+      ]
+    }
+  ]
+}
