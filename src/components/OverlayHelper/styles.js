@@ -9,7 +9,7 @@ export const Container = styled.div`
   background-color: rgba(255, 255, 255, 0.7);
   z-index: 10000;
 
-  display: flex;
+  display: ${props => (props.visible ? 'flex' : 'none')};
   justify-content: center;
   align-items: center;
 `;

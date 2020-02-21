@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import { FaGraduationCap } from 'react-icons/fa';
 import api from '../../services/api';
 import NamedSection from '../../components/NamedSection';
 import ProfessoresTable from './ProfessoresTable';
 import { Container, Actions } from './styles';
+import { setComponent } from '../../store/modules/overlay/actions';
 import {
   handleInsert,
   handleUpdate,
@@ -12,6 +14,7 @@ import {
 } from './handlers.data';
 
 export default function Professores() {
+  const dispatch = useDispatch();
   const [tableData, setTableData] = useState([]);
 
   useEffect(() => {
@@ -27,7 +30,8 @@ export default function Professores() {
     }
 
     loadProfessores();
-  }, []);
+    dispatch(setComponent(<div>HERE</div>));
+  }, [dispatch]);
   return (
     <Container>
       <NamedSection name="Professores" icon={FaGraduationCap}>

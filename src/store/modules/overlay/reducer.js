@@ -1,14 +1,16 @@
-import React from 'react';
+// import React from 'react';
 import produce from 'immer';
 
 const INITIAL_STATE = {
-  component: <></>,
+  visible: false,
+  component: null,
 };
 
 export default function overlay(state = INITIAL_STATE, action) {
   return produce(state, draft => {
     switch (action.type) {
-      case '@message/SET_COMPONENT': {
+      case '@overlay/SET_COMPONENT': {
+        draft.visible = true;
         draft.component = action.payload.component;
         break;
       }
