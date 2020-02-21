@@ -3,8 +3,10 @@ import MaterialTable from 'material-table';
 import PropTypes from 'prop-types';
 import { ThemeContext } from 'styled-components';
 import { transparentize, darken } from 'polished';
-import { createMuiTheme } from '@material-ui/core/styles';
-import MuiThemeProvider from '@material-ui/core/styles/MuiThemeProvider';
+import {
+  createMuiTheme,
+  ThemeProvider as MuiThemeProvider,
+} from '@material-ui/core/styles';
 
 import { fonts } from '../../styles/scale';
 
