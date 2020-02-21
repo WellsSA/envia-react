@@ -37,5 +37,7 @@ module.exports = {
     'no-new': 'off',
     'no-nested-ternary': 'off',
     'consistent-return': 'off',
+    'no-await-in-loop': 'off',
+    'no-restricted-syntax': 'off',
   },
 };
