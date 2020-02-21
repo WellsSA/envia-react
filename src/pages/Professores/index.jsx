@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { FaGraduationCap } from 'react-icons/fa';
-
+import api from '../../services/api';
 import NamedSection from '../../components/NamedSection';
 import ProfessoresTable from './ProfessoresTable';
 import { Container, Actions } from './styles';
@@ -12,12 +12,22 @@ import {
 } from './handlers.data';
 
 export default function Professores() {
-  const [tableData, setTableData] = useState([
-    { name: 'Zezim' },
-    { name: 'Maria' },
-    { name: 'Zuleide' },
-  ]);
+  const [tableData, setTableData] = useState([]);
 
+  useEffect(() => {
+    async function loadProfessores() {
+      const { status, statusText, data } = await api.get('professores');
+
+      if (status !== 200) {
+        console.log('Professores: error', { status, statusText });
+        return;
+      }
+      console.log('api response', data);
+      setTableData(data);
+    }
+
+    loadProfessores();
+  }, []);
   return (
     <Container>
       <NamedSection name="Professores" icon={FaGraduationCap}>
@@ -35,7 +45,7 @@ export default function Professores() {
             {
               tooltip: 'Apagar os professores(as) selecionados',
               icon: 'delete',
-              onClick: (evt, data) => handleDeleteAll(evt, data),
+              onClick: (evt, data) => handleDeleteAll(evt, data, setTableData),
             },
           ]}
         />
