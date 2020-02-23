@@ -1,5 +1,6 @@
 import { createGlobalStyle } from 'styled-components';
-
+import { fonts } from './scale';
+import { getColor } from '../utils/themeHelper';
 // import 'react-perfect-scrollbar/dist/css/styles.css';
 // import 'react-toastify/dist/ReactToastify.css';
 
@@ -40,5 +41,22 @@ export default createGlobalStyle`
 
   button {
     cursor: pointer;
+  }
+
+  button {
+    padding: 4px 8px;
+    font-size: ${fonts.inputFontSize};
+    border-radius: 4px;
+    border: none;
+    margin-left: 15px;
+    color: ${props => getColor(props, 'contrastText')};
+
+    &.confirm {
+      background: ${props => getColor(props, 'confirm')};
+    }
+
+    &.cancel {
+      background: ${props => getColor(props, 'cancel')};
+    }
   }
 `;

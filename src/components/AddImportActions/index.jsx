@@ -6,11 +6,11 @@ import { Container, AddButton, ImportButton } from './styles';
 export default function AddImportActions({ onAdd, onImport }) {
   return (
     <Container>
-      <AddButton onClick={onAdd}>
+      <AddButton className="confirm" onClick={onAdd}>
         Adicionar <FaPlus />
       </AddButton>
 
-      <ImportButton onClick={onImport}>
+      <ImportButton className="confirm" onClick={onImport}>
         Importar <FaRegFileExcel />
       </ImportButton>
     </Container>

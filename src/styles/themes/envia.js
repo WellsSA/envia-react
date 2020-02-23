@@ -10,6 +10,7 @@ export default {
     strongText: '#406589',
     contrastText: '#fff',
     confirm: '#27ae60',
+    cancel: '#c9302c',
     icon: '#fff',
     background: '#FFF',
     backgroundHighlight: '#ecf0f1',

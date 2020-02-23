@@ -57,15 +57,6 @@ export const Body = styled.div`
 export const Footer = styled.div`
   padding: 15px;
   text-align: right;
-  button {
-    padding: 4px;
-    font-size: ${fonts.titleFontSize};
-    border-radius: 4px;
-    border: none;
-    background: ${props => getColor(props, 'highlight')};
-    color: ${props => getColor(props, 'contrastText')};
-    margin-left: 15px;
-  }
 `;
 
 export const Background = styled.div`
