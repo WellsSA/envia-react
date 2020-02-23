@@ -12,11 +12,13 @@ import {
   handleDeleteAll,
 } from './handlers.data';
 import ProfessoresModal from './ProfessoresModal';
+import ImportModal from './ImportModal';
 
 export default function Professores() {
   const dispatch = useDispatch();
   const [tableData, setTableData] = useState([]);
   const [insertModalVisible, setInsertModalVisible] = useState(false);
+  const [importModalVisible, setImportModalVisible] = useState(false);
 
   function handleInsertSubmit({ name }) {
     handleInsert({ name }, setTableData, dispatch);
@@ -39,10 +41,14 @@ export default function Professores() {
         onSetVisible={setInsertModalVisible}
         handleSubmit={handleInsertSubmit}
       />
+      <ImportModal
+        visible={importModalVisible}
+        onSetVisible={setImportModalVisible}
+      />
       <NamedSection name="Professores" icon={FaGraduationCap}>
         <AddImportActions
           onAdd={() => setInsertModalVisible(true)}
-          onImport={() => alert('Precisamos importar')}
+          onImport={() => setImportModalVisible(true)}
         />
         <ProfessoresTable
           tableData={tableData}
