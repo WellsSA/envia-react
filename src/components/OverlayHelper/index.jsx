@@ -1,12 +1,30 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
-import { Container } from './styles';
+import PropTypes from 'prop-types';
+import { MdClose } from 'react-icons/md';
+import { Container, Content, Header, Body, Footer } from './styles';
 
-export default function OverlayHelper() {
-  const visible = useSelector(state => state.overlay.visible);
-
-  const Element = useSelector(state => state.overlay.component);
+export default function OverlayHelper({ children }) {
   return (
-    <Container visible={visible}>{Element ? <Element /> : <></>}</Container>
+    <Container visible={false}>
+      <Content>
+        <Header>
+          Cadastro de professores
+          <MdClose />
+        </Header>
+        <Body>{children}</Body>
+        <Footer>
+          <button type="button" className="cancel">
+            Cancelar
+          </button>
+          <button form="my-form" type="submit" className="confirm">
+            Cadastrar
+          </button>
+        </Footer>
+      </Content>
+    </Container>
   );
 }
+
+OverlayHelper.propTypes = {
+  children: PropTypes.oneOfType([PropTypes.array, PropTypes.func]).isRequired,
+};

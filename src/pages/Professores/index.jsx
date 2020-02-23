@@ -1,39 +1,37 @@
 import React, { useState, useEffect } from 'react';
-import { useDispatch } from 'react-redux';
 import { FaGraduationCap } from 'react-icons/fa';
 import api from '../../services/api';
 import NamedSection from '../../components/NamedSection';
 import ProfessoresTable from './ProfessoresTable';
 import { Container, Actions } from './styles';
-import { setComponent } from '../../store/modules/overlay/actions';
 import {
   handleInsert,
   handleUpdate,
   handleDelete,
   handleDeleteAll,
 } from './handlers.data';
+import ProfessoresModal from './ProfessoresModal';
 
 export default function Professores() {
-  const dispatch = useDispatch();
   const [tableData, setTableData] = useState([]);
+
+  function handleSubmit({ name }) {
+    handleInsert({ name }, setTableData);
+  }
 
   useEffect(() => {
     async function loadProfessores() {
-      const { status, statusText, data } = await api.get('professores');
-
-      if (status !== 200) {
-        console.log('Professores: error', { status, statusText });
-        return;
-      }
-      console.log('api response', data);
+      const { status, data } = await api.get('professores');
+      if (status !== 200) return;
       setTableData(data);
     }
 
     loadProfessores();
-    dispatch(setComponent(<div>HERE</div>));
-  }, [dispatch]);
+  }, []);
+
   return (
     <Container>
+      <ProfessoresModal handleSubmit={handleSubmit} />
       <NamedSection name="Professores" icon={FaGraduationCap}>
         <Actions>Adicionar/importar</Actions>
         <ProfessoresTable
