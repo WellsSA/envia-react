@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import { FaGraduationCap } from 'react-icons/fa';
 import api from '../../services/api';
 import NamedSection from '../../components/NamedSection';
@@ -13,10 +14,11 @@ import {
 import ProfessoresModal from './ProfessoresModal';
 
 export default function Professores() {
+  const dispatch = useDispatch();
   const [tableData, setTableData] = useState([]);
 
   function handleSubmit({ name }) {
-    handleInsert({ name }, setTableData);
+    handleInsert({ name }, setTableData, dispatch);
   }
 
   useEffect(() => {

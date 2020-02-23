@@ -1,16 +1,22 @@
 import api from '../../services/api';
+import { notifySuccess, notifyError } from '../../store/modules/notify/actions';
 
-export function handleInsert(newData, setTableData) {
+export function handleInsert(newData, setTableData, dispatch) {
   return new Promise((resolve, reject) => {
+    console.log('inside handler');
     api
       .post('professores', {
         name: newData.name,
       })
       .then(({ data }) => {
         setTableData(prevState => [...prevState, data]);
+        dispatch(notifySuccess('Professor cadastrado com sucesso!'));
         resolve();
       })
-      .catch(reject);
+      .catch(data => {
+        dispatch(notifyError('Falha ao cadastrar professor!'));
+        reject(data);
+      });
   });
 }
 

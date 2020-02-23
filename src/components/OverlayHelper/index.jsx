@@ -1,22 +1,28 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { MdClose } from 'react-icons/md';
 import { Container, Content, Header, Body, Footer } from './styles';
 
-export default function OverlayHelper({ children }) {
+export default function OverlayHelper({ visible, children }) {
+  const [isVisible, setIsVisible] = useState(visible);
+
+  function handleCancel() {
+    setIsVisible(false);
+  }
+
   return (
-    <Container visible={false}>
+    <Container visible={isVisible}>
       <Content>
         <Header>
           Cadastro de professores
-          <MdClose />
+          <MdClose onClick={handleCancel} />
         </Header>
         <Body>{children}</Body>
         <Footer>
-          <button type="button" className="cancel">
+          <button type="button" className="cancel" onClick={handleCancel}>
             Cancelar
           </button>
-          <button form="my-form" type="submit" className="confirm">
+          <button form="professores-modal" type="submit" className="confirm">
             Cadastrar
           </button>
         </Footer>
@@ -26,5 +32,10 @@ export default function OverlayHelper({ children }) {
 }
 
 OverlayHelper.propTypes = {
+  visible: PropTypes.bool,
   children: PropTypes.oneOfType([PropTypes.array, PropTypes.func]).isRequired,
+};
+
+OverlayHelper.defaultProps = {
+  visible: false,
 };
