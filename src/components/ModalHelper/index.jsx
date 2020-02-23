@@ -11,7 +11,7 @@ export default function OverlayHelper({ visible, children, formId }) {
   }
 
   return (
-    <Container visible={isVisible}>
+    <Container visible={isVisible} onClick={handleCancel}>
       <Content>
         <Header>
           Cadastro de professores

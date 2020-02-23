@@ -5,5 +5,5 @@ import { useSelector } from 'react-redux';
 export default function Notifier() {
   const message = useSelector(state => state.notify.message);
 
-  return <h1>Notifier {message}</h1>;
+  return <p>Notifier {message}</p>;
 }

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Form, Input } from '@rocketseat/unform';
 import PropTypes from 'prop-types';
-import { OverlayHelper, Notifier } from '../../../components';
+import { ModalHelper, Notifier } from '../../../components';
 import { Container } from './styles';
 
 export default function ProfessoresModal({ handleSubmit }) {
@@ -17,7 +17,7 @@ export default function ProfessoresModal({ handleSubmit }) {
 
   return (
     <Container>
-      <OverlayHelper visible formId={formId}>
+      <ModalHelper visible formId={formId}>
         <Notifier />
         <Form id={formId} onSubmit={_handleSubmit}>
           <div className="input">
@@ -25,7 +25,7 @@ export default function ProfessoresModal({ handleSubmit }) {
             <Input id="name" name="name" placeholder={placeholder.name} />
           </div>
         </Form>
-      </OverlayHelper>
+      </ModalHelper>
     </Container>
   );
 }
