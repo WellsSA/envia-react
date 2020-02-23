@@ -18,7 +18,7 @@ export const Container = styled.div`
 `;
 
 export const Content = styled.div`
-  width: 50%;
+  /* width: 50%; */
   background: ${props => getColor(props, 'background')};
   border-radius: 4px;
   z-index: 101;
