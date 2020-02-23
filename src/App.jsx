@@ -11,7 +11,6 @@ import Routes from './routes';
 import history from './services/history';
 import { store, persistor } from './store';
 import GlobalStyle from './styles/global';
-import OverlayHelper from './components/OverlayHelper';
 
 function App() {
   return (
@@ -21,7 +20,6 @@ function App() {
           <Router history={history}>
             <Routes />
             <GlobalStyle />
-            <OverlayHelper />
           </Router>
         </ThemeProvider>
       </PersistGate>
