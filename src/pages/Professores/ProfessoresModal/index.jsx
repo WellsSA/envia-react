@@ -17,7 +17,7 @@ export default function ProfessoresModal({ handleSubmit }) {
 
   return (
     <Container>
-      <OverlayHelper visible>
+      <OverlayHelper visible formId={formId}>
         <Notifier />
         <Form id={formId} onSubmit={_handleSubmit}>
           <div className="input">
