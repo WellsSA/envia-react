@@ -5,6 +5,7 @@ import Notifier from './Notifier';
 import ModalHelper from './ModalHelper';
 import Sidebar from './Sidebar';
 import Title from './Title';
+import AddImportActions from './AddImportActions';
 
 export {
   EnviaDataTable,
@@ -14,4 +15,5 @@ export {
   ModalHelper,
   Sidebar,
   Title,
+  AddImportActions,
 };

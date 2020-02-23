@@ -2,9 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { FaGraduationCap } from 'react-icons/fa';
 import api from '../../services/api';
-import NamedSection from '../../components/NamedSection';
+import { NamedSection, AddImportActions } from '../../components';
 import ProfessoresTable from './ProfessoresTable';
-import { Container, Actions } from './styles';
+import { Container } from './styles';
 import {
   handleInsert,
   handleUpdate,
@@ -40,9 +40,10 @@ export default function Professores() {
         handleSubmit={handleInsertSubmit}
       />
       <NamedSection name="Professores" icon={FaGraduationCap}>
-        <Actions onClick={() => setInsertModalVisible(true)}>
-          Adicionar/importar
-        </Actions>
+        <AddImportActions
+          onAdd={() => setInsertModalVisible(true)}
+          onImport={() => alert('Precisamos importar')}
+        />
         <ProfessoresTable
           tableData={tableData}
           setTableData={setTableData}
