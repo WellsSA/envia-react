@@ -1,14 +1,10 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { MdClose } from 'react-icons/md';
 import NavGroup from './NavGroup';
 import { Container, Background } from './styles';
 
 export default function Sidebar({ isOpen, onSetOpen }) {
-  useEffect(() => {
-    onSetOpen(isOpen);
-  }, [isOpen, onSetOpen]);
-
   function closeSidebar() {
     onSetOpen(false);
   }

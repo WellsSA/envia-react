@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { lighten } from 'polished';
-import { getColor } from '../../../utils/themeHelper';
-import { fonts } from '../../../styles/scale';
+import { getColor } from '../../../../utils/themeHelper';
+import { fonts } from '../../../../styles/scale';
 
 export const Container = styled.div`
   a {

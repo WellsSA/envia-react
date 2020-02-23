@@ -13,12 +13,17 @@ import {
   FaCog,
 } from 'react-icons/fa';
 
-import NavLink from '../NavLink';
+import NavLink from './NavLink';
 
 export default function NavGroup({ clickHandler }) {
   return (
     <>
-      <NavLink to="/" label="Home" icon={FaHome} />
+      <NavLink
+        to="/dashboard"
+        label="Home"
+        icon={FaHome}
+        onClick={clickHandler}
+      />
       <NavLink
         to="/enviarMensagens"
         label="Enviar Mensagens"
