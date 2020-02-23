@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { MdClose } from 'react-icons/md';
-import { Container, Content, Header, Body, Footer } from './styles';
+import { Container, Content, Header, Body, Footer, Background } from './styles';
 
 export default function OverlayHelper({ visible, children, formId }) {
   const [isVisible, setIsVisible] = useState(visible);
@@ -11,7 +11,7 @@ export default function OverlayHelper({ visible, children, formId }) {
   }
 
   return (
-    <Container visible={isVisible} onClick={handleCancel}>
+    <Container visible={isVisible}>
       <Content>
         <Header>
           Cadastro de professores
@@ -31,6 +31,7 @@ export default function OverlayHelper({ visible, children, formId }) {
           </button>
         </Footer>
       </Content>
+      <Background onClick={handleCancel} />
     </Container>
   );
 }

@@ -10,7 +10,7 @@ export const Container = styled.div`
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.3);
-  z-index: 10000;
+  z-index: 100;
 
   display: ${props => (props.visible ? 'flex' : 'none')};
   justify-content: center;
@@ -21,6 +21,7 @@ export const Content = styled.div`
   width: 50%;
   background: ${props => getColor(props, 'background')};
   border-radius: 4px;
+  z-index: 101;
 
   > div {
     border-radius: 4px;
@@ -65,4 +66,12 @@ export const Footer = styled.div`
     color: ${props => getColor(props, 'contrastText')};
     margin-left: 15px;
   }
+`;
+
+export const Background = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
 `;
