@@ -17,7 +17,11 @@ export default function Professores() {
   const dispatch = useDispatch();
   const [tableData, setTableData] = useState([]);
 
-  function handleSubmit({ name }) {
+  function handleInsertSubmit({ name }) {
+    handleInsert({ name }, setTableData, dispatch);
+  }
+
+  function handleUpdateSubmit({ name }) {
     handleInsert({ name }, setTableData, dispatch);
   }
 
@@ -33,7 +37,8 @@ export default function Professores() {
 
   return (
     <Container>
-      <ProfessoresModal handleSubmit={handleSubmit} />
+      <ProfessoresModal handleSubmit={handleInsertSubmit} />
+      {/* <ProfessoresModal handleSubmit={handleSubmit} /> */}
       <NamedSection name="Professores" icon={FaGraduationCap}>
         <Actions>Adicionar/importar</Actions>
         <ProfessoresTable
@@ -46,6 +51,12 @@ export default function Professores() {
             onRowDelete: oldData => handleDelete(oldData, setTableData),
           }}
           actions={[
+            {
+              icon: 'edit',
+              tooltip: 'Edit User',
+              onClick: (event, rowData) =>
+                alert(`You are editing ${rowData.name}`),
+            },
             {
               tooltip: 'Apagar os professores(as) selecionados',
               icon: 'delete',

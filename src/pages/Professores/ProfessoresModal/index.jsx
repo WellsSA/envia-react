@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { ModalHelper, Notifier } from '../../../components';
 import { Container } from './styles';
 
-export default function ProfessoresModal({ handleSubmit }) {
+export default function ProfessoresModal({ handleSubmit, initialData }) {
   const formId = 'professores-modal';
   const placeholder = {
     name: 'ex.: Informativo inicio de turma',
@@ -19,7 +19,7 @@ export default function ProfessoresModal({ handleSubmit }) {
     <Container>
       <ModalHelper visible formId={formId}>
         <Notifier />
-        <Form id={formId} onSubmit={_handleSubmit}>
+        <Form id={formId} initialData={initialData} onSubmit={_handleSubmit}>
           <div className="input">
             <label htmlFor="name">Nome:</label>
             <Input id="name" name="name" placeholder={placeholder.name} />
@@ -32,4 +32,9 @@ export default function ProfessoresModal({ handleSubmit }) {
 
 ProfessoresModal.propTypes = {
   handleSubmit: PropTypes.func.isRequired,
+  initialData: PropTypes.objectOf(PropTypes.string),
+};
+
+ProfessoresModal.defaultProps = {
+  initialData: {},
 };
