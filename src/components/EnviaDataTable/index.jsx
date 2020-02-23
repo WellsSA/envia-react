@@ -88,7 +88,7 @@ export default function EnviaDataTable({
           headerStyle: {
             backgroundColor: darken(0.08, colors.highlight),
             color: transparentize(0.2, colors.icon),
-            textAlign: 'center',
+            // textAlign: 'center',
             fontSize: fonts.labelFontSize,
           },
           rowStyle: {

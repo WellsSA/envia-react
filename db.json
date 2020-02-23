@@ -1,8 +1,8 @@
 {
   "professores": [
     {
-      "id": 1,
-      "name": "Wellington"
+      "name": "Wellington",
+      "id": 1
     },
     {
       "name": "Novo Professor",
@@ -23,10 +23,6 @@
     {
       "name": "teste",
       "id": 6
-    },
-    {
-      "name": "teste",
-      "id": 7
     },
     {
       "name": "Mais um ",

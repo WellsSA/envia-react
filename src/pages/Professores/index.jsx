@@ -21,10 +21,6 @@ export default function Professores() {
     handleInsert({ name }, setTableData, dispatch);
   }
 
-  function handleUpdateSubmit({ name }) {
-    handleInsert({ name }, setTableData, dispatch);
-  }
-
   useEffect(() => {
     async function loadProfessores() {
       const { status, data } = await api.get('professores');
@@ -38,7 +34,6 @@ export default function Professores() {
   return (
     <Container>
       <ProfessoresModal handleSubmit={handleInsertSubmit} />
-      {/* <ProfessoresModal handleSubmit={handleSubmit} /> */}
       <NamedSection name="Professores" icon={FaGraduationCap}>
         <Actions>Adicionar/importar</Actions>
         <ProfessoresTable
@@ -52,13 +47,7 @@ export default function Professores() {
           }}
           actions={[
             {
-              icon: 'edit',
-              tooltip: 'Edit User',
-              onClick: (event, rowData) =>
-                alert(`You are editing ${rowData.name}`),
-            },
-            {
-              tooltip: 'Apagar os professores(as) selecionados',
+              tooltip: 'Apagar Professores(as) selecionados',
               icon: 'delete',
               onClick: (evt, data) => handleDeleteAll(evt, data, setTableData),
             },
