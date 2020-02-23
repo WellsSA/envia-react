@@ -1,17 +1,20 @@
-import React, { useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { MdClose } from 'react-icons/md';
 import { Container, Content, Header, Body, Footer, Background } from './styles';
 
-export default function OverlayHelper({ visible, children, formId }) {
-  const [isVisible, setIsVisible] = useState(visible);
-
+export default function OverlayHelper({
+  visible,
+  onSetVisible,
+  children,
+  formId,
+}) {
   function handleCancel() {
-    setIsVisible(false);
+    onSetVisible(false);
   }
 
   return (
-    <Container visible={isVisible}>
+    <Container visible={visible}>
       <Content>
         <Header>
           Cadastro de professores
@@ -38,11 +41,13 @@ export default function OverlayHelper({ visible, children, formId }) {
 
 OverlayHelper.propTypes = {
   visible: PropTypes.bool,
+  onSetVisible: PropTypes.func,
   children: PropTypes.oneOfType([PropTypes.array, PropTypes.func]).isRequired,
   formId: PropTypes.string,
 };
 
 OverlayHelper.defaultProps = {
   visible: false,
+  onSetVisible: () => {},
   formId: null,
 };

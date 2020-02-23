@@ -4,7 +4,12 @@ import PropTypes from 'prop-types';
 import { ModalHelper, Notifier } from '../../../components';
 import { Container } from './styles';
 
-export default function ProfessoresModal({ handleSubmit, initialData }) {
+export default function ProfessoresModal({
+  visible,
+  onSetVisible,
+  handleSubmit,
+  initialData,
+}) {
   const formId = 'professores-modal';
   const placeholder = {
     name: 'ex.: Informativo inicio de turma',
@@ -17,7 +22,11 @@ export default function ProfessoresModal({ handleSubmit, initialData }) {
 
   return (
     <Container>
-      <ModalHelper visible formId={formId}>
+      <ModalHelper
+        visible={visible}
+        onSetVisible={onSetVisible}
+        formId={formId}
+      >
         <Notifier />
         <Form id={formId} initialData={initialData} onSubmit={_handleSubmit}>
           <div className="input">
@@ -31,6 +40,8 @@ export default function ProfessoresModal({ handleSubmit, initialData }) {
 }
 
 ProfessoresModal.propTypes = {
+  visible: PropTypes.bool.isRequired,
+  onSetVisible: PropTypes.func.isRequired,
   handleSubmit: PropTypes.func.isRequired,
   initialData: PropTypes.objectOf(PropTypes.string),
 };

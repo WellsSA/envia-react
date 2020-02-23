@@ -16,6 +16,7 @@ import ProfessoresModal from './ProfessoresModal';
 export default function Professores() {
   const dispatch = useDispatch();
   const [tableData, setTableData] = useState([]);
+  const [insertModalVisible, setInsertModalVisible] = useState(false);
 
   function handleInsertSubmit({ name }) {
     handleInsert({ name }, setTableData, dispatch);
@@ -33,9 +34,15 @@ export default function Professores() {
 
   return (
     <Container>
-      <ProfessoresModal handleSubmit={handleInsertSubmit} />
+      <ProfessoresModal
+        visible={insertModalVisible}
+        onSetVisible={setInsertModalVisible}
+        handleSubmit={handleInsertSubmit}
+      />
       <NamedSection name="Professores" icon={FaGraduationCap}>
-        <Actions>Adicionar/importar</Actions>
+        <Actions onClick={() => setInsertModalVisible(true)}>
+          Adicionar/importar
+        </Actions>
         <ProfessoresTable
           tableData={tableData}
           setTableData={setTableData}
