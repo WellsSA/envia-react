@@ -95,6 +95,7 @@ export default function EnviaDataTable({
             backgroundColor: transparentize(0.3, colors.backgroundHighlight),
             textAlign: 'center',
           },
+          actionsColumnIndex: -1,
         }}
         actions={actions}
       />
