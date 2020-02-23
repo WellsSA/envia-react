@@ -10,7 +10,7 @@ function NavLink({ to, label, icon: Icon, onClick }) {
         <div>
           <Icon />
         </div>
-        <strong>{label}</strong>
+        <span>{label}</span>
       </Link>
     </Container>
   );

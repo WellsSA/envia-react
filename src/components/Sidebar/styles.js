@@ -3,22 +3,24 @@ import { getColor } from '../../utils/themeHelper';
 import { fonts } from '../../styles/scale';
 
 export const Container = styled.div`
-  display: ${props => (props.isOpen ? 'block' : 'none')};
+  display: block;
   position: absolute;
   height: 100vh;
-  width: 460px;
+  width: 304px;
+  width: ${props => (props.isOpen ? '304px' : '0')};
   top: 0;
   right: 0;
   z-index: 100;
+  transition: width 0.5s ease-in;
 
   aside {
     height: 80px;
-    background: ${props => getColor(props, 'primary')};
+    background: ${props => getColor(props, 'strongText')};
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 0 20px;
-    color: ${props => getColor(props, 'text')};
+    color: ${props => getColor(props, 'constrast')};
     svg {
       font-size: ${fonts.iconFontSize};
       cursor: pointer;
@@ -30,4 +32,16 @@ export const Container = styled.div`
     background: ${props => getColor(props, 'backgroundHighlight')};
     height: calc(100% - 80px);
   }
+`;
+
+export const Background = styled.div`
+  display: ${props => (props.visible ? 'block' : 'none')};
+  transition: display 0.2s ease-in-out;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 99;
+  background: rgba(0, 0, 0, 0.4);
 `;

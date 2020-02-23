@@ -4,6 +4,7 @@ export default {
   colors: {
     primary: '#5D9FDE',
     highlight: '#33B5E5',
+    constrast: '#337ab7',
 
     text: '#333',
     contrastText: '#fff',

@@ -1,11 +1,8 @@
 import React, { useEffect } from 'react';
-
 import PropTypes from 'prop-types';
-
-import { FaHome, FaGraduationCap, FaUser } from 'react-icons/fa';
-
-import { Container } from './styles';
-import NavLink from './NavLink';
+import { MdClose } from 'react-icons/md';
+import NavGroup from './NavGroup';
+import { Container, Background } from './styles';
 
 export default function Sidebar({ isOpen, onSetOpen }) {
   useEffect(() => {
@@ -17,27 +14,18 @@ export default function Sidebar({ isOpen, onSetOpen }) {
   }
 
   return (
-    <Container isOpen={isOpen}>
-      <aside>
-        <div />
-        <FaHome onClick={closeSidebar} />
-      </aside>
-      <nav>
-        <NavLink to="/" label="Home" icon={FaHome} />
-        <NavLink
-          to="/enviarMensagens"
-          label="Enviar Mensagens"
-          icon={FaHome}
-          onClick={closeSidebar}
-        />
-        <NavLink to="/" label="Últimos Envios" icon={FaHome} />
-        <NavLink to="/" label="Modelos de Mensagens" icon={FaHome} />
-        <NavLink to="/professores" label="Professores" icon={FaGraduationCap} />
-        <NavLink to="/" label="Turmas" icon={FaHome} />
-        <NavLink to="/alunos" label="Alunos" icon={FaUser} />
-        <NavLink to="/" label="Configurações" icon={FaHome} />
-      </nav>
-    </Container>
+    <>
+      <Container isOpen={isOpen}>
+        <aside>
+          <div />
+          <MdClose onClick={closeSidebar} />
+        </aside>
+        <nav>
+          <NavGroup clickHandler={closeSidebar} />
+        </nav>
+      </Container>
+      <Background visible={isOpen} onClick={closeSidebar} />
+    </>
   );
 }
 
