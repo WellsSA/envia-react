@@ -4,20 +4,24 @@ import { MdClose } from 'react-icons/md';
 import { Container, Content, Header, Body, Footer, Background } from './styles';
 
 export default function OverlayHelper({
+  title,
   visible,
   onSetVisible,
   children,
   formId,
+  onConfirm,
+  onCancel,
 }) {
   function handleCancel() {
     onSetVisible(false);
+    onCancel();
   }
 
   return (
     <Container visible={visible}>
       <Content>
         <Header>
-          Cadastro de professores
+          {title}
           <MdClose onClick={handleCancel} />
         </Header>
         <Body>{children}</Body>
@@ -28,6 +32,7 @@ export default function OverlayHelper({
           <button
             type="submit"
             className="confirm"
+            onClick={onConfirm}
             {...(formId ? { form: formId } : {})}
           >
             Cadastrar
@@ -40,14 +45,19 @@ export default function OverlayHelper({
 }
 
 OverlayHelper.propTypes = {
+  title: PropTypes.string.isRequired,
   visible: PropTypes.bool,
   onSetVisible: PropTypes.func,
   children: PropTypes.oneOfType([PropTypes.array, PropTypes.func]).isRequired,
   formId: PropTypes.string,
+  onConfirm: PropTypes.func,
+  onCancel: PropTypes.func,
 };
 
 OverlayHelper.defaultProps = {
   visible: false,
   onSetVisible: () => {},
   formId: null,
+  onConfirm: () => {},
+  onCancel: () => {},
 };

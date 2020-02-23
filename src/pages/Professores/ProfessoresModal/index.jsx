@@ -23,6 +23,7 @@ export default function ProfessoresModal({
   return (
     <Container>
       <ModalHelper
+        title="Cadastro de professores"
         visible={visible}
         onSetVisible={onSetVisible}
         formId={formId}
