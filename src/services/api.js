@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { toast } from 'react-toastify';
 
 const api = axios.create({
   baseURL: 'http://localhost:3333',
@@ -10,7 +11,7 @@ api.interceptors.response.use(
     return response;
   },
   error => {
-    // @TODO: implementar toast de error
+    toast.error('Houve um erro inesperado. Verifique sua conexão');
     console.log(`interceptor, ${error}`);
     return Promise.reject(error);
   }

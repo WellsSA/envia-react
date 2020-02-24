@@ -2,7 +2,7 @@ import { createGlobalStyle } from 'styled-components';
 import { fonts } from './scale';
 import { getColor } from '../utils/themeHelper';
 // import 'react-perfect-scrollbar/dist/css/styles.css';
-// import 'react-toastify/dist/ReactToastify.css';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default createGlobalStyle`
   @import url('https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap');

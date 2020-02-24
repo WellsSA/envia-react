@@ -1,5 +1,5 @@
 import api from '../../services/api';
-import { notifySuccess, notifyError } from '../../store/modules/notify/actions';
+import { notifySuccess, notifyError } from '../../utils/notifyHelper';
 
 export function handleInsert(newData, setTableData, dispatch) {
   return new Promise((resolve, reject) => {
@@ -10,11 +10,11 @@ export function handleInsert(newData, setTableData, dispatch) {
       })
       .then(({ data }) => {
         setTableData(prevState => [...prevState, data]);
-        dispatch(notifySuccess('Professor cadastrado com sucesso!'));
+        notifySuccess('Professor cadastrado com sucesso!', dispatch);
         resolve();
       })
       .catch(data => {
-        dispatch(notifyError('Falha ao cadastrar professor!'));
+        notifyError('Falha ao cadastrar professor!', dispatch);
         reject(data);
       });
   });
