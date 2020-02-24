@@ -1,14 +1,7 @@
 import { takeLatest, call, put, all, select } from 'redux-saga/effects';
 import { notifySuccess, notifyError } from '../../../utils/notifyHelper';
-import history from '../../../services/history';
 import api from '../../../services/api';
 import { nextStep, setupFiltersSuccess, setupFilteredAlunos } from './actions';
-
-export function handleHelloWorld({ payload }) {
-  const { data } = payload;
-  alert(data);
-  history.push('/');
-}
 
 export function* handleSetupMessage({ payload }) {
   try {
@@ -120,7 +113,6 @@ export function* handleSetupAlunos({ payload: { data } }) {
 }
 
 export default all([
-  takeLatest('@message/HELLO_WORLD', handleHelloWorld),
   takeLatest('@message/SETUP_MESSAGE', handleSetupMessage),
   takeLatest('@message/SETUP_SEND_TO', handleSetupSendTo),
   takeLatest('@message/SETUP_FILTERS', handleSetupFilters),

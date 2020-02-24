@@ -1,7 +1,6 @@
 import produce from 'immer';
 
 const INITIAL_STATE = {
-  loading: false,
   curStep: 3,
   sendTo: {
     alunos: true,
