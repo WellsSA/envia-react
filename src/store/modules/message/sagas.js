@@ -61,7 +61,7 @@ export function* handleSetupFiltersSuccess({
 
     console.log({ data });
     if (status !== 200) throw Error('Houve um erro na conexão');
-    if (data.length === 0)
+    if (!data || data.length === 0)
       throw Error('Não foram encontrados alunos para o critério selecionado');
     yield put(setupFilteredAlunos({ data }));
     console.log('puta', { data });
@@ -106,6 +106,19 @@ export function* handleNextStep() {
     notifyError(err.message);
   }
 }
+
+export function* handleSetupAlunos({ payload: { data } }) {
+  try {
+    if (!data || data.length === 0) {
+      throw Error('Selecione ao menos um aluno.');
+    }
+    yield put(nextStep());
+  } catch (err) {
+    console.tron.error(err);
+    notifyError(err.message);
+  }
+}
+
 export default all([
   takeLatest('@message/HELLO_WORLD', handleHelloWorld),
   takeLatest('@message/SETUP_MESSAGE', handleSetupMessage),
@@ -113,4 +126,5 @@ export default all([
   takeLatest('@message/SETUP_FILTERS', handleSetupFilters),
   takeLatest('@message/SETUP_FILTERS_SUCCESS', handleSetupFiltersSuccess),
   takeLatest('@message/NEXT_STEP', handleNextStep),
+  takeLatest('@message/SETUP_ALUNOS', handleSetupAlunos),
 ]);

@@ -43,7 +43,11 @@ export default function message(state = INITIAL_STATE, action) {
         draft.filteredAlunos = data;
         break;
       }
-
+      case '@message/SETUP_ALUNOS': {
+        const { data } = action.payload;
+        draft.alunos = data;
+        break;
+      }
       default:
         return state;
     }

@@ -1,9 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { useDispatch } from 'react-redux';
 import AlunosTable from '../../../Alunos/AlunosTable';
-// import { Container } from './styles';
+import { setupAlunos } from '../../../../store/modules/message/actions';
 
 export default function AlunosDataTable({ tableData }) {
+  const dispath = useDispatch();
   return (
     <AlunosTable
       tableData={tableData}
@@ -12,7 +14,9 @@ export default function AlunosDataTable({ tableData }) {
           tooltip: 'Selecionar estes alunos(as)',
           icon: 'check',
           onClick: (evt, data) => {
-            console.log(evt, data);
+            if (data) {
+              dispath(setupAlunos({ data }));
+            }
             return null;
           },
         },

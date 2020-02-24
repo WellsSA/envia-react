@@ -33,10 +33,10 @@ export function setupFilteredAlunos({ data }) {
   };
 }
 
-export function setupAlunos({ id, name }) {
+export function setupAlunos({ data }) {
   return {
     type: '@message/SETUP_ALUNOS',
-    payload: { id, name },
+    payload: { data },
   };
 }
 
