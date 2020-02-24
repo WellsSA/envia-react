@@ -6,12 +6,12 @@ export const Container = styled.div`
   display: block;
   position: absolute;
   height: 100vh;
-  width: 304px;
-  width: ${props => (props.isOpen ? '304px' : '0')};
   top: 0;
   right: 0;
   z-index: 100;
-  transition: width 0.5s ease-in;
+  visibility: ${props => (props.isOpen ? 'visible' : 'hidden')};
+  width: ${props => (props.isOpen ? '304px' : '0')};
+  transition: width 0.5s ease-in, visibility 0.5s ease-in;
 
   aside {
     height: 80px;
