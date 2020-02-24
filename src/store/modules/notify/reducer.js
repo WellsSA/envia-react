@@ -1,6 +1,6 @@
 import produce from 'immer';
 
-const NOTIFY_STATE = {
+export const NOTIFY_STATE = {
   SUCCESS: 'SUCCESS',
   NEUTRAL: 'NEUTRAL',
   ERROR: 'ERROR',
