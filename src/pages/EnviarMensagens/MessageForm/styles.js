@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { transparentize, darken } from 'polished';
+import { transparentize, darken, lighten } from 'polished';
 import { fonts } from '../../../styles/scale';
 import { getColor } from '../../../utils/themeHelper';
 
@@ -8,7 +8,10 @@ export const Container = styled.div`
     .form {
       &__header {
         height: 50px;
-        background: #f00;
+        margin: 10px 0;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
       }
 
       &__body {
@@ -25,6 +28,11 @@ export const Container = styled.div`
             margin: auto 5px;
 
             label {
+              text-transform: uppercase;
+              font-size: ${fonts.labelFontSize};
+              color: ${props => lighten(0.2, getColor(props, 'strongText'))};
+              font-weight: bold;
+              margin: 5px 0;
             }
             input,
             textarea {
@@ -37,13 +45,16 @@ export const Container = styled.div`
               border-radius: 4px;
               height: 44px;
               font-size: ${fonts.inputFontSize};
-              padding: 0 15px;
+              padding: 15px;
               color: ${props => getColor(props, 'text')};
               margin: 0 0 10px;
 
               &::placeholder {
                 color: ${props => transparentize(0.5, getColor(props, 'text'))};
               }
+            }
+            span {
+              font-size: 12px;
             }
             textarea {
               height: auto;
@@ -52,5 +63,18 @@ export const Container = styled.div`
         }
       }
     }
+  }
+`;
+
+export const ModelosMensagens = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: ${props => getColor(props, 'confirm')};
+  cursor: pointer;
+  margin: 5px;
+  svg {
+    font-size: ${fonts.iconFontSize};
   }
 `;

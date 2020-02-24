@@ -5,14 +5,6 @@ export const Container = styled.div`
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  button {
-    display: inline-flex;
-    align-items: center;
-
-    svg {
-      margin-left: 4px;
-    }
-  }
 `;
 
 export const AddButton = styled.button``;

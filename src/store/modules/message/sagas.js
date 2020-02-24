@@ -1,7 +1,12 @@
 import { takeLatest, call, put, all, select } from 'redux-saga/effects';
 import { notifySuccess, notifyError } from '../../../utils/notifyHelper';
 import api from '../../../services/api';
-import { nextStep, setupFiltersSuccess, setupFilteredAlunos } from './actions';
+import {
+  nextStep,
+  setupFiltersSuccess,
+  setupFilteredAlunos,
+  prevStep,
+} from './actions';
 
 export function* handleSetupMessage({ payload }) {
   try {
@@ -99,6 +104,17 @@ export function* handleNextStep() {
     notifyError(err.message);
   }
 }
+export function* handlePrevStep() {
+  try {
+    const step = yield select(state => state.message.curStep);
+    if (step === 2) {
+      yield put(prevStep());
+    }
+  } catch (err) {
+    console.tron.error(err);
+    notifyError(err.message);
+  }
+}
 
 export function* handleSetupAlunos({ payload: { data } }) {
   try {
@@ -118,5 +134,6 @@ export default all([
   takeLatest('@message/SETUP_FILTERS', handleSetupFilters),
   takeLatest('@message/SETUP_FILTERS_SUCCESS', handleSetupFiltersSuccess),
   takeLatest('@message/NEXT_STEP', handleNextStep),
+  takeLatest('@message/PREV_STEP', handlePrevStep),
   takeLatest('@message/SETUP_ALUNOS', handleSetupAlunos),
 ]);

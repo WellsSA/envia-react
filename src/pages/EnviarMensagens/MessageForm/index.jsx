@@ -1,7 +1,9 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { Form, Input } from '@rocketseat/unform';
-import { Container } from './styles';
+import { FaArrowRight } from 'react-icons/fa';
+import { FiFileText } from 'react-icons/fi';
+import { Container, ModelosMensagens } from './styles';
 import { setupMessage } from '../../../store/modules/message/actions';
 import StepNavigator from '../StepNatigator';
 
@@ -22,7 +24,12 @@ export default function MessageForm() {
   return (
     <Container>
       <Form onSubmit={handleSubmit}>
-        <div className="form__header">Escolher modelos de mensagens</div>
+        <div className="form__header">
+          <ModelosMensagens onClick={() => alert('not working yet')}>
+            <FiFileText />
+            <span>Escolher modelo</span>
+          </ModelosMensagens>
+        </div>
         <div className="form__body">
           <div className="form__body__input-section">
             <div className="input">
@@ -40,6 +47,10 @@ export default function MessageForm() {
                 name="saudacao"
                 placeholder={placeholder.saudacao}
               />
+              <span>
+                * Informe a tag <strong>[NOME]</strong> onde deseja que o nome
+                de seu aluno seja inserido.
+              </span>
             </div>
           </div>
           <div className="form__body__input-section">
@@ -58,7 +69,9 @@ export default function MessageForm() {
 
         <StepNavigator>
           <div />
-          <button type="submit">Next</button>
+          <button className="confirm" type="submit">
+            Próximo <FaArrowRight />
+          </button>
         </StepNavigator>
       </Form>
     </Container>

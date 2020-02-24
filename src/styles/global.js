@@ -50,6 +50,12 @@ export default createGlobalStyle`
     border: none;
     margin-left: 15px;
     color: ${props => getColor(props, 'contrastText')};
+    display: inline-flex;
+    align-items: center;
+
+    svg {
+      margin-left: 4px;
+    }
 
     &.confirm {
       background: ${props => getColor(props, 'confirm')};
