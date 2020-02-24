@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { FaBirthdayCake, FaHome } from 'react-icons/fa';
 import { AiOutlineBars } from 'react-icons/ai';
 import { MdHelpOutline } from 'react-icons/md';
-
+import { Link } from 'react-router-dom';
 import {
   Container,
   Content,
@@ -30,9 +30,11 @@ export default function Header() {
         </ProfileAvatar>
 
         <MainNavigation>
-          <NavItem>
-            <FaHome />
-          </NavItem>
+          <Link to="/dashboard">
+            <NavItem>
+              <FaHome />
+            </NavItem>
+          </Link>
           <NavItem>
             <FaBirthdayCake />
           </NavItem>
