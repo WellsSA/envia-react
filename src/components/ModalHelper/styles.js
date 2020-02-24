@@ -19,6 +19,7 @@ export const Container = styled.div`
 
 export const Content = styled.div`
   /* width: 50%; */
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
   background: ${props => getColor(props, 'background')};
   border-radius: 4px;
   z-index: 101;
