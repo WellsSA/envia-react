@@ -10,41 +10,37 @@ import Criteria from './Criteria';
 import CriteriaTableGenerator from './CriteriaTableGenerator';
 import { Container, MessageStep, ProgressBar } from './styles';
 import AlunosTable from '../Alunos/AlunosTable';
+// import api from '../../services/api';
 // import { store } from '../../store';
 
 export default function EnviarMensagens() {
   const dispatch = useDispatch();
   const step = useSelector(state => state.message.curStep);
-  const sendTo = useSelector(state => state.message.sendTo);
+  // const sendTo = useSelector(state => state.message.sendTo);
   const filter = useSelector(state => state.message.filter);
-  const filteredAlunos = [
-    {
-      name: 'Zezim',
-      birthDate: '12/12/2012',
-      email: 'zezim@zezim',
-      phone: '11977440233',
-      responsible: 'zezim father',
-      responsible_email: 'pai@pai.com',
-      responsible_phone: '11977440233',
-      turmas: 'Zezim v1, Zezim v2',
-    },
-    {
-      name: 'Zuleide',
-      birthDate: '12/12/2012',
-      email: 'zezim@zezim',
-      phone: '11977440233',
-      responsible: 'Creusa',
-      responsible_email: 'pai@pai.com',
-      responsible_phone: '11977440233',
-      turmas: 'Zuleide v1, Zuleide v2',
-    },
-  ];
+  const filteredAlunos =
+    useSelector(state => state.message.filteredAlunos) || [];
+  // const [filteredAlunos, setFilteredAlunos] = useState([]);
   const [criteria, setCriteria] = useState('');
+  const alunos = useSelector(state => state.message.alunos);
 
   useEffect(() => {
-    console.log({ sendTo, criteria });
-    console.log({ step });
-  }, [criteria, sendTo, step]);
+    // console.log({ sendTo, criteria });
+    // console.log({ step });
+    // console.log({ alunos });
+    console.log({ filteredAlunos });
+  }, [filteredAlunos]);
+
+  // useEffect(() => {
+  //   async function getAlunosByCriteria() {
+  //     const { data, status } = await api.get('alunos');
+
+  //     if (status !== 200) return [];
+  //     console.log('response', data);
+  //     setFilteredAlunos(data);
+  //   }
+  //   getAlunosByCriteria();
+  // }, [criteria]);
 
   return (
     <Container>
@@ -55,9 +51,9 @@ export default function EnviarMensagens() {
           <MessageForm />
         </MessageStep>
 
-        <MessageStep active={step === 2}>
+        {/* <MessageStep active={step === 2}>
           <SelectSendForm sendTo={sendTo} />
-        </MessageStep>
+        </MessageStep> */}
 
         <MessageStep active={step === 3}>
           <Title>Alunos do(a): Professor(Juliano, zezim)</Title>

@@ -26,6 +26,20 @@ export function setupFiltersSuccess({ criteria, data }) {
   };
 }
 
+export function setupFilteredAlunos({ data }) {
+  return {
+    type: '@message/SETUP_FILTERED_ALUNOS',
+    payload: { data },
+  };
+}
+
+export function setupAlunos({ id, name }) {
+  return {
+    type: '@message/SETUP_ALUNOS',
+    payload: { id, name },
+  };
+}
+
 export function nextStep() {
   return {
     type: '@message/NEXT_STEP',

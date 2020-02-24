@@ -11,6 +11,8 @@ const INITIAL_STATE = {
     criteria: '',
     data: [],
   },
+  filteredAlunos: [],
+  alunos: [],
 };
 
 export default function message(state = INITIAL_STATE, action) {
@@ -34,6 +36,11 @@ export default function message(state = INITIAL_STATE, action) {
           criteria,
           data,
         };
+        break;
+      }
+      case '@message/SETUP_FILTERED_ALUNOS': {
+        const { data } = action.payload;
+        draft.filteredAlunos = data;
         break;
       }
 
