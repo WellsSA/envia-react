@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { ModalHelper, Notifier } from '../../../components';
+import { FaRegFileExcel } from 'react-icons/fa';
+import { ModalHelper, Notifier, Title } from '../../../components';
 import { Container } from './styles';
 
 export default function ImportModal({ visible, onSetVisible }) {
@@ -12,7 +13,15 @@ export default function ImportModal({ visible, onSetVisible }) {
         onSetVisible={onSetVisible}
       >
         <Notifier />
-        <div>input</div>
+        <p>Você pode importar seus professores de uma planilha excel!</p>
+        <Title>Baixe e preencha o modelo:</Title>
+        <div>
+          <FaRegFileExcel /> Planilha modelo de professores
+        </div>
+        <Title>Importe seus professores:</Title>
+        <button type="button" className="confirm">
+          Importar
+        </button>
       </ModalHelper>
     </Container>
   );
