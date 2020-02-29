@@ -40,6 +40,13 @@ export function setupAlunos({ data }) {
   };
 }
 
+export function setupPlatform({ platform }) {
+  return {
+    type: '@message/SETUP_PLATFORM',
+    payload: { platform },
+  };
+}
+
 export function nextStep() {
   return {
     type: '@message/NEXT_STEP',

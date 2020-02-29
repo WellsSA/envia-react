@@ -12,6 +12,11 @@ const INITIAL_STATE = {
   },
   filteredAlunos: [],
   alunos: [],
+  platforms: {
+    email: false,
+    sms: false,
+    whatsapp: false,
+  },
 };
 
 export default function message(state = INITIAL_STATE, action) {
@@ -45,6 +50,11 @@ export default function message(state = INITIAL_STATE, action) {
       case '@message/SETUP_ALUNOS': {
         const { data } = action.payload;
         draft.alunos = data;
+        break;
+      }
+      case '@message/SETUP_PLATFORM': {
+        const { platform } = action.payload;
+        draft.platforms[platform] = !state.platforms[platform];
         break;
       }
       default:
