@@ -8,6 +8,7 @@ import Dashboard from '../pages/Dashboard';
 import EnviarMensagens from '../pages/EnviarMensagens';
 import Professores from '../pages/Professores';
 import Alunos from '../pages/Alunos';
+import Cursos from '../pages/Cursos';
 
 export default function Routes() {
   return (
@@ -18,6 +19,7 @@ export default function Routes() {
       <Route path="/enviarMensagens" component={EnviarMensagens} isPrivate />
       <Route path="/professores" component={Professores} isPrivate />
       <Route path="/alunos" component={Alunos} isPrivate />
+      <Route path="/cursos" component={Cursos} isPrivate />
 
       <Route path="/" component={() => <h1>404</h1>} />
     </Switch>
