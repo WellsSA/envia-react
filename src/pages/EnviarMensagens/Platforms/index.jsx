@@ -6,10 +6,10 @@ import { Container } from './styles';
 import {
   switchPlatform,
   setupPlatform,
-  prevStep,
 } from '../../../store/modules/message/actions';
 import Platform from './Platform';
-import { StepNavigator } from '../_components';
+import StepNavigator from '../StepNavigator';
+// import { StepNavigator } from '../_components';
 
 export default function Platforms() {
   const dispatch = useDispatch();
@@ -40,22 +40,7 @@ export default function Platforms() {
           onTap={togglePlatform}
         />
       </Container>
-      <StepNavigator>
-        <button
-          type="button"
-          className="cancel"
-          onClick={() => dispatch(prevStep())}
-        >
-          Anterior
-        </button>
-        <button
-          type="button"
-          className="confirm"
-          onClick={() => dispatch(setupPlatform())}
-        >
-          Próximo
-        </button>
-      </StepNavigator>
+      <StepNavigator onConfirm={() => dispatch(setupPlatform())} />
     </>
   );
 }

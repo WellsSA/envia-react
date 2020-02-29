@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
 import Title from '../../../components/Title';
-import StepNavigator from '../StepNatigator';
-import { setupSendTo, prevStep } from '../../../store/modules/message/actions';
+import StepNavigator from '../StepNavigator';
+import { setupSendTo } from '../../../store/modules/message/actions';
 
 import { Container, Content, SendToOption } from './styles';
 
@@ -34,18 +34,7 @@ export default function SelectSendForm({ sendTo: _sendTo }) {
           Responsável
         </SendToOption>
       </Content>
-      <StepNavigator>
-        <button type="button" onClick={() => dispatch(prevStep())}>
-          Anterior
-        </button>
-        <button
-          type="button"
-          className="confirm"
-          onClick={() => dispatch(setupSendTo(sendTo))}
-        >
-          Próximo
-        </button>
-      </StepNavigator>
+      <StepNavigator onConfirm={() => dispatch(setupSendTo(sendTo))} />
     </Container>
   );
 }

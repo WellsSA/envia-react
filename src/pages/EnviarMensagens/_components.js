@@ -3,7 +3,7 @@ import CriteriaTableGenerator from './CriteriaTableGenerator';
 import MessageForm from './MessageForm';
 import Platforms from './Platforms';
 import SelectSendForm from './SelectSendForm';
-import StepNavigator from './StepNatigator';
+import StepNavigator from './StepNavigator';
 
 export {
   Criteria,

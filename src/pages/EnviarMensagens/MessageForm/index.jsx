@@ -1,11 +1,10 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { Form, Input } from '@rocketseat/unform';
-import { FaArrowRight } from 'react-icons/fa';
 import { FiFileText } from 'react-icons/fi';
 import { Container, ModelosMensagens } from './styles';
 import { setupMessage } from '../../../store/modules/message/actions';
-import StepNavigator from '../StepNatigator';
+import StepNavigator from '../StepNavigator';
 
 export default function MessageForm() {
   const dispatch = useDispatch();
@@ -67,12 +66,7 @@ export default function MessageForm() {
           </div>
         </div>
 
-        <StepNavigator>
-          <div />
-          <button className="confirm" type="submit">
-            Próximo <FaArrowRight />
-          </button>
-        </StepNavigator>
+        <StepNavigator submit notCancelable />
       </Form>
     </Container>
   );
