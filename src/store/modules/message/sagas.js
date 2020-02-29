@@ -104,6 +104,7 @@ export function* handleNextStep() {
     notifyError(err.message);
   }
 }
+
 export function* handlePrevStep() {
   try {
     const step = yield select(state => state.message.curStep);
@@ -128,6 +129,25 @@ export function* handleSetupAlunos({ payload: { data } }) {
   }
 }
 
+export function* handleSetupPlatform() {
+  try {
+    const platforms = yield select(state => state.message.platforms);
+    const platformCount = Object.keys(platforms).reduce(
+      (acc, cur) => acc + +platforms[cur],
+      0
+    );
+
+    if (platformCount === 0) {
+      throw Error('Selecione ao menos uma plataforma.');
+    }
+
+    yield put(nextStep());
+  } catch (err) {
+    console.tron.error(err);
+    notifyError(err.message);
+  }
+}
+
 export default all([
   takeLatest('@message/SETUP_MESSAGE', handleSetupMessage),
   takeLatest('@message/SETUP_SEND_TO', handleSetupSendTo),
@@ -136,4 +156,5 @@ export default all([
   takeLatest('@message/NEXT_STEP', handleNextStep),
   takeLatest('@message/PREV_STEP', handlePrevStep),
   takeLatest('@message/SETUP_ALUNOS', handleSetupAlunos),
+  takeLatest('@message/SETUP_PLATFORM', handleSetupPlatform),
 ]);

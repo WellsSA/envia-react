@@ -1,7 +1,7 @@
 import produce from 'immer';
 
 const INITIAL_STATE = {
-  curStep: 3,
+  curStep: 5,
   sendTo: {
     alunos: true,
     responsaveis: false,
@@ -52,7 +52,7 @@ export default function message(state = INITIAL_STATE, action) {
         draft.alunos = data;
         break;
       }
-      case '@message/SETUP_PLATFORM': {
+      case '@message/SWITCH_PLATFORM': {
         const { platform } = action.payload;
         draft.platforms[platform] = !state.platforms[platform];
         break;

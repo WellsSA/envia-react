@@ -38,7 +38,11 @@ export default function SelectSendForm({ sendTo: _sendTo }) {
         <button type="button" onClick={() => dispatch(prevStep())}>
           Anterior
         </button>
-        <button type="button" onClick={() => dispatch(setupSendTo(sendTo))}>
+        <button
+          type="button"
+          className="confirm"
+          onClick={() => dispatch(setupSendTo(sendTo))}
+        >
           Próximo
         </button>
       </StepNavigator>
