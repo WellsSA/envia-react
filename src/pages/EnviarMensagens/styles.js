@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-// import { darken, transparentize } from 'polished';
+// import { lighten } from 'polished';
 // import { fonts } from '../../styles/scale';
 // import { getColor } from '../../utils/themeHelper';
 

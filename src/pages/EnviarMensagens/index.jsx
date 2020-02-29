@@ -1,15 +1,17 @@
-import React, { useState, useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { MdAccessAlarm } from 'react-icons/md';
+import React, { useEffect, useState } from 'react';
+import { FaTelegramPlane } from 'react-icons/fa';
+import { useDispatch, useSelector } from 'react-redux';
+import { NamedSection, Title } from '../../components';
 import { nextStep, prevStep } from '../../store/modules/message/actions';
-import NamedSection from '../../components/NamedSection';
-import Title from '../../components/Title';
-import MessageForm from './MessageForm';
-// import SelectSendForm from './SelectSendForm';
-import Criteria from './Criteria';
-import CriteriaTableGenerator from './CriteriaTableGenerator';
-import { Container, MessageStep, ProgressBar } from './styles';
 import AlunosDataTable from './CriteriaTableGenerator/AlunosDataTable';
+import { Container, MessageStep, ProgressBar } from './styles';
+import {
+  Criteria,
+  CriteriaTableGenerator,
+  MessageForm,
+  Platforms,
+} from './_components';
+
 // import api from '../../services/api';
 // import { store } from '../../store';
 
@@ -29,7 +31,7 @@ export default function EnviarMensagens() {
 
   return (
     <Container>
-      <NamedSection name="Enviar mensagens" icon={MdAccessAlarm}>
+      <NamedSection name="Enviar mensagens" icon={FaTelegramPlane}>
         <ProgressBar step="1">ProgressBar</ProgressBar>
 
         <MessageStep active={step === 1}>
@@ -58,9 +60,8 @@ export default function EnviarMensagens() {
 
         <MessageStep active={step === 5}>
           <Title>Selecione a forma de envio:</Title>
-          <div>Email</div>
-          <div>SMS</div>
-          <div>Whatsapp</div>
+
+          <Platforms />
         </MessageStep>
 
         <MessageStep active={step === 6}>
