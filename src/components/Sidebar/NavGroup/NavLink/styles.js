@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { lighten } from 'polished';
+import { lighten, darken } from 'polished';
 import { getColor } from '../../../../utils/themeHelper';
 import { fonts } from '../../../../styles/scale';
 
@@ -27,6 +27,10 @@ export const Container = styled.div`
       justify-content: flex-start;
       align-items: center;
       flex: 1;
+    }
+
+    &:hover {
+      background: ${props => darken(0.15, getColor(props, 'background'))};
     }
   }
 `;
