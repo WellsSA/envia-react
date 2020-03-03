@@ -54,7 +54,7 @@ export default createGlobalStyle`
     align-items: center;
 
     svg {
-      margin-left: 4px;
+      margin: 0 4px;
     }
 
     &.confirm {

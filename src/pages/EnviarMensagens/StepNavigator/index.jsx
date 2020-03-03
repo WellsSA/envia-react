@@ -2,6 +2,7 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
+import { FaArrowLeft, FaArrowRight } from 'react-icons/fa';
 import { useDispatch } from 'react-redux';
 import { Container } from './styles';
 import { prevStep } from '../../../store/modules/message/actions';
@@ -23,6 +24,7 @@ export default function StepNavigator({
           className="cancel"
           onClick={() => onCancel(dispatch)}
         >
+          <FaArrowLeft />
           Anterior
         </button>
       )}
@@ -32,7 +34,7 @@ export default function StepNavigator({
         className="confirm"
         onClick={() => onConfirm(dispatch)}
       >
-        Próximo
+        Próximo <FaArrowRight />
       </button>
     </Container>
   );
