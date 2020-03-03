@@ -3,14 +3,14 @@ import { useDispatch } from 'react-redux';
 import { Form, Input } from '@rocketseat/unform';
 import { FiFileText } from 'react-icons/fi';
 import { Container, ModelosMensagens } from './styles';
-import { setupMessage } from '../../../store/modules/message/actions';
+import { changeMessage } from '../../../store/modules/message/actions';
 import StepNavigator from '../StepNavigator';
 
 export default function MessageForm() {
   const dispatch = useDispatch();
 
   function handleSubmit({ titulo, saudacao, mensagem }) {
-    dispatch(setupMessage({ titulo, saudacao, mensagem }));
+    dispatch(changeMessage({ titulo, saudacao, mensagem }));
   }
 
   const placeholder = {

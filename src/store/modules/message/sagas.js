@@ -6,16 +6,18 @@ import {
   setupFiltersSuccess,
   setupFilteredAlunos,
   prevStep,
+  setupMessage,
 } from './actions';
 
-export function* handleSetupMessage({ payload }) {
+export function* handleSetupMessage({
+  payload: { titulo, saudacao, mensagem },
+}) {
   try {
-    const { titulo, saudacao, mensagem } = payload;
-
     if (!titulo || !saudacao || !mensagem) {
       throw Error('Dados da mensagem inválidos.');
     }
 
+    yield put(setupMessage({ titulo, saudacao, mensagem }));
     yield put(nextStep());
   } catch (err) {
     console.tron.error(err);
@@ -149,7 +151,7 @@ export function* handleSetupPlatform() {
 }
 
 export default all([
-  takeLatest('@message/SETUP_MESSAGE', handleSetupMessage),
+  takeLatest('@message/CHANGE_MESSAGE', handleSetupMessage),
   takeLatest('@message/SETUP_SEND_TO', handleSetupSendTo),
   takeLatest('@message/SETUP_FILTERS', handleSetupFilters),
   takeLatest('@message/SETUP_FILTERS_SUCCESS', handleSetupFiltersSuccess),

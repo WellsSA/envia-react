@@ -1,3 +1,10 @@
+export function changeMessage({ titulo, saudacao, mensagem }) {
+  return {
+    type: '@message/CHANGE_MESSAGE',
+    payload: { titulo, saudacao, mensagem },
+  };
+}
+
 export function setupMessage({ titulo, saudacao, mensagem }) {
   return {
     type: '@message/SETUP_MESSAGE',
