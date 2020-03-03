@@ -58,8 +58,9 @@ export const Criteria = styled.div`
 
   span {
     margin-top: 5px;
+    /* #1592c2cc */
     color: ${props =>
-      transparentize(0.2, lighten(0.3, getColor(props, 'text')))};
+      transparentize(0.2, darken(0.1, getColor(props, 'primary')))};
   }
 `;
 

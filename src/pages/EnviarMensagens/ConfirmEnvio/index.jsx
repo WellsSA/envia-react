@@ -1,6 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { FaUser } from 'react-icons/fa';
+import { FaUser, FaWhatsapp } from 'react-icons/fa';
+import { GoMail, GoComment } from 'react-icons/go';
 import {
   Container,
   Column,
@@ -13,44 +14,52 @@ import {
 import Criterion from '../Criteria/Criterion';
 
 export default function ConfirmEnvio() {
-  const { message, filter, alunos, platforms } = useSelector(
-    state => state.message
-  );
+  const {
+    message: { titulo, saudacao, mensagem },
+    filter: { criteria },
+    alunos,
+    platforms,
+  } = useSelector(state => state.message);
 
-  console.log({ message, filter, alunos, platforms });
   return (
     <Container>
       <Column className="message">
         <ColumnTitle>Mensagem:</ColumnTitle>
-        <h2>Titulo</h2>
-        <span>Saudação</span>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem numquam
-          veniam consectetur, in iure ut laboriosam facilis at obcaecati,
-          officia ipsa odio cum qui! Vero laboriosam voluptatem facere natus
-          sit!
-        </p>
+        <h2>{titulo}</h2>
+        <span>{saudacao}</span>
+        <p>{mensagem}</p>
       </Column>
       <Column>
         <Criteria>
           <ColumnTitle>Critério:</ColumnTitle>
-          <Criterion icon={FaUser} label="Alunos" />
+          {(() => {
+            switch (criteria) {
+              case 'Professores Específicos':
+                return <Criterion icon={FaUser} label={criteria} />;
+              default:
+                return <></>;
+            }
+          })()}
         </Criteria>
         <Criteria>
           <ColumnTitle>Plataforma:</ColumnTitle>
           <Platforms>
-            <Criterion icon={FaUser} label="E-mail" />
-            <Criterion icon={FaUser} label="SMS" />
-            <Criterion icon={FaUser} label="ZapZap" />
+            <Criterion visible={platforms.email} icon={GoMail} label="Email" />
+            <Criterion visible={platforms.sms} icon={GoComment} label="SMS" />
+            <Criterion
+              visible={platforms.whatsapp}
+              icon={FaWhatsapp}
+              label="Whatsapp"
+            />
           </Platforms>
         </Criteria>
       </Column>
       <Column>
         <ColumnTitle>Alunos:</ColumnTitle>
         <Alunos>
-          <Aluno>Zezim</Aluno>
-          <Aluno>Fulano</Aluno>
-          <Aluno>Da silva</Aluno>
+          {alunos.map(({ id, name }) => (
+            <Aluno key={id}>{name}</Aluno>
+          ))}
         </Alunos>
       </Column>
     </Container>

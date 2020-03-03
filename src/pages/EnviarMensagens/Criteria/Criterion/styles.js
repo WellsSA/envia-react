@@ -6,7 +6,7 @@ import { getColor } from '../../../../utils/themeHelper';
 export const Container = styled.div`
   width: 195px;
   height: 108px;
-  display: flex;
+  display: ${props => (props.visible ? 'flex' : 'none')};
   flex-direction: column;
   justify-content: center;
   align-items: center;
