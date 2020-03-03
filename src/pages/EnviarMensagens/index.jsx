@@ -10,6 +10,7 @@ import {
   CriteriaTableGenerator,
   MessageForm,
   Platforms,
+  ConfirmEnvio,
 } from './_components';
 
 // import api from '../../services/api';
@@ -66,7 +67,7 @@ export default function EnviarMensagens() {
 
         <MessageStep active={step === 6}>
           <Title>Confirme as informações do seu envio:</Title>
-          Mensagem / Criterio / Plataforma
+          <ConfirmEnvio />
         </MessageStep>
 
         <div>

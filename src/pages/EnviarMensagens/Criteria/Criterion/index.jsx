@@ -14,7 +14,11 @@ function Criterion({ label, icon: Icon, onClick }) {
 Criterion.propTypes = {
   label: PropTypes.string.isRequired,
   icon: PropTypes.func.isRequired,
-  onClick: PropTypes.func.isRequired,
+  onClick: PropTypes.func,
+};
+
+Criterion.defaultProps = {
+  onClick: () => {},
 };
 
 export default memo(Criterion);

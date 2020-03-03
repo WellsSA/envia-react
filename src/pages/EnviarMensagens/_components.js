@@ -4,6 +4,7 @@ import MessageForm from './MessageForm';
 import Platforms from './Platforms';
 import SelectSendForm from './SelectSendForm';
 import StepNavigator from './StepNavigator';
+import ConfirmEnvio from './ConfirmEnvio';
 
 export {
   Criteria,
@@ -12,4 +13,5 @@ export {
   Platforms,
   SelectSendForm,
   StepNavigator,
+  ConfirmEnvio,
 };
