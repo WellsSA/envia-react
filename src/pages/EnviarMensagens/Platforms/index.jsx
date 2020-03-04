@@ -1,5 +1,5 @@
-import React from 'react';
-import { useDispatch } from 'react-redux';
+import React, { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { FaWhatsapp } from 'react-icons/fa';
 import { GoMail, GoComment } from 'react-icons/go';
 import { Container } from './styles';
@@ -9,17 +9,35 @@ import {
 } from '../../../store/modules/message/actions';
 import Platform from './Platform';
 import StepNavigator from '../StepNavigator';
-// import { StepNavigator } from '../_components';
+import MailModal from './MailModal';
 
 export default function Platforms() {
   const dispatch = useDispatch();
+  const platforms = useSelector(state => state.message.platforms);
+  const [mailModalVisible, setMailModalVisible] = useState(true);
 
   function togglePlatform(platform) {
-    dispatch(switchPlatform({ platform }));
+    switch (platform) {
+      case 'email':
+        if (platforms.email) dispatch(switchPlatform({ platform }));
+        else setMailModalVisible(true);
+        break;
+      case 'sms':
+        alert('Não disponível ainda');
+        break;
+      case 'whatsapp':
+        alert('Não disponível ainda');
+        break;
+      default:
+    }
   }
 
   return (
     <>
+      <MailModal
+        visible={mailModalVisible}
+        onSetVisible={setMailModalVisible}
+      />
       <Container>
         <Platform
           icon={GoMail}

@@ -11,6 +11,7 @@ export default function OverlayHelper({
   formId,
   onConfirm,
   onCancel,
+  confirmLabel,
 }) {
   function handleCancel() {
     onSetVisible(false);
@@ -35,7 +36,7 @@ export default function OverlayHelper({
             onClick={onConfirm}
             {...(formId ? { form: formId } : {})}
           >
-            Cadastrar
+            {confirmLabel}
           </button>
         </Footer>
       </Content>
@@ -52,6 +53,7 @@ OverlayHelper.propTypes = {
   formId: PropTypes.string,
   onConfirm: PropTypes.func,
   onCancel: PropTypes.func,
+  confirmLabel: PropTypes.string,
 };
 
 OverlayHelper.defaultProps = {
@@ -60,4 +62,5 @@ OverlayHelper.defaultProps = {
   formId: null,
   onConfirm: () => {},
   onCancel: () => {},
+  confirmLabel: 'Cadastrar',
 };

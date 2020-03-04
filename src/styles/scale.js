@@ -5,6 +5,7 @@ const fonts = {
   titleFontSize: '18px',
   inputFontSize: '15px',
   labelFontSize: '15px',
+  subMarkerFontSize: '13px',
 };
 
 export { fonts };
