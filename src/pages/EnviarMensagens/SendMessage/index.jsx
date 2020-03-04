@@ -1,14 +1,17 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { FaArrowLeft, FaTelegramPlane } from 'react-icons/fa';
 import { Container, Marker, Confirm } from './styles';
 import { prevStep } from '../../../store/modules/message/actions';
 
 export default function SendMessage() {
   const dispatch = useDispatch();
+  const platforms = useSelector(state => state.message.platforms);
 
   function handleConfirm() {
-    alert('yupi!');
+    if (platforms.email) {
+      alert('sending mail!');
+    }
   }
   return (
     <Container>
