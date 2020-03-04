@@ -2,24 +2,24 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import EnviaDataTable from '../../../components/EnviaDataTable';
 
-export default function ProfessoresTable({
+export default function CursosTable({
   tableData,
   setTableData,
   editableOptions,
   actions,
   isSelectable,
 }) {
-  const columns = [{ title: 'Professor', field: 'name' }];
+  const columns = [{ title: 'Curso', field: 'name' }];
 
   return (
     <EnviaDataTable
-      title="Envia - Professores"
+      title="Envia - Cursos"
       columns={columns}
       tableData={tableData}
       setTableData={setTableData}
       dataVisualization={{
-        singular: 'professor(a)',
-        plural: 'professores(as)',
+        singular: 'curso',
+        plural: 'cursos',
       }}
       editableOptions={editableOptions}
       isSelectable={isSelectable}
@@ -28,7 +28,7 @@ export default function ProfessoresTable({
   );
 }
 
-ProfessoresTable.propTypes = {
+CursosTable.propTypes = {
   editableOptions: PropTypes.objectOf(PropTypes.func),
   actions: PropTypes.arrayOf(PropTypes.object),
   tableData: PropTypes.arrayOf(PropTypes.object).isRequired,
@@ -36,7 +36,7 @@ ProfessoresTable.propTypes = {
   isSelectable: PropTypes.bool,
 };
 
-ProfessoresTable.defaultProps = {
+CursosTable.defaultProps = {
   editableOptions: {},
   actions: [],
   isSelectable: true,

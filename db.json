@@ -169,5 +169,27 @@
         3
       ]
     }
+  ],
+  "cursos": [
+    {
+      "name": "Curso teste",
+      "id": 2
+    },
+    {
+      "name": "Novo curso",
+      "id": 3
+    },
+    {
+      "name": "Esse curso sempre existiu",
+      "id": 4
+    },
+    {
+      "name": "Teste",
+      "id": 5
+    },
+    {
+      "name": "Uhul!",
+      "id": 6
+    }
   ]
 }
