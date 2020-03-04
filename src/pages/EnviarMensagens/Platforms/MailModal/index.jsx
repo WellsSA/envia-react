@@ -2,8 +2,8 @@ import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
 import { ModalHelper } from '../../../../components';
-import { Container, Label, Value, SubMark } from './styles';
 import { switchPlatform } from '../../../../store/modules/message/actions';
+import QuantityDisplayer from '../QuantityDisplayer';
 
 export default function MailModal({ visible, onSetVisible }) {
   const dispatch = useDispatch();
@@ -11,7 +11,6 @@ export default function MailModal({ visible, onSetVisible }) {
   const saldoAtual = 10;
 
   function handleConfirm() {
-    alert(`confirm!${qtdAlunos}`);
     dispatch(switchPlatform({ platform: 'email' }));
     onSetVisible(false);
   }
@@ -24,24 +23,11 @@ export default function MailModal({ visible, onSetVisible }) {
       onConfirm={handleConfirm}
       confirmLabel="Confirmar"
     >
-      <Container>
-        <div>
-          <Label>
-            A <strong>quantidade total</strong> de e-mails:
-          </Label>
-          <Value>{qtdAlunos}</Value>
-        </div>
-        <div>
-          <Label>
-            Seu <strong>saldo atual</strong> de e-mails:
-          </Label>
-          <Value>{saldoAtual}</Value>
-        </div>
-        <SubMark>
-          * Ao clicar em confirmar, a quantidade de e-mails será descontada do
-          seu saldo atual
-        </SubMark>
-      </Container>
+      <QuantityDisplayer
+        label="e-mails"
+        quantity={qtdAlunos}
+        balance={saldoAtual}
+      />
     </ModalHelper>
   );
 }

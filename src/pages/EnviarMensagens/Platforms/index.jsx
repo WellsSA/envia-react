@@ -14,7 +14,7 @@ import MailModal from './MailModal';
 export default function Platforms() {
   const dispatch = useDispatch();
   const platforms = useSelector(state => state.message.platforms);
-  const [mailModalVisible, setMailModalVisible] = useState(true);
+  const [mailModalVisible, setMailModalVisible] = useState(false);
 
   function togglePlatform(platform) {
     switch (platform) {
