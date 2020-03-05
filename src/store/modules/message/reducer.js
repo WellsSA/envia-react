@@ -35,6 +35,10 @@ export default function message(state = INITIAL_STATE, action) {
         draft.curStep = state.curStep - 1;
         break;
       }
+      case '@message/SET_STEP': {
+        draft.curStep = action.payload.step;
+        break;
+      }
       case '@message/SETUP_MESSAGE': {
         draft.message = action.payload;
         break;

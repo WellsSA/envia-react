@@ -6,6 +6,7 @@ import SelectSendForm from './SelectSendForm';
 import StepNavigator from './StepNavigator';
 import ConfirmEnvio from './ConfirmEnvio';
 import SendMessage from './SendMessage';
+import ProgressBar from './ProgressBar';
 
 export {
   Criteria,
@@ -16,4 +17,5 @@ export {
   StepNavigator,
   ConfirmEnvio,
   SendMessage,
+  ProgressBar,
 };

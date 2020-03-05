@@ -2,9 +2,13 @@ import React, { useEffect, useState } from 'react';
 import { FaTelegramPlane } from 'react-icons/fa';
 import { useDispatch, useSelector } from 'react-redux';
 import { NamedSection, Title } from '../../components';
-import { nextStep, prevStep } from '../../store/modules/message/actions';
+import {
+  nextStep,
+  prevStep,
+  setStep,
+} from '../../store/modules/message/actions';
 import AlunosDataTable from './CriteriaTableGenerator/AlunosDataTable';
-import { Container, MessageStep, ProgressBar } from './styles';
+import { Container, MessageStep } from './styles';
 import {
   Criteria,
   CriteriaTableGenerator,
@@ -12,6 +16,7 @@ import {
   Platforms,
   ConfirmEnvio,
   SendMessage,
+  ProgressBar,
 } from './_components';
 
 // import api from '../../services/api';
@@ -34,7 +39,14 @@ export default function EnviarMensagens() {
   return (
     <Container>
       <NamedSection name="Enviar mensagens" icon={FaTelegramPlane}>
-        <ProgressBar step="1">ProgressBar</ProgressBar>
+        <ProgressBar
+          step={step}
+          maxSteps={6}
+          onBulletClick={
+            _step => dispatch(setStep({ step: _step }))
+            // _step <= step ? dispatch(setStep({ step: _step })) : {}
+          }
+        />
 
         <MessageStep active={step === 1}>
           <MessageForm />

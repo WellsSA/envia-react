@@ -60,6 +60,13 @@ export function setupPlatform() {
   };
 }
 
+export function setStep({ step }) {
+  return {
+    type: '@message/SET_STEP',
+    payload: { step },
+  };
+}
+
 export function nextStep() {
   return {
     type: '@message/NEXT_STEP',
