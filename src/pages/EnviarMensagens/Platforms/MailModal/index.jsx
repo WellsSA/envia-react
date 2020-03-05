@@ -25,9 +25,10 @@ export default function MailModal({ visible, onSetVisible }) {
     >
       <QuantityDisplayer
         label="e-mails"
-        quantity={qtdAlunos}
-        balance={saldoAtual}
+        quantity={`${qtdAlunos}`}
+        balance={`${saldoAtual}`}
       />
+      <></>
     </ModalHelper>
   );
 }
