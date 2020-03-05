@@ -41,7 +41,7 @@ export default function EnviarMensagens() {
       <NamedSection name="Enviar mensagens" icon={FaTelegramPlane}>
         <ProgressBar
           step={step}
-          maxSteps={6}
+          maxSteps={5}
           onBulletClick={
             _step => dispatch(setStep({ step: _step }))
             // _step <= step ? dispatch(setStep({ step: _step })) : {}
@@ -58,27 +58,27 @@ export default function EnviarMensagens() {
         </MessageStep>
         */}
 
-        <MessageStep active={step === 3}>
+        <MessageStep active={step === 2}>
           <Title>Alunos do(a): Professor(Juliano, zezim)</Title>
 
           <Criteria setCriteria={setCriteria} />
           <CriteriaTableGenerator criteria={criteria} />
         </MessageStep>
 
-        <MessageStep active={step === 4}>
+        <MessageStep active={step === 3}>
           <Title>Selecione os alunos que deseja enviar:</Title>
           <AlunosDataTable tableData={filteredAlunos} />
           <div>Filtro: {filter.criteria}</div>
           <div>Data: {filter.data}</div>
         </MessageStep>
 
-        <MessageStep active={step === 5}>
+        <MessageStep active={step === 4}>
           <Title>Selecione a forma de envio:</Title>
 
           <Platforms />
         </MessageStep>
 
-        <MessageStep active={step === 6}>
+        <MessageStep active={step === 5}>
           <Title>Confirme as informações do seu envio:</Title>
           <ConfirmEnvio />
           <SendMessage />

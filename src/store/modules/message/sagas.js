@@ -76,27 +76,27 @@ export function* handleNextStep() {
     const step = yield select(state => state.message.curStep);
     /**
       1 => escrever mensagem
-      2 => selecionar aluno/responsavel
+      2 => selecionar aluno/responsavel => REMOVIDO
       3 => selecionar filtros
       4 => selecionar alunos
       5 => selecionar forma de envio
       6 => confirmar
      */
     switch (step) {
+      /* Nota: O passo 2 ficará pra depois do MVP
       case 2:
-        /* Nota: O passo 2 ficará pra depois do MVP
         return notifySuccess(
           'Muito bom! Agora é só escolher enviar para aluno ou responsável!'
         );
-        */
         return yield put(nextStep());
-      case 3:
+      */
+      case 2:
         return notifySuccess('Muito bom! Agora é só selecionar os filtros!');
-      case 4:
+      case 3:
         return notifySuccess('Quase lá! Selecione os alunos!');
-      case 5:
+      case 4:
         return notifySuccess('Selecione sua forma de envio!');
-      case 6:
+      case 5:
         return notifySuccess('Agora é só confirmar as informações!');
       default:
         return;
@@ -156,6 +156,7 @@ export default all([
   takeLatest('@message/SETUP_FILTERS', handleSetupFilters),
   takeLatest('@message/SETUP_FILTERS_SUCCESS', handleSetupFiltersSuccess),
   takeLatest('@message/NEXT_STEP', handleNextStep),
+  takeLatest('@message/SET_STEP', handleNextStep),
   takeLatest('@message/PREV_STEP', handlePrevStep),
   takeLatest('@message/SETUP_ALUNOS', handleSetupAlunos),
   takeLatest('@message/SETUP_PLATFORM', handleSetupPlatform),
