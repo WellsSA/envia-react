@@ -1,9 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { FaUser } from 'react-icons/fa';
+import api from '../../services/api';
 
-import NamedSection from '../../components/NamedSection';
+import { NamedSection, AddImportActions } from '../../components';
 import AlunosTable from './AlunosTable';
-import { Container, Actions } from './styles';
+import AlunosModal from './AlunosModal';
+
+import { Container } from './styles';
 import {
   handleInsert,
   handleUpdate,
@@ -12,43 +15,36 @@ import {
 } from './handlers.data';
 
 export default function Alunos() {
-  const [tableData, setTableData] = useState([
-    {
-      name: 'Zezim',
-      birthDate: '12/12/2012',
-      email: 'zezim@zezim',
-      phone: '11977440233',
-      responsible: 'zezim father',
-      responsible_email: 'pai@pai.com',
-      responsible_phone: '11977440233',
-      turmas: 'Zezim v1, Zezim v2',
-    },
-    {
-      name: 'Zuleide',
-      birthDate: '12/12/2012',
-      email: 'zezim@zezim',
-      phone: '11977440233',
-      responsible: 'Creusa',
-      responsible_email: 'pai@pai.com',
-      responsible_phone: '11977440233',
-      turmas: 'Zuleide v1, Zuleide v2',
-    },
-    {
-      name: 'Judith',
-      birthDate: '12/12/2012',
-      email: 'zezim@zezim',
-      phone: '11977440233',
-      responsible: 'Jerucreusa',
-      responsible_email: 'pai@pai.com',
-      responsible_phone: '11977440233',
-      turmas: 'Judith v1, Judith v2',
-    },
-  ]);
+  const [tableData, setTableData] = useState([]);
+  const [insertModalVisible, setInsertModalVisible] = useState(false);
+  // const [importModalVisible, setImportModalVisible] = useState(false);
+
+  useEffect(() => {
+    async function loadAlunos() {
+      const { status, data } = await api.get('alunos');
+      if (status !== 200) return;
+      setTableData(data);
+    }
+
+    loadAlunos();
+  }, []);
+
+  function handleInsertSubmit() {
+    alert('here');
+  }
 
   return (
     <Container>
+      <AlunosModal
+        visible={insertModalVisible}
+        onSetVisible={setInsertModalVisible}
+        handleSubmit={handleInsertSubmit}
+      />
       <NamedSection name="Alunos" icon={FaUser}>
-        <Actions>Adicionar/importar</Actions>
+        <AddImportActions
+          onAdd={() => setInsertModalVisible(true)}
+          onImport={() => alert('Work in progress')}
+        />
         <AlunosTable
           tableData={tableData}
           setTableData={setTableData}
