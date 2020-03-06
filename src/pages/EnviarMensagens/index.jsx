@@ -41,7 +41,7 @@ export default function EnviarMensagens() {
       <NamedSection name="Enviar mensagens" icon={FaTelegramPlane}>
         <ProgressBar
           step={step}
-          maxSteps={5}
+          maxSteps={3}
           onBulletClick={
             _step => dispatch(setStep({ step: _step }))
             // _step <= step ? dispatch(setStep({ step: _step })) : {}

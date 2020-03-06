@@ -1,4 +1,5 @@
 import { createGlobalStyle } from 'styled-components';
+import { darken, lighten } from 'polished';
 import { fonts } from './scale';
 import { getColor } from '../utils/themeHelper';
 // import 'react-perfect-scrollbar/dist/css/styles.css';
@@ -67,23 +68,35 @@ export default createGlobalStyle`
   }
 
   .input {
+    margin: 10px 5px;
     label {
       color: ${props => getColor(props, 'text')};
       font-size: ${fonts.labelFontSize};
+      font-weight: 600;
     }
 
     input {
       width: 100%;
       border-radius: 4px;
-      border: 1px solid ${props => getColor(props, 'backgroundHighlight')};
+      border: 1px solid ${props =>
+        darken(0.2, getColor(props, 'backgroundHighlight'))};
       font-size: ${fonts.inputFontSize};
       padding: 4px 8px;
       margin: 4px 0;
 
-      &:focus {
-        background: ${props => getColor(props, 'backgroundHighlight')};
+      &:focus, &:hover {
+        background: ${props =>
+          lighten(0.02, getColor(props, 'backgroundHighlight'))};
         border: 1px solid ${props => getColor(props, 'highlight')};
       }
+    }
+
+    span {
+      color: ${props => lighten(0.15, getColor(props, 'cancel'))};
+          /* #fb6f91; */
+      align-self: flex-start;
+      margin: 0 0 10px;
+      font-weight: bold;
     }
   }
 `;

@@ -16,7 +16,7 @@ import {
 
 export default function Alunos() {
   const [tableData, setTableData] = useState([]);
-  const [insertModalVisible, setInsertModalVisible] = useState(false);
+  const [insertModalVisible, setInsertModalVisible] = useState(true);
   // const [importModalVisible, setImportModalVisible] = useState(false);
 
   useEffect(() => {
@@ -29,7 +29,8 @@ export default function Alunos() {
     loadAlunos();
   }, []);
 
-  function handleInsertSubmit() {
+  function handleInsertSubmit(data) {
+    console.log(data);
     alert('here');
   }
 
