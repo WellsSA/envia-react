@@ -62,10 +62,13 @@ export default function AlunosModal({
             label="Celular do aluno:"
             placeholder={placeholder.phone}
           />
-          <div className="input">
-            <label>Selecione a(s) turma(s) do aluno:</label>
-            turmas
-          </div>
+          <InputWrapper
+            id="turmas"
+            label="Selecione a(s) turma(s) do aluno:"
+            labelOnly
+          >
+            <>turma</>
+          </InputWrapper>
           <DatePlace>
             <InputWrapper id="birthDate" label="Data de nascimento:" labelOnly>
               <EnviaKeyboardDatePicker
