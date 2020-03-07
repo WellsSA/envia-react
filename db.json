@@ -171,11 +171,7 @@
       "responsible": "zezim father",
       "responsible_email": "pai@pai.com",
       "responsible_phone": "11977440233",
-      "turmas": [
-        1,
-        2,
-        3
-      ]
+      "turmas": [1, 2, 3]
     }
   ],
   "cursos": [
@@ -214,6 +210,22 @@
     {
       "name": "Vamo láQ",
       "id": 10
+    }
+  ],
+  "turmas": [
+    {
+      "id": 1,
+      "name": "Informática",
+      "days": "Segunda, Quarta e Sexta",
+      "hours": "das 7h às 10h",
+      "course": {
+        "id": 2,
+        "name": "Curso teste"
+      },
+      "teacher": {
+        "name": "Wellington",
+        "id": 1
+      }
     }
   ]
 }
