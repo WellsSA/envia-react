@@ -17,7 +17,7 @@ const schema = Yup.object().shape({
   email: Yup.string()
     .email('Informe um e-mail válido!')
     .required('O e-mail é obrigatório *'),
-  // birthDate: 'ex.: 12/12/2012',
+  // birthDate: Yup.date().required('A data de nascimento é obrigatória *'),
   // phone: 'ex.: (11) 9555-5533',
   responsible: Yup.string(),
   responsible_email: Yup.string().email('Informe um e-mail válido'),
