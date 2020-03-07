@@ -1,10 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Input } from '@rocketseat/unform';
+import PhoneInputMask from './PhoneInputMask';
 
 export default function InputWrapper({
   id,
   label,
+  type,
   placeholder,
   labelOnly,
   noStyled,
@@ -16,6 +18,13 @@ export default function InputWrapper({
 
       {labelOnly ? (
         children
+      ) : type === 'phone' ? (
+        <PhoneInputMask
+          type="text"
+          id={id}
+          name={id}
+          placeholder={placeholder}
+        />
       ) : (
         <Input type="text" id={id} name={id} placeholder={placeholder} />
       )}
@@ -26,6 +35,7 @@ export default function InputWrapper({
 InputWrapper.propTypes = {
   id: PropTypes.string.isRequired,
   label: PropTypes.string.isRequired,
+  type: PropTypes.string,
   placeholder: PropTypes.string,
   labelOnly: PropTypes.bool,
   noStyled: PropTypes.bool,
@@ -39,5 +49,6 @@ InputWrapper.defaultProps = {
   labelOnly: false,
   noStyled: false,
   children: <></>,
+  type: 'text',
   placeholder: '',
 };

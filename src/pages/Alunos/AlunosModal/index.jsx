@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { Form } from '@rocketseat/unform';
-import MaskedInput from 'react-text-mask';
 
 import PropTypes from 'prop-types';
 import Radios from './Radios';
@@ -61,33 +60,9 @@ export default function AlunosModal({
           <InputWrapper
             id="phone"
             label="Celular do aluno:"
-            // placeholder={placeholder.phone}
-            labelOnly
-          >
-            <MaskedInput
-              id="phone"
-              type="text"
-              name="phone"
-              mask={[
-                '(',
-                /[1-9]/,
-                /\d/,
-                ')',
-                ' ',
-                /\d/,
-                ' ',
-                /\d/,
-                /\d/,
-                /\d/,
-                /\d/,
-                '-',
-                /\d/,
-                /\d/,
-                /\d/,
-                /\d/,
-              ]}
-            />
-          </InputWrapper>
+            type="phone"
+            placeholder={placeholder.phone}
+          />
           <InputWrapper
             id="turmas"
             label="Selecione a(s) turma(s) do aluno:"
