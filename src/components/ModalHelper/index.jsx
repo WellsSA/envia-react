@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { MdClose } from 'react-icons/md';
 import { Container, Content, Header, Body, Footer, Background } from './styles';
 
-export default function OverlayHelper({
+export default function ModalHelper({
   title,
   visible,
   onSetVisible,
@@ -45,18 +45,22 @@ export default function OverlayHelper({
   );
 }
 
-OverlayHelper.propTypes = {
+ModalHelper.propTypes = {
   title: PropTypes.string.isRequired,
   visible: PropTypes.bool,
   onSetVisible: PropTypes.func,
-  children: PropTypes.oneOfType([PropTypes.element, PropTypes.func]).isRequired,
+  children: PropTypes.oneOfType([
+    PropTypes.element,
+    PropTypes.func,
+    PropTypes.any,
+  ]).isRequired,
   formId: PropTypes.string,
   onConfirm: PropTypes.func,
   onCancel: PropTypes.func,
   confirmLabel: PropTypes.string,
 };
 
-OverlayHelper.defaultProps = {
+ModalHelper.defaultProps = {
   visible: false,
   onSetVisible: () => {},
   formId: null,

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Form, Input } from '@rocketseat/unform';
 import PropTypes from 'prop-types';
-import { ModalHelper, Notifier } from '../../../components';
+import { ModalHelper, Notifier, InputWrapper } from '../../../components';
 import { Container } from './styles';
 
 export default function ProfessoresModal({
@@ -12,7 +12,7 @@ export default function ProfessoresModal({
 }) {
   const formId = 'professores-modal';
   const placeholder = {
-    name: 'ex.: Informativo inicio de turma',
+    name: 'ex.: Wellington Almeida',
   };
 
   function _handleSubmit(data) {
@@ -30,10 +30,11 @@ export default function ProfessoresModal({
       >
         <Notifier />
         <Form id={formId} initialData={initialData} onSubmit={_handleSubmit}>
-          <div className="input">
-            <label htmlFor="name">Nome:</label>
-            <Input id="name" name="name" placeholder={placeholder.name} />
-          </div>
+          <InputWrapper
+            id="name"
+            label="Nome:"
+            placeholder={placeholder.name}
+          />
         </Form>
       </ModalHelper>
     </Container>
