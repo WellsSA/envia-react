@@ -6,6 +6,7 @@ import ModalHelper from './ModalHelper';
 import Sidebar from './Sidebar';
 import Title from './Title';
 import AddImportActions from './AddImportActions';
+import InputWrapper from './InputWrapper';
 
 export {
   EnviaDataTable,
@@ -16,4 +17,5 @@ export {
   Sidebar,
   Title,
   AddImportActions,
+  InputWrapper,
 };

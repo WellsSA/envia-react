@@ -68,35 +68,62 @@ export default createGlobalStyle`
   }
 
   .input {
-    margin: 10px 5px;
+    margin: 15px 5px;
+
     label {
       color: ${props => getColor(props, 'text')};
       font-size: ${fonts.labelFontSize};
       font-weight: 600;
     }
 
-    input {
+    input[type=text] {
       width: 100%;
       border-radius: 4px;
-      border: 1px solid ${props =>
-        darken(0.2, getColor(props, 'backgroundHighlight'))};
       font-size: ${fonts.inputFontSize};
+      border: none;
       padding: 4px 8px;
       margin: 4px 0;
+      pointer-events: auto;
+    }
 
-      &:focus, &:hover {
-        background: ${props =>
-          lighten(0.02, getColor(props, 'backgroundHighlight'))};
-        border: 1px solid ${props => getColor(props, 'highlight')};
+    &.styled {
+      position: relative;
+      pointer-events: none;
+
+      &::before {
+        content: '';
+        right: 0;
+        left: 0;
+        bottom: 0;
+        position: absolute;
+        border-radius: 4px;
+        transition: border-bottom-color 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+        border-bottom: 1px solid ${props =>
+          darken(0.2, getColor(props, 'backgroundHighlight'))};
+        pointer-events: none;
+      }
+
+      &:hover:before{
+        border-bottom-width: 2px;
+        border-bottom-color: ${props => getColor(props, 'text')};
+      }
+
+      &:focus-within:before{
+        border-bottom-width: 2px;
+        border-bottom-color: ${props => getColor(props, 'primary')};
       }
     }
 
-    span {
+    > span {
       color: ${props => lighten(0.15, getColor(props, 'cancel'))};
           /* #fb6f91; */
       align-self: flex-start;
       margin: 0 0 10px;
       font-weight: bold;
+    }
+
+    textarea {
+      pointer-events: auto;
     }
   }
 `;

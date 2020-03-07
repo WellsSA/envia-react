@@ -1,40 +1,31 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Form, Input } from '@rocketseat/unform';
+import {
+  KeyboardDatePicker,
+  MuiPickersUtilsProvider,
+} from '@material-ui/pickers';
+import pt from 'date-fns/locale/pt';
 import PropTypes from 'prop-types';
-import * as Yup from 'yup';
-import { ModalHelper, Notifier } from '../../../components';
-import { Container, Responsible } from './styles';
 
-const schema = Yup.object().shape({
-  name: Yup.string().required('O nome é obrigatório *'),
-  email: Yup.string()
-    .email('Informe um e-mail válido!')
-    .required('O e-mail é obrigatório *'),
-  // birthDate: 'ex.: 12/12/2012',
-  // phone: 'ex.: (11) 9555-5533',
-  responsible: Yup.string(),
-  responsible_email: Yup.string().email('Informe um e-mail válido'),
-  // responsible_phone: 'ex.: (11) 9555-5533',
-});
+import DateFnsUtils from '@date-io/date-fns';
 
-export default function ProfessoresModal({
+import { ModalHelper, Notifier, InputWrapper } from '../../../components';
+import { Container, Responsible, DatePlace, Radios } from './styles';
+import { schema, placeholder } from './alunosModal.data';
+
+export default function AlunosModal({
   visible,
   onSetVisible,
   handleSubmit,
   initialData,
 }) {
   const formId = 'alunos-modal';
-  const placeholder = {
-    name: 'ex.: João da Silva',
-    email: 'ex.: aluno@envia.io',
-    birthDate: 'ex.: 12/12/2012',
-    phone: 'ex.: (11) 9555-5533',
-    responsible: 'ex.: Antônio Silva',
-    responsible_email: 'ex.: responsavel@responsavel.com',
-    responsible_phone: 'ex.: (11) 9555-5533',
-    // turmas: [1, 2, 3],
-  };
+  const [selectedDate, handleDateChange] = useState(new Date('2000/01/01'));
+  const [isResponsible, setIsResponsible] = useState(true);
 
+  useEffect(() => {
+    console.log(selectedDate);
+  }, [selectedDate]);
   function _handleSubmit(data) {
     handleSubmit(data);
     document.getElementById(formId).reset();
@@ -47,70 +38,120 @@ export default function ProfessoresModal({
       onSetVisible={onSetVisible}
       formId={formId}
     >
-      <Container>
-        <Notifier />
-        <Form
-          id={formId}
-          schema={schema}
-          initialData={initialData}
-          onSubmit={_handleSubmit}
-        >
-          <div className="input">
-            <label htmlFor="name">Nome do aluno:</label>
-            <Input id="name" name="name" placeholder={placeholder.name} />
-          </div>
-          <div className="input">
-            <label htmlFor="email">E-mail do aluno:</label>
-            <Input id="email" name="email" placeholder={placeholder.email} />
-          </div>
-          <div className="input">
-            <label htmlFor="phone">Celular do aluno:</label>
-            <Input id="phone" name="phone" placeholder={placeholder.phone} />
-          </div>
-          <div className="input">
-            <label>Selecione a(s) turma(s) do aluno:</label>
-            turmas
-          </div>
-          <div>Data nasc / isResponsible</div>
-          <Responsible visible>
+      <MuiPickersUtilsProvider utils={DateFnsUtils} locale={pt}>
+        <Container>
+          <Notifier />
+          <Form
+            id={formId}
+            schema={schema}
+            initialData={initialData}
+            onSubmit={_handleSubmit}
+          >
+            <InputWrapper
+              id="name"
+              label="Nome do aluno:"
+              placeholder={placeholder.name}
+            />
+            <InputWrapper
+              id="email"
+              label="Email do aluno:"
+              placeholder={placeholder.email}
+            />
+            <InputWrapper
+              id="phone"
+              label="Celular do aluno:"
+              placeholder={placeholder.phone}
+            />
             <div className="input">
-              <label htmlFor="responsible">Nome do responsável:</label>
-              <Input
-                id="responsible"
-                name="responsible"
-                placeholder={placeholder.responsible}
-              />
+              <label>Selecione a(s) turma(s) do aluno:</label>
+              turmas
             </div>
-            <div className="input">
-              <label htmlFor="responsible_email">E-mail do responsável:</label>
-              <Input
-                id="responsible_email"
-                name="responsible_email"
-                placeholder={placeholder.responsible_email}
-              />
-            </div>
-            <div className="input">
-              <label htmlFor="responsible_phone">Celular do responsável:</label>
-              <Input
-                id="responsible_phone"
-                name="responsible_phone"
-                placeholder={placeholder.responsible_phone}
-              />
-            </div>
-          </Responsible>
-        </Form>
-      </Container>
+            <DatePlace>
+              <InputWrapper
+                id="birthDate"
+                label="Data de nascimento:"
+                labelOnly
+              >
+                <KeyboardDatePicker
+                  disableFuture
+                  openTo="year"
+                  format="dd/MM/yyyy"
+                  views={['year', 'month', 'date']}
+                  value={selectedDate}
+                  onChange={handleDateChange}
+                />
+              </InputWrapper>
+              <InputWrapper
+                id="isResponsible"
+                label="O aluno é o próprio responsável?"
+                labelOnly
+              >
+                <Radios>
+                  <label htmlFor="isResponsible">Sim</label>
+                  <input
+                    id="isResponsible"
+                    type="radio"
+                    value="sim"
+                    checked={isResponsible}
+                    readOnly
+                    onClick={() => setIsResponsible(true)}
+                  />
+                  <label htmlFor="isResponsibleNo">Não</label>
+                  <input
+                    id="isResponsibleNo"
+                    type="radio"
+                    value="nao"
+                    checked={!isResponsible}
+                    readOnly
+                    onClick={() => setIsResponsible(false)}
+                  />
+                </Radios>
+              </InputWrapper>
+            </DatePlace>
+            <Responsible visible>
+              {/* <div className="input">
+                <label htmlFor="responsible">Nome do responsável:</label>
+                <Input
+                  id="responsible"
+                  name="responsible"
+                  placeholder={placeholder.responsible}
+                />
+              </div>
+              <div className="input">
+                <label htmlFor="responsible_email">
+                  E-mail do responsável:
+                </label>
+                <Input
+                  id="responsible_email"
+                  name="responsible_email"
+                  placeholder={placeholder.responsible_email}
+                />
+              </div>
+              <div className="input">
+                <label htmlFor="responsible_phone">
+                  Celular do responsável:
+                </label>
+                <Input
+                  id="responsible_phone"
+                  name="responsible_phone"
+                  placeholder={placeholder.responsible_phone}
+                />
+              </div> */}
+            </Responsible>
+          </Form>
+        </Container>
+      </MuiPickersUtilsProvider>
     </ModalHelper>
   );
 }
 
-ProfessoresModal.propTypes = {
+AlunosModal.propTypes = {
   visible: PropTypes.bool.isRequired,
   onSetVisible: PropTypes.func.isRequired,
   handleSubmit: PropTypes.func.isRequired,
   initialData: PropTypes.objectOf(PropTypes.string),
 };
 
-ProfessoresModal.defaultProps = {
+AlunosModal.defaultProps = {
   initialData: {},
 };

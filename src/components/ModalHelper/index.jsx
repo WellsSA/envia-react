@@ -49,7 +49,7 @@ OverlayHelper.propTypes = {
   title: PropTypes.string.isRequired,
   visible: PropTypes.bool,
   onSetVisible: PropTypes.func,
-  children: PropTypes.oneOfType([PropTypes.array, PropTypes.func]).isRequired,
+  children: PropTypes.oneOfType([PropTypes.element, PropTypes.func]).isRequired,
   formId: PropTypes.string,
   onConfirm: PropTypes.func,
   onCancel: PropTypes.func,
