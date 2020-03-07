@@ -3,32 +3,6 @@ import { transparentize } from 'polished';
 import { fonts } from '../../styles/scale';
 import { getColor } from '../../utils/themeHelper';
 
-export const Container = styled.div`
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.3);
-  z-index: 100;
-
-  display: ${props => (props.visible ? 'flex' : 'none')};
-  justify-content: center;
-  align-items: center;
-`;
-
-export const Content = styled.div`
-  /* width: 50%; */
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
-  background: ${props => getColor(props, 'background')};
-  border-radius: 4px;
-  z-index: 101;
-
-  > div {
-    border-radius: 4px;
-  }
-`;
-
 export const Header = styled.div`
   height: 60px;
   font-size: ${fonts.titleFontSize};
@@ -58,12 +32,4 @@ export const Body = styled.div`
 export const Footer = styled.div`
   padding: 15px;
   text-align: right;
-`;
-
-export const Background = styled.div`
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
 `;

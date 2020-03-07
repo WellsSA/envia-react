@@ -4,14 +4,13 @@ import { FaUsers } from 'react-icons/fa';
 import TurmasTable from './TurmasTable';
 import TurmasModal from './TurmasModal';
 import api from '../../services/api';
-import { NamedSection, AddImportActions } from '../../components';
-// import { Container } from './styles';
 import {
-  handleInsert,
-  handleUpdate,
-  handleDelete,
-  handleDeleteAll,
-} from './handlers.data';
+  NamedSection,
+  AddImportActions,
+  OverlayHelper,
+} from '../../components';
+// import { Container } from './styles';
+import { handleInsert, handleUpdate, handleDelete } from './handlers.data';
 
 export default function Turmas() {
   const dispatch = useDispatch();

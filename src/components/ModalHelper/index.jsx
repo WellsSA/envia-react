@@ -1,7 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { MdClose } from 'react-icons/md';
-import { Container, Content, Header, Body, Footer, Background } from './styles';
+import { Header, Body, Footer } from './styles';
+import OverlayHelper from '../OverlayHelper';
 
 export default function ModalHelper({
   title,
@@ -19,29 +20,30 @@ export default function ModalHelper({
   }
 
   return (
-    <Container visible={visible}>
-      <Content>
-        <Header>
-          {title}
-          <MdClose onClick={handleCancel} />
-        </Header>
-        <Body>{children}</Body>
-        <Footer>
-          <button type="button" className="cancel" onClick={handleCancel}>
-            Cancelar
-          </button>
-          <button
-            type="submit"
-            className="confirm"
-            onClick={onConfirm}
-            {...(formId ? { form: formId } : {})}
-          >
-            {confirmLabel}
-          </button>
-        </Footer>
-      </Content>
-      <Background onClick={handleCancel} />
-    </Container>
+    <OverlayHelper
+      visible={visible}
+      onSetVisible={onSetVisible}
+      onCancel={onCancel}
+    >
+      <Header>
+        {title}
+        <MdClose onClick={handleCancel} />
+      </Header>
+      <Body>{children}</Body>
+      <Footer>
+        <button type="button" className="cancel" onClick={handleCancel}>
+          Cancelar
+        </button>
+        <button
+          type="submit"
+          className="confirm"
+          onClick={onConfirm}
+          {...(formId ? { form: formId } : {})}
+        >
+          {confirmLabel}
+        </button>
+      </Footer>
+    </OverlayHelper>
   );
 }
 
