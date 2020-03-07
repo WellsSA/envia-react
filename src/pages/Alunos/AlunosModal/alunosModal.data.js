@@ -1,4 +1,5 @@
 import * as Yup from 'yup';
+import { clearPhone } from '../../../components/InputWrapper/PhoneInputMask/phoneInputMask.data';
 
 const placeholder = {
   name: 'ex.: João da Silva',
@@ -23,4 +24,15 @@ const schema = Yup.object().shape({
   // responsible_phone: 'ex.: (11) 9555-5533',
 });
 
-export { schema, placeholder };
+function verifyAndAdd(ids = [], reference = {}) {
+  ids.forEach(id => {
+    const element = document.getElementById(id);
+    if (element) {
+      if (id === 'phone') element.value = clearPhone(element.value);
+
+      reference[id] = element.value;
+    }
+  });
+}
+
+export { schema, placeholder, verifyAndAdd };

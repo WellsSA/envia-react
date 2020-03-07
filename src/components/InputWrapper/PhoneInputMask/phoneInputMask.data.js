@@ -35,4 +35,13 @@ const maskWith9Digits = [
   /\d/,
 ];
 
-export { maskWith9Digits, maskWithLessThan9Digits };
+function clearPhone(phone) {
+  return phone.replace(/\(|_|\)| |-/g, '');
+}
+
+function validatePhone(phone) {
+  const clearValue = clearPhone(phone);
+  return clearValue.length === 10 || clearValue.length === 11;
+}
+
+export { maskWith9Digits, maskWithLessThan9Digits, clearPhone, validatePhone };

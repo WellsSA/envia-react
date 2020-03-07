@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Form } from '@rocketseat/unform';
 
 import PropTypes from 'prop-types';
@@ -12,7 +12,7 @@ import {
 } from '../../../components';
 
 import { Container, Responsible, DatePlace } from './styles';
-import { schema, placeholder } from './alunosModal.data';
+import { schema, placeholder, verifyAndAdd } from './alunosModal.data';
 
 export default function AlunosModal({
   visible,
@@ -24,10 +24,11 @@ export default function AlunosModal({
   const [selectedDate, handleDateChange] = useState(new Date('2000/01/01'));
   const [isResponsible, setIsResponsible] = useState(true);
 
-  useEffect(() => {
-    console.log(selectedDate);
-  }, [selectedDate]);
-  function _handleSubmit(data) {
+  async function _handleSubmit(data) {
+    const ids = ['phone', 'responsible_phone', 'birthDate'];
+
+    verifyAndAdd(ids, data);
+
     handleSubmit(data);
     document.getElementById(formId).reset();
   }
@@ -39,7 +40,7 @@ export default function AlunosModal({
       onSetVisible={onSetVisible}
       formId={formId}
     >
-      <Container>
+      <Container isResponsible={isResponsible}>
         <Notifier />
         <Form
           id={formId}
@@ -79,6 +80,8 @@ export default function AlunosModal({
               noStyled
             >
               <EnviaKeyboardDatePicker
+                id="birthDate"
+                name="birthDate"
                 value={selectedDate}
                 onChange={handleDateChange}
               />
@@ -106,6 +109,7 @@ export default function AlunosModal({
             <InputWrapper
               id="responsible_phone"
               label="Celular do responsável:"
+              type="phone"
               placeholder={placeholder.responsible_phone}
             />
           </Responsible>

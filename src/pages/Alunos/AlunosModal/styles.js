@@ -2,9 +2,16 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
   width: 600px;
+  overflow-y: ${({ isResponsible }) => (!isResponsible ? 'auto' : 'none')};
+  ::-webkit-scrollbar {
+    display: none;
+  }
 `;
+
 export const Responsible = styled.div`
-  display: ${({ visible }) => (visible ? 'block' : 'none')};
+  visibility: ${({ visible }) => (visible ? 'visible' : 'hidden')};
+  height: ${({ visible }) => (visible ? '200px' : '0')};
+  transition: height 0.5s ease-in-out;
 `;
 
 export const DatePlace = styled.div`

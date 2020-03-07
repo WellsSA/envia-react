@@ -115,6 +115,9 @@ export default createGlobalStyle`
     }
 
     > span {
+      position: absolute;
+      top: 0;
+      right: 0;
       color: ${props => lighten(0.15, getColor(props, 'cancel'))};
           /* #fb6f91; */
       align-self: flex-start;
