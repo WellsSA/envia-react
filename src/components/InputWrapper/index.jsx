@@ -13,6 +13,7 @@ export default function InputWrapper({
   noStyled,
   children,
   options,
+  defaultValue,
 }) {
   return (
     <div
@@ -37,6 +38,7 @@ export default function InputWrapper({
           name={id}
           placeholder={placeholder}
           options={options}
+          defaultValue={defaultValue}
         />
       ) : (
         <Input type="text" id={id} name={id} placeholder={placeholder} />
@@ -57,6 +59,7 @@ InputWrapper.propTypes = {
     PropTypes.arrayOf(PropTypes.element),
   ]),
   options: PropTypes.arrayOf(PropTypes.object),
+  defaultValue: PropTypes.string,
 };
 
 InputWrapper.defaultProps = {
@@ -66,4 +69,5 @@ InputWrapper.defaultProps = {
   type: 'text',
   placeholder: '',
   options: [{}],
+  defaultValue: '',
 };

@@ -14,11 +14,11 @@ export function handleInsert(
         days,
         hours,
         course: {
-          id: course,
+          id: +course,
           name: 'TODO: Not related yet',
         },
         teacher: {
-          id: teacher,
+          id: +teacher,
           name: 'TODO: Not related yet',
         },
       })
@@ -34,26 +34,52 @@ export function handleInsert(
   });
 }
 
-export function handleUpdate(newData, oldData, setTableData) {
+export function handleUpdate(
+  { id, name, days, hours, course, teacher },
+  setTableData,
+  tableDataId,
+  dispatch
+) {
   return new Promise((resolve, reject) => {
     api
-      .put(`professores/${oldData.id}`, {
-        name: newData.name,
+      .put(`turmas/${+id}`, {
+        name,
+        days,
+        hours,
+        course: {
+          id: +course,
+          name: 'TODO: Not related yet',
+        },
+        teacher: {
+          id: +teacher,
+          name: 'TODO: Not related yet',
+        },
       })
-      .then(resolve())
-      .catch(reject());
+      .then(({ data: newData }) => {
+        setTableData(prevState => {
+          const data = [...prevState];
+          data[tableDataId] = newData;
+          return data;
+        });
+        notifySuccess('Turma editada com sucesso!', dispatch);
+        resolve();
+      })
+      .catch(data => {
+        notifyError('Falha ao editar turma!', dispatch);
+        reject(data);
+      });
 
-    if (oldData) {
-      console.log('update', {
-        newData,
-        oldData,
-      });
-      setTableData(prevState => {
-        const data = [...prevState];
-        data[data.indexOf(oldData)] = newData;
-        return data;
-      });
-    }
+    // if (oldData) {
+    //   console.log('update', {
+    //     newData,
+    //     oldData,
+    //   });
+    //   setTableData(prevState => {
+    //     const data = [...prevState];
+    //     data[data.indexOf(oldData)] = newData;
+    //     return data;
+    //   });
+    // }
   }, 600);
 }
 

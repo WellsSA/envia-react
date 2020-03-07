@@ -236,18 +236,32 @@
       }
     },
     {
-      "name": "Teste",
+      "name": "Teste 2",
       "days": "Agora vai",
       "hours": "uhul",
       "course": {
-        "id": "10",
+        "id": 10,
         "name": "TODO: Not related yet"
       },
       "teacher": {
-        "id": "18",
+        "id": 18,
         "name": "TODO: Not related yet"
       },
       "id": 2
+    },
+    {
+      "name": "Cadastrando",
+      "days": "Novo",
+      "hours": "Teste",
+      "course": {
+        "id": "5",
+        "name": "TODO: Not related yet"
+      },
+      "teacher": {
+        "id": "11",
+        "name": "TODO: Not related yet"
+      },
+      "id": 3
     }
   ]
 }

@@ -16,7 +16,9 @@ import {
 export default function Turmas() {
   const dispatch = useDispatch();
   const [tableData, setTableData] = useState([]);
-  const [insertModalVisible, setInsertModalVisible] = useState(true);
+  const [insertModalVisible, setInsertModalVisible] = useState(false);
+  const [selectedTurma, setSelectedTurma] = useState(null);
+  const [tableDataId, setTableDataId] = useState(0);
 
   function handleInsertSubmit({ name, days, hours, course, teacher }) {
     handleInsert(
@@ -24,6 +26,47 @@ export default function Turmas() {
       setTableData,
       dispatch
     );
+  }
+
+  function handleUpdateSubmit({ id, name, days, hours, course, teacher }) {
+    console.log('edit!', { id, name, days, hours, course, teacher });
+
+    handleUpdate(
+      { id, name, days, hours, course, teacher },
+      setTableData,
+      tableDataId,
+      dispatch
+    );
+
+    setInsertModalVisible(false);
+  }
+
+  function enableInserting() {
+    setSelectedTurma(null);
+    setInsertModalVisible(true);
+  }
+
+  function enableEditing({
+    id,
+    name,
+    days,
+    hours,
+    course,
+    teacher,
+    tableData: tableDataInfo,
+  }) {
+    const preparedData = {
+      id: `${id}`,
+      name,
+      days,
+      hours,
+      course: `${course.id}`,
+      teacher: `${teacher.id}`,
+    };
+
+    setTableDataId(tableDataInfo.id);
+    setSelectedTurma(preparedData);
+    setInsertModalVisible(true);
   }
 
   useEffect(() => {
@@ -41,21 +84,23 @@ export default function Turmas() {
       <TurmasModal
         visible={insertModalVisible}
         onSetVisible={setInsertModalVisible}
-        handleSubmit={handleInsertSubmit}
+        handleSubmit={!selectedTurma ? handleInsertSubmit : handleUpdateSubmit}
+        initialData={selectedTurma}
       />
       <NamedSection name="Turmas" icon={FaUsers}>
         <AddImportActions
-          onAdd={() => setInsertModalVisible(true)}
+          onAdd={() => enableInserting()}
           onImport={() => alert('work in progress! :D')}
         />
         <TurmasTable
           tableData={tableData}
           setTableData={setTableData}
+          isSelectable={false}
           actions={[
             {
               tooltip: 'Editar turma',
               icon: 'edit',
-              onClick: (evt, data) => console.log('edit', evt, data),
+              onClick: (evt, data) => enableEditing(data),
             },
             {
               tooltip: 'Apagar turma',

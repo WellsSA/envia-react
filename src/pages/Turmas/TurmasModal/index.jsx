@@ -22,7 +22,10 @@ export default function TurmasModal({
 
   function _handleSubmit({ name, days, hours, course, teacher }) {
     if (!course || !teacher) return;
-    handleSubmit({ name, days, hours, course, teacher });
+    const id = initialData ? initialData.id : undefined;
+
+    handleSubmit({ id, name, days, hours, course, teacher });
+
     document.getElementById(formId).reset();
   }
 
@@ -43,6 +46,7 @@ export default function TurmasModal({
         visible={visible}
         onSetVisible={onSetVisible}
         formId={formId}
+        confirmLabel={initialData ? 'Atualizar' : 'Cadastrar'}
       >
         <Notifier />
         <Form
@@ -72,6 +76,7 @@ export default function TurmasModal({
             type="select"
             placeholder={placeholder.course}
             options={courses}
+            defaultValue={initialData ? initialData.course : '0'}
           />
           <InputWrapper
             id="teacher"
@@ -79,6 +84,7 @@ export default function TurmasModal({
             type="select"
             placeholder={placeholder.teacher}
             options={teachers}
+            defaultValue={initialData ? initialData.teacher : '0'}
           />
         </Form>
       </ModalHelper>

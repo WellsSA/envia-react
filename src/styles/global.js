@@ -122,6 +122,7 @@ export default createGlobalStyle`
         width: 20%;
       }
       select {
+        cursor: pointer;
         width: 80%;
       }
     }
