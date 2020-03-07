@@ -55,6 +55,8 @@ export const Container = styled.div`
             }
             span {
               font-size: 12px;
+              display: block;
+              position: relative;
             }
             textarea {
               height: auto;
