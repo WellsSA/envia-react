@@ -12,6 +12,7 @@ export default function InputWrapper({
   labelOnly,
   noStyled,
   children,
+  options,
 }) {
   return (
     <div
@@ -31,7 +32,12 @@ export default function InputWrapper({
           placeholder={placeholder}
         />
       ) : type === 'select' ? (
-        <SelectInput id={id} name={id} />
+        <SelectInput
+          id={id}
+          name={id}
+          placeholder={placeholder}
+          options={options}
+        />
       ) : (
         <Input type="text" id={id} name={id} placeholder={placeholder} />
       )}
@@ -50,6 +56,7 @@ InputWrapper.propTypes = {
     PropTypes.element,
     PropTypes.arrayOf(PropTypes.element),
   ]),
+  options: PropTypes.arrayOf(PropTypes.object),
 };
 
 InputWrapper.defaultProps = {
@@ -58,4 +65,5 @@ InputWrapper.defaultProps = {
   children: <></>,
   type: 'text',
   placeholder: '',
+  options: [{}],
 };

@@ -15,8 +15,8 @@ export default function CursosModal({
     name: 'ex.: 1º Informática Noite',
     days: 'ex.: Segunda, Quarta e Sexta',
     hours: 'ex.: das 7h às 10h',
-    course: 'ex.: Informática',
-    teacher: 'ex.: Wellington Almeida',
+    course: 'Selecionar curso...',
+    teacher: 'Selecionar professor...',
   };
 
   function _handleSubmit(data) {
@@ -53,13 +53,33 @@ export default function CursosModal({
             id="course"
             label="Curso:"
             type="select"
-            placeholder={placeholder.hours}
+            placeholder={placeholder.course}
+            options={[
+              {
+                title: 'Curso teste',
+                id: '2',
+              },
+              {
+                title: 'Novo curso',
+                id: '3',
+              },
+            ]}
           />
           <InputWrapper
             id="teacher"
             label="Professor:"
             type="select"
-            placeholder={placeholder.hours}
+            placeholder={placeholder.teacher}
+            options={[
+              {
+                title: 'Esse curso sempre existiu',
+                id: '4',
+              },
+              {
+                title: 'Teste',
+                id: '5',
+              },
+            ]}
           />
         </Form>
       </ModalHelper>
