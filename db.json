@@ -234,6 +234,20 @@
         "name": "Wellington",
         "id": 1
       }
+    },
+    {
+      "name": "Teste",
+      "days": "Agora vai",
+      "hours": "uhul",
+      "course": {
+        "id": "10",
+        "name": "TODO: Not related yet"
+      },
+      "teacher": {
+        "id": "18",
+        "name": "TODO: Not related yet"
+      },
+      "id": 2
     }
   ]
 }

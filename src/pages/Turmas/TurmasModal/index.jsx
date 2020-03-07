@@ -10,7 +10,7 @@ import {
   loadTeachers,
 } from './turmasModal.data';
 
-export default function CursosModal({
+export default function TurmasModal({
   visible,
   onSetVisible,
   handleSubmit,
@@ -86,13 +86,13 @@ export default function CursosModal({
   );
 }
 
-CursosModal.propTypes = {
+TurmasModal.propTypes = {
   visible: PropTypes.bool.isRequired,
   onSetVisible: PropTypes.func.isRequired,
   handleSubmit: PropTypes.func.isRequired,
   initialData: PropTypes.objectOf(PropTypes.string),
 };
 
-CursosModal.defaultProps = {
+TurmasModal.defaultProps = {
   initialData: {},
 };

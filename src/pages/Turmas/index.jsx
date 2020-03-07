@@ -18,9 +18,12 @@ export default function Turmas() {
   const [tableData, setTableData] = useState([]);
   const [insertModalVisible, setInsertModalVisible] = useState(true);
 
-  function handleInsertSubmit(data) {
-    console.log(data);
-    // handleInsert({ name }, setTableData, dispatch);
+  function handleInsertSubmit({ name, days, hours, course, teacher }) {
+    handleInsert(
+      { name, days, hours, course, teacher },
+      setTableData,
+      dispatch
+    );
   }
 
   useEffect(() => {
@@ -48,17 +51,16 @@ export default function Turmas() {
         <TurmasTable
           tableData={tableData}
           setTableData={setTableData}
-          editableOptions={{
-            onRowAdd: newData => handleInsert(newData, setTableData),
-            onRowUpdate: (newData, oldData) =>
-              handleUpdate(newData, oldData, setTableData),
-            onRowDelete: oldData => handleDelete(oldData, setTableData),
-          }}
           actions={[
             {
-              tooltip: 'Apagar turmas selecionadas',
+              tooltip: 'Editar turma',
+              icon: 'edit',
+              onClick: (evt, data) => console.log('edit', evt, data),
+            },
+            {
+              tooltip: 'Apagar turma',
               icon: 'delete',
-              onClick: (evt, data) => handleDeleteAll(evt, data, setTableData),
+              onClick: (evt, data) => console.log('delete', evt, data),
             },
           ]}
         />

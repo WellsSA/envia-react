@@ -1,20 +1,34 @@
 import api from '../../services/api';
 import { notifySuccess, notifyError } from '../../utils/notifyHelper';
 
-export function handleInsert(newData, setTableData, dispatch) {
+export function handleInsert(
+  { name, days, hours, course, teacher },
+  setTableData,
+  dispatch
+) {
   return new Promise((resolve, reject) => {
     console.log('inside handler');
     api
-      .post('professores', {
-        name: newData.name,
+      .post('turmas', {
+        name,
+        days,
+        hours,
+        course: {
+          id: course,
+          name: 'TODO: Not related yet',
+        },
+        teacher: {
+          id: teacher,
+          name: 'TODO: Not related yet',
+        },
       })
       .then(({ data }) => {
         setTableData(prevState => [...prevState, data]);
-        notifySuccess('Professor cadastrado com sucesso!', dispatch);
+        notifySuccess('Turma cadastrada com sucesso!', dispatch);
         resolve();
       })
       .catch(data => {
-        notifyError('Falha ao cadastrar professor!', dispatch);
+        notifyError('Falha ao cadastrar turma!', dispatch);
         reject(data);
       });
   });
@@ -56,17 +70,5 @@ export function handleDelete(oldData, setTableData) {
         resolve();
       })
       .catch(reject());
-  });
-}
-export function handleDeleteAll(evt, dataToDelete, setTableData) {
-  // @TODO: implementar deleteAll
-  setTableData(prevState => {
-    const data = [...prevState];
-    dataToDelete.forEach(professor =>
-      api
-        .delete(`professores/${professor.id}`)
-        .then(data.splice(data.indexOf(professor), 1))
-    );
-    return data;
   });
 }
