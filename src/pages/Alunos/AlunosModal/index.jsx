@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Form } from '@rocketseat/unform';
+import MaskedInput from 'react-text-mask';
 
 import PropTypes from 'prop-types';
 import Radios from './Radios';
@@ -60,17 +61,48 @@ export default function AlunosModal({
           <InputWrapper
             id="phone"
             label="Celular do aluno:"
-            placeholder={placeholder.phone}
-          />
+            // placeholder={placeholder.phone}
+            labelOnly
+          >
+            <MaskedInput
+              id="phone"
+              type="text"
+              name="phone"
+              mask={[
+                '(',
+                /[1-9]/,
+                /\d/,
+                ')',
+                ' ',
+                /\d/,
+                ' ',
+                /\d/,
+                /\d/,
+                /\d/,
+                /\d/,
+                '-',
+                /\d/,
+                /\d/,
+                /\d/,
+                /\d/,
+              ]}
+            />
+          </InputWrapper>
           <InputWrapper
             id="turmas"
             label="Selecione a(s) turma(s) do aluno:"
             labelOnly
+            noStyled
           >
             <>turma</>
           </InputWrapper>
           <DatePlace>
-            <InputWrapper id="birthDate" label="Data de nascimento:" labelOnly>
+            <InputWrapper
+              id="birthDate"
+              label="Data de nascimento:"
+              labelOnly
+              noStyled
+            >
               <EnviaKeyboardDatePicker
                 value={selectedDate}
                 onChange={handleDateChange}
@@ -80,6 +112,7 @@ export default function AlunosModal({
               id="isResponsible"
               label="O aluno é o próprio responsável?"
               labelOnly
+              noStyled
             >
               <Radios value={isResponsible} onTap={setIsResponsible} />
             </InputWrapper>

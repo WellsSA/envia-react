@@ -7,10 +7,11 @@ export default function InputWrapper({
   label,
   placeholder,
   labelOnly,
+  noStyled,
   children,
 }) {
   return (
-    <div className={`input ${!labelOnly ? 'styled' : ''}`}>
+    <div className={`input ${!noStyled ? 'styled' : ''}`}>
       <label htmlFor={id}>{label}</label>
 
       {labelOnly ? (
@@ -27,6 +28,7 @@ InputWrapper.propTypes = {
   label: PropTypes.string.isRequired,
   placeholder: PropTypes.string,
   labelOnly: PropTypes.bool,
+  noStyled: PropTypes.bool,
   children: PropTypes.oneOfType([
     PropTypes.element,
     PropTypes.arrayOf(PropTypes.element),
@@ -35,6 +37,7 @@ InputWrapper.propTypes = {
 
 InputWrapper.defaultProps = {
   labelOnly: false,
+  noStyled: false,
   children: <></>,
   placeholder: '',
 };
