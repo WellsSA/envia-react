@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { transparentize } from 'polished';
+import { transparentize, lighten } from 'polished';
 import { getColor } from '../../../utils/themeHelper';
 
 export const Container = styled.div`
@@ -14,5 +14,11 @@ export const Container = styled.div`
       background-color: ${props =>
         transparentize(0.2, getColor(props, 'highlight'))};
     }
+  }
+
+  span {
+    color: ${props => lighten(0.15, getColor(props, 'cancel'))};
+    font-weight: bold;
+    text-align: right;
   }
 `;

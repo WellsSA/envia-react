@@ -1,8 +1,14 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Form } from '@rocketseat/unform';
 import PropTypes from 'prop-types';
 import { ModalHelper, Notifier, InputWrapper } from '../../../components';
 import { Container } from './styles';
+import {
+  placeholder,
+  schema,
+  loadCourses,
+  loadTeachers,
+} from './turmasModal.data';
 
 export default function CursosModal({
   visible,
@@ -11,18 +17,24 @@ export default function CursosModal({
   initialData,
 }) {
   const formId = 'turmas-modal';
-  const placeholder = {
-    name: 'ex.: 1º Informática Noite',
-    days: 'ex.: Segunda, Quarta e Sexta',
-    hours: 'ex.: das 7h às 10h',
-    course: 'Selecionar curso...',
-    teacher: 'Selecionar professor...',
-  };
+  const [courses, setCourses] = useState([]);
+  const [teachers, setTeachers] = useState([]);
 
-  function _handleSubmit(data) {
-    handleSubmit(data);
+  function _handleSubmit({ name, days, hours, course, teacher }) {
+    if (!course || !teacher) return;
+    handleSubmit({ name, days, hours, course, teacher });
     document.getElementById(formId).reset();
   }
+
+  useEffect(() => {
+    loadCourses(data =>
+      setCourses(data.map(({ id, name }) => ({ id, title: name })))
+    );
+
+    loadTeachers(data =>
+      setTeachers(data.map(({ id, name }) => ({ id, title: name })))
+    );
+  }, []);
 
   return (
     <Container>
@@ -33,7 +45,12 @@ export default function CursosModal({
         formId={formId}
       >
         <Notifier />
-        <Form id={formId} initialData={initialData} onSubmit={_handleSubmit}>
+        <Form
+          id={formId}
+          schema={schema}
+          initialData={initialData}
+          onSubmit={_handleSubmit}
+        >
           <InputWrapper
             id="name"
             label="Nome da turma:"
@@ -54,32 +71,14 @@ export default function CursosModal({
             label="Curso:"
             type="select"
             placeholder={placeholder.course}
-            options={[
-              {
-                title: 'Curso teste',
-                id: '2',
-              },
-              {
-                title: 'Novo curso',
-                id: '3',
-              },
-            ]}
+            options={courses}
           />
           <InputWrapper
             id="teacher"
             label="Professor:"
             type="select"
             placeholder={placeholder.teacher}
-            options={[
-              {
-                title: 'Esse curso sempre existiu',
-                id: '4',
-              },
-              {
-                title: 'Teste',
-                id: '5',
-              },
-            ]}
+            options={teachers}
           />
         </Form>
       </ModalHelper>
