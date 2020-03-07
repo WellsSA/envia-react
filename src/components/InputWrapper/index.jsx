@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Input } from '@rocketseat/unform';
 import PhoneInputMask from './PhoneInputMask';
+import SelectInput from './SelectInput';
 
 export default function InputWrapper({
   id,
@@ -13,7 +14,11 @@ export default function InputWrapper({
   children,
 }) {
   return (
-    <div className={`input ${!noStyled ? 'styled' : ''}`}>
+    <div
+      className={`input ${noStyled || type === 'select' ? '' : 'styled'} ${
+        type === 'select' ? 'select' : ''
+      }`}
+    >
       <label htmlFor={id}>{label}</label>
 
       {labelOnly ? (
@@ -25,6 +30,8 @@ export default function InputWrapper({
           name={id}
           placeholder={placeholder}
         />
+      ) : type === 'select' ? (
+        <SelectInput id={id} name={id} />
       ) : (
         <Input type="text" id={id} name={id} placeholder={placeholder} />
       )}

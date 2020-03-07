@@ -18,8 +18,9 @@ export default function Turmas() {
   const [tableData, setTableData] = useState([]);
   const [insertModalVisible, setInsertModalVisible] = useState(true);
 
-  function handleInsertSubmit({ name }) {
-    handleInsert({ name }, setTableData, dispatch);
+  function handleInsertSubmit(data) {
+    console.log(data);
+    // handleInsert({ name }, setTableData, dispatch);
   }
 
   useEffect(() => {

@@ -40,12 +40,12 @@ export default function CursosModal({
             placeholder={placeholder.name}
           />
           <InputWrapper
-            id="name"
+            id="days"
             label="Dias de aula:"
             placeholder={placeholder.days}
           />
           <InputWrapper
-            id="name"
+            id="hours"
             label="Horários:"
             placeholder={placeholder.hours}
           />

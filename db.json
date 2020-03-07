@@ -159,6 +159,10 @@
     {
       "name": "Felipe Matos",
       "id": 41
+    },
+    {
+      "name": "Teste",
+      "id": 42
     }
   ],
   "alunos": [
@@ -171,7 +175,11 @@
       "responsible": "zezim father",
       "responsible_email": "pai@pai.com",
       "responsible_phone": "11977440233",
-      "turmas": [1, 2, 3]
+      "turmas": [
+        1,
+        2,
+        3
+      ]
     }
   ],
   "cursos": [

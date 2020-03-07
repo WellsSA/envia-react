@@ -74,9 +74,11 @@ export default createGlobalStyle`
       color: ${props => getColor(props, 'text')};
       font-size: ${fonts.labelFontSize};
       font-weight: 600;
+      display: inline-flex;
+      align-self: center;
     }
 
-    input[type=text] {
+    input[type=text], select {
       width: 100%;
       border-radius: 4px;
       font-size: ${fonts.inputFontSize};
@@ -111,6 +113,16 @@ export default createGlobalStyle`
       &:focus-within:before{
         border-bottom-width: 2px;
         border-bottom-color: ${props => getColor(props, 'primary')};
+      }
+    }
+
+    &.select {
+      display: flex;
+      label {
+        width: 20%;
+      }
+      select {
+        width: 80%;
       }
     }
 
