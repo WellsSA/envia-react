@@ -263,5 +263,19 @@
       },
       "id": 3
     }
+  ],
+  "modelosMensagens": [
+    {
+      "id": 1,
+      "title": "Títulooo",
+      "greeting": "Saudações forasteiro",
+      "content": "Olha o conteúdo aí, bicho!"
+    },
+    {
+      "id": 2,
+      "title": "Aew coroi",
+      "greeting": "Agora sim",
+      "content": "Yayy"
+    }
   ]
 }

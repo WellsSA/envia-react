@@ -10,6 +10,7 @@ import Professores from '../pages/Professores';
 import Alunos from '../pages/Alunos';
 import Cursos from '../pages/Cursos';
 import Turmas from '../pages/Turmas';
+import ModelosMensagens from '../pages/ModelosMensagens';
 
 export default function Routes() {
   return (
@@ -22,6 +23,7 @@ export default function Routes() {
       <Route path="/alunos" component={Alunos} isPrivate />
       <Route path="/cursos" component={Cursos} isPrivate />
       <Route path="/turmas" component={Turmas} isPrivate />
+      <Route path="/modelosMensagens" component={ModelosMensagens} isPrivate />
 
       <Route path="/" component={() => <h1>404</h1>} />
     </Switch>
