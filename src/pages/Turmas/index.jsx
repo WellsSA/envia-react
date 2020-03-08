@@ -51,31 +51,18 @@ export default function Turmas() {
   }
 
   function enableDeleting({ id, tableData: tableDataInfo }) {
-    setSelectedTurma({ id: `${id}` });
+    setSelectedTurma({ id: id.toString() });
     setTableDataId(tableDataInfo.id);
     setConfirmBoxVisible(true);
   }
 
-  function enableEditing({
-    id,
-    name,
-    days,
-    hours,
-    course,
-    teacher,
-    tableData: tableDataInfo,
-  }) {
-    const preparedData = {
-      id: `${id}`,
-      name,
-      days,
-      hours,
-      course: `${course.id}`,
-      teacher: `${teacher.id}`,
-    };
+  function enableEditing(data) {
+    data.id = data.id.toString();
+    data.course = data.course.id.toString();
+    data.teacher = data.teacher.id.toString();
 
-    setTableDataId(tableDataInfo.id);
-    setSelectedTurma(preparedData);
+    setTableDataId(data.tableData.id);
+    setSelectedTurma(data);
     setInsertModalVisible(true);
   }
 
