@@ -7,7 +7,7 @@ import api from '../../services/api';
 import {
   NamedSection,
   AddImportActions,
-  OverlayHelper,
+  ConfirmDialog,
 } from '../../components';
 // import { Container } from './styles';
 import { handleInsert, handleUpdate, handleDelete } from './handlers.data';
@@ -16,6 +16,7 @@ export default function Turmas() {
   const dispatch = useDispatch();
   const [tableData, setTableData] = useState([]);
   const [insertModalVisible, setInsertModalVisible] = useState(false);
+  const [confirmBoxVisible, setConfirmBoxVisible] = useState(false);
   const [selectedTurma, setSelectedTurma] = useState(null);
   const [tableDataId, setTableDataId] = useState(0);
 
@@ -40,9 +41,19 @@ export default function Turmas() {
     setInsertModalVisible(false);
   }
 
+  function handleDeleteSubmit() {
+    handleDelete({ id: selectedTurma.id, tableDataId }, setTableData);
+  }
+
   function enableInserting() {
     setSelectedTurma(null);
     setInsertModalVisible(true);
+  }
+
+  function enableDeleting({ id, tableData: tableDataInfo }) {
+    setSelectedTurma({ id: `${id}` });
+    setTableDataId(tableDataInfo.id);
+    setConfirmBoxVisible(true);
   }
 
   function enableEditing({
@@ -80,6 +91,12 @@ export default function Turmas() {
 
   return (
     <div>
+      <ConfirmDialog
+        visible={confirmBoxVisible}
+        onSetVisible={setConfirmBoxVisible}
+        message="Tem certeza que deseja excluir esta turma?"
+        onConfirm={() => handleDeleteSubmit()}
+      />
       <TurmasModal
         visible={insertModalVisible}
         onSetVisible={setInsertModalVisible}
@@ -104,7 +121,7 @@ export default function Turmas() {
             {
               tooltip: 'Apagar turma',
               icon: 'delete',
-              onClick: (evt, data) => console.log('delete', evt, data),
+              onClick: (evt, data) => enableDeleting(data),
             },
           ]}
         />

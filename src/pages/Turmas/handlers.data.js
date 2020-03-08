@@ -68,33 +68,25 @@ export function handleUpdate(
         notifyError('Falha ao editar turma!', dispatch);
         reject(data);
       });
-
-    // if (oldData) {
-    //   console.log('update', {
-    //     newData,
-    //     oldData,
-    //   });
-    //   setTableData(prevState => {
-    //     const data = [...prevState];
-    //     data[data.indexOf(oldData)] = newData;
-    //     return data;
-    //   });
-    // }
   }, 600);
 }
 
-export function handleDelete(oldData, setTableData) {
+export function handleDelete({ id, tableDataId }, setTableData) {
   return new Promise((resolve, reject) => {
     api
-      .delete(`professores/${oldData.id}`)
+      .delete(`turmas/${+id}`)
       .then(() => {
         setTableData(prevState => {
           const data = [...prevState];
-          data.splice(data.indexOf(oldData), 1);
+          data.splice(tableDataId, 1);
           return data;
         });
+        notifySuccess('Turma apagada com sucesso!');
         resolve();
       })
-      .catch(reject());
+      .catch(data => {
+        notifyError('Falha ao apagadar turma!');
+        reject(data);
+      });
   });
 }
