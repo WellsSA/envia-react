@@ -250,15 +250,15 @@
       "id": 2
     },
     {
-      "name": "Cadastrando",
-      "days": "Novo",
-      "hours": "Teste",
+      "name": "Mais um 3",
+      "days": "só pra garantir 2",
+      "hours": "uhul 4",
       "course": {
-        "id": "5",
+        "id": 5,
         "name": "TODO: Not related yet"
       },
       "teacher": {
-        "id": "11",
+        "id": 18,
         "name": "TODO: Not related yet"
       },
       "id": 3

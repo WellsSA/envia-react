@@ -56,14 +56,12 @@ export default function Turmas() {
     setConfirmBoxVisible(true);
   }
 
-  function enableEditing(data) {
-    data.id = data.id.toString();
-    data.course = data.course.id.toString();
-    data.teacher = data.teacher.id.toString();
-
-    setTableDataId(data.tableData.id);
+  function enableEditing({ tableData: _tableData, course, teacher, ...data }) {
+    data.id = `${data.id}`;
+    data.course = `${course.id}`;
+    data.teacher = `${teacher.id}`;
     setSelectedTurma(data);
-    setInsertModalVisible(true);
+    setTableDataId(_tableData.id);
   }
 
   useEffect(() => {
@@ -74,7 +72,12 @@ export default function Turmas() {
     }
 
     loadTurmas();
+    setInsertModalVisible(false);
   }, []);
+
+  useEffect(() => {
+    if (selectedTurma) setInsertModalVisible(true);
+  }, [selectedTurma]);
 
   return (
     <div>
