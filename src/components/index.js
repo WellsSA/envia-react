@@ -9,6 +9,7 @@ import AddImportActions from './AddImportActions';
 import InputWrapper from './InputWrapper';
 import EnviaKeyboardDatePicker from './EnviaKeyboardDatePicker';
 import OverlayHelper from './OverlayHelper';
+import ConfirmDialog from './ConfirmDialog';
 
 export {
   EnviaDataTable,
@@ -22,4 +23,5 @@ export {
   InputWrapper,
   EnviaKeyboardDatePicker,
   OverlayHelper,
+  ConfirmDialog,
 };
