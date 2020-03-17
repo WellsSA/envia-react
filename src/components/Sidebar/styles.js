@@ -31,6 +31,7 @@ export const Container = styled.div`
   nav {
     background: ${props => getColor(props, 'backgroundHighlight')};
     height: calc(100% - 80px);
+    overflow-y: auto;
   }
 `;
 
