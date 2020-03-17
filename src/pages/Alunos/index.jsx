@@ -16,7 +16,7 @@ import {
 
 export default function Alunos() {
   const [tableData, setTableData] = useState([]);
-  const [insertModalVisible, setInsertModalVisible] = useState(true);
+  const [insertModalVisible, setInsertModalVisible] = useState(false);
   // const [importModalVisible, setImportModalVisible] = useState(false);
 
   useEffect(() => {
