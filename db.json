@@ -277,5 +277,11 @@
       "greeting": "Agora sim",
       "content": "Yayy"
     }
-  ]
+  ],
+  "sessions": {
+    "token": "ebK97628.adgb.test",
+    "user": {
+      "id": 1
+    }
+  }
 }

@@ -1,10 +1,10 @@
 import React from 'react';
-// import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { FaGlobeAmericas } from 'react-icons/fa';
 import { Form, Input } from '@rocketseat/unform';
 import * as Yup from 'yup';
 
-// import { signInRequest } from '../../store/modules/auth/actions';
+import { signInRequest } from '../../store/modules/auth/actions';
 
 import { Container } from './styles';
 import logo from '../../assets/logo.png';
@@ -17,14 +17,11 @@ const schema = Yup.object().shape({
 });
 
 export default function SignIn() {
-  // const dispatch = useDispatch();
-  // const loading = useSelector(state => state.auth.loading);
-
-  const loading = false;
+  const dispatch = useDispatch();
+  const loading = useSelector(state => state.auth.loading);
 
   function handleSubmit({ email, password }) {
-    // dispatch(signInRequest(email, password));
-    console.tron.log(email, password);
+    dispatch(signInRequest(email, password));
   }
 
   return (
