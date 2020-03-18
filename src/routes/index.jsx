@@ -12,6 +12,7 @@ import Cursos from '../pages/Cursos';
 import Turmas from '../pages/Turmas';
 import ModelosMensagens from '../pages/ModelosMensagens';
 import Configuracoes from '../pages/Configuracoes';
+import UltimosEnvios from '../pages/UltimosEnvios';
 
 export default function Routes() {
   return (
@@ -26,6 +27,7 @@ export default function Routes() {
       <Route path="/turmas" component={Turmas} isPrivate />
       <Route path="/modelosMensagens" component={ModelosMensagens} isPrivate />
       <Route path="/settings" component={Configuracoes} isPrivate />
+      <Route path="/ultimosEnvios" component={UltimosEnvios} isPrivate />
 
       <Route path="/" component={() => <h1>404</h1>} />
     </Switch>
