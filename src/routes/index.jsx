@@ -11,6 +11,7 @@ import Alunos from '../pages/Alunos';
 import Cursos from '../pages/Cursos';
 import Turmas from '../pages/Turmas';
 import ModelosMensagens from '../pages/ModelosMensagens';
+import Configuracoes from '../pages/Configuracoes';
 
 export default function Routes() {
   return (
@@ -24,6 +25,7 @@ export default function Routes() {
       <Route path="/cursos" component={Cursos} isPrivate />
       <Route path="/turmas" component={Turmas} isPrivate />
       <Route path="/modelosMensagens" component={ModelosMensagens} isPrivate />
+      <Route path="/settings" component={Configuracoes} isPrivate />
 
       <Route path="/" component={() => <h1>404</h1>} />
     </Switch>
