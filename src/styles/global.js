@@ -53,6 +53,7 @@ export default createGlobalStyle`
     color: ${props => getColor(props, 'contrastText')};
     display: inline-flex;
     align-items: center;
+    background: ${props => getColor(props, 'constrast')};
 
     svg {
       margin: 0 4px;
@@ -69,6 +70,7 @@ export default createGlobalStyle`
 
   .input {
     margin: 15px 5px;
+    position: relative;
 
     label {
       color: ${props => getColor(props, 'text')};
@@ -78,7 +80,7 @@ export default createGlobalStyle`
       align-self: center;
     }
 
-    input[type=text], select {
+    input, select {
       width: 100%;
       border-radius: 4px;
       font-size: ${fonts.inputFontSize};
