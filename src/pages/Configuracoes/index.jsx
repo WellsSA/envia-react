@@ -1,8 +1,13 @@
 import React from 'react';
 import { Form } from '@rocketseat/unform';
 import { FaCog, FaUserCircle, FaCogs } from 'react-icons/fa';
-import { NamedSection, SectionMarker, InputWrapper } from '../../components';
-import { Container, SectionDivisor, ListDisplayer } from './styles';
+import {
+  NamedSection,
+  SectionMarker,
+  SectionDivisor,
+  InputWrapper,
+} from '../../components';
+import { Container, ListDisplayer } from './styles';
 
 export default function Configuracoes() {
   const mailQuantity = 98880909;

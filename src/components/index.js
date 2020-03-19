@@ -11,6 +11,7 @@ import EnviaKeyboardDatePicker from './EnviaKeyboardDatePicker';
 import OverlayHelper from './OverlayHelper';
 import ConfirmDialog from './ConfirmDialog';
 import SectionMarker from './SectionMarker';
+import SectionDivisor from './SectionDivisor';
 
 export {
   EnviaDataTable,
@@ -26,4 +27,5 @@ export {
   OverlayHelper,
   ConfirmDialog,
   SectionMarker,
+  SectionDivisor,
 };

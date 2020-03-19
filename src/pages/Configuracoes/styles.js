@@ -24,23 +24,6 @@ export const Container = styled.div`
   }
 `;
 
-export const SectionDivisor = styled.div`
-  display: flex;
-  padding: 40px;
-
-  section {
-    display: flex;
-    flex-direction: column;
-    flex: 1;
-    padding: 40px;
-    border-right: 1px solid ${props => getColor(props, 'backgroundHighlight')};
-
-    &:last-child {
-      border-right: none;
-    }
-  }
-`;
-
 export const ListDisplayer = styled.ul`
   padding: 20px;
   font-size: ${fonts.fontSize};
