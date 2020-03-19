@@ -6,12 +6,31 @@ import {
   SectionMarker,
   SectionDivisor,
   InputWrapper,
+  ListDisplayer,
 } from '../../components';
-import { Container, ListDisplayer } from './styles';
+import { Container } from './styles';
 
 export default function Configuracoes() {
   const mailQuantity = 98880909;
   const smsQuantity = 98880909;
+  const list = [
+    {
+      label: 'Tipo:',
+      value: 'ENVIA',
+    },
+    {
+      label: 'Expira em:',
+      value: '10 dias',
+    },
+    {
+      label: 'Licença:',
+      value: 'W31154MB',
+    },
+    {
+      label: 'Vigência:',
+      value: 'Vitalícia',
+    },
+  ];
 
   const placeholder = {
     name: 'Nome da escola',
@@ -66,24 +85,7 @@ export default function Configuracoes() {
                 labelOnly
                 noStyled
               >
-                <ListDisplayer>
-                  <li>
-                    <strong>Tipo:</strong>
-                    <span>ENVIA</span>
-                  </li>
-                  <li>
-                    <strong>Expira em:</strong>
-                    <span>10 dias</span>
-                  </li>
-                  <li>
-                    <strong>Licença:</strong>
-                    <span>W31154MB</span>
-                  </li>
-                  <li>
-                    <strong>Vigência:</strong>
-                    <span>Vitalícia</span>
-                  </li>
-                </ListDisplayer>
+                <ListDisplayer list={list} />
               </InputWrapper>
             </section>
           </SectionDivisor>

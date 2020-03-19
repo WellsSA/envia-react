@@ -12,6 +12,7 @@ import OverlayHelper from './OverlayHelper';
 import ConfirmDialog from './ConfirmDialog';
 import SectionMarker from './SectionMarker';
 import SectionDivisor from './SectionDivisor';
+import ListDisplayer from './ListDisplayer';
 
 export {
   EnviaDataTable,
@@ -28,4 +29,5 @@ export {
   ConfirmDialog,
   SectionMarker,
   SectionDivisor,
+  ListDisplayer,
 };
