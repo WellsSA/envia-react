@@ -3,7 +3,44 @@ import PropTypes from 'prop-types';
 import { Input } from '@rocketseat/unform';
 import PhoneInputMask from './PhoneInputMask';
 import SelectInput from './SelectInput';
+/*
+  useCases:
 
+  --- text input ---
+  <InputWrapper
+    id="name"
+    label="Nome:"
+    placeholder={placeholder.name}
+  />
+
+  --- select input ---
+  <InputWrapper
+    id="names"
+    label="Nomes:"
+    type="select"
+    placeholder={placeholder.name}
+    options={[{ id: 1, title: 'Well' }, { id: 2, title: 'Wells' }]}
+    defaultValue={initialData ? initialData.name : '0'}
+  />
+
+  --- phone input ---
+  <InputWrapper
+    id="phone"
+    label="Celular:"
+    type="phone"
+    placeholder={placeholder.phone}
+  />
+
+  --- labelOnly wrapper ---
+  <InputWrapper
+    id="birthDate"
+    label="Data de nascimento:"
+    labelOnly
+    noStyled
+  >
+    {children}
+  </InputWrapper>
+*/
 export default function InputWrapper({
   id,
   label,
@@ -14,6 +51,7 @@ export default function InputWrapper({
   children,
   options,
   defaultValue,
+  ...rest
 }) {
   return (
     <div
@@ -31,6 +69,7 @@ export default function InputWrapper({
           id={id}
           name={id}
           placeholder={placeholder}
+          {...rest}
         />
       ) : type === 'select' ? (
         <SelectInput
@@ -39,9 +78,16 @@ export default function InputWrapper({
           placeholder={placeholder}
           options={options}
           defaultValue={defaultValue}
+          {...rest}
         />
       ) : (
-        <Input type="text" id={id} name={id} placeholder={placeholder} />
+        <Input
+          type={type}
+          id={id}
+          name={id}
+          placeholder={placeholder}
+          {...rest}
+        />
       )}
     </div>
   );
