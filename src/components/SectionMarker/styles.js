@@ -15,6 +15,10 @@ export const Container = styled.div`
     text-align: center;
   }
 
+  img {
+    width: 100px;
+  }
+
   svg {
     font-size: 50px;
   }
@@ -24,5 +28,16 @@ export const Container = styled.div`
     text-transform: uppercase;
     font-weight: bold;
     padding: 4px;
+  }
+
+  &.main {
+    div {
+      width: 100%;
+    }
+
+    span {
+      margin-top: 20px;
+      font-size: 18px;
+    }
   }
 `;

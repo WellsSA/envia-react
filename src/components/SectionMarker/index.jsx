@@ -2,9 +2,9 @@ import React, { memo } from 'react';
 import PropTypes from 'prop-types';
 import { Container } from './styles';
 
-function SectionMarker({ label, icon: Icon }) {
+function SectionMarker({ label, icon: Icon, isMain }) {
   return (
-    <Container>
+    <Container className={isMain ? 'main' : ''}>
       <div>
         <Icon />
         <span>{label}</span>
@@ -16,6 +16,11 @@ function SectionMarker({ label, icon: Icon }) {
 SectionMarker.propTypes = {
   label: PropTypes.string.isRequired,
   icon: PropTypes.func.isRequired,
+  isMain: PropTypes.bool,
+};
+
+SectionMarker.defaultProps = {
+  isMain: false,
 };
 
 export default memo(SectionMarker);

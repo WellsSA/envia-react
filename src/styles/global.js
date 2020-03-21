@@ -77,7 +77,6 @@ export default createGlobalStyle`
       font-size: ${fonts.labelFontSize};
       font-weight: 600;
       display: inline-flex;
-      align-self: center;
     }
 
     input, select {
