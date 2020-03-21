@@ -45,7 +45,10 @@ export default function Configuracoes() {
               label="Aniversariantes de hoje:"
               isMain
             />
-            <ListDisplayer list={alunos} />
+            <ListDisplayer
+              list={alunos}
+              onEmptyLabel="Nenhum aluno faz aniversário hoje."
+            />
           </section>
           <section>
             <SectionMarker
