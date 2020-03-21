@@ -20,17 +20,25 @@ export const Content = styled.div`
 `;
 
 export const ProfileAvatar = styled.div`
-  width: 80px;
-  height: 80px;
+  /* width: 150px;
+  height: 150px; */
+  width: 120px;
+  height: 120px;
   border-radius: 50%;
   position: relative;
 
   img {
     position: absolute;
-    width: 140%;
-    height: 140%;
-    border: 2px solid ${props => getColor(props, 'highlight')};
+    width: 100%;
+    height: 100%;
+    margin: 25px 0 0 5px;
+    /* width: 140%;
+    height: 140%; */
+    border: 7px solid
+      ${props => darken(0.2, getColor(props, 'backgroundHighlight'))};
     border-radius: 50%;
+    background-attachment: fixed;
+    background-size: cover;
     image-rendering: optimizeSpeed;
     background-repeat: no-repeat;
   }
