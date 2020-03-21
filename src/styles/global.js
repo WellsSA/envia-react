@@ -6,8 +6,8 @@ import { getColor } from '../utils/themeHelper';
 import 'react-toastify/dist/ReactToastify.css';
 
 export default createGlobalStyle`
-  @import url('https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap');
-  @import url('https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap');
+  /* @import url('https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap');
+  @import url('https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap'); */
 
   * {
     margin: 0;
