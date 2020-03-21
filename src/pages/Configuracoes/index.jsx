@@ -92,6 +92,9 @@ export default function Configuracoes() {
           <button type="submit" className="confirm">
             Finalizar edição
           </button>
+          <button type="submit" className="cancel">
+            Sair do Envia
+          </button>
         </Form>
       </Container>
     </NamedSection>
