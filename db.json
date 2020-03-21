@@ -283,5 +283,37 @@
     "user": {
       "id": 1
     }
-  }
+  },
+  "ultimosEnvios": [
+    {
+      "id": 1,
+      "sentAt": "09/11/2019",
+      "message": "Teste",
+      "criteria": "Alunos específicos",
+      "plataforms": "E-mail",
+      "studentsQuantity": 2,
+      "responsibleQuantity": 0,
+      "students": "Carlos, Zezim, Frida"
+    },
+    {
+      "id": 2,
+      "sentAt": "09/11/2019",
+      "message": "Teste",
+      "criteria": "Alunos específicos",
+      "plataforms": "E-mail",
+      "studentsQuantity": 2,
+      "responsibleQuantity": 0,
+      "students": "Carlos, Zezim, Frida"
+    },
+    {
+      "id": 3,
+      "sentAt": "09/11/2019",
+      "message": "Teste",
+      "criteria": "Alunos específicos",
+      "plataforms": "E-mail",
+      "studentsQuantity": 2,
+      "responsibleQuantity": 0,
+      "students": "Carlos, Zezim, Frida, Maria, Creide, Zeni, Zulu"
+    }
+  ]
 }

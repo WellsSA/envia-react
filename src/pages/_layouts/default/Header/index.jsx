@@ -12,7 +12,7 @@ import {
   NavItem,
 } from './styles';
 
-import Sidebar from '../Sidebar';
+import Sidebar from './Sidebar';
 
 export default function Header() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
