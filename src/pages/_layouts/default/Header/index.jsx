@@ -4,15 +4,10 @@ import { FaBirthdayCake, FaHome } from 'react-icons/fa';
 import { AiOutlineBars } from 'react-icons/ai';
 import { MdHelpOutline } from 'react-icons/md';
 import { Link } from 'react-router-dom';
-import {
-  Container,
-  Content,
-  ProfileAvatar,
-  MainNavigation,
-  NavItem,
-} from './styles';
+import { Container, Content, MainNavigation, NavItem } from './styles';
 
 import Sidebar from './Sidebar';
+import ProfileAvatar from './ProfileAvatar';
 
 export default function Header() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -25,10 +20,7 @@ export default function Header() {
   return (
     <Container>
       <Content>
-        <ProfileAvatar>
-          <img src="https://wellsadev.com/images/wells.jpg" alt="Envia" />
-        </ProfileAvatar>
-
+        <ProfileAvatar />
         <MainNavigation>
           <Link to="/dashboard">
             <NavItem>
