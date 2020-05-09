@@ -188,7 +188,7 @@
   ],
   "cursos": [
     {
-      "name": "Curso teste",
+      "name": "Curso teste 2",
       "id": 2
     },
     {
@@ -222,23 +222,13 @@
     {
       "name": "Vamo láQ",
       "id": 10
+    },
+    {
+      "name": "Uhul!",
+      "id": 11
     }
   ],
   "turmas": [
-    {
-      "id": 1,
-      "name": "Informática",
-      "days": "Segunda, Quarta e Sexta",
-      "hours": "das 7h às 10h",
-      "course": {
-        "id": 2,
-        "name": "Curso teste"
-      },
-      "teacher": {
-        "name": "Wellington",
-        "id": 1
-      }
-    },
     {
       "name": "Teste 2",
       "days": "Agora vai",
