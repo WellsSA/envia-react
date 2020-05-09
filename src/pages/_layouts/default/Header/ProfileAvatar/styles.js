@@ -30,6 +30,7 @@ export const Container = styled.div`
 `;
 
 export const OptionBar = styled.div`
+  display: none;
   position: absolute;
   right: -30px;
   bottom: -30px;
