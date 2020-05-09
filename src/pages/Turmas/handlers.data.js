@@ -15,11 +15,9 @@ export function handleInsert(
         hours,
         course: {
           id: +course,
-          name: 'TODO: Not related yet',
         },
         teacher: {
           id: +teacher,
-          name: 'TODO: Not related yet',
         },
       })
       .then(({ data }) => {
@@ -48,11 +46,9 @@ export function handleUpdate(
         hours,
         course: {
           id: +course,
-          name: 'TODO: Not related yet',
         },
         teacher: {
           id: +teacher,
-          name: 'TODO: Not related yet',
         },
       })
       .then(({ data: newData }) => {
