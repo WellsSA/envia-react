@@ -14,6 +14,8 @@ import {
   handleDeleteAll,
 } from './handlers.data';
 
+import { alunoBFF } from './alunos.util';
+
 export default function Alunos() {
   const [tableData, setTableData] = useState([]);
   const [insertModalVisible, setInsertModalVisible] = useState(false);
@@ -23,7 +25,7 @@ export default function Alunos() {
     async function loadAlunos() {
       const { status, data } = await api.get('alunos');
       if (status !== 200) return;
-      setTableData(data);
+      setTableData(alunoBFF(data));
     }
 
     loadAlunos();
