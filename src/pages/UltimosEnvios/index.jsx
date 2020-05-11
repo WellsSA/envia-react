@@ -18,7 +18,7 @@ export default function Configuracoes() {
     }
 
     loadEnvios();
-  });
+  }, []);
 
   return (
     <NamedSection name="Últimos Envios" icon={FaEnvelopeOpen}>
