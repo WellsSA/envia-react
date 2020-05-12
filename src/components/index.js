@@ -11,6 +11,7 @@ import ConfirmDialog from './ConfirmDialog';
 import SectionMarker from './SectionMarker';
 import SectionDivisor from './SectionDivisor';
 import ListDisplayer from './ListDisplayer';
+import ImportModal from './ImportModal';
 
 export {
   EnviaDataTable,
@@ -26,4 +27,5 @@ export {
   SectionMarker,
   SectionDivisor,
   ListDisplayer,
+  ImportModal,
 };

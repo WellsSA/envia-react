@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { FaGraduationCap } from 'react-icons/fa';
 import api from '../../services/api';
-import { NamedSection, AddImportActions } from '../../components';
+import { NamedSection, AddImportActions, ImportModal } from '../../components';
 import ProfessoresTable from './ProfessoresTable';
 import { Container } from './styles';
 import {
@@ -12,7 +12,6 @@ import {
   handleDeleteAll,
 } from './handlers.data';
 import ProfessoresModal from './ProfessoresModal';
-import ImportModal from './ImportModal';
 
 export default function Professores() {
   const dispatch = useDispatch();

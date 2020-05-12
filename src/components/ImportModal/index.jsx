@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { FaRegFileExcel } from 'react-icons/fa';
-import { ModalHelper, Notifier, Title } from '../../../components';
-import api from '../../../services/api';
+import ModalHelper from '../ModalHelper';
+import Notifier from '../Notifier';
+import Title from '../Title';
+import api from '../../services/api';
 import { Container, SpreadSheetContainer, ViewModel } from './styles';
 
 export default function ImportModal({ visible, onSetVisible }) {
