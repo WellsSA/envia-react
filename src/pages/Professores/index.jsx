@@ -43,6 +43,8 @@ export default function Professores() {
       <ImportModal
         visible={importModalVisible}
         onSetVisible={setImportModalVisible}
+        importLabel="professores"
+        modelURL="/modelos/Envia_professores.xlsx"
       />
       <NamedSection name="Professores" icon={FaGraduationCap}>
         <AddImportActions

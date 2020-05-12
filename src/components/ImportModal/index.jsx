@@ -1,14 +1,25 @@
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
 import { FaRegFileExcel } from 'react-icons/fa';
+import { notifySuccess, notifyError } from '../../utils/notifyHelper';
 import ModalHelper from '../ModalHelper';
 import Notifier from '../Notifier';
 import Title from '../Title';
-import api from '../../services/api';
+import api, { baseURL } from '../../services/api';
 import { Container, SpreadSheetContainer, ViewModel } from './styles';
+import { capitalize } from '../../utils/textHelper';
 
-export default function ImportModal({ visible, onSetVisible }) {
+export default function ImportModal({
+  visible,
+  onSetVisible,
+  importLabel,
+  modelURL,
+}) {
+  const title = `Importart ${capitalize(importLabel)}`;
+  const url = `${baseURL}${modelURL}`;
   const [file, setFile] = useState(undefined);
+  const dispatch = useDispatch();
 
   async function handleChange(e) {
     const data = new FormData();
@@ -19,20 +30,20 @@ export default function ImportModal({ visible, onSetVisible }) {
 
   async function sendRequest() {
     if (!file) {
-      alert('Selecione um arquivo');
+      return notifyError('Selecione um arquivo para importar', dispatch);
     }
 
     const { status } = await api.post('import/professores', file);
 
     if (status !== 200) return;
 
-    alert('Deu bom meu bom');
+    notifySuccess(`${importLabel} importados com sucesso!`, dispatch);
   }
 
   return (
     <Container>
       <ModalHelper
-        title="Importar Professores"
+        title={title}
         visible={visible}
         onSetVisible={onSetVisible}
         onConfirm={sendRequest}
@@ -40,13 +51,13 @@ export default function ImportModal({ visible, onSetVisible }) {
       >
         <Notifier />
         <p>
-          Você pode importar seus professores de uma <b>planilha excel</b>!
+          Você pode importar seus {importLabel} de uma <b>planilha excel</b>!
         </p>
         <Title>Baixe e preencha o modelo:</Title>
-        <ViewModel href="http://localhost:4000/modelos/Envia_professores.xlsx">
-          <FaRegFileExcel /> Planilha modelo de professores
+        <ViewModel href={url}>
+          <FaRegFileExcel /> Planilha modelo de {importLabel}
         </ViewModel>
-        <Title>Importe professores:</Title>
+        <Title>Importe {importLabel}:</Title>
         <SpreadSheetContainer htmlFor="spreadsheet">
           <input
             type="file"
@@ -63,4 +74,6 @@ export default function ImportModal({ visible, onSetVisible }) {
 ImportModal.propTypes = {
   visible: PropTypes.bool.isRequired,
   onSetVisible: PropTypes.func.isRequired,
+  importLabel: PropTypes.string.isRequired,
+  modelURL: PropTypes.string.isRequired,
 };
