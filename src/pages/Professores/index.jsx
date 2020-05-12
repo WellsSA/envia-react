@@ -18,7 +18,7 @@ export default function Professores() {
   const dispatch = useDispatch();
   const [tableData, setTableData] = useState([]);
   const [insertModalVisible, setInsertModalVisible] = useState(false);
-  const [importModalVisible, setImportModalVisible] = useState(false);
+  const [importModalVisible, setImportModalVisible] = useState(true); // FIXME: FALSE
 
   function handleInsertSubmit({ name }) {
     handleInsert({ name }, setTableData, dispatch);
