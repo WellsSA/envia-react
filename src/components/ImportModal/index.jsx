@@ -16,7 +16,7 @@ export default function ImportModal({
   importLabel,
   modelURL,
 }) {
-  const title = `Importart ${capitalize(importLabel)}`;
+  const title = `Importar ${capitalize(importLabel)}`;
   const url = `${baseURL}${modelURL}`;
   const [file, setFile] = useState(undefined);
   const dispatch = useDispatch();

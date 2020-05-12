@@ -42,7 +42,8 @@ export default function Cursos() {
       <NamedSection name="Cursos" icon={FaBook}>
         <AddImportActions
           onAdd={() => setInsertModalVisible(true)}
-          onImport={() => alert('work in progress! :D')}
+          importLabel="cursos"
+          importModelURL="/modelos/Envia_cursos.xlsx"
         />
         <CursosTable
           tableData={tableData}

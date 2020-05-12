@@ -96,7 +96,8 @@ export default function Turmas() {
       <NamedSection name="Turmas" icon={FaUsers}>
         <AddImportActions
           onAdd={() => enableInserting()}
-          onImport={() => alert('work in progress! :D')}
+          importLabel="turmas"
+          importModelURL="/modelos/Envia_turmas.xlsx"
         />
         <TurmasTable
           tableData={tableData}

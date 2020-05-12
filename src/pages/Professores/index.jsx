@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { FaGraduationCap } from 'react-icons/fa';
 import api from '../../services/api';
-import { NamedSection, AddImportActions, ImportModal } from '../../components';
+import { NamedSection, AddImportActions } from '../../components';
 import ProfessoresTable from './ProfessoresTable';
 import { Container } from './styles';
 import {
@@ -17,7 +17,6 @@ export default function Professores() {
   const dispatch = useDispatch();
   const [tableData, setTableData] = useState([]);
   const [insertModalVisible, setInsertModalVisible] = useState(false);
-  const [importModalVisible, setImportModalVisible] = useState(true); // FIXME: FALSE
 
   function handleInsertSubmit({ name }) {
     handleInsert({ name }, setTableData, dispatch);
@@ -40,16 +39,11 @@ export default function Professores() {
         onSetVisible={setInsertModalVisible}
         handleSubmit={handleInsertSubmit}
       />
-      <ImportModal
-        visible={importModalVisible}
-        onSetVisible={setImportModalVisible}
-        importLabel="professores"
-        modelURL="/modelos/Envia_professores.xlsx"
-      />
       <NamedSection name="Professores" icon={FaGraduationCap}>
         <AddImportActions
           onAdd={() => setInsertModalVisible(true)}
-          onImport={() => setImportModalVisible(true)}
+          importLabel="professores"
+          importModelURL="/modelos/Envia_professores.xlsx"
         />
         <ProfessoresTable
           tableData={tableData}

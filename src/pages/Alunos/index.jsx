@@ -46,7 +46,8 @@ export default function Alunos() {
       <NamedSection name="Alunos" icon={FaUser}>
         <AddImportActions
           onAdd={() => setInsertModalVisible(true)}
-          onImport={() => alert('Work in progress')}
+          importLabel="alunos"
+          importModelURL="/modelos/Envia_alunos.xlsx"
         />
         <AlunosTable
           tableData={tableData}

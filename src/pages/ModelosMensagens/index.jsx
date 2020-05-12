@@ -85,7 +85,8 @@ export default function ModelosMensagens() {
       <NamedSection name="Turmas" icon={FaUsers}>
         <AddImportActions
           onAdd={() => enableInserting()}
-          onImport={() => alert('work in progress! :D')}
+          importLabel="modelos de mensagens"
+          importModelURL="/modelos/Envia_modelos-mensagens.xlsx"
         />
         <ModelosMensagensTable
           tableData={tableData}
