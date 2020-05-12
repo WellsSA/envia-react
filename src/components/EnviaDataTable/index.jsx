@@ -9,11 +9,7 @@ import {
 } from '@material-ui/core/styles';
 
 import { fonts } from '../../styles/scale';
-
-const capitalize = s => {
-  if (typeof s !== 'string') return '';
-  return s.charAt(0).toUpperCase() + s.slice(1);
-};
+import { capitalize } from '../../utils/textHelper';
 
 export default function EnviaDataTable({
   title,
