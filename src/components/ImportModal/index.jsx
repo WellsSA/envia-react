@@ -33,7 +33,7 @@ export default function ImportModal({
       return notifyError('Selecione um arquivo para importar', dispatch);
     }
 
-    const { status } = await api.post('import/professores', file);
+    const { status } = await api.post(`import/${importLabel}`, file);
 
     if (status !== 200) return;
 

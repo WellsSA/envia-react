@@ -86,7 +86,7 @@ export default function ModelosMensagens() {
         <AddImportActions
           onAdd={() => enableInserting()}
           importLabel="modelos de mensagens"
-          importModelURL="/modelos/Envia_modelos-mensagens.xlsx"
+          importModelURL="/modelos/Envia_modelos_mensagens.xlsx"
         />
         <ModelosMensagensTable
           tableData={tableData}
