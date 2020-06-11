@@ -15,102 +15,79 @@ import SelectInput from './SelectInput';
 
   --- select input ---
   <InputWrapper
-    id="names"
-    label="Nomes:"
-    type="select"
-    placeholder={placeholder.name}
+    // other data
     options={[{ id: 1, title: 'Well' }, { id: 2, title: 'Wells' }]}
     defaultValue={initialData ? initialData.name : '0'}
   />
 
   --- phone input ---
   <InputWrapper
-    id="phone"
-    label="Celular:"
+    // other data
     type="phone"
-    placeholder={placeholder.phone}
   />
 
   --- labelOnly wrapper ---
   <InputWrapper
-    id="birthDate"
-    label="Data de nascimento:"
     labelOnly
-    noStyled
+    styled={false}
   >
     {children}
   </InputWrapper>
 */
+
+import { Container } from './styles';
+import { Label } from '../_common';
+
 export default function InputWrapper({
   id,
   label,
   type,
   placeholder,
   labelOnly,
-  noStyled,
+  styled,
   children,
   options,
   defaultValue,
   ...rest
 }) {
+  const _styled = type === 'select' ? 'select' : styled ? 'default' : 'none';
   return (
-    <div
-      className={`input ${noStyled || type === 'select' ? '' : 'styled'} ${
-        type === 'select' ? 'select' : ''
-      }`}
-    >
-      <label htmlFor={id}>{label}</label>
+    <Container styled={_styled}>
+      <Label htmlFor={id}>{label}</Label>
 
       {labelOnly ? (
         children
       ) : type === 'phone' ? (
         <PhoneInputMask
-          type="text"
-          id={id}
-          name={id}
-          placeholder={placeholder}
-          {...rest}
+          {...{ type: 'text', id, name: id, placeholder, ...rest }}
         />
       ) : type === 'select' ? (
         <SelectInput
-          id={id}
-          name={id}
-          placeholder={placeholder}
-          options={options}
-          defaultValue={defaultValue}
-          {...rest}
+          {...{ id, name: id, placeholder, options, defaultValue, ...rest }}
         />
       ) : (
-        <Input
-          type={type}
-          id={id}
-          name={id}
-          placeholder={placeholder}
-          {...rest}
-        />
+        <Input {...{ id, type, placeholder, name: id, ...rest }} />
       )}
-    </div>
+    </Container>
   );
 }
 
 InputWrapper.propTypes = {
   id: PropTypes.string.isRequired,
-  label: PropTypes.string.isRequired,
+  label: PropTypes.string,
   type: PropTypes.string,
   placeholder: PropTypes.string,
   labelOnly: PropTypes.bool,
-  noStyled: PropTypes.bool,
-  children: PropTypes.oneOfType([
-    PropTypes.element,
-    PropTypes.arrayOf(PropTypes.element),
-  ]),
+  styled: PropTypes.bool,
+  children: PropTypes.oneOfType([PropTypes.func, PropTypes.node]),
   options: PropTypes.arrayOf(PropTypes.object),
   defaultValue: PropTypes.string,
 };
 
 InputWrapper.defaultProps = {
+  label: '',
   labelOnly: false,
-  noStyled: false,
+  styled: true,
   children: <></>,
   type: 'text',
   placeholder: '',

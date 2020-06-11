@@ -26,7 +26,7 @@ function ProfileSection({ onAddCredit }) {
         id="mailQuantity"
         label="Quantidade de e-mail:"
         labelOnly
-        noStyled
+        styled={false}
       >
         <span>{mailQuantity}</span>
         <Button onClick={() => onAddCredit('e-mail')}>Adquirir mais</Button>
@@ -35,7 +35,7 @@ function ProfileSection({ onAddCredit }) {
         id="smsQuantity"
         label="Quantidade de SMS:"
         labelOnly
-        noStyled
+        styled={false}
       >
         <span>{smsQuantity}</span>
         <Button onClick={() => onAddCredit('sms')}>Adquirir mais</Button>

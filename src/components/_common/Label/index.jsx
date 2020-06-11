@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 
 import { CustomLabel } from './styles';
 
-function Label({ content, children }) {
+function Label({ content, children, ...props }) {
   return (
-    <CustomLabel>
+    <CustomLabel {...props}>
       {children}
       {content ? <span>{content}</span> : <></>}
     </CustomLabel>

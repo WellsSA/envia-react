@@ -68,7 +68,7 @@ export default function AlunosModal({
             id="turmas"
             label="Selecione a(s) turma(s) do aluno:"
             labelOnly
-            noStyled
+            styled={false}
           >
             <>turma</>
           </InputWrapper>
@@ -77,7 +77,7 @@ export default function AlunosModal({
               id="birthDate"
               label="Data de nascimento:"
               labelOnly
-              noStyled
+              styled={false}
             >
               <EnviaKeyboardDatePicker
                 id="birthDate"
@@ -90,7 +90,7 @@ export default function AlunosModal({
               id="isResponsible"
               label="O aluno é o próprio responsável?"
               labelOnly
-              noStyled
+              styled={false}
             >
               <Radios value={isResponsible} onTap={setIsResponsible} />
             </InputWrapper>
