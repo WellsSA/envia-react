@@ -6,9 +6,11 @@ export const Container = styled.div`
 `;
 
 export const SectionDivisor = styled(OriginalSectionDivisor)`
-  padding: 20px;
-
+  padding: 0;
   section {
-    padding: 0;
+    padding: 20px;
+    label {
+      margin: 5px 0;
+    }
   }
 `;

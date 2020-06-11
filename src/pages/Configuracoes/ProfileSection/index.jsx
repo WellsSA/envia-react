@@ -29,7 +29,7 @@ function ProfileSection({ onAddCredit }) {
         noStyled
       >
         <span>{mailQuantity}</span>
-        <Button onClick={() => onAddCredit('email')}>Adquirir mais</Button>
+        <Button onClick={() => onAddCredit('e-mail')}>Adquirir mais</Button>
       </InputWrapper>
       <InputWrapper
         id="smsQuantity"

@@ -2,6 +2,7 @@ import React from 'react';
 import { Form } from '@rocketseat/unform';
 import PropTypes from 'prop-types';
 import { ModalHelper, Notifier, InputWrapper } from '../../../components';
+import { Label } from '../../../components/_common';
 import { Container, SectionDivisor } from './styles';
 
 function CreditModal({ visible, onSetVisible, handleSubmit, creditKind }) {
@@ -27,12 +28,12 @@ function CreditModal({ visible, onSetVisible, handleSubmit, creditKind }) {
         <Form id={formId} onSubmit={_handleSubmit}>
           <SectionDivisor>
             <section>
-              <InputWrapper id="test1" label="Seu saldo atual" labelOnly />
-              <InputWrapper id="test2" label="Nome:" labelOnly noStyled />
+              <Label content="10">Seu saldo atual:</Label>
+              <Label content="R$ 0,05">Valor unitário por {creditKind}:</Label>
             </section>
             <section>
-              <InputWrapper id="test3" label="Nome:" labelOnly noStyled />
-              <InputWrapper id="test4" label="Nome:" labelOnly noStyled />
+              <Label content="0">Quantidade de {creditKind} desejada:</Label>
+              <Label content="R$ 0,00">valor total:</Label>
             </section>
           </SectionDivisor>
           <InputWrapper
@@ -54,7 +55,7 @@ CreditModal.propTypes = {
 };
 
 CreditModal.defaultProps = {
-  creditKind: 'email',
+  creditKind: 'e-mail',
 };
 
 export default CreditModal;
