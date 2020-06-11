@@ -3,6 +3,7 @@ import { Form } from '@rocketseat/unform';
 
 import PropTypes from 'prop-types';
 import Radios from './Radios';
+import Turmas from './Turmas';
 
 import {
   ModalHelper,
@@ -28,7 +29,6 @@ export default function AlunosModal({
     const ids = ['phone', 'responsible_phone', 'birthDate'];
 
     verifyAndAdd(ids, data);
-
     handleSubmit(data);
     document.getElementById(formId).reset();
   }
@@ -70,7 +70,7 @@ export default function AlunosModal({
             labelOnly
             styled={false}
           >
-            <>turma</>
+            <Turmas />
           </InputWrapper>
           <DatePlace>
             <InputWrapper label="Data de nascimento:" labelOnly styled={false}>

@@ -50,6 +50,7 @@ export const CustomButton = styled.button`
   margin-left: 15px;
   color: ${props => getByKind(props, 'color')};
   display: inline-flex;
+  justify-content: center;
   align-items: center;
   background: ${props => getByKind(props, 'background')};
 

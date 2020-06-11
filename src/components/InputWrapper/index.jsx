@@ -16,6 +16,7 @@ import SelectInput from './SelectInput';
   --- select input ---
   <InputWrapper
     // other data
+    type="select"
     options={[{ id: 1, title: 'Well' }, { id: 2, title: 'Wells' }]}
     defaultValue={initialData ? initialData.name : '0'}
   />
@@ -53,7 +54,7 @@ export default function InputWrapper({
   const _styled = type === 'select' ? 'select' : styled ? 'default' : 'none';
   return (
     <Container styled={_styled}>
-      <Label htmlFor={id}>{label}</Label>
+      {label && <Label htmlFor={id}>{label}</Label>}
 
       {labelOnly ? (
         children

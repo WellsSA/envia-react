@@ -18,7 +18,7 @@ import { alunoBFF } from './alunos.util';
 
 export default function Alunos() {
   const [tableData, setTableData] = useState([]);
-  const [insertModalVisible, setInsertModalVisible] = useState(false);
+  const [insertModalVisible, setInsertModalVisible] = useState(true);
   // const [importModalVisible, setImportModalVisible] = useState(false);
 
   useEffect(() => {
