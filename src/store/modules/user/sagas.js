@@ -34,10 +34,21 @@ export function* addCredit({ payload: { kind, quantity } }) {
     if (quantity < 20) {
       throw Error('A quantidade mínima é de 20 unidades.');
     }
-    const { status } = yield call(api.post, `credit/${kind}`, { quantity });
+    const {
+      status,
+      data: { redirect_url },
+    } = yield call(api.post, `credit/${kind}`, {
+      quantity,
+    });
+
+    if (!redirect_url) throw Error('Houve uma falha na comunicação');
 
     if (status === 200)
-      notifySuccess('Deu tudo certo! Estamos processando sua solicitação.');
+      notifySuccess(
+        'Deu tudo certo! Você será redirecionado ao nosso ambiente seguro.'
+      );
+    yield new Promise(resolve => setTimeout(resolve, 3000));
+    window.location.replace(redirect_url);
   } catch (err) {
     console.tron.error(err);
     notifyError(err.message);
