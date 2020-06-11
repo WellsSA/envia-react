@@ -12,7 +12,7 @@ import { addCredits } from '../../store/modules/user/actions';
 
 export default function Configuracoes() {
   const dispatch = useDispatch();
-  const [creditModalVisible, setCreditModalVisible] = useState(true);
+  const [creditModalVisible, setCreditModalVisible] = useState(false);
   const [creditKind, setCreditKind] = useState();
 
   const openCreditModal = kind => {

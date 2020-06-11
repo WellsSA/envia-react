@@ -18,9 +18,9 @@ function CreditModal({ visible, onSetVisible, handleSubmit, creditKind }) {
   }, [visible]);
 
   function _handleSubmit(data) {
-    onSetVisible(false);
     handleSubmit({ ...data, kind: creditKind });
     document.getElementById(formId).reset();
+    setQuantity('');
   }
 
   return (
