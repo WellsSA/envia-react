@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { FaArrowLeft, FaTelegramPlane } from 'react-icons/fa';
 import { Container, Marker, Confirm } from './styles';
 import { prevStep } from '../../../store/modules/message/actions';
+import { Button } from '../../../components/_common';
 
 export default function SendMessage() {
   const dispatch = useDispatch();
@@ -17,18 +18,14 @@ export default function SendMessage() {
     <Container>
       <Marker />
       <Confirm>
-        <button
-          type="button"
-          className="cancel"
-          onClick={() => dispatch(prevStep())}
-        >
+        <Button kind="cancel" onClick={() => dispatch(prevStep())}>
           <FaArrowLeft />
           Anterior
-        </button>
-        <button type="button" className="confirm" onClick={handleConfirm}>
+        </Button>
+        <Button kind="confirm" onClick={handleConfirm}>
           Enviar
           <FaTelegramPlane />
-        </button>
+        </Button>
       </Confirm>
     </Container>
   );

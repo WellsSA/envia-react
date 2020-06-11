@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { MdClose } from 'react-icons/md';
 import OverlayHelper from '../OverlayHelper';
+import { Button } from '../_common';
 import { Container, Message, Options, Close } from './styles';
 
 export default function ConfirmDialog({
@@ -33,12 +34,12 @@ export default function ConfirmDialog({
         </Close>
         <Message>{message}</Message>
         <Options>
-          <button type="button" className="cancel" onClick={handleCancel}>
+          <Button kind="cancel" onClick={handleCancel}>
             Cancelar
-          </button>
-          <button type="button" className="confirm" onClick={handleConfirm}>
+          </Button>
+          <Button kind="confirm" onClick={handleConfirm}>
             Confirmar
-          </button>
+          </Button>
         </Options>
       </Container>
     </OverlayHelper>

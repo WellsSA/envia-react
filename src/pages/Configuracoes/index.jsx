@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Form } from '@rocketseat/unform';
 import { FaCog } from 'react-icons/fa';
 import { NamedSection, SectionDivisor } from '../../components';
+import { Button } from '../../components/_common';
 import { Container } from './styles';
 import ProfileSection from './ProfileSection';
 import ConfigSection from './ConfigSection';
@@ -31,12 +32,12 @@ export default function Configuracoes() {
               <ProfileSection onAddCredit={addCredit} />
               <ConfigSection />
             </SectionDivisor>
-            <button type="submit" className="confirm">
+            <Button type="submit" kind="confirm">
               Finalizar edição
-            </button>
-            <button type="submit" className="cancel">
+            </Button>
+            <Button type="submit" kind="cancel">
               Sair do Envia
-            </button>
+            </Button>
           </Form>
         </Container>
       </NamedSection>

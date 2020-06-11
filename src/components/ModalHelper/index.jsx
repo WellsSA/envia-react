@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { MdClose } from 'react-icons/md';
 import { Header, Body, Footer } from './styles';
 import OverlayHelper from '../OverlayHelper';
+import { Button } from '../_common';
 
 export default function ModalHelper({
   title,
@@ -31,17 +32,17 @@ export default function ModalHelper({
       </Header>
       <Body>{children}</Body>
       <Footer>
-        <button type="button" className="cancel" onClick={handleCancel}>
+        <Button kind="cancel" onClick={handleCancel}>
           Cancelar
-        </button>
-        <button
+        </Button>
+        <Button
           type="submit"
-          className="confirm"
+          kind="confirm"
           onClick={onConfirm}
           {...(formId ? { form: formId } : {})}
         >
           {confirmLabel}
-        </button>
+        </Button>
       </Footer>
     </OverlayHelper>
   );

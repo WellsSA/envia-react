@@ -6,6 +6,7 @@ import { FaArrowLeft, FaArrowRight } from 'react-icons/fa';
 import { useDispatch } from 'react-redux';
 import { Container } from './styles';
 import { prevStep } from '../../../store/modules/message/actions';
+import { Button } from '../../../components/_common';
 
 export default function StepNavigator({
   onConfirm,
@@ -19,23 +20,23 @@ export default function StepNavigator({
       {notCancelable ? (
         <div />
       ) : (
-        <button
+        <Button
           type={submit ? 'submit' : 'button'}
-          className="cancel"
+          kind="cancel"
           onClick={() => onCancel(dispatch)}
         >
           <FaArrowLeft />
           Anterior
-        </button>
+        </Button>
       )}
 
-      <button
+      <Button
         type={submit ? 'submit' : 'button'}
-        className="confirm"
+        kind="confirm"
         onClick={() => onConfirm(dispatch)}
       >
         Próximo <FaArrowRight />
-      </button>
+      </Button>
     </Container>
   );
 }

@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { FaRegFileExcel, FaPlus } from 'react-icons/fa';
-import { Container, AddButton, ImportButton } from './styles';
+import { Container } from './styles';
 import ImportModal from '../ImportModal';
+import { Button } from '../_common';
 
 export default function AddImportActions({
   onAdd,
@@ -26,13 +27,13 @@ export default function AddImportActions({
         modelURL={importModelURL}
       />
       <Container>
-        <AddButton className="confirm" onClick={onAdd}>
+        <Button kind="confirm" onClick={onAdd}>
           Adicionar <FaPlus />
-        </AddButton>
+        </Button>
 
-        <ImportButton className="confirm" onClick={_onImport}>
+        <Button kind="confirm" onClick={_onImport}>
           Importar <FaRegFileExcel />
-        </ImportButton>
+        </Button>
       </Container>
     </>
   );

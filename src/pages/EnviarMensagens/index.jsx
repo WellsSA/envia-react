@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { FaTelegramPlane } from 'react-icons/fa';
 import { useDispatch, useSelector } from 'react-redux';
 import { NamedSection, Title } from '../../components';
+import { Button } from '../../components/_common';
 import {
   nextStep,
   prevStep,
@@ -85,12 +86,8 @@ export default function EnviarMensagens() {
         </MessageStep>
 
         <div>
-          <button type="button" onClick={() => dispatch(prevStep())}>
-            Prev
-          </button>
-          <button type="button" onClick={() => dispatch(nextStep())}>
-            next
-          </button>
+          <Button onClick={() => dispatch(prevStep())}>Prev</Button>
+          <Button onClick={() => dispatch(nextStep())}>next</Button>
         </div>
       </NamedSection>
     </Container>

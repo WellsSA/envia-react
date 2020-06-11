@@ -6,6 +6,3 @@ export const Container = styled.div`
   align-items: center;
   justify-content: flex-end;
 `;
-
-export const AddButton = styled.button``;
-export const ImportButton = styled.button``;
