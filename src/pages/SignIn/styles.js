@@ -67,10 +67,9 @@ export const Container = styled.div`
       border-radius: 0;
       padding: 10px 15px;
       justify-content: center;
-      background: ${props => getColor(props, 'highlight')};
 
-      &:hover {
-        background: ${props => darken(0.1, getColor(props, 'highlight'))};
+      a {
+        color: ${props => getColor(props, 'highlight')};
       }
     }
 

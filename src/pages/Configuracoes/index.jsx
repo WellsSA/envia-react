@@ -9,6 +9,7 @@ import ProfileSection from './ProfileSection';
 import ConfigSection from './ConfigSection';
 import CreditModal from './CreditModal';
 import { addCredits } from '../../store/modules/user/actions';
+import { signOut } from '../../store/modules/auth/actions';
 
 export default function Configuracoes() {
   const dispatch = useDispatch();
@@ -40,7 +41,7 @@ export default function Configuracoes() {
             <Button type="submit" kind="confirm">
               Finalizar edição
             </Button>
-            <Button type="submit" kind="cancel">
+            <Button kind="cancel" onClick={() => dispatch(signOut())}>
               Sair do Envia
             </Button>
           </Form>

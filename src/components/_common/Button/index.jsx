@@ -5,7 +5,8 @@ import { CustomButton } from './styles';
 function Button({ type, kind, children, onClick, className, ...props }) {
   return (
     <CustomButton
-      className={`${kind} ${className}`}
+      className={className}
+      kind={kind}
       type={type}
       onClick={onClick}
       {...props}

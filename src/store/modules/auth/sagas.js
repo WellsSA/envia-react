@@ -3,6 +3,7 @@ import { toast } from 'react-toastify';
 import history from '../../../services/history';
 import api from '../../../services/api';
 import { signInSuccess, signFailure } from './actions';
+import { notifySuccess } from '../../../utils/notifyHelper';
 
 export function* signIn({ payload: { email, password } }) {
   try {
@@ -18,6 +19,7 @@ export function* signIn({ payload: { email, password } }) {
     yield put(signInSuccess(token, user));
 
     history.push('/dashboard');
+    notifySuccess('Ola! Bem vindo ao Envia!');
   } catch (err) {
     toast.error('Falha na autenticação, verifique seus dados.');
     yield put(signFailure());

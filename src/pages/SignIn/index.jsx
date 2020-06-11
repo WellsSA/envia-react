@@ -3,9 +3,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import { FaGlobeAmericas } from 'react-icons/fa';
 import { Form, Input } from '@rocketseat/unform';
 import * as Yup from 'yup';
-
+import { Link } from 'react-router-dom';
+import { Button } from '../../components/_common';
 import { signInRequest } from '../../store/modules/auth/actions';
-
 import { Container } from './styles';
 import logo from '../../assets/logo.png';
 
@@ -35,7 +35,13 @@ export default function SignIn() {
         <Input name="email" type="email" placeholder="E-mail" />
         <Input name="password" type="password" placeholder="Senha" />
 
-        <button type="submit">{loading ? 'Carregando...' : 'Acessar'}</button>
+        <Button kind="envia" type="submit">
+          {loading ? 'Carregando...' : 'Acessar'}
+        </Button>
+        <hr />
+        <Button kind="contrast">
+          <Link to="/register">Criar conta</Link>
+        </Button>
       </Form>
       <a href="https://envia.io" className="forgot">
         Esqueceu sua senha?
