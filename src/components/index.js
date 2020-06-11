@@ -2,7 +2,6 @@ import EnviaDataTable from './EnviaDataTable';
 import NamedSection from './NamedSection';
 import Notifier from './Notifier';
 import ModalHelper from './ModalHelper';
-import Title from './Title';
 import AddImportActions from './AddImportActions';
 import InputWrapper from './InputWrapper';
 import EnviaKeyboardDatePicker from './EnviaKeyboardDatePicker';
@@ -18,7 +17,6 @@ export {
   NamedSection,
   Notifier,
   ModalHelper,
-  Title,
   AddImportActions,
   InputWrapper,
   EnviaKeyboardDatePicker,

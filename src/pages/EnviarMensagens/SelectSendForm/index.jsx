@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
-import Title from '../../../components/Title';
+import { Title } from '../../../components/_common';
 import StepNavigator from '../StepNavigator';
 import { setupSendTo } from '../../../store/modules/message/actions';
 

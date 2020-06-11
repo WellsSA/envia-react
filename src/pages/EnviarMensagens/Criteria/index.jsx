@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { MdAccessAlarm } from 'react-icons/md';
-import Title from '../../../components/Title';
+import { Title } from '../../../components/_common';
 import { Container, Content } from './styles';
 import Criterion from './Criterion';
 

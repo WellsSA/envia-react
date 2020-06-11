@@ -5,7 +5,7 @@ import { FaRegFileExcel } from 'react-icons/fa';
 import { notifySuccess, notifyError } from '../../utils/notifyHelper';
 import ModalHelper from '../ModalHelper';
 import Notifier from '../Notifier';
-import Title from '../Title';
+import { Title } from '../_common';
 import api, { baseURL } from '../../services/api';
 import { Container, SpreadSheetContainer, ViewModel } from './styles';
 import { capitalize } from '../../utils/textHelper';
