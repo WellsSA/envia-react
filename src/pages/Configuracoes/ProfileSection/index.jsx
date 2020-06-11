@@ -1,9 +1,10 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { FaUserCircle } from 'react-icons/fa';
 import { SectionMarker, InputWrapper } from '../../../components';
 // import { Container } from './styles';
 
-function ProfileSection() {
+function ProfileSection({ onAddCredit }) {
   const mailQuantity = 98880909;
   const smsQuantity = 98880909;
 
@@ -27,7 +28,9 @@ function ProfileSection() {
         noStyled
       >
         <span>{mailQuantity}</span>
-        <button type="button">Adquirir mais</button>
+        <button type="button" onClick={() => onAddCredit('email')}>
+          Adquirir mais
+        </button>
       </InputWrapper>
       <InputWrapper
         id="smsQuantity"
@@ -36,10 +39,20 @@ function ProfileSection() {
         noStyled
       >
         <span>{smsQuantity}</span>
-        <button type="button">Adquirir mais</button>
+        <button type="button" onClick={() => onAddCredit('sms')}>
+          Adquirir mais
+        </button>
       </InputWrapper>
     </section>
   );
 }
+
+ProfileSection.propTypes = {
+  onAddCredit: PropTypes.func,
+};
+
+ProfileSection.defaultProps = {
+  onAddCredit: () => {},
+};
 
 export default ProfileSection;
