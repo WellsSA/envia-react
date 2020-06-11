@@ -3,7 +3,7 @@ import { toast } from 'react-toastify';
 import history from '../../../services/history';
 import api from '../../../services/api';
 import { signInSuccess, signFailure } from './actions';
-import { notifySuccess } from '../../../utils/notifyHelper';
+import { notifySuccess, notifyError } from '../../../utils/notifyHelper';
 
 export function* signIn({ payload: { email, password } }) {
   try {
@@ -21,7 +21,7 @@ export function* signIn({ payload: { email, password } }) {
     history.push('/dashboard');
     notifySuccess('Ola! Bem vindo ao Envia!');
   } catch (err) {
-    toast.error('Falha na autenticação, verifique seus dados.');
+    notifyError('Falha na autenticação, verifique seus dados.');
     yield put(signFailure());
   }
 }
@@ -37,8 +37,9 @@ export function* signUp({ payload }) {
     });
 
     history.push('/');
+    notifySuccess('Conta criada com sucesso!');
   } catch (err) {
-    toast.error('Falha no cadastro, verifique seus dados.');
+    notifyError('Falha no cadastro, verifique seus dados.');
 
     yield put(signFailure());
   }

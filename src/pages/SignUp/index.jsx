@@ -1,13 +1,13 @@
 import React from 'react';
-// import { useDispatch } from 'react-redux';
-import { Link } from 'react-router-dom';
 import { Form, Input } from '@rocketseat/unform';
-
+import { FaGlobeAmericas } from 'react-icons/fa';
+import { useSelector, useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
 import * as Yup from 'yup';
 
 import logo from '../../assets/logo.png';
-
-// import { signUpRequest } from '../../store/modules/auth/actions';
+import { Button } from '../../components/_common';
+import { signUpRequest } from '../../store/modules/auth/actions';
 
 const schema = Yup.object().shape({
   name: Yup.string().required('O nome é obrigatório'),
@@ -20,24 +20,36 @@ const schema = Yup.object().shape({
 });
 
 export default function SignUp() {
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
+  const loading = useSelector(state => state.auth.loading);
+
   function handleSubmit({ name, email, password }) {
-    // dispatch(signUpRequest(name, email, password));
-    console.tron.log({ name, email, password });
+    dispatch(signUpRequest({ name, email, password }));
   }
 
   return (
     <>
-      <img src={logo} alt="GoBarber" />
-
+      <img className="logo" src={logo} alt="Envia.io" />
       <Form schema={schema} onSubmit={handleSubmit}>
-        <Input name="name" placeholder="Nome completo" />
-        <Input name="email" type="email" placeholder="Seu e-mail" />
-        <Input name="password" type="password" placeholder="Sua senha" />
+        <a href="https://envia.io" className="main">
+          <FaGlobeAmericas />
+        </a>
+        <label htmlFor="email">Crie sua conta</label>
+        <Input autoFocus name="name" type="text" placeholder="Nome" />
+        <Input name="email" type="email" placeholder="E-mail" />
+        <Input name="password" type="password" placeholder="Senha" />
 
-        <button type="submit">Criar conta</button>
-        <Link to="/">Já tenho login</Link>
+        <Button kind="envia" type="submit">
+          {loading ? 'Carregando...' : 'Criar conta'}
+        </Button>
+        <hr />
+        <Link to="/">
+          <Button kind="contrast">Já possuo uma conta</Button>
+        </Link>
       </Form>
+      <a href="https://envia.io" className="forgot">
+        Esqueceu sua senha?
+      </a>
     </>
   );
 }

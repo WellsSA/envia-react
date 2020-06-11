@@ -8,7 +8,6 @@ import * as Yup from 'yup';
 import logo from '../../assets/logo.png';
 import { Button } from '../../components/_common';
 import { signInRequest } from '../../store/modules/auth/actions';
-import { Container } from './styles';
 
 const schema = Yup.object().shape({
   email: Yup.string()
@@ -26,14 +25,14 @@ export default function SignIn() {
   }
 
   return (
-    <Container>
+    <>
       <img className="logo" src={logo} alt="Envia.io" />
       <Form schema={schema} onSubmit={handleSubmit}>
         <a href="https://envia.io" className="main">
           <FaGlobeAmericas />
         </a>
         <label htmlFor="email">Login</label>
-        <Input name="email" type="email" placeholder="E-mail" />
+        <Input autoFocus name="email" type="email" placeholder="E-mail" />
         <Input name="password" type="password" placeholder="Senha" />
 
         <Button kind="envia" type="submit">
@@ -47,6 +46,6 @@ export default function SignIn() {
       <a href="https://envia.io" className="forgot">
         Esqueceu sua senha?
       </a>
-    </Container>
+    </>
   );
 }
