@@ -37,6 +37,11 @@ export const Container = styled.div`
     box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
     position: relative;
 
+    hr {
+      margin: 20px;
+      background: ${props => getColor(props, 'highlight')};
+    }
+
     label {
       margin: 0 0 20px;
       color: ${props => getColor(props, 'highlight')};
@@ -63,13 +68,14 @@ export const Container = styled.div`
     }
 
     button {
+      width: 100%;
       margin: 0;
       border-radius: 0;
       padding: 10px 15px;
       justify-content: center;
 
       a {
-        color: ${props => getColor(props, 'highlight')};
+        clear: both;
       }
     }
 

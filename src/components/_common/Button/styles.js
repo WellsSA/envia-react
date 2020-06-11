@@ -1,5 +1,5 @@
-import styled, { css } from 'styled-components';
 import { darken } from 'polished';
+import styled from 'styled-components';
 import { fonts } from '../../../styles/scale';
 import { getColor } from '../../../utils/themeHelper';
 
@@ -7,27 +7,32 @@ const colorByKind = {
   confirm: {
     color: 'contrastText',
     background: 'confirm',
-    hover: 'confirm',
+    hover: 'contrastText',
+    hoverBackground: 'confirm',
   },
   cancel: {
     color: 'contrastText',
     background: 'cancel',
-    hover: 'cancel',
+    hover: 'contrastText',
+    hoverBackground: 'cancel',
   },
   default: {
     color: 'contrastText',
     background: 'constrast',
-    hover: 'constrast',
+    hover: 'contrastText',
+    hoverBackground: 'constrast',
   },
   envia: {
     color: 'contrastText',
     background: 'highlight',
-    hover: 'highlight',
+    hover: 'contrastText',
+    hoverBackground: 'highlight',
   },
   contrast: {
     color: 'highlight',
     background: 'background',
     hover: 'background',
+    hoverBackground: 'backgroundHighlight',
   },
 };
 
@@ -48,13 +53,9 @@ export const CustomButton = styled.button`
   align-items: center;
   background: ${props => getByKind(props, 'background')};
 
-  ${props =>
-    props.kind === 'contrast' &&
-    css`
-      border: thin solid ${getByKind(props, 'color')};
-    `}
   &:hover {
-    background: ${props => darken(0.1, getByKind(props, 'hover'))};
+    color: ${props => getByKind(props, 'hover')};
+    background: ${props => darken(0.1, getByKind(props, 'hoverBackground'))};
   }
 
   svg {

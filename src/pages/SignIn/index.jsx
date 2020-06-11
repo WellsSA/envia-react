@@ -1,13 +1,14 @@
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { FaGlobeAmericas } from 'react-icons/fa';
 import { Form, Input } from '@rocketseat/unform';
-import * as Yup from 'yup';
+import { FaGlobeAmericas } from 'react-icons/fa';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import * as Yup from 'yup';
+
+import logo from '../../assets/logo.png';
 import { Button } from '../../components/_common';
 import { signInRequest } from '../../store/modules/auth/actions';
 import { Container } from './styles';
-import logo from '../../assets/logo.png';
 
 const schema = Yup.object().shape({
   email: Yup.string()
@@ -39,9 +40,9 @@ export default function SignIn() {
           {loading ? 'Carregando...' : 'Acessar'}
         </Button>
         <hr />
-        <Button kind="contrast">
-          <Link to="/register">Criar conta</Link>
-        </Button>
+        <Link to="/register">
+          <Button kind="contrast">Criar conta</Button>
+        </Link>
       </Form>
       <a href="https://envia.io" className="forgot">
         Esqueceu sua senha?
