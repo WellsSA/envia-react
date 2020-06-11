@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components';
-import { darken, lighten } from 'polished';
+import { darken, lighten, transparentize } from 'polished';
 import { fonts } from '../../styles/scale';
 import { getColor } from '../../utils/themeHelper';
 
@@ -8,7 +8,8 @@ export const Container = styled.div`
   position: relative;
 
   input,
-  select {
+  select,
+  textarea {
     width: 100%;
     border-radius: 4px;
     font-size: ${fonts.inputFontSize};
@@ -16,6 +17,7 @@ export const Container = styled.div`
     padding: 4px 8px;
     margin: 4px 0;
     pointer-events: auto;
+    color: ${props => transparentize(0.1, getColor(props, 'text'))};
   }
 
   > span {

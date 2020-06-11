@@ -41,7 +41,7 @@ function ConfigSection() {
         label="Alterar senha:"
         placeholder={placeholder.password}
       />
-      <InputWrapper id="licence" label="Atualizar licença:" labelOnly noStyled>
+      <InputWrapper label="Atualizar licença:" labelOnly noStyled>
         <ListDisplayer list={list} />
       </InputWrapper>
     </section>

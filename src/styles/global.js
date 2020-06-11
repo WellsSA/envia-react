@@ -40,10 +40,4 @@ export default createGlobalStyle`
   button {
     cursor: pointer;
   }
-
-  /* .input {
-    textarea {
-      pointer-events: auto;
-    }
-  } */
 `;

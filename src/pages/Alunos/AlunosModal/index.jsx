@@ -73,12 +73,7 @@ export default function AlunosModal({
             <>turma</>
           </InputWrapper>
           <DatePlace>
-            <InputWrapper
-              id="birthDate"
-              label="Data de nascimento:"
-              labelOnly
-              styled={false}
-            >
+            <InputWrapper label="Data de nascimento:" labelOnly styled={false}>
               <EnviaKeyboardDatePicker
                 id="birthDate"
                 name="birthDate"

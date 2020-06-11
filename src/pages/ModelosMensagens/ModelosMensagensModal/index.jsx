@@ -52,6 +52,8 @@ export default function TurmasModal({
           <InputWrapper
             id="content"
             label="Conteúdo da Mensagem:"
+            type="textarea"
+            rows={6}
             placeholder={placeholder.content}
           />
         </Form>

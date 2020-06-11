@@ -15,7 +15,7 @@ import { handleInsert, handleUpdate, handleDelete } from './handlers.data';
 export default function ModelosMensagens() {
   const dispatch = useDispatch();
   const [tableData, setTableData] = useState([]);
-  const [insertModalVisible, setInsertModalVisible] = useState(false);
+  const [insertModalVisible, setInsertModalVisible] = useState(true);
   const [confirmBoxVisible, setConfirmBoxVisible] = useState(false);
   const [selectedObject, setSelectedObject] = useState(null);
   const [tableDataId, setTableDataId] = useState(0);

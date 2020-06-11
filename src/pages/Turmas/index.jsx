@@ -72,7 +72,7 @@ export default function Turmas() {
     }
 
     loadTurmas();
-    setInsertModalVisible(true);
+    setInsertModalVisible(false);
   }, []);
 
   useEffect(() => {

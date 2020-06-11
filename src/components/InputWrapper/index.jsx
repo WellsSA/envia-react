@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Input } from '@rocketseat/unform';
+import { Input, Textarea } from '@rocketseat/unform';
 import PhoneInputMask from './PhoneInputMask';
 import SelectInput from './SelectInput';
 /*
@@ -42,7 +42,6 @@ export default function InputWrapper({
   id,
   label,
   type,
-  placeholder,
   labelOnly,
   styled,
   children,
@@ -50,6 +49,7 @@ export default function InputWrapper({
   defaultValue,
   ...rest
 }) {
+  const name = id;
   const _styled = type === 'select' ? 'select' : styled ? 'default' : 'none';
   return (
     <Container styled={_styled}>
@@ -58,25 +58,22 @@ export default function InputWrapper({
       {labelOnly ? (
         children
       ) : type === 'phone' ? (
-        <PhoneInputMask
-          {...{ type: 'text', id, name: id, placeholder, ...rest }}
-        />
+        <PhoneInputMask {...{ type: 'text', id, name, ...rest }} />
       ) : type === 'select' ? (
-        <SelectInput
-          {...{ id, name: id, placeholder, options, defaultValue, ...rest }}
-        />
+        <SelectInput {...{ id, name, options, defaultValue, ...rest }} />
+      ) : type === 'textarea' ? (
+        <Textarea {...{ id, name, ...rest }} />
       ) : (
-        <Input {...{ id, type, placeholder, name: id, ...rest }} />
+        <Input {...{ id, name, type, ...rest }} />
       )}
     </Container>
   );
 }
 
 InputWrapper.propTypes = {
-  id: PropTypes.string.isRequired,
+  id: PropTypes.string,
   label: PropTypes.string,
   type: PropTypes.string,
-  placeholder: PropTypes.string,
   labelOnly: PropTypes.bool,
   styled: PropTypes.bool,
   children: PropTypes.oneOfType([PropTypes.func, PropTypes.node]),
@@ -85,12 +82,12 @@ InputWrapper.propTypes = {
 };
 
 InputWrapper.defaultProps = {
+  id: Math.random(18).toString(),
   label: '',
   labelOnly: false,
   styled: true,
   children: <></>,
   type: 'text',
-  placeholder: '',
   options: [{}],
   defaultValue: '',
 };
