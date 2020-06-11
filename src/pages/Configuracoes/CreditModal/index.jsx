@@ -1,18 +1,25 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Form } from '@rocketseat/unform';
 import PropTypes from 'prop-types';
 import { ModalHelper, Notifier, InputWrapper } from '../../../components';
 import { Label, Title } from '../../../components/_common';
-import { Container, SectionDivisor } from './styles';
+import { Container, SectionDivisor, QuantityContainer } from './styles';
+import { currencyFormat } from '../../../utils/textHelper';
 
 function CreditModal({ visible, onSetVisible, handleSubmit, creditKind }) {
   const formId = 'credit-modal';
-  const placeholder = {
-    name: 'ex.: Wellington Almeida',
-  };
+  const inputId = 'quantity';
+  const unit_amount = creditKind === 'e-mail' ? 0.05 : 0.1;
+
+  const [quantity, setQuantity] = useState('');
+
+  useEffect(() => {
+    document.getElementById(inputId).focus();
+  }, [visible]);
 
   function _handleSubmit(data) {
-    handleSubmit(data);
+    onSetVisible(false);
+    handleSubmit({ ...data, kind: creditKind });
     document.getElementById(formId).reset();
   }
 
@@ -22,26 +29,36 @@ function CreditModal({ visible, onSetVisible, handleSubmit, creditKind }) {
       visible={visible}
       onSetVisible={onSetVisible}
       formId={formId}
+      confirmLabel="Confirmar"
     >
       <Container>
         <Notifier />
         <Form id={formId} onSubmit={_handleSubmit}>
+          <Label content="10">Seu saldo atual:</Label>
+          <Title>Selecione a quantidade de {creditKind} desejada</Title>
+          <QuantityContainer>
+            <InputWrapper
+              autoFocus
+              id={inputId}
+              label="Quantidade:"
+              placeholder="ex.: 20"
+              type="number"
+              value={quantity}
+              onChange={e => setQuantity(e.target.value)}
+            />
+          </QuantityContainer>
           <SectionDivisor>
             <section>
-              <Label content="10">Seu saldo atual:</Label>
-              <Label content="R$ 0,05">Valor unitário por {creditKind}:</Label>
+              <Label content={currencyFormat(unit_amount)}>
+                Valor unitário:
+              </Label>
             </section>
             <section>
-              <Label content="0">Quantidade de {creditKind} desejada:</Label>
-              <Label content="R$ 0,00">valor total:</Label>
+              <Label content={currencyFormat(unit_amount * quantity)}>
+                valor total:
+              </Label>
             </section>
           </SectionDivisor>
-          <Title>Teste</Title>
-          <InputWrapper
-            id="name"
-            label="Nome:"
-            placeholder={placeholder.name}
-          />
         </Form>
       </Container>
     </ModalHelper>

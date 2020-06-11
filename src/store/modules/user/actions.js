@@ -11,8 +11,16 @@ export function updateProfileSuccess(profile) {
     payload: { profile },
   };
 }
+
 export function updateProfileFailure() {
   return {
     type: '@user/UPDATE_PROFILE_FAILURE',
+  };
+}
+
+export function addCredits({ kind, quantity }) {
+  return {
+    type: '@user/ADD_CREDITS_REQUEST',
+    payload: { kind, quantity },
   };
 }
