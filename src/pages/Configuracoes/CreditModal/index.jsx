@@ -2,7 +2,7 @@ import React from 'react';
 import { Form } from '@rocketseat/unform';
 import PropTypes from 'prop-types';
 import { ModalHelper, Notifier, InputWrapper } from '../../../components';
-import { Label } from '../../../components/_common';
+import { Label, Title } from '../../../components/_common';
 import { Container, SectionDivisor } from './styles';
 
 function CreditModal({ visible, onSetVisible, handleSubmit, creditKind }) {
@@ -36,6 +36,7 @@ function CreditModal({ visible, onSetVisible, handleSubmit, creditKind }) {
               <Label content="R$ 0,00">valor total:</Label>
             </section>
           </SectionDivisor>
+          <Title>Teste</Title>
           <InputWrapper
             id="name"
             label="Nome:"
