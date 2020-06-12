@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
 import { FaPlus } from 'react-icons/fa';
 import { InputWrapper } from '../../../../components';
 import { Button } from '../../../../components/_common';
@@ -6,7 +7,7 @@ import api from '../../../../services/api';
 import { notifyError } from '../../../../utils/notifyHelper';
 import { Container, Turma } from './styles';
 
-function Turmas() {
+function Turmas({ initialData }) {
   const [available, setAvailable] = useState([]);
   const [turmas, setTurmas] = useState([]);
 
@@ -21,6 +22,10 @@ function Turmas() {
 
     getTurmas();
   }, []);
+
+  useEffect(() => {
+    setTurmas(initialData.map(id => ({ id })));
+  }, [initialData]);
 
   const addEmptyTurma = () => {
     setTurmas(_turmas => [..._turmas, {}]);
@@ -49,18 +54,28 @@ function Turmas() {
       <Button onClick={addEmptyTurma}>
         <FaPlus />
       </Button>
-      {turmas.map((_, index) => (
+      {turmas.map(({ id }, index) => (
         <Turma key={`turma${index + 1}`}>
           <InputWrapper
+            id={`turma${index + 1}`}
             placeholder="Selecione..."
             type="select"
             options={available}
             onChange={e => addTurma(e.target.value, index)}
+            defaultValue={id}
           />
         </Turma>
       ))}
     </Container>
   );
 }
+
+Turmas.propTypes = {
+  initialData: PropTypes.arrayOf(PropTypes.string),
+};
+
+Turmas.defaultProps = {
+  initialData: [],
+};
 
 export default Turmas;

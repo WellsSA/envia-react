@@ -40,7 +40,6 @@ export default function AlunosModal({
   }
 
   useEffect(() => {
-    console.log({ initialData });
     verifyAndUpdate(customIds, initialData);
   }, [customIds, initialData]);
 
@@ -81,7 +80,11 @@ export default function AlunosModal({
             labelOnly
             styled={false}
           >
-            <Turmas />
+            <Turmas
+              initialData={
+                initialData ? JSON.parse(initialData.turmas) : undefined
+              }
+            />
           </InputWrapper>
           <DatePlace>
             <InputWrapper label="Data de nascimento:" labelOnly styled={false}>

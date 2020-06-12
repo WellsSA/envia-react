@@ -6,18 +6,16 @@ import { Container } from './styles';
 
 export default function SelectInput({ defaultValue, name, options, ...props }) {
   useEffect(() => {
-    return () => {
-      if (defaultValue) {
-        const selector = document.querySelector(
-          `#${name} option[value="${defaultValue}"]`
-        );
+    if (defaultValue) {
+      const selector = document.querySelector(
+        `#${name} option[value="${defaultValue}"]`
+      );
 
-        if (selector) {
-          document.querySelector(`#${name}`).selectedIndex = selector.index;
-        }
+      if (selector) {
+        document.querySelector(`#${name}`).selectedIndex = selector.index;
       }
-    };
-  });
+    }
+  }, [defaultValue, name]);
 
   return (
     <Container>

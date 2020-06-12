@@ -39,11 +39,6 @@ export default function TurmasModal({
     );
   }, []);
 
-  // force re-render when initial data changes
-  useEffect(() => {
-    setCourses(prev => [...prev]);
-  }, [initialData]);
-
   return (
     <Container>
       <ModalHelper
