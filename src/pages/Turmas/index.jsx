@@ -10,59 +10,52 @@ import {
   ConfirmDialog,
 } from '../../components';
 // import { Container } from './styles';
+import { turmaBFF } from './turma.util';
 import { handleInsert, handleUpdate, handleDelete } from './handlers.data';
+
+const DEFAULT_MODAL_STATE = {
+  visible: false,
+  selectedObject: null,
+  tableRefId: 0,
+};
 
 export default function Turmas() {
   const dispatch = useDispatch();
   const [tableData, setTableData] = useState([]);
-  const [insertModalVisible, setInsertModalVisible] = useState(false);
+  const [modalState, setModalState] = useState(DEFAULT_MODAL_STATE);
   const [confirmBoxVisible, setConfirmBoxVisible] = useState(false);
-  const [selectedTurma, setSelectedTurma] = useState(null);
-  const [tableDataId, setTableDataId] = useState(0);
 
-  function handleInsertSubmit({ name, days, hours, course, teacher }) {
-    handleInsert(
-      { name, days, hours, course, teacher },
-      setTableData,
-      dispatch
-    );
-  }
+  const enable = {
+    insert: () => setModalState({ ...DEFAULT_MODAL_STATE, visible: true }),
+    edit: ({ tableData: _tableData, ...data }) =>
+      setModalState({
+        visible: true,
+        selectedObject: turmaBFF(data),
+        tableRefId: _tableData.id,
+      }),
+    delete: ({ id, tableData: _tableData }) => {
+      setModalState({
+        visible: false,
+        selectedObject: { id: id.toString() },
+        tableRefId: _tableData.id,
+      });
+      setConfirmBoxVisible(true);
+    },
+  };
 
-  function handleUpdateSubmit({ id, name, days, hours, course, teacher }) {
-    console.log('edit!', { id, name, days, hours, course, teacher });
-
-    handleUpdate(
-      { id, name, days, hours, course, teacher },
-      setTableData,
-      tableDataId,
-      dispatch
-    );
-
-    setInsertModalVisible(false);
-  }
-
-  function handleDeleteSubmit() {
-    handleDelete({ id: selectedTurma.id, tableDataId }, setTableData);
-  }
-
-  function enableInserting() {
-    setSelectedTurma(null);
-    setInsertModalVisible(true);
-  }
-
-  function enableDeleting({ id, tableData: tableDataInfo }) {
-    setSelectedTurma({ id: id.toString() });
-    setTableDataId(tableDataInfo.id);
-    setConfirmBoxVisible(true);
-  }
-
-  function enableEditing({ tableData: _tableData, course, teacher, ...data }) {
-    data.id = `${data.id}`;
-    data.course = `${course.id}`;
-    data.teacher = `${teacher.id}`;
-    setSelectedTurma(data);
-    setTableDataId(_tableData.id);
-  }
+  const handle = {
+    insert: data => handleInsert(data, setTableData, dispatch),
+    edit: data => {
+      handleUpdate(data, setTableData, modalState.tableRefId, dispatch);
+      setModalState(DEFAULT_MODAL_STATE);
+    },
+    delete: () =>
+      handleDelete(
+        modalState.selectedObject.id,
+        modalState.tableRefId,
+        setTableData
+      ),
+  };
 
   useEffect(() => {
     async function loadTurmas() {
@@ -72,12 +65,7 @@ export default function Turmas() {
     }
 
     loadTurmas();
-    setInsertModalVisible(false);
   }, []);
-
-  useEffect(() => {
-    if (selectedTurma) setInsertModalVisible(true);
-  }, [selectedTurma]);
 
   return (
     <div>
@@ -85,17 +73,17 @@ export default function Turmas() {
         visible={confirmBoxVisible}
         onSetVisible={setConfirmBoxVisible}
         message="Tem certeza que deseja excluir esta turma?"
-        onConfirm={() => handleDeleteSubmit()}
+        onConfirm={() => handle.delete()}
       />
       <TurmasModal
-        visible={insertModalVisible}
-        onSetVisible={setInsertModalVisible}
-        handleSubmit={!selectedTurma ? handleInsertSubmit : handleUpdateSubmit}
-        initialData={selectedTurma}
+        visible={modalState.visible}
+        onSetVisible={visible => setModalState(prev => ({ ...prev, visible }))}
+        handleSubmit={!modalState.selectedObject ? handle.insert : handle.edit}
+        initialData={modalState.selectedObject}
       />
       <NamedSection name="Turmas" icon={FaUsers}>
         <AddImportActions
-          onAdd={() => enableInserting()}
+          onAdd={() => enable.insert()}
           importLabel="turmas"
           importModelURL="/modelos/Envia_turmas.xlsx"
         />
@@ -107,12 +95,12 @@ export default function Turmas() {
             {
               tooltip: 'Editar turma',
               icon: 'edit',
-              onClick: (evt, data) => enableEditing(data),
+              onClick: (evt, data) => enable.edit(data),
             },
             {
               tooltip: 'Apagar turma',
               icon: 'delete',
-              onClick: (evt, data) => enableDeleting(data),
+              onClick: (evt, data) => enable.delete(data),
             },
           ]}
         />

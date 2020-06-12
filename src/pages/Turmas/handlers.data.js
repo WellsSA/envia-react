@@ -67,7 +67,7 @@ export function handleUpdate(
   }, 600);
 }
 
-export function handleDelete({ id, tableDataId }, setTableData) {
+export function handleDelete(id, tableDataId, setTableData) {
   return new Promise((resolve, reject) => {
     api
       .delete(`turmas/${+id}`)
