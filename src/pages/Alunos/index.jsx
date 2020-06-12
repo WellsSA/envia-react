@@ -10,7 +10,7 @@ import AlunosModal from './AlunosModal';
 import { Container } from './styles';
 import {
   handleInsert,
-  // handleUpdate,
+  handleUpdate,
   // handleDelete,
   // handleDeleteAll,
 } from './handlers.data';
@@ -31,13 +31,21 @@ export default function Alunos() {
 
   const enable = {
     insert: () => setModalState({ ...DEFAULT_MODAL_STATE, visible: true }),
-    edit: () => alert('enable edit'),
+    edit: ({ tableData: _tableData, ...data }) =>
+      setModalState({
+        visible: true,
+        selectedObject: data,
+        tableRefId: _tableData.id,
+      }),
     delete: () => alert('enable delete'),
   };
 
   const handle = {
     insert: data => handleInsert(data, setTableData, dispatch),
-    edit: () => alert('handle edit'),
+    edit: data => {
+      handleUpdate(data, setTableData, modalState.tableRefId, dispatch);
+      setModalState(DEFAULT_MODAL_STATE);
+    },
     delete: () => alert('handle delete'),
   };
 
@@ -56,7 +64,8 @@ export default function Alunos() {
       <AlunosModal
         visible={modalState.visible}
         onSetVisible={visible => setModalState(prev => ({ ...prev, visible }))}
-        handleSubmit={data => handle.insert(data)}
+        handleSubmit={!modalState.selectedObject ? handle.insert : handle.edit}
+        initialData={modalState.selectedObject}
       />
       <NamedSection name="Alunos" icon={FaUser}>
         <AddImportActions

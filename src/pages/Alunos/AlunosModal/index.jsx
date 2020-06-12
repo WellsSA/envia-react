@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Form } from '@rocketseat/unform';
 
 import PropTypes from 'prop-types';
@@ -13,7 +13,12 @@ import {
 } from '../../../components';
 
 import { Container, Responsible, DatePlace } from './styles';
-import { schema, placeholder, verifyAndAdd } from './alunosModal.data';
+import {
+  schema,
+  placeholder,
+  verifyAndAdd,
+  verifyAndUpdate,
+} from './alunosModal.data';
 
 export default function AlunosModal({
   visible,
@@ -22,16 +27,22 @@ export default function AlunosModal({
   initialData,
 }) {
   const formId = 'alunos-modal';
+  const customIds = ['phone', 'responsible_phone', 'birthDate', 'turmas'];
   const [selectedDate, handleDateChange] = useState(new Date('2000/01/01'));
   const [isResponsible, setIsResponsible] = useState(true);
 
   async function _handleSubmit(data) {
-    const ids = ['phone', 'responsible_phone', 'birthDate', 'turmas'];
-
-    verifyAndAdd(ids, data);
-    handleSubmit(data);
+    verifyAndAdd(customIds, data);
+    const id = initialData ? initialData.id : undefined;
+    const responsible_id = initialData ? initialData.responsible_id : undefined;
+    handleSubmit({ id, responsible_id, ...data });
     document.getElementById(formId).reset();
   }
+
+  useEffect(() => {
+    console.log({ initialData });
+    verifyAndUpdate(customIds, initialData);
+  }, [customIds, initialData]);
 
   return (
     <ModalHelper
@@ -39,6 +50,7 @@ export default function AlunosModal({
       visible={visible}
       onSetVisible={onSetVisible}
       formId={formId}
+      confirmLabel={initialData ? 'Atualizar' : 'Cadastrar'}
     >
       <Container isResponsible={isResponsible}>
         <Notifier />

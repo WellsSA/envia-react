@@ -13,7 +13,6 @@ export default function Header() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   function handleToggleSidebar() {
-    console.log('here');
     setIsSidebarOpen(!isSidebarOpen);
   }
 

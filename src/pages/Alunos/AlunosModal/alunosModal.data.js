@@ -28,11 +28,20 @@ function verifyAndAdd(ids = [], reference = {}) {
   ids.forEach(id => {
     const element = document.getElementById(id);
     if (element) {
-      if (id === 'phone') element.value = clearPhone(element.value);
+      if (/phone/.test(id)) element.value = clearPhone(element.value);
 
       reference[id] = element.value;
     }
   });
 }
 
-export { schema, placeholder, verifyAndAdd };
+function verifyAndUpdate(ids = [], reference = {}) {
+  ids.forEach(id => {
+    const element = document.getElementById(id);
+    if (element && reference) {
+      element.value = reference[id];
+    }
+  });
+}
+
+export { schema, placeholder, verifyAndAdd, verifyAndUpdate };

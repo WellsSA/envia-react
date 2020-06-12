@@ -16,12 +16,8 @@ export default function AlunosTable({
     { title: 'Celular', field: 'phone', type: 'numeric' },
     { title: 'Responsável', field: 'responsible' },
     { title: 'E-mail Responsável ', field: 'responsible_email' },
-    {
-      title: 'Celular Responsável',
-      field: 'responsible_phone',
-      type: 'numeric',
-    },
-    { title: 'Turma', field: 'turmas' },
+    { title: 'Celular Responsável', field: 'responsible_phone' },
+    // { title: 'Turma', field: 'turmas' },
   ];
 
   return (

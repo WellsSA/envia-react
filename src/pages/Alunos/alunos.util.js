@@ -43,14 +43,15 @@ esquema de dados das tabelas:
    */
 
 const alunoBFF = aluno => {
-  const { responsible, turmas, ...rest } = aluno;
+  const { id, responsible, turmas, ...rest } = aluno;
   return {
     ...rest,
+    id: String(id),
     responsible: responsible.name,
-    responsible_id: responsible.id,
+    responsible_id: String(responsible.id),
     responsible_email: responsible.email,
     responsible_phone: responsible.phone,
-    turmas: turmas.map(turma => turma.id),
+    turmas: JSON.stringify(turmas.map(turma => String(turma.id))),
   };
 };
 
@@ -58,6 +59,7 @@ const alunosBFF = alunos => alunos.map(aluno => alunoBFF(aluno));
 
 const alunoFFB = aluno => {
   const {
+    id,
     responsible,
     responsible_id,
     responsible_email,
@@ -69,7 +71,7 @@ const alunoFFB = aluno => {
   const _responsible = responsible_email
     ? {
         responsible: {
-          id: responsible_id,
+          id: +responsible_id,
           name: responsible,
           email: responsible_email,
           phone: responsible_phone,
@@ -80,7 +82,8 @@ const alunoFFB = aluno => {
   return {
     ...rest,
     ..._responsible,
-    turmas: JSON.parse(turmas).map(id => +id),
+    id: +id,
+    turmas: JSON.parse(turmas).map(i => +i),
   };
 };
 

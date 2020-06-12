@@ -3,7 +3,6 @@ import { notifySuccess, notifyError } from '../../utils/notifyHelper';
 
 export function handleInsert(newData, setTableData, dispatch) {
   return new Promise((resolve, reject) => {
-    console.log('inside handler');
     api
       .post('cursos', {
         name: newData.name,
