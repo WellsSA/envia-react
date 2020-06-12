@@ -4,7 +4,7 @@ import { Container } from './styles';
 
 function Criterion({ label, icon: Icon, onClick, visible }) {
   return (
-    <Container visible={visible} onClick={() => onClick(label)}>
+    <Container visible={visible} onClick={onClick}>
       <Icon />
       <span>{label}</span>
     </Container>

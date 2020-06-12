@@ -16,7 +16,7 @@ import Criterion from '../Criteria/Criterion';
 export default function ConfirmEnvio() {
   const {
     message: { titulo, saudacao, mensagem },
-    filter: { criteria },
+    // filter: { criteria },
     alunos,
     platforms,
   } = useSelector(state => state.message);
@@ -33,12 +33,12 @@ export default function ConfirmEnvio() {
         <Criteria>
           <ColumnTitle>Critério:</ColumnTitle>
           {(() => {
-            switch (criteria) {
-              case 'Professores Específicos':
-                return <Criterion icon={FaUser} label={criteria} />;
-              default:
-                return <></>;
-            }
+            // switch (criteria) {
+            //   case 'Professores Específicos':
+            //     return <Criterion icon={FaUser} label={criteria} />;
+            //   default:
+            //     return <></>;
+            // }
           })()}
         </Criteria>
         <Criteria>

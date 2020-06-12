@@ -9,15 +9,13 @@ import {
   setupMessage,
 } from './actions';
 
-export function* handleSetupMessage({
-  payload: { titulo, saudacao, mensagem },
-}) {
+export function* handleSetupMessage({ payload: { title, greeting, content } }) {
   try {
-    if (!titulo || !saudacao || !mensagem) {
+    if (!title || !greeting || !content) {
       throw Error('Dados da mensagem inválidos.');
     }
 
-    yield put(setupMessage({ titulo, saudacao, mensagem }));
+    yield put(setupMessage({ title, greeting, content }));
     yield put(nextStep());
   } catch (err) {
     console.tron.error(err);
@@ -25,16 +23,26 @@ export function* handleSetupMessage({
   }
 }
 
-export function* handleSetupSendTo({ payload: { sendTo } }) {
+// export function* handleSetupSendTo({ payload: { sendTo } }) {
+//   try {
+//     const { alunos, responsaveis } = sendTo;
+//     if (!alunos && !responsaveis) {
+//       throw Error('Selecione ao menos uma opção.');
+//     }
+
+//     yield put(nextStep());
+//   } catch (err) {
+//     console.tron.error(err);
+//     notifyError(err.message);
+//   }
+// }
+
+export function handleSetupCriteria({ payload: { criteria } }) {
   try {
-    const { alunos, responsaveis } = sendTo;
-    if (!alunos && !responsaveis) {
+    if (criteria !== 0 && !criteria) {
       throw Error('Selecione ao menos uma opção.');
     }
-
-    yield put(nextStep());
   } catch (err) {
-    console.tron.error(err);
     notifyError(err.message);
   }
 }
@@ -152,7 +160,8 @@ export function* handleSetupPlatform() {
 
 export default all([
   takeLatest('@message/CHANGE_MESSAGE', handleSetupMessage),
-  takeLatest('@message/SETUP_SEND_TO', handleSetupSendTo),
+  // takeLatest('@message/SETUP_SEND_TO', handleSetupSendTo),
+  takeLatest('@message/SETUP_CRITERIA', handleSetupCriteria),
   takeLatest('@message/SETUP_FILTERS', handleSetupFilters),
   takeLatest('@message/SETUP_FILTERS_SUCCESS', handleSetupFiltersSuccess),
   takeLatest('@message/NEXT_STEP', handleNextStep),

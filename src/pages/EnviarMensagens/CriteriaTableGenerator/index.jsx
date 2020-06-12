@@ -1,12 +1,12 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
-import PropTypes from 'prop-types';
+import { useDispatch, useSelector } from 'react-redux';
 import { Container } from './styles';
 import ProfessoresDataTable from './ProfessoresDataTable';
 import { setupFilters } from '../../../store/modules/message/actions';
 
-export default function CriteriaTableGenerator({ criteria }) {
+export default function CriteriaTableGenerator() {
   const dispatch = useDispatch();
+  const criteria = useSelector(state => state.message.criteria);
 
   const actions = [
     {
@@ -26,6 +26,7 @@ export default function CriteriaTableGenerator({ criteria }) {
       },
     },
   ];
+
   return (
     <Container>
       {criteria}
@@ -40,7 +41,3 @@ export default function CriteriaTableGenerator({ criteria }) {
     </Container>
   );
 }
-
-CriteriaTableGenerator.propTypes = {
-  criteria: PropTypes.string.isRequired,
-};

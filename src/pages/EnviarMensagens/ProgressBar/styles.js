@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { darken } from 'polished';
 import { getColor } from '../../../utils/themeHelper';
 
 export const Container = styled.div`
@@ -14,6 +15,7 @@ export const Container = styled.div`
 `;
 
 export const Bullet = styled.div`
+  cursor: pointer;
   width: 70px;
   height: 70px;
   border-radius: 50%;
@@ -27,7 +29,12 @@ export const Bullet = styled.div`
   justify-content: center;
   align-items: center;
   z-index: 10;
-  cursor: pointer;
+  transition: border 1s ease-in;
+  animation-delay: 0.5s;
+
+  &:hover {
+    border-color: ${props => darken(0.1, getColor(props, 'strongText'))};
+  }
 `;
 
 export const Bar = styled.div`
@@ -39,4 +46,5 @@ export const Bar = styled.div`
       ? getColor(props, 'strongText')
       : getColor(props, 'backgroundHighlight')};
   z-index: 9;
+  transition: width 0.5s ease-in-out;
 `;

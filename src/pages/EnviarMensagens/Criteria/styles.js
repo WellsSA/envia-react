@@ -11,5 +11,6 @@ export const Content = styled.div`
   > div {
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
   }
 `;

@@ -27,7 +27,7 @@ export default function EnviarMensagens() {
   const dispatch = useDispatch();
   const step = useSelector(state => state.message.curStep);
   // const sendTo = useSelector(state => state.message.sendTo);
-  const filter = useSelector(state => state.message.filter);
+  // const filter = useSelector(state => state.message.filter);
   const filteredAlunos =
     useSelector(state => state.message.filteredAlunos) || [];
   const [criteria, setCriteria] = useState('');
@@ -68,9 +68,9 @@ export default function EnviarMensagens() {
 
         <MessageStep active={step === 3}>
           <Title>Selecione os alunos que deseja enviar:</Title>
-          <AlunosDataTable tableData={filteredAlunos} />
-          <div>Filtro: {filter.criteria}</div>
-          <div>Data: {filter.data}</div>
+          {/* <AlunosDataTable tableData={filteredAlunos} /> */}
+          {/* <div>Filtro: {filter.criteria}</div> */}
+          {/* <div>Data: {filter.data}</div> */}
         </MessageStep>
 
         <MessageStep active={step === 4}>

@@ -3,16 +3,16 @@ import produce from 'immer';
 const INITIAL_STATE = {
   curStep: 5,
   message: {
-    titulo: '',
-    saudacao: '',
-    mensagem: '',
+    title: '',
+    greeting: '',
+    content: '',
   },
   sendTo: {
     alunos: true,
     responsaveis: false,
   },
+  criteria: '',
   filter: {
-    criteria: '',
     data: [],
   },
   filteredAlunos: [],
@@ -45,6 +45,10 @@ export default function message(state = INITIAL_STATE, action) {
       }
       case '@message/SETUP_SEND_TO': {
         draft.sendTo = action.payload.sendTo;
+        break;
+      }
+      case '@message/SETUP_CRITERIA': {
+        draft.criteria = action.payload.criteria;
         break;
       }
       case '@message/SETUP_FILTERS_SUCCESS': {

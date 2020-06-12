@@ -1,54 +1,31 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import { MdAccessAlarm } from 'react-icons/md';
+import { useDispatch } from 'react-redux';
 import { Title } from '../../../components/_common';
 import { Container, Content } from './styles';
 import Criterion from './Criterion';
+import { setupCriteria } from '../../../store/modules/message/actions';
+import { exhibition } from '../../../store/modules/message/data';
 
-export default function Criteria({ setCriteria }) {
+export default function Criteria() {
+  const dispatch = useDispatch();
+
+  const setCriteria = criteria => dispatch(setupCriteria({ criteria }));
+
   return (
     <Container>
       <Title>Qual é o critério para a seleção dos alunos?</Title>
       <Content>
         <div>
-          <Criterion
-            label="Todos os alunos"
-            icon={MdAccessAlarm}
-            onClick={setCriteria}
-          />
-          <Criterion
-            label="Alunos Específicos"
-            icon={MdAccessAlarm}
-            onClick={setCriteria}
-          />
-          <Criterion
-            label="Turmas Específicas"
-            icon={MdAccessAlarm}
-            onClick={setCriteria}
-          />
-        </div>
-        <div>
-          <Criterion
-            label="Professores Específicos"
-            icon={MdAccessAlarm}
-            onClick={setCriteria}
-          />
-          <Criterion
-            label="Cursos Específicos"
-            icon={MdAccessAlarm}
-            onClick={setCriteria}
-          />
-          <Criterion
-            label="Responsáveis"
-            icon={MdAccessAlarm}
-            onClick={setCriteria}
-          />
+          {exhibition.map(({ label, icon, value }, i) => (
+            <Criterion
+              key={`criterion${i}`}
+              label={label}
+              icon={icon}
+              onClick={() => setCriteria(value)}
+            />
+          ))}
         </div>
       </Content>
     </Container>
   );
 }
-
-Criteria.propTypes = {
-  setCriteria: PropTypes.func.isRequired,
-};

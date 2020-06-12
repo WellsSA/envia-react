@@ -1,14 +1,14 @@
-export function changeMessage({ titulo, saudacao, mensagem }) {
+export function changeMessage({ title, greeting, content }) {
   return {
     type: '@message/CHANGE_MESSAGE',
-    payload: { titulo, saudacao, mensagem },
+    payload: { title, greeting, content },
   };
 }
 
-export function setupMessage({ titulo, saudacao, mensagem }) {
+export function setupMessage({ title, greeting, content }) {
   return {
     type: '@message/SETUP_MESSAGE',
-    payload: { titulo, saudacao, mensagem },
+    payload: { title, greeting, content },
   };
 }
 
@@ -16,6 +16,13 @@ export function setupSendTo(sendTo) {
   return {
     type: '@message/SETUP_SEND_TO',
     payload: { sendTo },
+  };
+}
+
+export function setupCriteria({ criteria }) {
+  return {
+    type: '@message/SETUP_CRITERIA',
+    payload: { criteria },
   };
 }
 

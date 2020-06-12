@@ -9,14 +9,14 @@ import StepNavigator from '../StepNavigator';
 export default function MessageForm() {
   const dispatch = useDispatch();
 
-  function handleSubmit({ titulo, saudacao, mensagem }) {
-    dispatch(changeMessage({ titulo, saudacao, mensagem }));
+  function handleSubmit({ title, greeting, content }) {
+    dispatch(changeMessage({ title, greeting, content }));
   }
 
   const placeholder = {
-    titulo: 'ex.: Informativo inicio de turma',
-    saudacao: 'ex.: Olá [NOME], como você está?',
-    mensagem:
+    title: 'ex.: Informativo inicio de turma',
+    greeting: 'ex.: Olá [NOME], como você está?',
+    content:
       'ex: estamos passando só pra te lembrar que no dia 04/01 suas aulas vão começar e estamos ansiosos para recebê-lo! Não se esqueça de trazer o seu material didático pois você fará os exercícios contidos nele ao final da aula. Até mais :)',
   };
 
@@ -32,19 +32,15 @@ export default function MessageForm() {
         <div className="form__body">
           <div className="form__body__input-section">
             <div className="input">
-              <label htmlFor="titulo">Titulo:</label>
-              <Input
-                id="titulo"
-                name="titulo"
-                placeholder={placeholder.titulo}
-              />
+              <label htmlFor="title">Titulo:</label>
+              <Input id="title" name="title" placeholder={placeholder.title} />
             </div>
             <div className="input">
-              <label htmlFor="saudacao">Saudação:</label>
+              <label htmlFor="greeting">Saudação:</label>
               <Input
-                id="saudacao"
-                name="saudacao"
-                placeholder={placeholder.saudacao}
+                id="greeting"
+                name="greeting"
+                placeholder={placeholder.greeting}
               />
               <span>
                 * Informe a tag <strong>[NOME]</strong> onde deseja que o nome
@@ -54,13 +50,13 @@ export default function MessageForm() {
           </div>
           <div className="form__body__input-section">
             <div className="input">
-              <label htmlFor="mensagem">Mensagem:</label>
+              <label htmlFor="content">Mensagem:</label>
               <Input
                 multiline
                 rows={10}
-                id="mensagem"
-                name="mensagem"
-                placeholder={placeholder.mensagem}
+                id="content"
+                name="content"
+                placeholder={placeholder.content}
               />
             </div>
           </div>

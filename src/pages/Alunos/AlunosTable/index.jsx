@@ -41,7 +41,7 @@ AlunosTable.propTypes = {
   editableOptions: PropTypes.objectOf(PropTypes.func),
   actions: PropTypes.arrayOf(PropTypes.object),
   tableData: PropTypes.arrayOf(PropTypes.object).isRequired,
-  setTableData: PropTypes.func.isRequired,
+  setTableData: PropTypes.func,
   isSelectable: PropTypes.bool,
 };
 
@@ -49,4 +49,5 @@ AlunosTable.defaultProps = {
   editableOptions: {},
   actions: [],
   isSelectable: true,
+  setTableData: () => {},
 };

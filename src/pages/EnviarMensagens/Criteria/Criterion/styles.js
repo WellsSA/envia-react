@@ -4,7 +4,7 @@ import { fonts } from '../../../../styles/scale';
 import { getColor } from '../../../../utils/themeHelper';
 
 export const Container = styled.div`
-  width: 195px;
+  width: 33%;
   height: 108px;
   display: ${props => (props.visible ? 'flex' : 'none')};
   flex-direction: column;
