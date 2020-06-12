@@ -41,7 +41,7 @@ function Turmas() {
   return (
     <Container>
       <InputWrapper
-        name="turmas"
+        id="turmas"
         value={JSON.stringify(turmas.map(({ id }) => id))}
         onChange={() => {}}
         hidden

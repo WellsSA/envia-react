@@ -37,50 +37,51 @@ esquema de dados das tabelas:
       "responsible": "zezim father",
       "responsible_email": "pai@pai.com",
       "responsible_phone": "11977440233",
-      "turmas": [
-        1,
-        2,
-        3
-      ]
+      "turmas": "["1","2","3"]"
     }
   ]
    */
 
-const alunoBFF = alunos => {
-  return alunos.map(aluno => {
-    const { responsible, turmas, ...rest } = aluno;
-    return {
-      ...rest,
-      responsible: responsible.name,
-      responsible_id: responsible.id,
-      responsible_email: responsible.email,
-      responsible_phone: responsible.phone,
-      turmas: turmas.map(turma => turma.id),
-    };
-  });
+const alunoBFF = aluno => {
+  const { responsible, turmas, ...rest } = aluno;
+  return {
+    ...rest,
+    responsible: responsible.name,
+    responsible_id: responsible.id,
+    responsible_email: responsible.email,
+    responsible_phone: responsible.phone,
+    turmas: turmas.map(turma => turma.id),
+  };
 };
 
-const alunoFFB = alunos => {
-  return alunos.map(aluno => {
-    const {
-      responsible,
-      responsible_id,
-      responsible_email,
-      responsible_phone,
-      turmas,
-      ...rest
-    } = aluno;
-    return {
-      ...rest,
-      responsible: {
-        id: responsible_id,
-        name: responsible,
-        email: responsible_email,
-        phone: responsible_phone,
-      },
-      turmas,
-    };
-  });
+const alunosBFF = alunos => alunos.map(aluno => alunoBFF(aluno));
+
+const alunoFFB = aluno => {
+  const {
+    responsible,
+    responsible_id,
+    responsible_email,
+    responsible_phone,
+    turmas,
+    ...rest
+  } = aluno;
+
+  const _responsible = responsible_email
+    ? {
+        responsible: {
+          id: responsible_id,
+          name: responsible,
+          email: responsible_email,
+          phone: responsible_phone,
+        },
+      }
+    : {};
+
+  return {
+    ...rest,
+    ..._responsible,
+    turmas: JSON.parse(turmas).map(id => +id),
+  };
 };
 
-export { alunoBFF, alunoFFB };
+export { alunoBFF, alunosBFF, alunoFFB };

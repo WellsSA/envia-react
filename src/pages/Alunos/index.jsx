@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import { FaUser } from 'react-icons/fa';
 import api from '../../services/api';
 
@@ -7,27 +8,35 @@ import AlunosTable from './AlunosTable';
 import AlunosModal from './AlunosModal';
 
 import { Container } from './styles';
-// import {
-//   handleInsert,
-//   handleUpdate,
-//   handleDelete,
-//   handleDeleteAll,
-// } from './handlers.data';
+import {
+  handleInsert,
+  // handleUpdate,
+  // handleDelete,
+  // handleDeleteAll,
+} from './handlers.data';
 
-import { alunoBFF } from './alunos.util';
+import { alunosBFF } from './alunos.util';
+
+const DEFAULT_MODAL_STATE = {
+  visible: false,
+  selectedObject: null,
+  tableRefId: 0,
+};
 
 export default function Alunos() {
+  const dispatch = useDispatch();
+
   const [tableData, setTableData] = useState([]);
-  const [insertModalVisible, setInsertModalVisible] = useState(false);
+  const [modalState, setModalState] = useState(DEFAULT_MODAL_STATE);
 
   const enable = {
-    insert: () => alert('enable insert'),
+    insert: () => setModalState({ ...DEFAULT_MODAL_STATE, visible: true }),
     edit: () => alert('enable edit'),
     delete: () => alert('enable delete'),
   };
 
   const handle = {
-    insert: () => alert('handle insert'),
+    insert: data => handleInsert(data, setTableData, dispatch),
     edit: () => alert('handle edit'),
     delete: () => alert('handle delete'),
   };
@@ -36,7 +45,7 @@ export default function Alunos() {
     async function loadAlunos() {
       const { status, data } = await api.get('alunos');
       if (status !== 200) return;
-      setTableData(alunoBFF(data));
+      setTableData(alunosBFF(data));
     }
 
     loadAlunos();
@@ -45,9 +54,9 @@ export default function Alunos() {
   return (
     <Container>
       <AlunosModal
-        visible={insertModalVisible}
-        onSetVisible={setInsertModalVisible}
-        handleSubmit={() => handle.insert()}
+        visible={modalState.visible}
+        onSetVisible={visible => setModalState(prev => ({ ...prev, visible }))}
+        handleSubmit={data => handle.insert(data)}
       />
       <NamedSection name="Alunos" icon={FaUser}>
         <AddImportActions

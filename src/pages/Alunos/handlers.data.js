@@ -1,14 +1,14 @@
-export function handleInsert(newData, setTableData) {
-  return new Promise(resolve => {
-    setTimeout(() => {
-      resolve();
-      setTableData(prevState => {
-        const data = [...prevState];
-        data.push(newData);
-        return data;
-      });
-    }, 600);
-  });
+import api from '../../services/api';
+import { notifySuccess } from '../../utils/notifyHelper';
+import { alunoFFB, alunoBFF } from './alunos.util';
+
+export async function handleInsert(newData, setTableData, dispatch) {
+  const { data, status } = await api.post('alunos', alunoFFB(newData));
+  if (status !== 200) return;
+
+  setTableData(prevState => [...prevState, alunoBFF(data)]);
+  notifySuccess('Aluno cadastrada com sucesso!', dispatch);
+  return true;
 }
 
 export function handleUpdate(newData, oldData, setTableData) {

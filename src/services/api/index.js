@@ -1,18 +1,17 @@
 import axios from 'axios';
-import { toast } from 'react-toastify';
+
+import { notifyError } from '../../utils/notifyHelper';
+import { getErrorMessage } from './errors.data';
 
 const baseURL = 'http://localhost:4000';
 const api = axios.create({ baseURL });
 
 api.interceptors.response.use(
-  response => {
-    console.log(`interceptors`);
-    return response;
-  },
+  response => response,
   error => {
-    toast.error('Houve um erro inesperado. Verifique sua conexão');
+    notifyError(getErrorMessage(error.response.data.error.message));
     console.log(`interceptor, ${error}`);
-    return Promise.reject(error);
+    return error.response;
   }
 );
 

@@ -26,7 +26,7 @@ export default function AlunosModal({
   const [isResponsible, setIsResponsible] = useState(true);
 
   async function _handleSubmit(data) {
-    const ids = ['phone', 'responsible_phone', 'birthDate'];
+    const ids = ['phone', 'responsible_phone', 'birthDate', 'turmas'];
 
     verifyAndAdd(ids, data);
     handleSubmit(data);
@@ -65,7 +65,6 @@ export default function AlunosModal({
             placeholder={placeholder.phone}
           />
           <InputWrapper
-            id="turmas"
             label="Selecione a(s) turma(s) do aluno:"
             labelOnly
             styled={false}
