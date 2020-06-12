@@ -7,6 +7,7 @@ export default function AlunosTable({
   setTableData,
   editableOptions,
   actions,
+  isSelectable,
 }) {
   const columns = [
     { title: 'Nome', field: 'name' },
@@ -34,7 +35,7 @@ export default function AlunosTable({
         plural: 'alunos(as)',
       }}
       editableOptions={editableOptions}
-      isSelectable
+      isSelectable={isSelectable}
       actions={actions}
     />
   );
@@ -44,11 +45,12 @@ AlunosTable.propTypes = {
   editableOptions: PropTypes.objectOf(PropTypes.func),
   actions: PropTypes.arrayOf(PropTypes.object),
   tableData: PropTypes.arrayOf(PropTypes.object).isRequired,
-  setTableData: PropTypes.func,
+  setTableData: PropTypes.func.isRequired,
+  isSelectable: PropTypes.bool,
 };
 
 AlunosTable.defaultProps = {
   editableOptions: {},
   actions: [],
-  setTableData: () => {},
+  isSelectable: true,
 };

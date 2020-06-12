@@ -7,19 +7,30 @@ import AlunosTable from './AlunosTable';
 import AlunosModal from './AlunosModal';
 
 import { Container } from './styles';
-import {
-  handleInsert,
-  handleUpdate,
-  handleDelete,
-  handleDeleteAll,
-} from './handlers.data';
+// import {
+//   handleInsert,
+//   handleUpdate,
+//   handleDelete,
+//   handleDeleteAll,
+// } from './handlers.data';
 
 import { alunoBFF } from './alunos.util';
 
 export default function Alunos() {
   const [tableData, setTableData] = useState([]);
-  const [insertModalVisible, setInsertModalVisible] = useState(true);
-  // const [importModalVisible, setImportModalVisible] = useState(false);
+  const [insertModalVisible, setInsertModalVisible] = useState(false);
+
+  const enable = {
+    insert: () => alert('enable insert'),
+    edit: () => alert('enable edit'),
+    delete: () => alert('enable delete'),
+  };
+
+  const handle = {
+    insert: () => alert('handle insert'),
+    edit: () => alert('handle edit'),
+    delete: () => alert('handle delete'),
+  };
 
   useEffect(() => {
     async function loadAlunos() {
@@ -31,38 +42,33 @@ export default function Alunos() {
     loadAlunos();
   }, []);
 
-  function handleInsertSubmit(data) {
-    console.log(data);
-    alert('here');
-  }
-
   return (
     <Container>
       <AlunosModal
         visible={insertModalVisible}
         onSetVisible={setInsertModalVisible}
-        handleSubmit={handleInsertSubmit}
+        handleSubmit={() => handle.insert()}
       />
       <NamedSection name="Alunos" icon={FaUser}>
         <AddImportActions
-          onAdd={() => setInsertModalVisible(true)}
+          onAdd={() => enable.insert()}
           importLabel="alunos"
           importModelURL="/modelos/Envia_alunos.xlsx"
         />
         <AlunosTable
           tableData={tableData}
           setTableData={setTableData}
-          editableOptions={{
-            onRowAdd: newData => handleInsert(newData, setTableData),
-            onRowUpdate: (newData, oldData) =>
-              handleUpdate(newData, oldData, setTableData),
-            onRowDelete: oldData => handleDelete(oldData, setTableData),
-          }}
+          isSelectable={false}
           actions={[
             {
-              tooltip: 'Apagar os alunos(as) selecionados',
+              tooltip: 'Editar aluno(a)',
+              icon: 'edit',
+              onClick: (evt, data) => enable.edit(data),
+            },
+            {
+              tooltip: 'Apagar aluno(a)',
               icon: 'delete',
-              onClick: (evt, data) => handleDeleteAll(evt, data),
+              onClick: (evt, data) => enable.delete(data),
             },
           ]}
         />

@@ -29,11 +29,7 @@ function Turmas() {
   const addTurma = (id, index) => {
     if (turmas.find(_turma => _turma.id === id)) {
       notifyError('Esta turma já havia sido selecionada');
-      return setTurmas(_turmas => {
-        const newTurmas = [..._turmas];
-        newTurmas.splice(index, 1);
-        return newTurmas;
-      });
+      return setTurmas([...turmas.slice(0, index), ...turmas.slice(index + 1)]);
     }
     setTurmas(_turmas => {
       const newTurmas = [..._turmas];
@@ -47,6 +43,7 @@ function Turmas() {
       <InputWrapper
         name="turmas"
         value={JSON.stringify(turmas.map(({ id }) => id))}
+        onChange={() => {}}
         hidden
       />
       <Button onClick={addEmptyTurma}>
