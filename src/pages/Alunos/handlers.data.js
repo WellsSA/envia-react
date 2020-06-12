@@ -24,24 +24,20 @@ const handleUpdate = async (upData, setTableData, tableDataId, dispatch) => {
     return _data;
   });
 
-  notifySuccess('Turma editada com sucesso!', dispatch);
+  notifySuccess('Aluno(a) atualizado(a) com sucesso!', dispatch);
 };
 
-// export function handleDelete(oldData, setTableData) {
-//   return new Promise(resolve => {
-//     setTimeout(() => {
-//       resolve();
-//       setTableData(prevState => {
-//         const data = [...prevState];
-//         data.splice(data.indexOf(oldData), 1);
-//         return data;
-//       });
-//     }, 600);
-//   });
-// }
+const handleDelete = async (id, tableDataId, setTableData) => {
+  const { status } = await api.delete(`alunos/${+id}`);
+  if (status !== 200) return;
 
-// export function handleDeleteAll(evt, data) {
-//   alert(`Olha só, ${data.length} a menos`);
-// }
+  setTableData(prevState => {
+    const _data = [...prevState];
+    _data.splice(tableDataId, 1);
+    return _data;
+  });
 
-export { handleInsert, handleUpdate };
+  notifySuccess('Aluno(a) excluído(a) com sucesso!');
+};
+
+export { handleInsert, handleUpdate, handleDelete };

@@ -3,17 +3,16 @@ import { useDispatch } from 'react-redux';
 import { FaUser } from 'react-icons/fa';
 import api from '../../services/api';
 
-import { NamedSection, AddImportActions } from '../../components';
+import {
+  NamedSection,
+  AddImportActions,
+  ConfirmDialog,
+} from '../../components';
 import AlunosTable from './AlunosTable';
 import AlunosModal from './AlunosModal';
 
 import { Container } from './styles';
-import {
-  handleInsert,
-  handleUpdate,
-  // handleDelete,
-  // handleDeleteAll,
-} from './handlers.data';
+import { handleInsert, handleUpdate, handleDelete } from './handlers.data';
 
 import { alunosBFF } from './alunos.util';
 
@@ -28,6 +27,7 @@ export default function Alunos() {
 
   const [tableData, setTableData] = useState([]);
   const [modalState, setModalState] = useState(DEFAULT_MODAL_STATE);
+  const [confirmBoxVisible, setConfirmBoxVisible] = useState(false);
 
   const enable = {
     insert: () => setModalState({ ...DEFAULT_MODAL_STATE, visible: true }),
@@ -37,7 +37,14 @@ export default function Alunos() {
         selectedObject: data,
         tableRefId: _tableData.id,
       }),
-    delete: () => alert('enable delete'),
+    delete: ({ id, tableData: _tableData }) => {
+      setModalState({
+        visible: false,
+        selectedObject: { id: id.toString() },
+        tableRefId: _tableData.id,
+      });
+      setConfirmBoxVisible(true);
+    },
   };
 
   const handle = {
@@ -46,7 +53,12 @@ export default function Alunos() {
       handleUpdate(data, setTableData, modalState.tableRefId, dispatch);
       setModalState(DEFAULT_MODAL_STATE);
     },
-    delete: () => alert('handle delete'),
+    delete: () =>
+      handleDelete(
+        modalState.selectedObject.id,
+        modalState.tableRefId,
+        setTableData
+      ),
   };
 
   useEffect(() => {
@@ -61,6 +73,12 @@ export default function Alunos() {
 
   return (
     <Container>
+      <ConfirmDialog
+        visible={confirmBoxVisible}
+        onSetVisible={setConfirmBoxVisible}
+        message="Tem certeza que deseja excluir este aluno(a)?"
+        onConfirm={() => handle.delete()}
+      />
       <AlunosModal
         visible={modalState.visible}
         onSetVisible={visible => setModalState(prev => ({ ...prev, visible }))}

@@ -29,7 +29,7 @@ export default function ConfirmDialog({
       onCancel={onCancel}
     >
       <Container>
-        <Close>
+        <Close onClick={handleCancel}>
           <MdClose />
         </Close>
         <Message>{message}</Message>
