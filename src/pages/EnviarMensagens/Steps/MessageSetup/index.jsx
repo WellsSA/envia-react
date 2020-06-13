@@ -6,7 +6,7 @@ import { Container, ModelosMensagens } from './styles';
 import { changeMessage } from '../../../../store/modules/message/actions';
 import StepNavigator from '../../StepNavigator';
 
-export default function MessageForm() {
+export default function MessageSetup() {
   const dispatch = useDispatch();
 
   function handleSubmit({ title, greeting, content }) {

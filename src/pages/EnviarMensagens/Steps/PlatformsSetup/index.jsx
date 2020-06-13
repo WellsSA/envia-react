@@ -7,13 +7,13 @@ import { GoComment, GoMail } from 'react-icons/go';
 import { setupPlatform, switchPlatform } from '~/store/modules/message/actions';
 import { Title } from '~/components/_common';
 
-import StepNavigator from '../StepNavigator';
+import StepNavigator from '../../StepNavigator';
 import MailModal from './MailModal';
 import Platform from './Platform';
 
 import { Container } from './styles';
 
-export default function Platforms() {
+export default function PlatformsSetup() {
   const dispatch = useDispatch();
   const platforms = useSelector(state => state.message.platforms);
   const [mailModalVisible, setMailModalVisible] = useState(false);

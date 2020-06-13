@@ -1,8 +1,8 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
-import { ModalHelper } from '../../../../components';
-import { switchPlatform } from '../../../../store/modules/message/actions';
+import { ModalHelper } from '~/components';
+import { switchPlatform } from '~/store/modules/message/actions';
 import QuantityDisplayer from '../QuantityDisplayer';
 
 export default function MailModal({ visible, onSetVisible }) {

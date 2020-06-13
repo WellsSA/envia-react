@@ -5,8 +5,13 @@ import { NamedSection, ProgressBar } from '../../components';
 import { Button, Title } from '~/components/_common';
 import { nextStep, prevStep, setStep } from '~/store/modules/message/actions';
 import { Container, MessageStep } from './styles';
-import { MessageForm, CriteriaSetup, AlunosSetup } from './Steps';
-import { Platforms, ConfirmEnvio, SendMessage } from './_components';
+import {
+  MessageSetup,
+  CriteriaSetup,
+  AlunosSetup,
+  PlatformsSetup,
+} from './Steps';
+import { ConfirmEnvio, SendMessage } from './_components';
 
 export default function EnviarMensagens() {
   const dispatch = useDispatch();
@@ -22,7 +27,7 @@ export default function EnviarMensagens() {
         />
 
         <MessageStep active={step === 1}>
-          <MessageForm />
+          <MessageSetup />
         </MessageStep>
 
         <MessageStep active={step === 2}>
@@ -34,7 +39,7 @@ export default function EnviarMensagens() {
         </MessageStep>
 
         <MessageStep active={step === 4}>
-          <Platforms />
+          <PlatformsSetup />
         </MessageStep>
 
         <MessageStep active={step === 5}>
