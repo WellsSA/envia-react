@@ -82,7 +82,9 @@ export default function AlunosModal({
           >
             <Turmas
               initialData={
-                initialData ? JSON.parse(initialData.turmas) : undefined
+                initialData && initialData.turmas
+                  ? JSON.parse(initialData.turmas)
+                  : undefined
               }
             />
           </InputWrapper>

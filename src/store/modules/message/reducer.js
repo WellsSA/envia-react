@@ -1,7 +1,7 @@
 import produce from 'immer';
 
 const INITIAL_STATE = {
-  curStep: 5,
+  curStep: 1,
   keepEase: false,
   message: {
     title: '',
@@ -15,7 +15,7 @@ const INITIAL_STATE = {
   criteria: '',
   filters: [],
   alunos: [],
-  platforms: ['email'],
+  platforms: [],
 };
 
 export default function message(state = INITIAL_STATE, action) {
