@@ -8,7 +8,7 @@ function Platform({ icon: Icon, label, value, onTap }) {
   return (
     <Container
       checked={platforms[value]}
-      className="confirm"
+      kind="confirm"
       onClick={() => onTap(value)}
     >
       <Icon />

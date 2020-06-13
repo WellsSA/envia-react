@@ -1,10 +1,11 @@
 import styled, { css } from 'styled-components';
 
 import { lighten, darken, transparentize } from 'polished';
-import { fonts } from '../../../../styles/scale';
-import { getColor } from '../../../../utils/themeHelper';
+import { fonts } from '~/styles/scale';
+import { getColor } from '~/utils/themeHelper';
+import { Button } from '~/components/_common';
 
-export const Container = styled.button`
+export const Container = styled(Button)`
   display: flex;
   flex-direction: column;
   justify-content: center;

@@ -1,15 +1,17 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+
 import { FaWhatsapp } from 'react-icons/fa';
-import { GoMail, GoComment } from 'react-icons/go';
-import { Container } from './styles';
-import {
-  switchPlatform,
-  setupPlatform,
-} from '../../../store/modules/message/actions';
-import Platform from './Platform';
+import { GoComment, GoMail } from 'react-icons/go';
+
+import { setupPlatform, switchPlatform } from '~/store/modules/message/actions';
+import { Title } from '~/components/_common';
+
 import StepNavigator from '../StepNavigator';
 import MailModal from './MailModal';
+import Platform from './Platform';
+
+import { Container } from './styles';
 
 export default function Platforms() {
   const dispatch = useDispatch();
@@ -38,6 +40,7 @@ export default function Platforms() {
         visible={mailModalVisible}
         onSetVisible={setMailModalVisible}
       />
+      <Title>Selecione a forma de envio:</Title>
       <Container>
         <Platform
           icon={GoMail}
