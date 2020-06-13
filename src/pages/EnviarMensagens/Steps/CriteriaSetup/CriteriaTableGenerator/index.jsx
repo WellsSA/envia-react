@@ -7,8 +7,7 @@ import { criterion } from '~/store/modules/message/data';
 
 export default function CriteriaTableGenerator() {
   const dispatch = useDispatch();
-  const criteria = useSelector(state => state.message.criteria);
-  const keepEase = useSelector(state => state.message.keepEase);
+  const { criteria, keepEase } = useSelector(state => state.message);
 
   const actions = [
     {

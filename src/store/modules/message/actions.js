@@ -40,13 +40,6 @@ export function setupFiltersSuccess({ filters }) {
   };
 }
 
-export function setupFilteredAlunos({ data }) {
-  return {
-    type: '@message/SETUP_FILTERED_ALUNOS',
-    payload: { data },
-  };
-}
-
 export function setupAlunos({ data }) {
   return {
     type: '@message/SETUP_ALUNOS',

@@ -14,7 +14,6 @@ const INITIAL_STATE = {
   },
   criteria: '',
   filters: [],
-  filteredAlunos: [],
   alunos: [],
   platforms: {
     email: false,
@@ -54,11 +53,6 @@ export default function message(state = INITIAL_STATE, action) {
       case '@message/SETUP_FILTERS_SUCCESS': {
         draft.filters = action.payload.filters;
         draft.keepEase = true;
-        break;
-      }
-      case '@message/SETUP_FILTERED_ALUNOS': {
-        const { data } = action.payload;
-        draft.filteredAlunos = data;
         break;
       }
       case '@message/SETUP_ALUNOS': {

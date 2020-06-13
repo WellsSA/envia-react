@@ -3,7 +3,6 @@ import { notifySuccess, notifyError } from '../../../utils/notifyHelper';
 import {
   nextStep,
   setupFiltersSuccess,
-  // setupFilteredAlunos,
   prevStep,
   setupMessage,
 } from './actions';
@@ -68,25 +67,6 @@ export function* handleSetupFilters({ payload: { filters } }) {
     notifyError(err.message);
   }
 }
-
-// export function* handleSetupFiltersSuccess({
-//   payload: { criteria, data: criteriaData },
-// }) {
-//   try {
-//     console.log(`Trying to search for ${criteria} ${criteriaData}`);
-//     const { data, status } = yield call(api.get, 'alunos');
-
-//     console.log({ data });
-//     if (status !== 200) throw Error('Houve um erro na conexão');
-//     if (!data || data.length === 0)
-//       throw Error('Não foram encontrados alunos para o critério selecionado');
-//     yield put(setupFilteredAlunos({ data }));
-//     console.log('puta', { data });
-//   } catch (err) {
-//     console.tron.error(err);
-//     notifyError(err.message);
-//   }
-// }
 
 export function* handleNextStep() {
   try {
@@ -172,7 +152,6 @@ export default all([
   // takeLatest('@message/SETUP_SEND_TO', handleSetupSendTo),
   takeLatest('@message/SETUP_CRITERIA', handleSetupCriteria),
   takeLatest('@message/SETUP_FILTERS', handleSetupFilters),
-  // takeLatest('@message/SETUP_FILTERS_SUCCESS', handleSetupFiltersSuccess),
   takeLatest('@message/NEXT_STEP', handleNextStep),
   takeLatest('@message/SET_STEP', handleNextStep),
   takeLatest('@message/PREV_STEP', handlePrevStep),

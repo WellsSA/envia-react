@@ -1,4 +1,5 @@
 import MessageForm from './MessageForm';
 import CriteriaSetup from './CriteriaSetup';
+import AlunosSetup from './AlunosSetup';
 
-export { MessageForm, CriteriaSetup };
+export { MessageForm, CriteriaSetup, AlunosSetup };
