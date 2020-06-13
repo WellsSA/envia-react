@@ -7,7 +7,6 @@ import { Title } from '~/components/_common';
 import api from '~/services/api';
 
 function AlunosSetup() {
-  // const [keepEase, setKeepEase] = useState(false);
   const keepEase = false;
   const { criteria, filters } = useSelector(state => state.message);
   const dispatch = useDispatch();
@@ -15,6 +14,7 @@ function AlunosSetup() {
   const [tableData, setTableData] = useState([]);
 
   useEffect(() => {
+    if (!criteria) return;
     (async () => {
       const { data, status } = await api.get(`filters/${criteria}`, {
         filters,
@@ -24,13 +24,6 @@ function AlunosSetup() {
       setTableData(alunosBFF(data));
     })();
   }, [criteria, filters]);
-
-  // useEffect(() => {
-  //   (async () => {
-  //     await new Promise(resolve => setTimeout(resolve, 500));
-  //     setKeepEase(curStep !== 3);
-  //   })();
-  // }, [curStep]);
 
   return (
     <>
@@ -44,8 +37,6 @@ function AlunosSetup() {
               icon: 'check',
               onClick: async (evt, data) => {
                 if (data) {
-                  // setKeepEase(true);
-                  // await new Promise(resolve => setTimeout(resolve, 1000));
                   dispatch(setupAlunos({ data }));
                 }
                 return null;

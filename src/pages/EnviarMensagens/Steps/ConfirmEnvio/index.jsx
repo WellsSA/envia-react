@@ -16,23 +16,23 @@ import {
 import { prevStep } from '~/store/modules/message/actions';
 import { Title } from '~/components/_common';
 import StepNavigator from '../../StepNavigator';
-// import Criterion from '../CriteriaSetup/Criteria/Criterion';
+import Criterion from '../CriteriaSetup/Criteria/Criterion';
+import { exhibition, PLATFORMS } from '~/store/modules/message/data';
 
 export default function ConfirmEnvio() {
   const dispatch = useDispatch();
   const {
-    message: { titulo, saudacao, mensagem },
-    // filter: { criteria },
+    message: { title, greeting, content },
+    criteria,
     alunos,
-    // platforms,
+    platforms,
   } = useSelector(state => state.message);
 
-  const platforms = useSelector(state => state.message.platforms);
-
   function handleConfirm() {
-    if (platforms.email) {
-      alert('sending mail!');
-    }
+    // if (platforms.email) {
+    //   alert('sending mail!');
+    // }
+    alert('sending...');
   }
   return (
     <>
@@ -40,32 +40,30 @@ export default function ConfirmEnvio() {
       <Container>
         <Column className="message">
           <ColumnTitle>Mensagem:</ColumnTitle>
-          <h2>{titulo}</h2>
-          <span>{saudacao}</span>
-          <p>{mensagem}</p>
+          <h2>{title}</h2>
+          <span>{greeting}</span>
+          <p>{content}</p>
         </Column>
         <Column>
           <Criteria>
             <ColumnTitle>Critério:</ColumnTitle>
-            {(() => {
-              // switch (criteria) {
-              //   case 'Professores Específicos':
-              //     return <Criterion icon={FaUser} label={criteria} />;
-              //   default:
-              //     return <></>;
-              // }
-            })()}
+            {criteria && (
+              <Criterion
+                label={exhibition[criteria].label}
+                icon={exhibition[criteria].icon}
+              />
+            )}
           </Criteria>
           <Criteria>
             <ColumnTitle>Plataforma:</ColumnTitle>
             <Platforms>
-              {/* <Criterion visible={platforms.email} icon={GoMail} label="Email" />
-            <Criterion visible={platforms.sms} icon={GoComment} label="SMS" />
-            <Criterion
-              visible={platforms.whatsapp}
-              icon={FaWhatsapp}
-              label="Whatsapp"
-            /> */}
+              {platforms.map(value => (
+                <Criterion
+                  key={`plat${value}`}
+                  icon={PLATFORMS[value].icon}
+                  label={PLATFORMS[value].label}
+                />
+              ))}
             </Platforms>
           </Criteria>
         </Column>

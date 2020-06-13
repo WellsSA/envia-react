@@ -1,4 +1,6 @@
 import { MdAccessAlarm } from 'react-icons/md';
+import { FaWhatsapp } from 'react-icons/fa';
+import { GoComment, GoMail } from 'react-icons/go';
 
 const criterion = {
   TODOS: 0,
@@ -42,4 +44,24 @@ const exhibition = [
   },
 ];
 
-export { criterion, exhibition };
+const PLATFORMS = {
+  email: {
+    label: 'Email',
+    icon: GoMail,
+    value: 'email',
+  },
+  sms: {
+    label: 'SMS',
+    icon: GoComment,
+    value: 'sms',
+  },
+  whatsapp: {
+    label: 'Whatsapp',
+    icon: FaWhatsapp,
+    value: 'whatsapp',
+  },
+};
+
+const PLATFORMS_ARR = [PLATFORMS.email, PLATFORMS.sms, PLATFORMS.whatsapp];
+
+export { criterion, exhibition, PLATFORMS, PLATFORMS_ARR };

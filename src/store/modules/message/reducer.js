@@ -15,11 +15,7 @@ const INITIAL_STATE = {
   criteria: '',
   filters: [],
   alunos: [],
-  platforms: {
-    email: false,
-    sms: false,
-    whatsapp: false,
-  },
+  platforms: ['email'],
 };
 
 export default function message(state = INITIAL_STATE, action) {
@@ -61,8 +57,8 @@ export default function message(state = INITIAL_STATE, action) {
         break;
       }
       case '@message/SWITCH_PLATFORM': {
-        const { platform } = action.payload;
-        draft.platforms[platform] = !state.platforms[platform];
+        // const { platform } = action.payload;
+        // draft.platforms[platform] = !state.platforms[platform];
         break;
       }
       case '@auth/SIGN_OUT': {
