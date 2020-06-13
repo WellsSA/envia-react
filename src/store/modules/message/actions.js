@@ -47,16 +47,10 @@ export function setupAlunos({ data }) {
   };
 }
 
-export function switchPlatform({ platform }) {
+export function setupPlatforms({ platforms }) {
   return {
-    type: '@message/SWITCH_PLATFORM',
-    payload: { platform },
-  };
-}
-
-export function setupPlatform() {
-  return {
-    type: '@message/SETUP_PLATFORM',
+    type: '@message/SETUP_PLATFORMS',
+    payload: { platforms },
   };
 }
 

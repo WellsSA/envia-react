@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 
-import { setupPlatform, switchPlatform } from '~/store/modules/message/actions';
+import { setupPlatforms } from '~/store/modules/message/actions';
 import { PLATFORMS_ARR } from '~/store/modules/message/data';
 import { Title } from '~/components/_common';
 
@@ -13,14 +13,31 @@ import { Container } from './styles';
 
 const PlatformsSetup = () => {
   const dispatch = useDispatch();
+  const [platforms, setPlatforms] = useState([]);
   const [mailModalVisible, setMailModalVisible] = useState(false);
 
+  const addPlatform = platform => {
+    setPlatforms(prev => [...prev, platform]);
+  };
+
+  const verifyIfExistsAndRemove = platform => {
+    const isMarked = platforms.findIndex(_platform => _platform === platform);
+    if (isMarked !== -1) {
+      setPlatforms(prev => [
+        ...prev.splice(0, isMarked),
+        ...prev.splice(isMarked + 1),
+      ]);
+      return true;
+    }
+    return false;
+  };
+
   function togglePlatform(platform) {
+    if (verifyIfExistsAndRemove(platform)) return;
+
     switch (platform) {
       case 'email':
-        // if (platforms.email) dispatch(switchPlatform({ platform }));
-        // else setMailModalVisible(true);
-        alert('Não disponível ainda');
+        setMailModalVisible(true);
         break;
       case 'sms':
         alert('Não disponível ainda');
@@ -37,12 +54,14 @@ const PlatformsSetup = () => {
       <MailModal
         visible={mailModalVisible}
         onSetVisible={setMailModalVisible}
+        onConfirm={platform => addPlatform(platform)}
       />
       <Title>Selecione a forma de envio:</Title>
       <Container>
         {PLATFORMS_ARR.map(({ icon, label, value }) => (
           <Platform
             key={`platarr${value}`}
+            checked={platforms.includes(value)}
             icon={icon}
             label={label}
             value={value}
@@ -50,7 +69,9 @@ const PlatformsSetup = () => {
           />
         ))}
       </Container>
-      <StepNavigator onConfirm={() => dispatch(setupPlatform())} />
+      <StepNavigator
+        onConfirm={() => dispatch(setupPlatforms({ platforms }))}
+      />
     </>
   );
 };

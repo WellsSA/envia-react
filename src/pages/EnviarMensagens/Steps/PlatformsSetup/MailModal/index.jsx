@@ -1,17 +1,16 @@
 import React from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 import { ModalHelper } from '~/components';
-import { switchPlatform } from '~/store/modules/message/actions';
+import { PLATFORMS } from '~/store/modules/message/data';
 import QuantityDisplayer from '../QuantityDisplayer';
 
-export default function MailModal({ visible, onSetVisible }) {
-  const dispatch = useDispatch();
+export default function MailModal({ visible, onSetVisible, onConfirm }) {
   const qtdAlunos = useSelector(state => state.message.alunos).length;
   const saldoAtual = 10;
 
   function handleConfirm() {
-    dispatch(switchPlatform({ platform: 'email' }));
+    onConfirm(PLATFORMS.email.value);
     onSetVisible(false);
   }
 
@@ -36,4 +35,5 @@ export default function MailModal({ visible, onSetVisible }) {
 MailModal.propTypes = {
   visible: PropTypes.bool.isRequired,
   onSetVisible: PropTypes.func.isRequired,
+  onConfirm: PropTypes.func.isRequired,
 };

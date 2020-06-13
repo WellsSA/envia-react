@@ -128,15 +128,9 @@ export function* handleSetupAlunos({ payload: { data } }) {
   }
 }
 
-export function* handleSetupPlatform() {
+export function* handleSetupPlatforms({ payload: { platforms } }) {
   try {
-    const platforms = yield select(state => state.message.platforms);
-    const platformCount = Object.keys(platforms).reduce(
-      (acc, cur) => acc + +platforms[cur],
-      0
-    );
-
-    if (platformCount === 0) {
+    if (!platforms || platforms.length === 0) {
       throw Error('Selecione ao menos uma plataforma.');
     }
 
@@ -156,5 +150,5 @@ export default all([
   takeLatest('@message/SET_STEP', handleNextStep),
   takeLatest('@message/PREV_STEP', handlePrevStep),
   takeLatest('@message/SETUP_ALUNOS', handleSetupAlunos),
-  takeLatest('@message/SETUP_PLATFORM', handleSetupPlatform),
+  takeLatest('@message/SETUP_PLATFORMS', handleSetupPlatforms),
 ]);

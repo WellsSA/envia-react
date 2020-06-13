@@ -1,16 +1,10 @@
 import React, { memo } from 'react';
-import { useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Container } from './styles';
 
-function Platform({ icon: Icon, label, value, onTap }) {
-  const platforms = useSelector(state => state.message.platforms);
+function Platform({ checked, icon: Icon, label, value, onTap }) {
   return (
-    <Container
-      checked={platforms[value]}
-      kind="confirm"
-      onClick={() => onTap(value)}
-    >
+    <Container checked={checked} kind="confirm" onClick={() => onTap(value)}>
       <Icon />
       <span>{label}</span>
     </Container>
@@ -18,10 +12,15 @@ function Platform({ icon: Icon, label, value, onTap }) {
 }
 
 Platform.propTypes = {
+  checked: PropTypes.bool,
   icon: PropTypes.func.isRequired,
   label: PropTypes.string.isRequired,
   value: PropTypes.string.isRequired,
   onTap: PropTypes.func.isRequired,
+};
+
+Platform.defaultProps = {
+  checked: false,
 };
 
 export default memo(Platform);

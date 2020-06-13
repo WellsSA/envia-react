@@ -56,9 +56,8 @@ export default function message(state = INITIAL_STATE, action) {
         draft.alunos = data;
         break;
       }
-      case '@message/SWITCH_PLATFORM': {
-        // const { platform } = action.payload;
-        // draft.platforms[platform] = !state.platforms[platform];
+      case '@message/SETUP_PLATFORMS': {
+        draft.platforms = action.payload.platforms;
         break;
       }
       case '@auth/SIGN_OUT': {
