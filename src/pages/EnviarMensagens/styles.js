@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 // import { lighten } from 'polished';
 // import { fonts } from '../../styles/scale';
 // import { getColor } from '../../utils/themeHelper';

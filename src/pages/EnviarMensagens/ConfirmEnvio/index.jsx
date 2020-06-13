@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { FaUser, FaWhatsapp } from 'react-icons/fa';
+import { FaWhatsapp } from 'react-icons/fa';
 import { GoMail, GoComment } from 'react-icons/go';
 import {
   Container,
@@ -11,7 +11,7 @@ import {
   Alunos,
   Aluno,
 } from './styles';
-import Criterion from '../Criteria/Criterion';
+// import Criterion from '../Steps/CriteriaSetup/Criteria/Criterion';
 
 export default function ConfirmEnvio() {
   const {
@@ -44,13 +44,13 @@ export default function ConfirmEnvio() {
         <Criteria>
           <ColumnTitle>Plataforma:</ColumnTitle>
           <Platforms>
-            <Criterion visible={platforms.email} icon={GoMail} label="Email" />
+            {/* <Criterion visible={platforms.email} icon={GoMail} label="Email" />
             <Criterion visible={platforms.sms} icon={GoComment} label="SMS" />
             <Criterion
               visible={platforms.whatsapp}
               icon={FaWhatsapp}
               label="Whatsapp"
-            />
+            /> */}
           </Platforms>
         </Criteria>
       </Column>

@@ -1,41 +1,20 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { FaTelegramPlane } from 'react-icons/fa';
 import { useDispatch, useSelector } from 'react-redux';
-import { NamedSection } from '../../components';
+import { NamedSection, ProgressBar } from '../../components';
 import { Button, Title } from '../../components/_common';
 import {
   nextStep,
   prevStep,
   setStep,
 } from '../../store/modules/message/actions';
-import AlunosDataTable from './CriteriaTableGenerator/AlunosDataTable';
 import { Container, MessageStep } from './styles';
-import {
-  Criteria,
-  CriteriaTableGenerator,
-  MessageForm,
-  Platforms,
-  ConfirmEnvio,
-  SendMessage,
-  ProgressBar,
-} from './_components';
-
-// import api from '../../services/api';
-// import { store } from '../../store';
+import { MessageForm, CriteriaSetup } from './Steps';
+import { Platforms, ConfirmEnvio, SendMessage } from './_components';
 
 export default function EnviarMensagens() {
   const dispatch = useDispatch();
   const step = useSelector(state => state.message.curStep);
-  // const sendTo = useSelector(state => state.message.sendTo);
-  // const filter = useSelector(state => state.message.filter);
-  const filteredAlunos =
-    useSelector(state => state.message.filteredAlunos) || [];
-  const [criteria, setCriteria] = useState('');
-  // const alunos = useSelector(state => state.message.alunos);
-
-  useEffect(() => {
-    console.log({ filteredAlunos });
-  }, [filteredAlunos]);
 
   return (
     <Container>
@@ -43,10 +22,7 @@ export default function EnviarMensagens() {
         <ProgressBar
           step={step}
           maxSteps={5}
-          onBulletClick={
-            _step => dispatch(setStep({ step: _step }))
-            // _step <= step ? dispatch(setStep({ step: _step })) : {}
-          }
+          onBulletClick={_step => dispatch(setStep({ step: _step }))}
         />
 
         <MessageStep active={step === 1}>
@@ -60,10 +36,7 @@ export default function EnviarMensagens() {
         */}
 
         <MessageStep active={step === 2}>
-          <Title>Alunos do(a): Professor(Juliano, zezim)</Title>
-
-          <Criteria setCriteria={setCriteria} />
-          <CriteriaTableGenerator criteria={criteria} />
+          <CriteriaSetup />
         </MessageStep>
 
         <MessageStep active={step === 3}>

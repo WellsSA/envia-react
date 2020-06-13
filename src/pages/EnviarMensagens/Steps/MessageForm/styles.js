@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { transparentize, darken, lighten } from 'polished';
-import { fonts } from '../../../styles/scale';
-import { getColor } from '../../../utils/themeHelper';
+import { fonts } from '../../../../styles/scale';
+import { getColor } from '../../../../utils/themeHelper';
 
 export const Container = styled.div`
   form {

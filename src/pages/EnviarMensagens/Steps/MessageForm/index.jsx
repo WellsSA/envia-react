@@ -3,8 +3,8 @@ import { useDispatch } from 'react-redux';
 import { Form, Input } from '@rocketseat/unform';
 import { FiFileText } from 'react-icons/fi';
 import { Container, ModelosMensagens } from './styles';
-import { changeMessage } from '../../../store/modules/message/actions';
-import StepNavigator from '../StepNavigator';
+import { changeMessage } from '../../../../store/modules/message/actions';
+import StepNavigator from '../../StepNavigator';
 
 export default function MessageForm() {
   const dispatch = useDispatch();

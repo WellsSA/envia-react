@@ -1,6 +1,5 @@
 import styled from 'styled-components';
-import { darken } from 'polished';
-import { getColor } from '../../../utils/themeHelper';
+import { getColor } from '~/utils/themeHelper';
 
 export const Container = styled.div`
   height: 100px;
@@ -31,10 +30,6 @@ export const Bullet = styled.div`
   z-index: 10;
   transition: border 1s ease-in;
   animation-delay: 0.5s;
-
-  &:hover {
-    border-color: ${props => darken(0.1, getColor(props, 'strongText'))};
-  }
 `;
 
 export const Bar = styled.div`

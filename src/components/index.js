@@ -11,6 +11,7 @@ import SectionMarker from './SectionMarker';
 import SectionDivisor from './SectionDivisor';
 import ListDisplayer from './ListDisplayer';
 import ImportModal from './ImportModal';
+import ProgressBar from './ProgressBar';
 
 export {
   EnviaDataTable,
@@ -26,4 +27,5 @@ export {
   SectionDivisor,
   ListDisplayer,
   ImportModal,
+  ProgressBar,
 };
