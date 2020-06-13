@@ -39,6 +39,13 @@ module.exports = {
     'consistent-return': 'off',
     'no-await-in-loop': 'off',
     'no-restricted-syntax': 'off',
-    'react/no-array-index-key': 'off'
+    'react/no-array-index-key': 'off',
+  },
+  settings: {
+    'import/resolver': {
+      'babel-plugin-root-import': {
+        rootPathSuffix: 'src',
+      },
+    },
   },
 };
