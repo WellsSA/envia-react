@@ -17,7 +17,7 @@ import { prevStep } from '~/store/modules/message/actions';
 import { Title } from '~/components/_common';
 import StepNavigator from '../../StepNavigator';
 import Criterion from '../CriteriaSetup/Criteria/Criterion';
-import { exhibition, PLATFORMS } from '~/store/modules/message/data';
+import { CRITERION, PLATFORMS } from '~/store/modules/message/data';
 
 export default function ConfirmEnvio() {
   const dispatch = useDispatch();
@@ -49,8 +49,8 @@ export default function ConfirmEnvio() {
             <ColumnTitle>Critério:</ColumnTitle>
             {criteria && (
               <Criterion
-                label={exhibition[criteria].label}
-                icon={exhibition[criteria].icon}
+                label={CRITERION[criteria].label}
+                icon={CRITERION[criteria].icon}
               />
             )}
           </Criteria>

@@ -2,46 +2,46 @@ import { MdAccessAlarm } from 'react-icons/md';
 import { FaWhatsapp } from 'react-icons/fa';
 import { GoComment, GoMail } from 'react-icons/go';
 
-const criterion = {
-  TODOS: 0,
-  ALUNOS: 1,
-  TURMAS: 2,
-  PROFESSORES: 3,
-  CURSOS: 4,
-  RESPONSAVEIS: 5,
-};
-
-const exhibition = [
-  {
+const CRITERION = {
+  todos: {
     label: 'Todos os Alunos',
     icon: MdAccessAlarm,
-    value: criterion.TODOS,
+    value: 'todos',
   },
-  {
+  alunos: {
     label: 'Alunos Específicos',
     icon: MdAccessAlarm,
-    value: criterion.ALUNOS,
+    value: 'alunos',
   },
-  {
+  turmas: {
     label: 'Turmas Específicas',
     icon: MdAccessAlarm,
-    value: criterion.TURMAS,
+    value: 'turmas',
   },
-  {
+  professores: {
     label: 'Professores Específicos',
     icon: MdAccessAlarm,
-    value: criterion.PROFESSORES,
+    value: 'professores',
   },
-  {
+  cursos: {
     label: 'Cursos Específicos',
     icon: MdAccessAlarm,
-    value: criterion.CURSOS,
+    value: 'cursos',
   },
-  {
+  responsaveis: {
     label: 'Responsáveis',
     icon: MdAccessAlarm,
-    value: criterion.RESPONSAVEIS,
+    value: 'responsaveis',
   },
+};
+
+const CRITERION_ARR = [
+  CRITERION.todos,
+  CRITERION.alunos,
+  CRITERION.turmas,
+  CRITERION.professores,
+  CRITERION.cursos,
+  CRITERION.responsaveis,
 ];
 
 const PLATFORMS = {
@@ -64,4 +64,4 @@ const PLATFORMS = {
 
 const PLATFORMS_ARR = [PLATFORMS.email, PLATFORMS.sms, PLATFORMS.whatsapp];
 
-export { criterion, exhibition, PLATFORMS, PLATFORMS_ARR };
+export { CRITERION, CRITERION_ARR, PLATFORMS, PLATFORMS_ARR };

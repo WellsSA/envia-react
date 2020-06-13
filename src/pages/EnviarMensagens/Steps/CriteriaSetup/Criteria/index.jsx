@@ -4,7 +4,7 @@ import { Title } from '~/components/_common';
 import { Container, Content } from './styles';
 import Criterion from './Criterion';
 import { setupCriteria } from '~/store/modules/message/actions';
-import { exhibition } from '~/store/modules/message/data';
+import { CRITERION_ARR } from '~/store/modules/message/data';
 
 export default function Criteria() {
   const dispatch = useDispatch();
@@ -16,7 +16,7 @@ export default function Criteria() {
       <Title>Qual é o critério para a seleção dos alunos?</Title>
       <Content>
         <div>
-          {exhibition.map(({ label, icon, value }, i) => (
+          {CRITERION_ARR.map(({ label, icon, value }, i) => (
             <Criterion
               key={`criterion${i}`}
               label={label}

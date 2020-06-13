@@ -7,7 +7,7 @@ import {
   setupMessage,
 } from './actions';
 
-import { criterion } from './data';
+import { CRITERION } from './data';
 
 export function* handleSetupMessage({ payload: { title, greeting, content } }) {
   try {
@@ -39,7 +39,7 @@ export function* handleSetupMessage({ payload: { title, greeting, content } }) {
 
 export function handleSetupCriteria({ payload: { criteria } }) {
   try {
-    if (criteria !== 0 && !criteria) {
+    if (!criteria) {
       throw Error('Selecione ao menos uma opção.');
     }
   } catch (err) {
@@ -52,7 +52,7 @@ export function* handleSetupFilters({ payload: { filters } }) {
     const criteria = yield select(state => state.message.criteria);
 
     switch (criteria) {
-      case criterion.PROFESSORES:
+      case CRITERION.professores.value:
         if (!filters || filters.length === 0) {
           throw Error('Selecione ao menos uma opção.');
         }

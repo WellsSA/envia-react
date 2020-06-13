@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Container } from './styles';
 import ProfessoresDataTable from './ProfessoresDataTable';
 import { setupFilters } from '~/store/modules/message/actions';
-import { criterion } from '~/store/modules/message/data';
+import { CRITERION } from '~/store/modules/message/data';
 
 export default function CriteriaTableGenerator() {
   const dispatch = useDispatch();
@@ -29,7 +29,7 @@ export default function CriteriaTableGenerator() {
       {!keepEase ? (
         (() => {
           switch (criteria) {
-            case criterion.PROFESSORES:
+            case CRITERION.professores.value:
               return <ProfessoresDataTable actions={actions} />;
             default:
               return <></>;
