@@ -1,10 +1,10 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { Title } from '../../../components/_common';
+import { Title } from '~/components/_common';
 import { Container, Content } from './styles';
 import Criterion from './Criterion';
-import { setupCriteria } from '../../../store/modules/message/actions';
-import { exhibition } from '../../../store/modules/message/data';
+import { setupCriteria } from '~/store/modules/message/actions';
+import { exhibition } from '~/store/modules/message/data';
 
 export default function Criteria() {
   const dispatch = useDispatch();

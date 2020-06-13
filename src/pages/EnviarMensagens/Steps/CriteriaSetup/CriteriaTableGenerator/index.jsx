@@ -2,8 +2,8 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Container } from './styles';
 import ProfessoresDataTable from './ProfessoresDataTable';
-import { setupFilters } from '../../../store/modules/message/actions';
-import { criterion } from '../../../store/modules/message/data';
+import { setupFilters } from '~/store/modules/message/actions';
+import { criterion } from '~/store/modules/message/data';
 
 export default function CriteriaTableGenerator() {
   const dispatch = useDispatch();

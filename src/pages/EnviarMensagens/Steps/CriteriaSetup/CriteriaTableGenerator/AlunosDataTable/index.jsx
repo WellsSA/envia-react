@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
-import AlunosTable from '../../../Alunos/AlunosTable';
-import { setupAlunos } from '../../../../store/modules/message/actions';
+import AlunosTable from '~/pages/Alunos/AlunosTable/index.jsx';
+import { setupAlunos } from '~/store/modules/message/actions';
 
 export default function AlunosDataTable({ tableData }) {
   const dispath = useDispatch();

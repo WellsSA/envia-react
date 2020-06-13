@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import ProfessoresTable from '../../../Professores/ProfessoresTable';
-import api from '../../../../services/api';
+import ProfessoresTable from '~/pages/Professores/ProfessoresTable/index.jsx';
+import api from '~/services/api';
 
 export default function ProfessoresDataTable({ actions }) {
   const [tableData, setTableData] = useState([]);

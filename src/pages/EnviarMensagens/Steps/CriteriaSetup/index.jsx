@@ -1,14 +1,16 @@
 import React from 'react';
 
-// import { Container } from './styles';
+import Criteria from './Criteria';
+import CriteriaTableGenerator from './CriteriaTableGenerator';
+import { Title } from '~/components/_common';
 
 function CriteriaSetup() {
   return (
     <>
-      {/* <Title>Alunos do(a): Professor(Juliano, zezim)</Title>
+      <Title>Alunos do(a): Professor(Juliano, zezim)</Title>
 
       <Criteria />
-      <CriteriaTableGenerator /> */}
+      <CriteriaTableGenerator />
     </>
   );
 }
