@@ -1,13 +1,14 @@
-import { takeLatest, call, put, all, select } from 'redux-saga/effects';
+import { takeLatest, put, all, select } from 'redux-saga/effects';
 import { notifySuccess, notifyError } from '../../../utils/notifyHelper';
-import api from '../../../services/api';
 import {
   nextStep,
   setupFiltersSuccess,
-  setupFilteredAlunos,
+  // setupFilteredAlunos,
   prevStep,
   setupMessage,
 } from './actions';
+
+import { criterion } from './data';
 
 export function* handleSetupMessage({ payload: { title, greeting, content } }) {
   try {
@@ -47,12 +48,20 @@ export function handleSetupCriteria({ payload: { criteria } }) {
   }
 }
 
-export function* handleSetupFilters({ payload: { criteria, data } }) {
+export function* handleSetupFilters({ payload: { filters } }) {
   try {
-    if (!criteria || !data || data.length === 0) {
-      throw Error('Selecione ao menos uma opção.');
+    const criteria = yield select(state => state.message.criteria);
+
+    switch (criteria) {
+      case criterion.PROFESSORES:
+        if (!filters || filters.length === 0) {
+          throw Error('Selecione ao menos uma opção.');
+        }
+        break;
+      default:
+        break;
     }
-    yield put(setupFiltersSuccess({ criteria, data }));
+    yield put(setupFiltersSuccess({ filters }));
     yield put(nextStep());
   } catch (err) {
     console.tron.error(err);
@@ -60,24 +69,24 @@ export function* handleSetupFilters({ payload: { criteria, data } }) {
   }
 }
 
-export function* handleSetupFiltersSuccess({
-  payload: { criteria, data: criteriaData },
-}) {
-  try {
-    console.log(`Trying to search for ${criteria} ${criteriaData}`);
-    const { data, status } = yield call(api.get, 'alunos');
+// export function* handleSetupFiltersSuccess({
+//   payload: { criteria, data: criteriaData },
+// }) {
+//   try {
+//     console.log(`Trying to search for ${criteria} ${criteriaData}`);
+//     const { data, status } = yield call(api.get, 'alunos');
 
-    console.log({ data });
-    if (status !== 200) throw Error('Houve um erro na conexão');
-    if (!data || data.length === 0)
-      throw Error('Não foram encontrados alunos para o critério selecionado');
-    yield put(setupFilteredAlunos({ data }));
-    console.log('puta', { data });
-  } catch (err) {
-    console.tron.error(err);
-    notifyError(err.message);
-  }
-}
+//     console.log({ data });
+//     if (status !== 200) throw Error('Houve um erro na conexão');
+//     if (!data || data.length === 0)
+//       throw Error('Não foram encontrados alunos para o critério selecionado');
+//     yield put(setupFilteredAlunos({ data }));
+//     console.log('puta', { data });
+//   } catch (err) {
+//     console.tron.error(err);
+//     notifyError(err.message);
+//   }
+// }
 
 export function* handleNextStep() {
   try {
@@ -163,7 +172,7 @@ export default all([
   // takeLatest('@message/SETUP_SEND_TO', handleSetupSendTo),
   takeLatest('@message/SETUP_CRITERIA', handleSetupCriteria),
   takeLatest('@message/SETUP_FILTERS', handleSetupFilters),
-  takeLatest('@message/SETUP_FILTERS_SUCCESS', handleSetupFiltersSuccess),
+  // takeLatest('@message/SETUP_FILTERS_SUCCESS', handleSetupFiltersSuccess),
   takeLatest('@message/NEXT_STEP', handleNextStep),
   takeLatest('@message/SET_STEP', handleNextStep),
   takeLatest('@message/PREV_STEP', handlePrevStep),

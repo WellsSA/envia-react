@@ -1,32 +1,21 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import EnviaDataTable from '../../../../components/EnviaDataTable';
-
-// import { Container } from './styles';
+import ProfessoresTable from '../../../Professores/ProfessoresTable';
+import api from '../../../../services/api';
 
 export default function ProfessoresDataTable({ actions }) {
-  const columns = [{ title: 'Professor', field: 'name' }];
+  const [tableData, setTableData] = useState([]);
 
-  const [tableData, setTableData] = useState([
-    { name: 'Zezim' },
-    { name: 'Maria' },
-    { name: 'Zuleide' },
-  ]);
+  useEffect(() => {
+    (async () => {
+      const { data, status } = await api.get('professores');
+      if (status !== 200) return;
 
-  return (
-    <EnviaDataTable
-      title="Envia - Professores"
-      columns={columns}
-      tableData={tableData}
-      setTableData={setTableData}
-      dataVisualization={{
-        singular: 'professor(a)',
-        plural: 'professores(as)',
-      }}
-      isSelectable
-      actions={actions}
-    />
-  );
+      setTableData(data);
+    })();
+  }, []);
+
+  return <ProfessoresTable tableData={tableData} actions={actions} />;
 }
 
 ProfessoresDataTable.propTypes = {

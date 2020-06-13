@@ -1,6 +1,6 @@
 import { MdAccessAlarm } from 'react-icons/md';
 
-const criteria = {
+const criterion = {
   TODOS: 0,
   ALUNOS: 1,
   TURMAS: 2,
@@ -13,33 +13,33 @@ const exhibition = [
   {
     label: 'Todos os Alunos',
     icon: MdAccessAlarm,
-    value: criteria.TODOS,
+    value: criterion.TODOS,
   },
   {
     label: 'Alunos Específicos',
     icon: MdAccessAlarm,
-    value: criteria.ALUNOS,
+    value: criterion.ALUNOS,
   },
   {
     label: 'Turmas Específicas',
     icon: MdAccessAlarm,
-    value: criteria.TURMAS,
+    value: criterion.TURMAS,
   },
   {
     label: 'Professores Específicos',
     icon: MdAccessAlarm,
-    value: criteria.PROFESSORES,
+    value: criterion.PROFESSORES,
   },
   {
     label: 'Cursos Específicos',
     icon: MdAccessAlarm,
-    value: criteria.CURSOS,
+    value: criterion.CURSOS,
   },
   {
     label: 'Responsáveis',
     icon: MdAccessAlarm,
-    value: criteria.RESPONSAVEIS,
+    value: criterion.RESPONSAVEIS,
   },
 ];
 
-export { criteria, exhibition };
+export { criterion, exhibition };

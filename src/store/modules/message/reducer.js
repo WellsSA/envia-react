@@ -2,6 +2,7 @@ import produce from 'immer';
 
 const INITIAL_STATE = {
   curStep: 5,
+  keepEase: false,
   message: {
     title: '',
     greeting: '',
@@ -12,9 +13,7 @@ const INITIAL_STATE = {
     responsaveis: false,
   },
   criteria: '',
-  filter: {
-    data: [],
-  },
+  filters: [],
   filteredAlunos: [],
   alunos: [],
   platforms: {
@@ -49,14 +48,12 @@ export default function message(state = INITIAL_STATE, action) {
       }
       case '@message/SETUP_CRITERIA': {
         draft.criteria = action.payload.criteria;
+        draft.keepEase = false;
         break;
       }
       case '@message/SETUP_FILTERS_SUCCESS': {
-        const { criteria, data } = action.payload;
-        draft.filter = {
-          criteria,
-          data,
-        };
+        draft.filters = action.payload.filters;
+        draft.keepEase = true;
         break;
       }
       case '@message/SETUP_FILTERED_ALUNOS': {
@@ -72,6 +69,17 @@ export default function message(state = INITIAL_STATE, action) {
       case '@message/SWITCH_PLATFORM': {
         const { platform } = action.payload;
         draft.platforms[platform] = !state.platforms[platform];
+        break;
+      }
+      case '@auth/SIGN_OUT': {
+        draft.curStep = INITIAL_STATE.curStep;
+        draft.message = INITIAL_STATE.message;
+        draft.sendTo = INITIAL_STATE.sendTo;
+        draft.criteria = INITIAL_STATE.criteria;
+        draft.filters = INITIAL_STATE.filters;
+        draft.filteredAlunos = INITIAL_STATE.filteredAlunos;
+        draft.alunos = INITIAL_STATE.alunos;
+        draft.platforms = INITIAL_STATE.platforms;
         break;
       }
       default:

@@ -26,17 +26,17 @@ export function setupCriteria({ criteria }) {
   };
 }
 
-export function setupFilters({ criteria, data }) {
+export function setupFilters({ filters }) {
   return {
     type: '@message/SETUP_FILTERS',
-    payload: { criteria, data },
+    payload: { filters },
   };
 }
 
-export function setupFiltersSuccess({ criteria, data }) {
+export function setupFiltersSuccess({ filters }) {
   return {
     type: '@message/SETUP_FILTERS_SUCCESS',
-    payload: { criteria, data },
+    payload: { filters },
   };
 }
 

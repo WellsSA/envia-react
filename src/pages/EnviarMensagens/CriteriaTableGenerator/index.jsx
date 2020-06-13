@@ -3,10 +3,12 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Container } from './styles';
 import ProfessoresDataTable from './ProfessoresDataTable';
 import { setupFilters } from '../../../store/modules/message/actions';
+import { criterion } from '../../../store/modules/message/data';
 
 export default function CriteriaTableGenerator() {
   const dispatch = useDispatch();
   const criteria = useSelector(state => state.message.criteria);
+  const keepEase = useSelector(state => state.message.keepEase);
 
   const actions = [
     {
@@ -15,12 +17,7 @@ export default function CriteriaTableGenerator() {
       onClick: (evt, data) => {
         console.log(evt, data);
 
-        dispatch(
-          setupFilters({
-            criteria,
-            data: data.map(d => d.name),
-          })
-        );
+        dispatch(setupFilters({ filters: data }));
 
         return null;
       },
@@ -30,14 +27,18 @@ export default function CriteriaTableGenerator() {
   return (
     <Container>
       {criteria}
-      {(() => {
-        switch (criteria) {
-          case 'Professores Específicos':
-            return <ProfessoresDataTable actions={actions} />;
-          default:
-            return <></>;
-        }
-      })()}
+      {!keepEase ? (
+        (() => {
+          switch (criteria) {
+            case criterion.PROFESSORES:
+              return <ProfessoresDataTable actions={actions} />;
+            default:
+              return <></>;
+          }
+        })()
+      ) : (
+        <></>
+      )}
     </Container>
   );
 }
