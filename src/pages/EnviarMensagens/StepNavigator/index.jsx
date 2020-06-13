@@ -13,10 +13,13 @@ export default function StepNavigator({
   onCancel,
   notCancelable,
   submit,
+  centered,
+  confirmLabel,
+  confirmIcon: ConfirmIcon,
 }) {
   const dispatch = useDispatch();
   return (
-    <Container>
+    <Container centered={centered}>
       {notCancelable ? (
         <div />
       ) : (
@@ -35,7 +38,7 @@ export default function StepNavigator({
         kind="confirm"
         onClick={() => onConfirm(dispatch)}
       >
-        Próximo <FaArrowRight />
+        {confirmLabel} <ConfirmIcon />
       </Button>
     </Container>
   );
@@ -46,6 +49,9 @@ StepNavigator.propTypes = {
   onCancel: PropTypes.func,
   notCancelable: PropTypes.bool,
   submit: PropTypes.bool,
+  centered: PropTypes.bool,
+  confirmLabel: PropTypes.string,
+  confirmIcon: PropTypes.func,
 };
 
 StepNavigator.defaultProps = {
@@ -53,4 +59,7 @@ StepNavigator.defaultProps = {
   onCancel: dispatch => dispatch(prevStep()),
   notCancelable: false,
   submit: false,
+  centered: false,
+  confirmLabel: 'Próximo',
+  confirmIcon: FaArrowRight,
 };

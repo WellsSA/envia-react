@@ -5,7 +5,7 @@ export const Container = styled.div`
   height: 50px;
   /* background: #f00; */
   display: flex;
-  justify-content: space-between;
+  justify-content: ${props => (props.centered ? 'center' : 'space-between')};
   align-items: center;
   padding: 0 20px;
 `;

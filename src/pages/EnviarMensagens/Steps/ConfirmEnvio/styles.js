@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { darken, transparentize } from 'polished';
-import { fonts } from '../../../styles/scale';
-import { getColor } from '../../../utils/themeHelper';
+import { fonts } from '~/styles/scale';
+import { getColor } from '~/utils/themeHelper';
 
 export const Container = styled.div`
   display: flex;
@@ -78,4 +78,14 @@ export const Aluno = styled.li`
   &::before {
     content: '\\27A4  ';
   }
+`;
+
+export const Marker = styled.div`
+  width: 90%;
+  margin: 20px auto 10px auto;
+  height: 20px;
+  background: ${props => getColor(props, 'backgroundHighlight')};
+  border-radius: 0 0 12px 12px;
+  border-top: thin solid
+    ${props => darken(0.1, getColor(props, 'backgroundHighlight'))};
 `;

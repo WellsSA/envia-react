@@ -2,16 +2,15 @@ import React from 'react';
 import { FaTelegramPlane } from 'react-icons/fa';
 import { useDispatch, useSelector } from 'react-redux';
 import { NamedSection, ProgressBar } from '../../components';
-import { Button, Title } from '~/components/_common';
-import { nextStep, prevStep, setStep } from '~/store/modules/message/actions';
+import { setStep } from '~/store/modules/message/actions';
 import { Container, MessageStep } from './styles';
 import {
   MessageSetup,
   CriteriaSetup,
   AlunosSetup,
   PlatformsSetup,
+  ConfirmEnvio,
 } from './Steps';
-import { ConfirmEnvio, SendMessage } from './_components';
 
 export default function EnviarMensagens() {
   const dispatch = useDispatch();
@@ -43,9 +42,7 @@ export default function EnviarMensagens() {
         </MessageStep>
 
         <MessageStep active={step === 5}>
-          <Title>Confirme as informações do seu envio:</Title>
           <ConfirmEnvio />
-          <SendMessage />
         </MessageStep>
 
         {/* Nota: Este passo ficará para depois do MVP
@@ -53,10 +50,6 @@ export default function EnviarMensagens() {
           <SelectSendForm sendTo={sendTo} />
         </MessageStep>
         */}
-        <div>
-          <Button onClick={() => dispatch(prevStep())}>Prev</Button>
-          <Button onClick={() => dispatch(nextStep())}>next</Button>
-        </div>
       </NamedSection>
     </Container>
   );
