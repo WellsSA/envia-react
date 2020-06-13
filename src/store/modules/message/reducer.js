@@ -52,8 +52,7 @@ export default function message(state = INITIAL_STATE, action) {
         break;
       }
       case '@message/SETUP_ALUNOS': {
-        const { data } = action.payload;
-        draft.alunos = data;
+        draft.alunos = action.payload.alunos;
         break;
       }
       case '@message/SETUP_PLATFORMS': {

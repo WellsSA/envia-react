@@ -40,10 +40,10 @@ export function setupFiltersSuccess({ filters }) {
   };
 }
 
-export function setupAlunos({ data }) {
+export function setupAlunos({ alunos }) {
   return {
     type: '@message/SETUP_ALUNOS',
-    payload: { data },
+    payload: { alunos },
   };
 }
 

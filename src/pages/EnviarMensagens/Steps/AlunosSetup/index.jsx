@@ -7,8 +7,9 @@ import { Title } from '~/components/_common';
 import api from '~/services/api';
 
 function AlunosSetup() {
-  const keepEase = false;
-  const { criteria, filters } = useSelector(state => state.message);
+  const [keepEase, setKeepEase] = useState(false);
+
+  const { curStep, criteria, filters } = useSelector(state => state.message);
   const dispatch = useDispatch();
 
   const [tableData, setTableData] = useState([]);
@@ -25,6 +26,10 @@ function AlunosSetup() {
     })();
   }, [criteria, filters]);
 
+  useEffect(() => {
+    if (curStep === 3) setKeepEase(false);
+  }, [curStep]);
+
   return (
     <>
       <Title>Selecione os alunos que deseja enviar:</Title>
@@ -37,7 +42,16 @@ function AlunosSetup() {
               icon: 'check',
               onClick: async (evt, data) => {
                 if (data) {
-                  dispatch(setupAlunos({ data }));
+                  setKeepEase(true);
+                  dispatch(
+                    setupAlunos({
+                      alunos: data.map(({ id, name, responsible_id }) => ({
+                        id,
+                        name,
+                        responsible_id,
+                      })),
+                    })
+                  );
                 }
                 return null;
               },

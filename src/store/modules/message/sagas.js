@@ -116,9 +116,9 @@ export function* handlePrevStep() {
   }
 }
 
-export function* handleSetupAlunos({ payload: { data } }) {
+export function* handleSetupAlunos({ payload: { alunos } }) {
   try {
-    if (!data || data.length === 0) {
+    if (!alunos || alunos.length === 0) {
       throw Error('Selecione ao menos um aluno.');
     }
     yield put(nextStep());
