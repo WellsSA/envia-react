@@ -52,7 +52,7 @@ export function* handleSetupFilters({ payload: { filters } }) {
     const criteria = yield select(state => state.message.criteria);
 
     switch (criteria) {
-      case CRITERION.professores.value:
+      case CRITERION.TEACHERS.value:
         if (!filters || filters.length === 0) {
           throw Error('Selecione ao menos uma opção.');
         }

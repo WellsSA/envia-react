@@ -29,7 +29,7 @@ export default function CriteriaTableGenerator() {
       {!keepEase ? (
         (() => {
           switch (criteria) {
-            case CRITERION.professores.value:
+            case CRITERION.TEACHERS.value:
               return <ProfessoresDataTable actions={actions} />;
             default:
               return <></>;

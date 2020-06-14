@@ -11,4 +11,4 @@ const DEFAULT_ERROR = 'Houve um erro inesperado. Verifique sua conexão';
 const getErrorMessage = message =>
   ERRORS[message] ? ERRORS[message] : DEFAULT_ERROR;
 
-export { getErrorMessage };
+export { getErrorMessage, DEFAULT_ERROR };

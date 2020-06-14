@@ -10,7 +10,7 @@ export default function MailModal({ visible, onSetVisible, onConfirm }) {
   const saldoAtual = 10;
 
   function handleConfirm() {
-    onConfirm(PLATFORMS.email.value);
+    onConfirm(PLATFORMS.EMAIL.value);
     onSetVisible(false);
   }
 

@@ -1,67 +1,82 @@
-import { MdAccessAlarm } from 'react-icons/md';
-import { FaWhatsapp } from 'react-icons/fa';
+import {
+  FaWhatsapp,
+  FaGraduationCap,
+  FaBook,
+  FaUser,
+  FaUsers,
+  FaUserTie,
+} from 'react-icons/fa';
 import { GoComment, GoMail } from 'react-icons/go';
 
 const CRITERION = {
-  todos: {
+  ALL: {
     label: 'Todos os Alunos',
-    icon: MdAccessAlarm,
-    value: 'todos',
+    icon: FaUsers,
+    value: 'ALL',
   },
-  alunos: {
+  STUDENTS: {
     label: 'Alunos Específicos',
-    icon: MdAccessAlarm,
-    value: 'alunos',
+    icon: FaUser,
+    value: 'STUDENTS',
   },
-  turmas: {
+  CLASSES: {
     label: 'Turmas Específicas',
-    icon: MdAccessAlarm,
-    value: 'turmas',
+    icon: FaUsers,
+    value: 'CLASSES',
   },
-  professores: {
+  TEACHERS: {
     label: 'Professores Específicos',
-    icon: MdAccessAlarm,
-    value: 'professores',
+    icon: FaGraduationCap,
+    value: 'TEACHERS',
   },
-  cursos: {
+  COURSES: {
     label: 'Cursos Específicos',
-    icon: MdAccessAlarm,
-    value: 'cursos',
+    icon: FaBook,
+    value: 'COURSES',
   },
-  responsaveis: {
+  RESPONSIBLES: {
     label: 'Responsáveis',
-    icon: MdAccessAlarm,
-    value: 'responsaveis',
+    icon: FaUserTie,
+    value: 'RESPONSIBLES',
   },
 };
 
 const CRITERION_ARR = [
-  CRITERION.todos,
-  CRITERION.alunos,
-  CRITERION.turmas,
-  CRITERION.professores,
-  CRITERION.cursos,
-  CRITERION.responsaveis,
+  CRITERION.ALL,
+  CRITERION.STUDENTS,
+  CRITERION.CLASSES,
+  CRITERION.TEACHERS,
+  CRITERION.COURSES,
+  CRITERION.RESPONSIBLES,
 ];
 
 const PLATFORMS = {
-  email: {
+  EMAIL: {
     label: 'Email',
     icon: GoMail,
-    value: 'email',
+    value: 'EMAIL',
   },
-  sms: {
+  SMS: {
     label: 'SMS',
     icon: GoComment,
-    value: 'sms',
+    value: 'SMS',
   },
-  whatsapp: {
+  WHATSAPP: {
     label: 'Whatsapp',
     icon: FaWhatsapp,
-    value: 'whatsapp',
+    value: 'WHATSAPP',
   },
 };
 
-const PLATFORMS_ARR = [PLATFORMS.email, PLATFORMS.sms, PLATFORMS.whatsapp];
+const PLATFORMS_ARR = [PLATFORMS.EMAIL, PLATFORMS.SMS, PLATFORMS.WHATSAPP];
 
-export { CRITERION, CRITERION_ARR, PLATFORMS, PLATFORMS_ARR };
+const STEPS = {
+  MESSAGE: 1,
+  CRITERIA: 2,
+  STUDENTS: 3,
+  PLATFORMS: 4,
+  CONFIRM: 5,
+  aaaaaa: 6,
+};
+
+export { CRITERION, CRITERION_ARR, PLATFORMS, PLATFORMS_ARR, STEPS };

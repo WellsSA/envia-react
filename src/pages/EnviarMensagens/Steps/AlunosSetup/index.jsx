@@ -5,6 +5,7 @@ import { alunosBFF } from '~/pages/Alunos/alunos.util';
 import { setupAlunos } from '~/store/modules/message/actions';
 import { Title } from '~/components/_common';
 import api from '~/services/api';
+import { STEPS } from '~/store/modules/message/data';
 
 function AlunosSetup() {
   const [keepEase, setKeepEase] = useState(false);
@@ -15,7 +16,7 @@ function AlunosSetup() {
   const [tableData, setTableData] = useState([]);
 
   useEffect(() => {
-    if (!criteria) return;
+    if (!criteria || curStep !== STEPS.STUDENTS) return;
     (async () => {
       const { data, status } = await api.get(`filters/${criteria}`, {
         filters,
@@ -24,10 +25,10 @@ function AlunosSetup() {
 
       setTableData(alunosBFF(data));
     })();
-  }, [criteria, filters]);
+  }, [criteria, curStep, filters]);
 
   useEffect(() => {
-    if (curStep === 3) setKeepEase(false);
+    if (curStep === STEPS.STUDENTS) setKeepEase(false);
   }, [curStep]);
 
   return (

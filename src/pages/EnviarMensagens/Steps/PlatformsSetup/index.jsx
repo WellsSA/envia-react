@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 
 import { setupPlatforms } from '~/store/modules/message/actions';
-import { PLATFORMS_ARR } from '~/store/modules/message/data';
+import { PLATFORMS, PLATFORMS_ARR } from '~/store/modules/message/data';
 import { Title } from '~/components/_common';
 
 import StepNavigator from '../../StepNavigator';
@@ -36,13 +36,13 @@ const PlatformsSetup = () => {
     if (verifyIfExistsAndRemove(platform)) return;
 
     switch (platform) {
-      case 'email':
+      case PLATFORMS.EMAIL.value:
         setMailModalVisible(true);
         break;
-      case 'sms':
+      case PLATFORMS.SMS.value:
         alert('Não disponível ainda');
         break;
-      case 'whatsapp':
+      case PLATFORMS.WHATSAPP.value:
         alert('Não disponível ainda');
         break;
       default:

@@ -11,6 +11,7 @@ import {
   PlatformsSetup,
   ConfirmEnvio,
 } from './Steps';
+import { STEPS } from '~/store/modules/message/data';
 
 export default function EnviarMensagens() {
   const dispatch = useDispatch();
@@ -21,27 +22,27 @@ export default function EnviarMensagens() {
       <NamedSection name="Enviar mensagens" icon={FaTelegramPlane}>
         <ProgressBar
           step={step}
-          maxSteps={5}
+          maxSteps={Object.keys(STEPS).length}
           onBulletClick={_step => dispatch(setStep({ step: _step }))}
         />
 
-        <MessageStep active={step === 1}>
+        <MessageStep active={step === STEPS.MESSAGE}>
           <MessageSetup />
         </MessageStep>
 
-        <MessageStep active={step === 2}>
+        <MessageStep active={step === STEPS.CRITERIA}>
           <CriteriaSetup />
         </MessageStep>
 
-        <MessageStep active={step === 3}>
+        <MessageStep active={step === STEPS.STUDENTS}>
           <AlunosSetup />
         </MessageStep>
 
-        <MessageStep active={step === 4}>
+        <MessageStep active={step === STEPS.PLATFORMS}>
           <PlatformsSetup />
         </MessageStep>
 
-        <MessageStep active={step === 5}>
+        <MessageStep active={step === STEPS.CONFIRM}>
           <ConfirmEnvio />
         </MessageStep>
 
