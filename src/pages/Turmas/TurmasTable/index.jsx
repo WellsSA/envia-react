@@ -38,11 +38,12 @@ CursosTable.propTypes = {
   editableOptions: PropTypes.objectOf(PropTypes.func),
   actions: PropTypes.arrayOf(PropTypes.object),
   tableData: PropTypes.arrayOf(PropTypes.object).isRequired,
-  setTableData: PropTypes.func.isRequired,
+  setTableData: PropTypes.func,
   isSelectable: PropTypes.bool,
 };
 
 CursosTable.defaultProps = {
+  setTableData: () => {},
   editableOptions: {},
   actions: [],
   isSelectable: true,

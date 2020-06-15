@@ -2,6 +2,9 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Container } from './styles';
 import ProfessoresDataTable from './ProfessoresDataTable';
+import TurmasDataTable from './TurmasDataTable';
+import CursosDataTable from './CursosDataTable';
+import ResponsaveisDataTable from './ResponsaveisDataTable';
 import { setupFilters } from '~/store/modules/message/actions';
 import { CRITERION } from '~/store/modules/message/data';
 
@@ -31,6 +34,12 @@ export default function CriteriaTableGenerator() {
           switch (criteria) {
             case CRITERION.TEACHERS.value:
               return <ProfessoresDataTable actions={actions} />;
+            case CRITERION.CLASSES.value:
+              return <TurmasDataTable actions={actions} />;
+            case CRITERION.COURSES.value:
+              return <CursosDataTable actions={actions} />;
+            case CRITERION.RESPONSIBLES.value:
+              return <ResponsaveisDataTable actions={actions} />;
             default:
               return <></>;
           }

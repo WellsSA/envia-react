@@ -54,10 +54,10 @@ export function setupPlatforms({ platforms }) {
   };
 }
 
-export function setStep({ step }) {
+export function setStep({ step, verify = true }) {
   return {
     type: '@message/SET_STEP',
-    payload: { step },
+    payload: { step, verify },
   };
 }
 

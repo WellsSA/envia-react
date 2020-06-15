@@ -3,11 +3,11 @@ import { notifySuccess, notifyError } from '../../../utils/notifyHelper';
 import {
   nextStep,
   setupFiltersSuccess,
-  prevStep,
   setupMessage,
+  setStep,
 } from './actions';
 
-import { CRITERION } from './data';
+import { CRITERION, STEPS } from './data';
 
 export function* handleSetupMessage({ payload: { title, greeting, content } }) {
   try {
@@ -68,47 +68,57 @@ export function* handleSetupFilters({ payload: { filters } }) {
   }
 }
 
+export function hasNavigationInconsistency(messageState) {
+  if (!messageState.message.content) {
+    return {
+      error: 'você ainda não selecionou a mensagem',
+      stepToGo: STEPS.MESSAGE,
+    };
+  }
+  // TODO: STEP.CRITERIA
+  // if (!messageState.alunos.length) {
+  //   return {
+  //     error: 'você ainda não selecionou os alunos',
+  //     stepToGo: STEPS.STUDENTS,
+  //   };
+  // }
+
+  return false;
+}
+
+export function* handleSetupStep({ payload: { verify } }) {
+  if (!verify) return;
+  const messageState = yield select(state => state.message);
+  const inconsistency = hasNavigationInconsistency(messageState);
+
+  if (!inconsistency) return;
+
+  notifyError(inconsistency.error);
+  yield put(setStep({ step: inconsistency.stepToGo, verify: false }));
+}
+
 export function* handleNextStep() {
   try {
-    const step = yield select(state => state.message.curStep);
-    /**
-      1 => escrever mensagem
-      2 => selecionar aluno/responsavel => REMOVIDO
-      3 => selecionar filtros
-      4 => selecionar alunos
-      5 => selecionar forma de envio
-      6 => confirmar
-     */
-    switch (step) {
-      /* Nota: O passo 2 ficará pra depois do MVP
+    /* Nota: O passo 2 ficará pra depois do MVP
       case 2:
         return notifySuccess(
           'Muito bom! Agora é só escolher enviar para aluno ou responsável!'
         );
-        return yield put(nextStep());
       */
-      case 2:
+    const { curStep, ...messageState } = yield select(state => state.message);
+
+    if (hasNavigationInconsistency(messageState)) return;
+    switch (curStep) {
+      case STEPS.CRITERIA:
         return notifySuccess('Muito bom! Agora é só selecionar os filtros!');
-      case 3:
+      case STEPS.STUDENTS:
         return notifySuccess('Quase lá! Selecione os alunos!');
-      case 4:
+      case STEPS.PLATFORMS:
         return notifySuccess('Selecione sua forma de envio!');
-      case 5:
+      case STEPS.CONFIRM:
         return notifySuccess('Agora é só confirmar as informações!');
       default:
         return;
-    }
-  } catch (err) {
-    console.tron.error(err);
-    notifyError(err.message);
-  }
-}
-
-export function* handlePrevStep() {
-  try {
-    const step = yield select(state => state.message.curStep);
-    if (step === 2) {
-      yield put(prevStep());
     }
   } catch (err) {
     console.tron.error(err);
@@ -146,9 +156,8 @@ export default all([
   // takeLatest('@message/SETUP_SEND_TO', handleSetupSendTo),
   takeLatest('@message/SETUP_CRITERIA', handleSetupCriteria),
   takeLatest('@message/SETUP_FILTERS', handleSetupFilters),
-  takeLatest('@message/NEXT_STEP', handleNextStep),
-  takeLatest('@message/SET_STEP', handleNextStep),
-  takeLatest('@message/PREV_STEP', handlePrevStep),
   takeLatest('@message/SETUP_ALUNOS', handleSetupAlunos),
   takeLatest('@message/SETUP_PLATFORMS', handleSetupPlatforms),
+  takeLatest('@message/NEXT_STEP', handleNextStep),
+  takeLatest('@message/SET_STEP', handleSetupStep),
 ]);
