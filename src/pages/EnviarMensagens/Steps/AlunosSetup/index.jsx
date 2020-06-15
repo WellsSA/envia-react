@@ -26,10 +26,10 @@ function AlunosSetup() {
     }
     setConfirmAll(false);
     (async () => {
-      const { data, status } = await api.get(
+      const { data, status } = await api.post(
         `filters/${CRITERION[criteria].endpoint}`,
         {
-          filters,
+          filters: filters.map(({ id }) => id),
         }
       );
       if (status !== 200) return;
@@ -80,6 +80,7 @@ function AlunosSetup() {
                   dispatch(clear({ criteria: '', filters: [] }));
                   setKeepEase(true);
                 }}
+                onConfirm={() => dispatch(setupAlunos({ id: -1 }))}
               />
             </>
           ) : (

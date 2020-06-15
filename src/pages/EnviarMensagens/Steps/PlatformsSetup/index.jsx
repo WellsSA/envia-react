@@ -71,6 +71,7 @@ const PlatformsSetup = () => {
         ))}
       </Container>
       <StepNavigator
+        centered
         onConfirm={() => dispatch(setupPlatforms({ platforms }))}
       />
     </>
