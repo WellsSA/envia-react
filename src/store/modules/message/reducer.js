@@ -59,6 +59,12 @@ export default function message(state = INITIAL_STATE, action) {
         draft.platforms = action.payload.platforms;
         break;
       }
+      case '@message/CLEAR': {
+        Object.keys(action.payload).forEach(key => {
+          draft[key] = action.payload[key];
+        });
+        break;
+      }
       case '@auth/SIGN_OUT': {
         draft.curStep = INITIAL_STATE.curStep;
         draft.message = INITIAL_STATE.message;

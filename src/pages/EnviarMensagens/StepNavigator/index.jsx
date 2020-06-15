@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import { FaArrowLeft, FaArrowRight } from 'react-icons/fa';
 import { useDispatch } from 'react-redux';
 import { Container } from './styles';
-import { prevStep } from '../../../store/modules/message/actions';
+import { prevStep, nextStep } from '../../../store/modules/message/actions';
 import { Button } from '../../../components/_common';
 
 export default function StepNavigator({
@@ -55,7 +55,7 @@ StepNavigator.propTypes = {
 };
 
 StepNavigator.defaultProps = {
-  onConfirm: () => {},
+  onConfirm: dispatch => dispatch(nextStep()),
   onCancel: dispatch => dispatch(prevStep()),
   notCancelable: false,
   submit: false,

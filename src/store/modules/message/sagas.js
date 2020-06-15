@@ -5,6 +5,7 @@ import {
   setupFiltersSuccess,
   setupMessage,
   setStep,
+  prevStep,
 } from './actions';
 
 import { CRITERION, STEPS } from './data';
@@ -151,6 +152,15 @@ export function* handleSetupPlatforms({ payload: { platforms } }) {
   }
 }
 
+export function* handleClear() {
+  try {
+    yield put(prevStep());
+  } catch (err) {
+    console.tron.error(err);
+    notifyError(err.message);
+  }
+}
+
 export default all([
   takeLatest('@message/CHANGE_MESSAGE', handleSetupMessage),
   // takeLatest('@message/SETUP_SEND_TO', handleSetupSendTo),
@@ -160,4 +170,5 @@ export default all([
   takeLatest('@message/SETUP_PLATFORMS', handleSetupPlatforms),
   takeLatest('@message/NEXT_STEP', handleNextStep),
   takeLatest('@message/SET_STEP', handleSetupStep),
+  takeLatest('@message/CLEAR', handleClear),
 ]);

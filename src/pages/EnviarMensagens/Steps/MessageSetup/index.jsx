@@ -62,7 +62,7 @@ export default function MessageSetup() {
           </div>
         </div>
 
-        <StepNavigator submit notCancelable />
+        <StepNavigator submit notCancelable onConfirm={() => {}} />
       </Form>
     </Container>
   );

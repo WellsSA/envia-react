@@ -76,7 +76,6 @@ const STEPS = {
   STUDENTS: 3,
   PLATFORMS: 4,
   CONFIRM: 5,
-  aaaaaa: 6,
 };
 
 export { CRITERION, CRITERION_ARR, PLATFORMS, PLATFORMS_ARR, STEPS };

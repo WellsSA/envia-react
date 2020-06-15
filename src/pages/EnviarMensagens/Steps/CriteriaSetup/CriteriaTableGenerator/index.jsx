@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Container } from './styles';
 import ProfessoresDataTable from './ProfessoresDataTable';
@@ -12,16 +12,20 @@ export default function CriteriaTableGenerator() {
   const dispatch = useDispatch();
   const { criteria, keepEase } = useSelector(state => state.message);
 
+  useEffect(() => {
+    if (criteria === CRITERION.STUDENTS.value) {
+      dispatch(setupFilters({ filters: ['students'] }));
+    } else if (criteria === CRITERION.ALL.value) {
+      dispatch(setupFilters({ filters: ['all'] }));
+    }
+  }, [criteria, dispatch]);
+
   const actions = [
     {
       tooltip: 'Aplicar critérios selecionados',
       icon: 'check',
-      onClick: (evt, data) => {
-        console.log(evt, data);
-
+      onClick: (_, data) => {
         dispatch(setupFilters({ filters: data }));
-
-        return null;
       },
     },
   ];

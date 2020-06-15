@@ -72,3 +72,10 @@ export function prevStep() {
     type: '@message/PREV_STEP',
   };
 }
+
+export function clear(state) {
+  return {
+    type: '@message/CLEAR',
+    payload: { ...state },
+  };
+}
