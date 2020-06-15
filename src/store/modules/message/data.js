@@ -13,31 +13,37 @@ const CRITERION = {
     label: 'Todos os Alunos',
     icon: FaUsers,
     value: 'ALL',
+    endpoint: 'todos',
   },
   STUDENTS: {
     label: 'Alunos Específicos',
     icon: FaUser,
     value: 'STUDENTS',
+    endpoint: 'alunos',
   },
   CLASSES: {
     label: 'Turmas Específicas',
     icon: FaUsers,
     value: 'CLASSES',
+    endpoint: 'turmas',
   },
   TEACHERS: {
     label: 'Professores Específicos',
     icon: FaGraduationCap,
     value: 'TEACHERS',
+    endpoint: 'professores',
   },
   COURSES: {
     label: 'Cursos Específicos',
     icon: FaBook,
     value: 'COURSES',
+    endpoint: 'cursos',
   },
   RESPONSIBLES: {
     label: 'Responsáveis',
     icon: FaUserTie,
     value: 'RESPONSIBLES',
+    endpoint: 'responsaveis',
   },
 };
 

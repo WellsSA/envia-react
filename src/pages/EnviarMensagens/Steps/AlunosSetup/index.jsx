@@ -26,9 +26,12 @@ function AlunosSetup() {
     }
     setConfirmAll(false);
     (async () => {
-      const { data, status } = await api.get(`filters/${criteria}`, {
-        filters,
-      });
+      const { data, status } = await api.get(
+        `filters/${CRITERION[criteria].endpoint}`,
+        {
+          filters,
+        }
+      );
       if (status !== 200) return;
 
       setTableData(alunosBFF(data));
