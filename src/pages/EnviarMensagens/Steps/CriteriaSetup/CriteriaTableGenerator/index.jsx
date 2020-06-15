@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Container } from './styles';
 import ProfessoresDataTable from './ProfessoresDataTable';
@@ -11,14 +11,6 @@ import { CRITERION } from '~/store/modules/message/data';
 export default function CriteriaTableGenerator() {
   const dispatch = useDispatch();
   const { criteria, keepEase } = useSelector(state => state.message);
-
-  useEffect(() => {
-    if (criteria === CRITERION.STUDENTS.value) {
-      dispatch(setupFilters({ filters: ['students'] }));
-    } else if (criteria === CRITERION.ALL.value) {
-      dispatch(setupFilters({ filters: ['all'] }));
-    }
-  }, [criteria, dispatch]);
 
   const actions = [
     {

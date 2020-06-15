@@ -2,13 +2,20 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import { Container, Content } from './styles';
 import Criterion from './Criterion';
-import { setupCriteria } from '~/store/modules/message/actions';
-import { CRITERION_ARR } from '~/store/modules/message/data';
+import { setupCriteria, setupFilters } from '~/store/modules/message/actions';
+import { CRITERION, CRITERION_ARR } from '~/store/modules/message/data';
 
 export default function Criteria() {
   const dispatch = useDispatch();
 
-  const setCriteria = criteria => dispatch(setupCriteria({ criteria }));
+  const setCriteria = criteria => {
+    dispatch(setupCriteria({ criteria }));
+
+    if (criteria === CRITERION.STUDENTS.value)
+      dispatch(setupFilters({ filters: ['students'] }));
+    else if (criteria === CRITERION.ALL.value)
+      dispatch(setupFilters({ filters: ['all'] }));
+  };
 
   return (
     <Container>

@@ -74,7 +74,7 @@ function AlunosSetup() {
               <StepNavigator
                 centered
                 onCancel={() => {
-                  dispatch(clear({ criteria: '' }));
+                  dispatch(clear({ criteria: '', filters: [] }));
                   setKeepEase(true);
                 }}
               />

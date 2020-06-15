@@ -70,9 +70,15 @@ export default function ConfirmEnvio() {
         <Column>
           <ColumnTitle>Alunos:</ColumnTitle>
           <Alunos>
-            {alunos.map(({ id, name }) => (
-              <Aluno key={id}>{name}</Aluno>
-            ))}
+            {criteria === CRITERION.ALL.value ? (
+              <Aluno>Todos os alunos</Aluno>
+            ) : (
+              <>
+                {alunos.map(({ id, name }) => (
+                  <Aluno key={id}>{name}</Aluno>
+                ))}
+              </>
+            )}
           </Alunos>
         </Column>
       </Container>

@@ -23,10 +23,11 @@ const PlatformsSetup = () => {
   const verifyIfExistsAndRemove = platform => {
     const isMarked = platforms.findIndex(_platform => _platform === platform);
     if (isMarked !== -1) {
-      setPlatforms(prev => [
-        ...prev.splice(0, isMarked),
-        ...prev.splice(isMarked + 1),
-      ]);
+      setPlatforms(prev => {
+        const next = [...prev];
+        next.splice(isMarked, 1);
+        return next;
+      });
       return true;
     }
     return false;
