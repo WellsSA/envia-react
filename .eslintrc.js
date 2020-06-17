@@ -40,6 +40,7 @@ module.exports = {
     'no-await-in-loop': 'off',
     'no-restricted-syntax': 'off',
     'react/no-array-index-key': 'off',
+    'no-return-assign': 'off',
   },
   settings: {
     'import/resolver': {

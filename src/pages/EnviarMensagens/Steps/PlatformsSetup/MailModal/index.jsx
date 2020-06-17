@@ -1,13 +1,34 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 import { ModalHelper } from '~/components';
-import { PLATFORMS } from '~/store/modules/message/data';
-import QuantityDisplayer from '../QuantityDisplayer';
+import { PLATFORMS, STEPS } from '~/store/modules/message/data';
+import QuantityDisplayer from './QuantityDisplayer';
+import api from '~/services/api';
 
 export default function MailModal({ visible, onSetVisible, onConfirm }) {
-  const qtdAlunos = useSelector(state => state.message.alunos).length;
-  const saldoAtual = 10;
+  const { curStep, alunos } = useSelector(state => state.message);
+
+  const [credits, setCredits] = useState(0);
+  const quantity =
+    alunos.length +
+    alunos.reduce((acc, cur) => (acc += cur.responsible_id !== '1'), 0);
+
+  useEffect(() => {
+    if (curStep !== STEPS.PLATFORMS) return;
+
+    const getCredits = async () => {
+      const { data, status } = await api.get('credit/e-mail');
+
+      if (status !== 200) return;
+
+      setCredits(data.credits);
+    };
+
+    getCredits();
+  }, [curStep]);
+
+  console.log({ alunos: JSON.stringify(alunos) });
 
   function handleConfirm() {
     onConfirm(PLATFORMS.EMAIL.value);
@@ -24,8 +45,8 @@ export default function MailModal({ visible, onSetVisible, onConfirm }) {
     >
       <QuantityDisplayer
         label="e-mails"
-        quantity={`${qtdAlunos}`}
-        balance={`${saldoAtual}`}
+        quantity={`${quantity}`}
+        balance={`${credits}`}
       />
       <></>
     </ModalHelper>

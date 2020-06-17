@@ -7,19 +7,19 @@ export default function QuantityDisplayer({ label, quantity, balance }) {
     <Container>
       <div>
         <Label>
-          A <strong>quantidade total</strong> de {label}:
+          <strong>Quantidade total</strong> de {label} neste envio:
         </Label>
         <Value>{quantity}</Value>
       </div>
       <div>
         <Label>
-          Seu <strong>saldo atual</strong> de {label}:
+          <strong>Seus créditos</strong> de {label}:
         </Label>
         <Value>{balance}</Value>
       </div>
       <SubMark>
-        * Ao clicar em confirmar, a quantidade de {label} será descontada do seu
-        saldo atual
+        * A quantidade total é calculada com base na quantidade de alunos
+        acrescida à quantidade de cópias para responsáveis.
       </SubMark>
     </Container>
   );

@@ -23,6 +23,7 @@ export default function Configuracoes() {
 
   const addCredit = (kind, quantity) =>
     dispatch(addCredits({ kind, quantity }));
+
   return (
     <>
       <CreditModal
