@@ -8,6 +8,9 @@ export const Container = styled.div`
   background: ${({ theme: { colors } }) =>
     `linear-gradient(-90deg, ${colors.primary}, ${colors.highlight})`};
   /* padding: 2px; */
+  position: fixed;
+  width: 100%;
+  z-index: 100;
 `;
 
 export const Content = styled.div`

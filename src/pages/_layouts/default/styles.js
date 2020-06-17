@@ -6,6 +6,11 @@ export const Wrapper = styled.div`
   /* background: linear-gradient(-90deg, #558fc6, #33b5e5); */
   background: ${props => getColor(props, 'background')};
   overflow-x: hidden;
+
+  ::-webkit-scrollbar {
+    width: 0px;
+    background: transparent; /* make scrollbar transparent */
+  }
 `;
 
 export const Container = styled.div`
@@ -13,4 +18,5 @@ export const Container = styled.div`
   margin: 50px auto;
   display: flex;
   flex-direction: column;
+  padding-top: 80px;
 `;

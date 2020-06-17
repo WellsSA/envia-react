@@ -4,7 +4,7 @@ import { fonts } from '../../../../../styles/scale';
 
 export const Container = styled.div`
   display: block;
-  position: absolute;
+  position: fixed;
   height: 100vh;
   top: 0;
   right: 0;
