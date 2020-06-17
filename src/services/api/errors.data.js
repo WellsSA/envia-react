@@ -1,5 +1,7 @@
 const ERRORS = {
   // Users
+  'unauthorized access. verify your e-mail and password':
+    'Acesso não autorizado. Verifique seu login e senha.',
   'e-mail already in use': 'Já existe uma conta com este e-mail',
   'failed on delete user': 'Falha ao excluir usuário',
   // Alunos

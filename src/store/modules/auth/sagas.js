@@ -1,17 +1,20 @@
 import { takeLatest, call, put, all } from 'redux-saga/effects';
-import history from '../../../services/history';
-import api from '../../../services/api';
+import history from '~/services/history';
+import api from '~/services/api';
 import { signInSuccess, signFailure } from './actions';
-import { notifySuccess, notifyError } from '../../../utils/notifyHelper';
+import { notifySuccess, notifyError } from '~/utils/notifyHelper';
 
 export function* signIn({ payload: { email, password } }) {
   try {
-    const response = yield call(api.post, 'sessions', {
+    const { data, status } = yield call(api.post, 'sessions', {
       email,
       password,
     });
 
-    const { token, user } = response.data;
+    console.log('aaaa', { data, status });
+    if (status !== 200) throw Error('Unauthorized');
+
+    const { token, user } = data;
 
     api.defaults.headers.Authorization = `Bearer ${token}`;
 
@@ -20,7 +23,6 @@ export function* signIn({ payload: { email, password } }) {
     history.push('/dashboard');
     notifySuccess('Ola! Bem vindo ao Envia!');
   } catch (err) {
-    notifyError('Falha na autenticação, verifique seus dados.');
     yield put(signFailure());
   }
 }
