@@ -32,7 +32,7 @@ export default function Header() {
           <NavItem>
             <MdHelpOutline />
           </NavItem>
-          <NavItem onClick={handleToggleSidebar}>
+          <NavItem onMouseEnter={handleToggleSidebar}>
             <AiOutlineBars />
           </NavItem>
         </MainNavigation>

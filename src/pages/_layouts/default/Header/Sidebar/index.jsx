@@ -20,7 +20,7 @@ export default function Sidebar({ isOpen, onSetOpen }) {
           <NavGroup clickHandler={closeSidebar} />
         </nav>
       </Container>
-      <Background visible={isOpen} onClick={closeSidebar} />
+      <Background visible={isOpen} onMouseEnter={closeSidebar} />
     </>
   );
 }

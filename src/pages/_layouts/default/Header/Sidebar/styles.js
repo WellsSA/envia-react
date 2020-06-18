@@ -32,10 +32,12 @@ export const Container = styled.div`
     background: ${props => getColor(props, 'backgroundHighlight')};
     height: calc(100% - 80px);
     overflow-y: auto;
+    overflow-x: hidden;
   }
 `;
 
 export const Background = styled.div`
+  margin-top: 80px;
   display: ${props => (props.visible ? 'block' : 'none')};
   transition: display 0.2s ease-in-out;
   position: fixed;
