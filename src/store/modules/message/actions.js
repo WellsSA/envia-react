@@ -79,3 +79,9 @@ export function clear(state) {
     payload: { ...state },
   };
 }
+
+export function sendMessage() {
+  return {
+    type: '@message/SEND_MESSAGE',
+  };
+}

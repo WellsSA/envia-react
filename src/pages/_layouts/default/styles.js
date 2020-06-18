@@ -15,9 +15,9 @@ export const Wrapper = styled.div`
 
 export const Container = styled.div`
   padding: 0 20px;
-  margin: 50px auto;
+  margin: 50px auto 0 auto;
   display: flex;
   flex-direction: column;
   padding-top: 80px;
-  min-height: calc(97% - 100px);
+  min-height: calc(97% - 50px);
 `;

@@ -1,12 +1,12 @@
-import { takeLatest, put, all, select } from 'redux-saga/effects';
-import { notifyError } from '../../../utils/notifyHelper';
+import { takeLatest, put, all, select, call } from 'redux-saga/effects';
+import { notifyError, notifySuccess } from '../../../utils/notifyHelper';
 import {
   nextStep,
   setupFiltersSuccess,
   setupMessage,
   prevStep,
 } from './actions';
-
+import api from '~/services/api';
 import { CRITERION } from './data';
 import { handleNextStep, handleSetupStep } from './sagas.navigation';
 
@@ -89,6 +89,33 @@ export function* handleClear() {
   }
 }
 
+export function* handleSendMessage() {
+  try {
+    const { message, alunos } = yield select(state => state.message);
+
+    const { data, status } = yield call(api.post, 'send/email', {
+      message,
+      to: alunos.map(({ id }) => id),
+      options: {
+        replyToResponsible: true,
+      },
+    });
+
+    if (data.email.error) {
+      return notifyError(
+        'Houve um erro ao enviar os e-mails. Tente novamente mais tarde.'
+      );
+    }
+
+    console.log('sendMessage', { data, status });
+
+    notifySuccess('Enviando mensagens!...');
+  } catch (err) {
+    console.tron.error(err);
+    notifyError(err.message);
+  }
+}
+
 export default all([
   takeLatest('@message/CHANGE_MESSAGE', handleSetupMessage),
   // takeLatest('@message/SETUP_SEND_TO', handleSetupSendTo),
@@ -99,4 +126,5 @@ export default all([
   takeLatest('@message/NEXT_STEP', handleNextStep),
   takeLatest('@message/SET_STEP', handleSetupStep),
   takeLatest('@message/CLEAR', handleClear),
+  takeLatest('@message/SEND_MESSAGE', handleSendMessage),
 ]);

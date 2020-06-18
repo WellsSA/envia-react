@@ -13,7 +13,7 @@ import {
   Aluno,
   Marker,
 } from './styles';
-import { prevStep } from '~/store/modules/message/actions';
+import { prevStep, sendMessage } from '~/store/modules/message/actions';
 import { Title } from '~/components/_common';
 import StepNavigator from '../../StepNavigator';
 import Criterion from '../CriteriaSetup/Criteria/Criterion';
@@ -29,10 +29,7 @@ export default function ConfirmEnvio() {
   } = useSelector(state => state.message);
 
   function handleConfirm() {
-    // if (platforms.email) {
-    //   alert('sending mail!');
-    // }
-    alert('sending...');
+    dispatch(sendMessage());
   }
   return (
     <>
