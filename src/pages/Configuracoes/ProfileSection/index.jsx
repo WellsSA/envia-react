@@ -22,11 +22,11 @@ function ProfileSection({ onAddCredit }) {
         label="Nome da escola:"
         placeholder={placeholder.name}
       />
-      <InputWrapper label="Quantidade de e-mail:" labelOnly styled={false}>
+      <InputWrapper label="Quantidade de e-mail:" labelOnly styled="none">
         <span>{mailQuantity}</span>
         <Button onClick={() => onAddCredit('e-mail')}>Adquirir mais</Button>
       </InputWrapper>
-      <InputWrapper label="Quantidade de SMS:" labelOnly styled={false}>
+      <InputWrapper label="Quantidade de SMS:" labelOnly styled="none">
         <span>{smsQuantity}</span>
         <Button onClick={() => onAddCredit('sms')}>Adquirir mais</Button>
       </InputWrapper>

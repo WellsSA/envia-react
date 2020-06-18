@@ -73,4 +73,29 @@ export const Container = styled.div`
         width: 80%;
       }
     `};
+
+  ${props =>
+    props.styled === 'gray' &&
+    css`
+      label {
+        text-transform: uppercase;
+        color: ${lighten(0.2, getColor(props, 'strongText'))};
+        margin: 5px 0;
+      }
+
+      input,
+      textarea {
+        padding: 15px;
+        margin: 0 0 10px;
+        color: ${getColor(props, 'text')};
+        background: ${transparentize(
+          0.5,
+          darken(0.05, getColor(props, 'backgroundHighlight'))
+        )};
+
+        &::placeholder {
+          color: ${transparentize(0.5, getColor(props, 'text'))};
+        }
+      }
+    `};
 `;

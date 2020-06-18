@@ -30,7 +30,7 @@ import SelectInput from './SelectInput';
   --- labelOnly wrapper ---
   <InputWrapper
     labelOnly
-    styled={false}
+    styled="none"
   >
     {children}
   </InputWrapper>
@@ -51,7 +51,7 @@ export default function InputWrapper({
   ...rest
 }) {
   const name = id;
-  const _styled = type === 'select' ? 'select' : styled ? 'default' : 'none';
+  const _styled = type === 'select' ? 'select' : styled;
   return (
     <Container styled={_styled}>
       {label && <Label htmlFor={id}>{label}</Label>}
@@ -76,7 +76,7 @@ InputWrapper.propTypes = {
   label: PropTypes.string,
   type: PropTypes.string,
   labelOnly: PropTypes.bool,
-  styled: PropTypes.bool,
+  styled: PropTypes.string,
   children: PropTypes.oneOfType([PropTypes.func, PropTypes.node]),
   options: PropTypes.arrayOf(PropTypes.object),
   defaultValue: PropTypes.string,
@@ -86,7 +86,7 @@ InputWrapper.defaultProps = {
   id: Math.random(18).toString(),
   label: '',
   labelOnly: false,
-  styled: true,
+  styled: 'default',
   children: <></>,
   type: 'text',
   options: [{}],

@@ -78,7 +78,7 @@ export default function AlunosModal({
           <InputWrapper
             label="Selecione a(s) turma(s) do aluno:"
             labelOnly
-            styled={false}
+            styled="none"
           >
             <Turmas
               initialData={
@@ -89,7 +89,7 @@ export default function AlunosModal({
             />
           </InputWrapper>
           <DatePlace>
-            <InputWrapper label="Data de nascimento:" labelOnly styled={false}>
+            <InputWrapper label="Data de nascimento:" labelOnly styled="none">
               <EnviaKeyboardDatePicker
                 id="birthDate"
                 name="birthDate"
@@ -101,7 +101,7 @@ export default function AlunosModal({
               id="isResponsible"
               label="O aluno é o próprio responsável?"
               labelOnly
-              styled={false}
+              styled="none"
             >
               <Radios value={isResponsible} onTap={setIsResponsible} />
             </InputWrapper>
