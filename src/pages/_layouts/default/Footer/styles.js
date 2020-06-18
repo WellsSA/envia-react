@@ -1,8 +1,11 @@
 import styled from 'styled-components';
+import { transparentize } from 'polished';
+import { getColor } from '~/utils/themeHelper';
 
 export const Mark = styled.div`
   width: 100%;
-  background: #fafa;
+  color: ${props => getColor(props, 'contrastText')};
+  background: ${props => getColor(props, 'strongText')};
   height: 3%;
   display: flex;
   align-items: center;
@@ -11,9 +14,10 @@ export const Mark = styled.div`
 
 export const Container = styled.div`
   width: 100%;
-  color: #fff;
-  background: #000;
   display: flex;
+  color: ${props => getColor(props, 'contrastText')};
+  background: ${({ theme: { colors } }) =>
+    `linear-gradient(-90deg, ${colors.highlight}, ${colors.primary})`};
 `;
 
 export const Links = styled.div`
@@ -22,17 +26,27 @@ export const Links = styled.div`
   text-align: left;
   flex-direction: column;
   justify-content: center;
-  padding-left: 5%;
+  padding: 25px 0 40px 5%;
   /* align-items: center; */
+
   li {
-    cursor: pointer;
     padding-top: 10px;
     padding-left: 20%;
+
+    a {
+      cursor: pointer;
+      color: ${props => getColor(props, 'contrastText')};
+
+      &:hover {
+        color: ${props => transparentize(0.2, getColor(props, 'contrastText'))};
+      }
+    }
   }
 `;
 
 export const Image = styled.div`
   flex: 1;
+  opacity: 0.7;
   display: flex;
   justify-content: center;
   align-items: center;

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 
 import enviosPNG from '~/assets/envios.png';
 import { Mark, Container, Links, Image } from './styles';
@@ -69,4 +69,4 @@ function Footer() {
   );
 }
 
-export default Footer;
+export default memo(Footer);
