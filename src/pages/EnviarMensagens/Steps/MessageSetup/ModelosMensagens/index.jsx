@@ -1,14 +1,29 @@
-import React from 'react';
+import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import { FiFileText } from 'react-icons/fi';
 import { Container } from './styles';
+import ModelosModal from './ModelosModal';
 
-function ModelosMensagens() {
+function ModelosMensagens({ onSelect }) {
+  const [modalVisible, setModalVisible] = useState(false);
+
   return (
-    <Container onClick={() => alert('not working yet')}>
-      <FiFileText />
-      <span>Escolher modelo</span>
-    </Container>
+    <>
+      <ModelosModal
+        visible={modalVisible}
+        onSetVisible={setModalVisible}
+        onSubmit={data => onSelect(data)}
+      />
+      <Container onClick={() => setModalVisible(true)}>
+        <FiFileText />
+        <span>Escolher modelo</span>
+      </Container>
+    </>
   );
 }
+
+ModelosMensagens.propTypes = {
+  onSelect: PropTypes.func.isRequired,
+};
 
 export default ModelosMensagens;

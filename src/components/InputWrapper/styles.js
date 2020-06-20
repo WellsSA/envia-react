@@ -18,6 +18,10 @@ export const Container = styled.div`
     margin: 4px 0;
     pointer-events: auto;
     color: ${props => transparentize(0.1, getColor(props, 'text'))};
+
+    &:disabled {
+      color: ${props => transparentize(0.5, getColor(props, 'text'))};
+    }
   }
 
   > span {
