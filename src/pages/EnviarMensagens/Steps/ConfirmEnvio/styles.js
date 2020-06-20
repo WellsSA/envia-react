@@ -39,7 +39,7 @@ export const Column = styled.div`
     p {
       color: ${props => transparentize(0.4, getColor(props, 'text'))};
       font-size: ${fonts.fontSize};
-      white-space: pre;
+      white-space: pre-wrap;
     }
   }
 `;

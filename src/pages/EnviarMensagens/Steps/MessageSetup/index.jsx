@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { Form } from '@rocketseat/unform';
 import { Container, FormHeader, FormSection } from './styles';
 import { changeMessage } from '~/store/modules/message/actions';
@@ -10,7 +10,6 @@ import ModelosMensagens from './ModelosMensagens';
 
 export default function MessageSetup() {
   const dispatch = useDispatch();
-  const storedMessage = useSelector(state => state.message.message);
   const [currentMessage, setCurrentMessage] = useState();
 
   function handleSubmit({ title, greeting, content }) {
@@ -29,10 +28,7 @@ export default function MessageSetup() {
       <FormHeader>
         <ModelosMensagens onSelect={data => setCurrentMessage(data)} />
       </FormHeader>
-      <Form
-        initialData={currentMessage || storedMessage}
-        onSubmit={handleSubmit}
-      >
+      <Form initialData={currentMessage} onSubmit={handleSubmit}>
         <FormSection>
           <InputWrapper
             id="title"
