@@ -1,11 +1,12 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { Form, Input } from '@rocketseat/unform';
-import { FiFileText } from 'react-icons/fi';
-import { Container, FormHeader, FormSection, ModelosMensagens } from './styles';
+import { Form } from '@rocketseat/unform';
+import { Container, FormHeader, FormSection } from './styles';
 import { changeMessage } from '~/store/modules/message/actions';
 import { InputWrapper } from '~/components';
 import StepNavigator from '../../StepNavigator';
+
+import ModelosMensagens from './ModelosMensagens';
 
 export default function MessageSetup() {
   const dispatch = useDispatch();
@@ -24,10 +25,7 @@ export default function MessageSetup() {
   return (
     <Container>
       <FormHeader>
-        <ModelosMensagens onClick={() => alert('not working yet')}>
-          <FiFileText />
-          <span>Escolher modelo</span>
-        </ModelosMensagens>
+        <ModelosMensagens />
       </FormHeader>
       <Form onSubmit={handleSubmit}>
         <FormSection>
