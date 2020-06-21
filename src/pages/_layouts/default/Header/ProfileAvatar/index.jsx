@@ -12,7 +12,7 @@ import { signOut } from '~/store/modules/auth/actions';
 
 export default function ProfileAvatar() {
   const dispatch = useDispatch();
-  const [optionBarOpen, setOptionBarOpen] = useState(true);
+  const [optionBarOpen, setOptionBarOpen] = useState(false);
   // const [file, setFile] = useState();
 
   const toggleOptionBar = () => {

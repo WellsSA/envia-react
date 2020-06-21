@@ -42,3 +42,23 @@ export const NavItem = styled.div`
   font-size: ${fonts.iconFontSize};
   color: ${props => darken(0.15, getColor(props, 'icon'))};
 `;
+
+export const UserName = styled.div`
+  position: relative;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex: 1;
+  font-size: ${fonts.iconFontSize};
+  padding-left: 15px;
+  color: ${props => darken(0.15, getColor(props, 'icon'))};
+
+  span {
+    display: block;
+    position: absolute;
+    max-width: 90%;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+`;

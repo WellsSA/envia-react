@@ -1,15 +1,22 @@
 import React, { useState } from 'react';
-
+import { useSelector } from 'react-redux';
 import { FaBirthdayCake, FaHome } from 'react-icons/fa';
 import { AiOutlineBars } from 'react-icons/ai';
 import { MdHelpOutline } from 'react-icons/md';
 import { Link } from 'react-router-dom';
-import { Container, Content, MainNavigation, NavItem } from './styles';
+import {
+  Container,
+  Content,
+  MainNavigation,
+  NavItem,
+  UserName,
+} from './styles';
 
 import Sidebar from './Sidebar';
 import ProfileAvatar from './ProfileAvatar';
 
 export default function Header() {
+  const userName = useSelector(state => state.user.profile.name);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   function handleToggleSidebar() {
@@ -19,7 +26,12 @@ export default function Header() {
   return (
     <Container>
       <Content>
-        <ProfileAvatar />
+        <>
+          <ProfileAvatar />
+          <UserName>
+            <span>{userName}</span>
+          </UserName>
+        </>
         <MainNavigation>
           <Link to="/dashboard">
             <NavItem>
