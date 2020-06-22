@@ -1,11 +1,8 @@
 import React from 'react';
 
 import { FaCogs } from 'react-icons/fa';
-import {
-  SectionMarker,
-  InputWrapper,
-  ListDisplayer,
-} from '../../../components';
+import { SectionMarker, InputWrapper } from '~/components';
+import { List } from '~/components/_common';
 
 function ConfigSection() {
   const list = [
@@ -42,7 +39,7 @@ function ConfigSection() {
         placeholder={placeholder.password}
       />
       <InputWrapper label="Atualizar licença:" labelOnly noStyled>
-        <ListDisplayer list={list} />
+        <List list={list} />
       </InputWrapper>
     </section>
   );

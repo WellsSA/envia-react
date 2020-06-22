@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { fonts } from '../../styles/scale';
+import { fonts } from '~/styles/scale';
 
 export const Container = styled.ul`
   padding: 20px;

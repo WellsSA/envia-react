@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Container } from './styles';
 
-export default function Title({ list, onEmptyLabel }) {
+const List = ({ list, onEmptyLabel }) => {
   return (
     <Container>
       {list.length ? (
@@ -17,13 +17,15 @@ export default function Title({ list, onEmptyLabel }) {
       )}
     </Container>
   );
-}
+};
 
-Title.propTypes = {
+List.propTypes = {
   list: PropTypes.arrayOf(PropTypes.object).isRequired,
   onEmptyLabel: PropTypes.string,
 };
 
-Title.defaultProps = {
+List.defaultProps = {
   onEmptyLabel: 'Não há registros para exibir.',
 };
+
+export default List;

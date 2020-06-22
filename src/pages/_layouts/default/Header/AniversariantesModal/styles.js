@@ -1,5 +1,5 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  background: '#FEF8DE';
+  /* width: 600px; */
 `;

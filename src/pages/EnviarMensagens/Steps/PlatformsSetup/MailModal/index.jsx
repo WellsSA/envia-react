@@ -11,8 +11,9 @@ export default function MailModal({ visible, onSetVisible, onConfirm }) {
 
   const [credits, setCredits] = useState(0);
   const quantity =
+    alunos &&
     alunos.length +
-    alunos.reduce((acc, cur) => (acc += cur.responsible_id !== '1'), 0);
+      alunos.reduce((acc, cur) => (acc += cur.responsible_id !== '1'), 0);
 
   useEffect(() => {
     if (curStep !== STEPS.PLATFORMS) return;

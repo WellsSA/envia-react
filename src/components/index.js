@@ -9,9 +9,9 @@ import OverlayHelper from './OverlayHelper';
 import ConfirmDialog from './ConfirmDialog';
 import SectionMarker from './SectionMarker';
 import SectionDivisor from './SectionDivisor';
-import ListDisplayer from './ListDisplayer';
 import ImportModal from './ImportModal';
 import ProgressBar from './ProgressBar';
+import MessageStep from './MessageStep';
 
 export {
   EnviaDataTable,
@@ -25,7 +25,7 @@ export {
   ConfirmDialog,
   SectionMarker,
   SectionDivisor,
-  ListDisplayer,
   ImportModal,
   ProgressBar,
+  MessageStep,
 };

@@ -1,15 +1,11 @@
 import React from 'react';
 import { FaHome } from 'react-icons/fa';
-import aniversariantesImage from '../../assets/dashboard/aniversariantes.png';
-import licencaImage from '../../assets/dashboard/licenca.png';
-import plataformasImage from '../../assets/dashboard/plataformas.png';
+import aniversariantesImage from '~/assets/dashboard/aniversariantes.png';
+import licencaImage from '~/assets/dashboard/licenca.png';
+import plataformasImage from '~/assets/dashboard/plataformas.png';
 
-import {
-  NamedSection,
-  SectionDivisor,
-  SectionMarker,
-  ListDisplayer,
-} from '../../components';
+import { NamedSection, SectionDivisor, SectionMarker } from '~/components';
+import { List } from '~/components/_common';
 import { Container } from './styles';
 
 export default function Configuracoes() {
@@ -45,7 +41,7 @@ export default function Configuracoes() {
               label="Aniversariantes de hoje:"
               isMain
             />
-            <ListDisplayer
+            <List
               list={alunos}
               onEmptyLabel="Nenhum aluno faz aniversário hoje."
             />
@@ -56,7 +52,7 @@ export default function Configuracoes() {
               label="Dados da licença:"
               isMain
             />
-            <ListDisplayer list={list} />
+            <List list={list} />
           </section>
           <section>
             <SectionMarker
