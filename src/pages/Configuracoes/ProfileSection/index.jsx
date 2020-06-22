@@ -11,6 +11,7 @@ function ProfileSection({ onAddCredit }) {
 
   const placeholder = {
     name: 'Nome da escola',
+    email: 'E-mail da escola',
     password: '*******',
   };
 
@@ -21,6 +22,11 @@ function ProfileSection({ onAddCredit }) {
         id="name"
         label="Nome da escola:"
         placeholder={placeholder.name}
+      />
+      <InputWrapper
+        id="email"
+        label="E-mail da escola:"
+        placeholder={placeholder.email}
       />
       <InputWrapper label="Quantidade de e-mail:" labelOnly styled="none">
         <span>{mailQuantity}</span>
