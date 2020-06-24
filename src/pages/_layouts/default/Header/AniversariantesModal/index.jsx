@@ -10,13 +10,7 @@ import { Container } from './styles';
 // } from '~/pages/EnviarMensagens/Steps';
 
 import { setStep, setAniversariantes } from '~/store/modules/message/actions';
-// import { CRITERION } from '~/store/modules/message/data';
-
-const STEPS = {
-  MESSAGE: 1,
-  PLATFORMS: 2,
-  CONFIRM: 3,
-};
+import { BIRTH_STEPS } from '~/store/modules/message/data';
 
 const AniversariantesModal = () => {
   const dispatch = useDispatch();
@@ -29,13 +23,7 @@ const AniversariantesModal = () => {
   const { curStep: step, aniversariantes } = useSelector(
     state => state.message
   );
-  const maxSteps = Object.keys(STEPS).length;
-  // const { message } = useSelector(state => state.message);
-  // function _handleSubmit(data) {
-  //   // handleSubmit(data);
-  //   console.log({ data });
-  //   document.getElementById(formId).reset();
-  // }
+  const maxSteps = Object.keys(BIRTH_STEPS).length;
 
   return (
     <ModalHelper
@@ -51,15 +39,18 @@ const AniversariantesModal = () => {
         <ProgressBar
           step={step <= maxSteps ? step : 1}
           maxSteps={maxSteps}
-          onBulletClick={_step =>
-            dispatch(setStep({ step: _step, verify: false }))
-          }
+          onBulletClick={_step => dispatch(setStep({ step: _step }))}
         />
+
+        <MessageStep active={step === BIRTH_STEPS.MESSAGE}>step 1</MessageStep>
+        <MessageStep active={step === BIRTH_STEPS.PLATFORMS}>
+          step 2
+        </MessageStep>
+        <MessageStep active={step === BIRTH_STEPS.CONFIRM}>step 3</MessageStep>
 
         {/* <MessageStep active={step === STEPS.MESSAGE}>
           <MessageSetup />
         </MessageStep>
-
         <MessageStep active={step === STEPS.PLATFORMS}>
           <PlatformsSetup />
         </MessageStep>

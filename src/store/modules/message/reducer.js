@@ -68,6 +68,8 @@ export default function message(state = INITIAL_STATE, action) {
       }
       case '@message/SETUP_ANIVERSARIANTES': {
         draft.aniversariantes = action.payload.open;
+        draft.curStep = INITIAL_STATE.curStep;
+        draft.message = INITIAL_STATE.message;
         break;
       }
       case '@auth/SIGN_OUT': {

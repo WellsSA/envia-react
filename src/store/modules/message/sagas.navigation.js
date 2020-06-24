@@ -2,7 +2,7 @@ import { put, select } from 'redux-saga/effects';
 import { notifySuccess, notifyError } from '../../../utils/notifyHelper';
 import { setStep } from './actions';
 
-import { CRITERION, STEPS } from './data';
+import { CRITERION, STEPS, BIRTH_STEPS } from './data';
 
 export function hasNavigationInconsistency(state) {
   // ON CRITERIA STEP
@@ -45,6 +45,17 @@ export function hasNavigationInconsistency(state) {
   return false;
 }
 
+export function hasAnivNavigationInconsistency(state) {
+  // ON PLATFORMS STEP
+  if (state.curStep > BIRTH_STEPS.MESSAGE && !state.message.content) {
+    return {
+      error: 'você ainda não selecionou a mensagem',
+      stepToGo: BIRTH_STEPS.MESSAGE,
+    };
+  }
+
+  return false;
+}
 export function* handleSetupStep({ payload: { verify } }) {
   if (!verify) return;
   const messageState = yield select(state => state.message);
@@ -58,9 +69,15 @@ export function* handleSetupStep({ payload: { verify } }) {
 
 export function* handleNextStep() {
   try {
-    const { curStep, ...messageState } = yield select(state => state.message);
+    const { curStep, aniversariantes, ...messageState } = yield select(
+      state => state.message
+    );
 
-    if (hasNavigationInconsistency(messageState)) return;
+    const inconsistencyValidator = aniversariantes
+      ? hasAnivNavigationInconsistency
+      : hasNavigationInconsistency;
+
+    if (inconsistencyValidator(messageState)) return;
 
     switch (curStep) {
       case STEPS.CRITERIA:
