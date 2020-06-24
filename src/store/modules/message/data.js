@@ -5,6 +5,7 @@ import {
   FaUser,
   FaUsers,
   FaUserTie,
+  FaBirthdayCake,
 } from 'react-icons/fa';
 import { GoComment, GoMail } from 'react-icons/go';
 
@@ -44,6 +45,12 @@ const CRITERION = {
     icon: FaUserTie,
     value: 'RESPONSIBLES',
     endpoint: 'responsaveis',
+  },
+  BIRTHDAYS: {
+    label: 'Aniversáriantes',
+    icon: FaBirthdayCake,
+    value: 'BIRTHDAYS',
+    endpoint: 'aniversariantes',
   },
 };
 

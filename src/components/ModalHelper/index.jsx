@@ -14,6 +14,7 @@ export default function ModalHelper({
   onConfirm,
   onCancel,
   confirmLabel,
+  noFooter,
 }) {
   function handleCancel() {
     onSetVisible(false);
@@ -31,19 +32,21 @@ export default function ModalHelper({
         <MdClose onClick={handleCancel} />
       </Header>
       <Body>{children}</Body>
-      <Footer>
-        <Button kind="cancel" onClick={handleCancel}>
-          Cancelar
-        </Button>
-        <Button
-          type="submit"
-          kind="confirm"
-          onClick={onConfirm}
-          {...(formId ? { form: formId } : {})}
-        >
-          {confirmLabel}
-        </Button>
-      </Footer>
+      {!noFooter && (
+        <Footer>
+          <Button kind="cancel" onClick={handleCancel}>
+            Cancelar
+          </Button>
+          <Button
+            type="submit"
+            kind="confirm"
+            onClick={onConfirm}
+            {...(formId ? { form: formId } : {})}
+          >
+            {confirmLabel}
+          </Button>
+        </Footer>
+      )}
     </OverlayHelper>
   );
 }
@@ -61,6 +64,7 @@ ModalHelper.propTypes = {
   onConfirm: PropTypes.func,
   onCancel: PropTypes.func,
   confirmLabel: PropTypes.string,
+  noFooter: PropTypes.bool,
 };
 
 ModalHelper.defaultProps = {
@@ -70,4 +74,5 @@ ModalHelper.defaultProps = {
   onConfirm: () => {},
   onCancel: () => {},
   confirmLabel: 'Cadastrar',
+  noFooter: false,
 };

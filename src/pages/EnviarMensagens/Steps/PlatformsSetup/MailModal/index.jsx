@@ -29,8 +29,6 @@ export default function MailModal({ visible, onSetVisible, onConfirm }) {
     getCredits();
   }, [curStep]);
 
-  console.log({ alunos: JSON.stringify(alunos) });
-
   function handleConfirm() {
     onConfirm(PLATFORMS.EMAIL.value);
     onSetVisible(false);

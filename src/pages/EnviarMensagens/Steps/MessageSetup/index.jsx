@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { Form } from '@rocketseat/unform';
+import PropTypes from 'prop-types';
 import { Container, FormHeader, FormSection } from './styles';
 import { changeMessage } from '~/store/modules/message/actions';
 import { InputWrapper } from '~/components';
@@ -8,7 +9,7 @@ import StepNavigator from '../../StepNavigator';
 
 import ModelosMensagens from './ModelosMensagens';
 
-export default function MessageSetup() {
+const MessageSetup = ({ onConfirm }) => {
   const dispatch = useDispatch();
   const [currentMessage, setCurrentMessage] = useState();
 
@@ -58,8 +59,18 @@ export default function MessageSetup() {
           />
         </FormSection>
 
-        <StepNavigator submit notCancelable onConfirm={() => {}} />
+        <StepNavigator submit notCancelable onConfirm={onConfirm} />
       </Form>
     </Container>
   );
-}
+};
+
+MessageSetup.propTypes = {
+  onConfirm: PropTypes.func,
+};
+
+MessageSetup.defaultProps = {
+  onConfirm: () => {},
+};
+
+export default MessageSetup;

@@ -16,6 +16,7 @@ const INITIAL_STATE = {
   filters: [],
   alunos: [],
   platforms: [],
+  aniversariantes: false,
 };
 
 export default function message(state = INITIAL_STATE, action) {
@@ -63,6 +64,10 @@ export default function message(state = INITIAL_STATE, action) {
         Object.keys(action.payload).forEach(key => {
           draft[key] = action.payload[key];
         });
+        break;
+      }
+      case '@message/SETUP_ANIVERSARIANTES': {
+        draft.aniversariantes = action.payload.open;
         break;
       }
       case '@auth/SIGN_OUT': {

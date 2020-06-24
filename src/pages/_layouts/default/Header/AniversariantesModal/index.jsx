@@ -1,24 +1,36 @@
-import React, { useState } from 'react';
-import PropTypes from 'prop-types';
+import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { ModalHelper, ProgressBar, MessageStep } from '~/components';
 import { Title, List } from '~/components/_common';
 import { Container } from './styles';
+// import {
+//   MessageSetup,
+//   PlatformsSetup,
+//   ConfirmEnvio,
+// } from '~/pages/EnviarMensagens/Steps';
+
+import { setStep, setAniversariantes } from '~/store/modules/message/actions';
+// import { CRITERION } from '~/store/modules/message/data';
 
 const STEPS = {
   MESSAGE: 1,
-  CRITERIA: 2,
+  PLATFORMS: 2,
+  CONFIRM: 3,
 };
 
-const AniversariantesModal = ({ visible, onSetVisible }) => {
+const AniversariantesModal = () => {
+  const dispatch = useDispatch();
+
   const alunos = [
     { label: 'Wellington', value: '19 anos' },
     { label: 'Kauan', value: '13 anos' },
   ];
 
-  const formId = 'aniversariantes-modal';
-  const [step, setStep] = useState(1);
-  const maxSteps = 3;
-
+  const { curStep: step, aniversariantes } = useSelector(
+    state => state.message
+  );
+  const maxSteps = Object.keys(STEPS).length;
+  // const { message } = useSelector(state => state.message);
   // function _handleSubmit(data) {
   //   // handleSubmit(data);
   //   console.log({ data });
@@ -28,31 +40,35 @@ const AniversariantesModal = ({ visible, onSetVisible }) => {
   return (
     <ModalHelper
       title="ANIVERSARIANTES DO DIA"
-      visible={visible}
-      onSetVisible={onSetVisible}
-      formId={formId}
+      visible={aniversariantes}
+      onSetVisible={data => dispatch(setAniversariantes({ open: data }))}
+      noFooter
     >
       <Container>
         <Title>Aniversariantes do dia:</Title>
         <List list={alunos} onEmptyLabel="Nenhum aluno faz aniversário hoje" />
 
         <ProgressBar
-          step={step}
+          step={step <= maxSteps ? step : 1}
           maxSteps={maxSteps}
-          onBulletClick={_step => setStep(_step)}
+          onBulletClick={_step =>
+            dispatch(setStep({ step: _step, verify: false }))
+          }
         />
 
-        <MessageStep active={step === STEPS.MESSAGE}>aqui aaaaaaa</MessageStep>
+        {/* <MessageStep active={step === STEPS.MESSAGE}>
+          <MessageSetup />
+        </MessageStep>
 
-        <MessageStep active={step === STEPS.CRITERIA}>aqui 2</MessageStep>
+        <MessageStep active={step === STEPS.PLATFORMS}>
+          <PlatformsSetup />
+        </MessageStep>
+        <MessageStep active={step === STEPS.CONFIRM}>
+          <ConfirmEnvio />
+        </MessageStep> */}
       </Container>
     </ModalHelper>
   );
-};
-
-AniversariantesModal.propTypes = {
-  visible: PropTypes.bool.isRequired,
-  onSetVisible: PropTypes.func.isRequired,
 };
 
 export default AniversariantesModal;

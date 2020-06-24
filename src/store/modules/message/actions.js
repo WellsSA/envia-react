@@ -85,3 +85,10 @@ export function sendMessage() {
     type: '@message/SEND_MESSAGE',
   };
 }
+
+export function setAniversariantes({ open }) {
+  return {
+    type: '@message/SETUP_ANIVERSARIANTES',
+    payload: { open },
+  };
+}
