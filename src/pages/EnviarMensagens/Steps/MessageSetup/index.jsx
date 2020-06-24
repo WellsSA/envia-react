@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import React, { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { Form } from '@rocketseat/unform';
 import PropTypes from 'prop-types';
 import { Container, FormHeader, FormSection } from './styles';
@@ -11,11 +11,29 @@ import ModelosMensagens from './ModelosMensagens';
 
 const MessageSetup = ({ onConfirm }) => {
   const dispatch = useDispatch();
-  const [currentMessage, setCurrentMessage] = useState();
+  const currentMessage = useSelector(state => state.message.message);
+  const [modelMessage, setModelMessage] = useState();
+  const [title, setTitle] = useState('');
+  const [greeting, setGreeting] = useState('');
+  const [content, setContent] = useState('');
 
-  function handleSubmit({ title, greeting, content }) {
+  function handleSubmit() {
     dispatch(changeMessage({ title, greeting, content }));
   }
+
+  useEffect(() => {
+    if (!currentMessage || !currentMessage.title) return;
+    setTitle(currentMessage.title);
+    setGreeting(currentMessage.greeting);
+    setContent(currentMessage.content);
+  }, [currentMessage]);
+
+  useEffect(() => {
+    if (!modelMessage || !modelMessage.title) return;
+    setTitle(modelMessage.title);
+    setGreeting(modelMessage.greeting);
+    setContent(modelMessage.content);
+  }, [modelMessage]);
 
   const placeholder = {
     title: 'ex.: Informativo inicio de turma',
@@ -27,21 +45,25 @@ const MessageSetup = ({ onConfirm }) => {
   return (
     <Container>
       <FormHeader>
-        <ModelosMensagens onSelect={data => setCurrentMessage(data)} />
+        <ModelosMensagens onSelect={data => setModelMessage(data)} />
       </FormHeader>
-      <Form initialData={currentMessage} onSubmit={handleSubmit}>
+      <Form onSubmit={handleSubmit}>
         <FormSection>
           <InputWrapper
-            id="title"
+            id={`title${+new Date()}`}
             label="Titulo:"
             placeholder={placeholder.title}
             styled="gray"
+            value={title}
+            onChange={e => setTitle(e.target.value)}
           />
           <InputWrapper
-            id="greeting"
+            id={`greeting${+new Date()}`}
             label="Saudação:"
             placeholder={placeholder.greeting}
             styled="gray"
+            value={greeting}
+            onChange={e => setGreeting(e.target.value)}
           />
           <span>
             * Informe a tag <strong>[NOME]</strong> onde deseja que o nome de
@@ -50,12 +72,14 @@ const MessageSetup = ({ onConfirm }) => {
         </FormSection>
         <FormSection>
           <InputWrapper
-            id="content"
+            id={`content${+new Date()}`}
             label="Mensagem:"
             placeholder={placeholder.content}
             type="textarea"
             rows={10}
             styled="gray"
+            value={content}
+            onChange={e => setContent(e.target.value)}
           />
         </FormSection>
 
