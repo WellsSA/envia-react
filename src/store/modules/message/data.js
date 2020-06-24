@@ -92,9 +92,10 @@ const STEPS = {
 };
 
 const BIRTH_STEPS = {
-  MESSAGE: 1,
-  PLATFORMS: 2,
-  CONFIRM: 3,
+  STUDENTS: 1,
+  MESSAGE: 2,
+  PLATFORMS: 3,
+  CONFIRM: 4,
 };
 
 export {

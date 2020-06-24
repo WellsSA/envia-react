@@ -59,7 +59,12 @@ export function hasAnivNavigationInconsistency(state) {
 export function* handleSetupStep({ payload: { verify } }) {
   if (!verify) return;
   const messageState = yield select(state => state.message);
-  const inconsistency = hasNavigationInconsistency(messageState);
+
+  const inconsistencyValidator = messageState.aniversariantes
+    ? hasAnivNavigationInconsistency
+    : hasNavigationInconsistency;
+
+  const inconsistency = inconsistencyValidator(messageState);
 
   if (!inconsistency) return;
 
