@@ -1,11 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, memo } from 'react';
 import { Form } from '@rocketseat/unform';
 import PropTypes from 'prop-types';
 import { ModalHelper, Notifier, InputWrapper } from '~/components';
 import { Container } from './styles';
 import api from '~/services/api';
-
-const formId = 'modelos-modal';
 
 const placeholder = {
   select: 'Selecione o modelo',
@@ -15,27 +13,35 @@ const placeholder = {
     'Relaxa, você pode editar o conteúdo assim que escolher um modelo! :D',
 };
 
-const ModelosModal = ({ visible, onSetVisible, onSubmit }) => {
+const ModelosModal = ({ visible, onSetVisible, onSubmit, unique }) => {
   const [models, setModels] = useState([]);
   const [selectedModel, setSelectedModel] = useState();
 
-  const _handleSubmit = ({ titleModel, greetingModel, contentModel }) => {
+  const IDS = {
+    form: `modelos-modal${unique}`,
+    title: `titleM${unique}`,
+    greeting: `greetingM${unique}`,
+    content: `contentM${unique}`,
+    model: `modelM${unique}`,
+  };
+
+  const _handleSubmit = data => {
     onSubmit({
-      title: titleModel,
-      greeting: greetingModel,
-      content: contentModel,
+      title: data[IDS.title],
+      greeting: data[IDS.greeting],
+      content: data[IDS.content],
     });
     onSetVisible(false);
-    document.getElementById(formId).reset();
+    document.getElementById(IDS.form).reset();
   };
 
   const selectModel = id => {
     const _id = +id;
     const { title, greeting, content } = models.find(obj => obj.id === _id);
     setSelectedModel({
-      titleModel: title,
-      greetingModel: greeting,
-      contentModel: content,
+      [IDS.title]: title,
+      [IDS.greeting]: greeting,
+      [IDS.content]: content,
     });
   };
 
@@ -55,35 +61,39 @@ const ModelosModal = ({ visible, onSetVisible, onSubmit }) => {
       title="Modelos de mensagens"
       visible={visible}
       onSetVisible={onSetVisible}
-      formId={formId}
+      formId={IDS.form}
       confirmLabel="Escolher"
     >
       <Container>
         <Notifier />
-        <Form id={formId} initialData={selectedModel} onSubmit={_handleSubmit}>
+        <Form
+          id={IDS.form}
+          initialData={selectedModel}
+          onSubmit={_handleSubmit}
+        >
           <InputWrapper
-            id="model"
+            id={IDS.model}
             placeholder={placeholder.select}
             type="select"
             options={models}
             onChange={e => selectModel(e.target.value)}
           />
           <InputWrapper
-            id="titleModel"
+            id={IDS.title}
             label="Titulo:"
             placeholder={placeholder.title}
             styled="gray"
             disabled
           />
           <InputWrapper
-            id="greetingModel"
+            id={IDS.greeting}
             label="Saudação:"
             placeholder={placeholder.greeting}
             styled="gray"
             disabled
           />
           <InputWrapper
-            id="contentModel"
+            id={IDS.content}
             label="Mensagem:"
             placeholder={placeholder.content}
             type="textarea"
@@ -101,6 +111,7 @@ ModelosModal.propTypes = {
   visible: PropTypes.bool.isRequired,
   onSetVisible: PropTypes.func.isRequired,
   onSubmit: PropTypes.func.isRequired,
+  unique: PropTypes.string.isRequired,
 };
 
-export default ModelosModal;
+export default memo(ModelosModal);

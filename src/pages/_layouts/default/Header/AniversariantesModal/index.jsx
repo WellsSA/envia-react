@@ -3,11 +3,11 @@ import { useDispatch, useSelector } from 'react-redux';
 import { ModalHelper, ProgressBar, MessageStep } from '~/components';
 import { Title, List } from '~/components/_common';
 import { Container } from './styles';
-// import {
-//   MessageSetup,
-//   PlatformsSetup,
-//   ConfirmEnvio,
-// } from '~/pages/EnviarMensagens/Steps';
+import {
+  MessageSetup,
+  // PlatformsSetup,
+  // ConfirmEnvio,
+} from '~/pages/EnviarMensagens/Steps';
 
 import { setStep, setAniversariantes } from '~/store/modules/message/actions';
 import { BIRTH_STEPS } from '~/store/modules/message/data';
@@ -42,7 +42,9 @@ const AniversariantesModal = () => {
           onBulletClick={_step => dispatch(setStep({ step: _step }))}
         />
 
-        <MessageStep active={step === BIRTH_STEPS.MESSAGE}>step 1</MessageStep>
+        <MessageStep active={step === BIRTH_STEPS.MESSAGE}>
+          <MessageSetup unique="aniv" />
+        </MessageStep>
         <MessageStep active={step === BIRTH_STEPS.PLATFORMS}>
           step 2
         </MessageStep>

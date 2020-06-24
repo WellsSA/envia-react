@@ -9,7 +9,7 @@ import StepNavigator from '../../StepNavigator';
 
 import ModelosMensagens from './ModelosMensagens';
 
-const MessageSetup = ({ onConfirm }) => {
+const MessageSetup = ({ onConfirm, unique }) => {
   const dispatch = useDispatch();
   const currentMessage = useSelector(state => state.message.message);
   const [modelMessage, setModelMessage] = useState();
@@ -45,12 +45,15 @@ const MessageSetup = ({ onConfirm }) => {
   return (
     <Container>
       <FormHeader>
-        <ModelosMensagens onSelect={data => setModelMessage(data)} />
+        <ModelosMensagens
+          unique={unique}
+          onSelect={data => setModelMessage(data)}
+        />
       </FormHeader>
       <Form onSubmit={handleSubmit}>
         <FormSection>
           <InputWrapper
-            id={`title${+new Date()}`}
+            id={`title${unique}`}
             label="Titulo:"
             placeholder={placeholder.title}
             styled="gray"
@@ -58,7 +61,7 @@ const MessageSetup = ({ onConfirm }) => {
             onChange={e => setTitle(e.target.value)}
           />
           <InputWrapper
-            id={`greeting${+new Date()}`}
+            id={`greeting${unique}`}
             label="Saudação:"
             placeholder={placeholder.greeting}
             styled="gray"
@@ -72,7 +75,7 @@ const MessageSetup = ({ onConfirm }) => {
         </FormSection>
         <FormSection>
           <InputWrapper
-            id={`content${+new Date()}`}
+            id={`content${unique}`}
             label="Mensagem:"
             placeholder={placeholder.content}
             type="textarea"
@@ -91,10 +94,12 @@ const MessageSetup = ({ onConfirm }) => {
 
 MessageSetup.propTypes = {
   onConfirm: PropTypes.func,
+  unique: PropTypes.string,
 };
 
 MessageSetup.defaultProps = {
   onConfirm: () => {},
+  unique: 'default',
 };
 
 export default MessageSetup;
