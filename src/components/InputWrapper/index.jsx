@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Input, Textarea } from '@rocketseat/unform';
+import { Input } from '@rocketseat/unform';
 import PhoneInputMask from './PhoneInputMask';
 import SelectInput from './SelectInput';
 /*
@@ -63,7 +63,7 @@ export default function InputWrapper({
       ) : type === 'select' ? (
         <SelectInput {...{ id, name, options, defaultValue, ...rest }} />
       ) : type === 'textarea' ? (
-        <Textarea {...{ id, name, ...rest }} />
+        <Input multiline {...{ id, name, ...rest }} />
       ) : (
         <Input {...{ id, name, type, ...rest }} />
       )}
@@ -83,7 +83,7 @@ InputWrapper.propTypes = {
 };
 
 InputWrapper.defaultProps = {
-  id: Math.random(18).toString(),
+  id: (10 * Math.random(18)).toString(),
   label: '',
   labelOnly: false,
   styled: 'default',
