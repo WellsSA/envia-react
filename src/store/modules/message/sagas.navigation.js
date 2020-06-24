@@ -46,6 +46,16 @@ export function hasNavigationInconsistency(state) {
 }
 
 export function hasAnivNavigationInconsistency(state) {
+  // ON MESSAGE STEP
+  if (
+    state.curStep > BIRTH_STEPS.STUDENTS &&
+    (!state.alunos || state.alunos.length === 0)
+  ) {
+    return {
+      error: 'confirme para selecionar os alunos',
+      stepToGo: BIRTH_STEPS.STUDENTS,
+    };
+  }
   // ON PLATFORMS STEP
   if (state.curStep > BIRTH_STEPS.MESSAGE && !state.message.content) {
     return {
@@ -56,6 +66,7 @@ export function hasAnivNavigationInconsistency(state) {
 
   return false;
 }
+
 export function* handleSetupStep({ payload: { verify } }) {
   if (!verify) return;
   const messageState = yield select(state => state.message);
@@ -84,17 +95,30 @@ export function* handleNextStep() {
 
     if (inconsistencyValidator(messageState)) return;
 
-    switch (curStep) {
-      case STEPS.CRITERIA:
-        return notifySuccess('Muito bom! Agora é só selecionar os filtros!');
-      case STEPS.STUDENTS:
-        return notifySuccess('Quase lá! Selecione os alunos!');
-      case STEPS.PLATFORMS:
-        return notifySuccess('Selecione sua forma de envio!');
-      case STEPS.CONFIRM:
-        return notifySuccess('Agora é só confirmar as informações!');
-      default:
-        return;
+    if (!aniversariantes) {
+      switch (curStep) {
+        case STEPS.CRITERIA:
+          return notifySuccess('Muito bom! Agora é só selecionar os filtros!');
+        case STEPS.STUDENTS:
+          return notifySuccess('Quase lá! Selecione os alunos!');
+        case STEPS.PLATFORMS:
+          return notifySuccess('Selecione sua forma de envio!');
+        case STEPS.CONFIRM:
+          return notifySuccess('Agora é só confirmar as informações!');
+        default:
+          return;
+      }
+    } else {
+      switch (curStep) {
+        case BIRTH_STEPS.MESSAGE:
+          return notifySuccess('Muito bom! Escreva sua mensagem');
+        case BIRTH_STEPS.PLATFORMS:
+          return notifySuccess('Quase lá! Selecione as formas de envio');
+        case BIRTH_STEPS.CONFIRM:
+          return notifySuccess('Agora é só confirmar as informações!');
+        default:
+          return;
+      }
     }
   } catch (err) {
     console.tron.error(err);

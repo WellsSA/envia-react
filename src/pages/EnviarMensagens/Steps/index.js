@@ -3,6 +3,7 @@ import CriteriaSetup from './CriteriaSetup';
 import AlunosSetup from './AlunosSetup';
 import PlatformsSetup from './PlatformsSetup';
 import ConfirmEnvio from './ConfirmEnvio';
+import BirthdaysSetup from './BirthdaysSetup';
 
 export {
   MessageSetup,
@@ -10,4 +11,5 @@ export {
   AlunosSetup,
   PlatformsSetup,
   ConfirmEnvio,
+  BirthdaysSetup,
 };

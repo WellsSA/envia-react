@@ -88,7 +88,14 @@ export function sendMessage() {
 
 export function setAniversariantes({ open }) {
   return {
-    type: '@message/SETUP_ANIVERSARIANTES',
+    type: '@message/SET_ANIVERSARIANTES',
     payload: { open },
+  };
+}
+
+export function setupAniversariantes({ alunos, criteria }) {
+  return {
+    type: '@message/SETUP_ANIVERSARIANTES',
+    payload: { alunos, criteria },
   };
 }

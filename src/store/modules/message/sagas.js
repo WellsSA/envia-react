@@ -80,6 +80,19 @@ export function* handleSetupPlatforms({ payload: { platforms } }) {
   }
 }
 
+export function* handleSetupAniversariantes({ payload: { alunos } }) {
+  try {
+    if (!alunos || alunos.length === 0) {
+      throw Error('Não há aniversariantes.');
+    }
+
+    yield put(nextStep());
+  } catch (err) {
+    console.tron.error(err);
+    notifyError(err.message);
+  }
+}
+
 export function* handleClear() {
   try {
     yield put(prevStep());
@@ -127,4 +140,5 @@ export default all([
   takeLatest('@message/SET_STEP', handleSetupStep),
   takeLatest('@message/CLEAR', handleClear),
   takeLatest('@message/SEND_MESSAGE', handleSendMessage),
+  takeLatest('@message/SETUP_ANIVERSARIANTES', handleSetupAniversariantes),
 ]);

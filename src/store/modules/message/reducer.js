@@ -66,9 +66,15 @@ export default function message(state = INITIAL_STATE, action) {
         });
         break;
       }
-      case '@message/SETUP_ANIVERSARIANTES': {
+      case '@message/SET_ANIVERSARIANTES': {
         draft.aniversariantes = action.payload.open;
         draft.curStep = INITIAL_STATE.curStep;
+        draft.alunos = INITIAL_STATE.alunos;
+        break;
+      }
+      case '@message/SETUP_ANIVERSARIANTES': {
+        draft.alunos = action.payload.alunos;
+        draft.criteria = action.payload.criteria;
         break;
       }
       case '@auth/SIGN_OUT': {
@@ -80,6 +86,7 @@ export default function message(state = INITIAL_STATE, action) {
         draft.filteredAlunos = INITIAL_STATE.filteredAlunos;
         draft.alunos = INITIAL_STATE.alunos;
         draft.platforms = INITIAL_STATE.platforms;
+        draft.aniversariantes = INITIAL_STATE.aniversariantes;
         break;
       }
       default:

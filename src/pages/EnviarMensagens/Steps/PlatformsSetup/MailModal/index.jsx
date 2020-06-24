@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 import { ModalHelper } from '~/components';
-import { PLATFORMS, STEPS } from '~/store/modules/message/data';
+import { PLATFORMS, STEPS, BIRTH_STEPS } from '~/store/modules/message/data';
 import QuantityDisplayer from './QuantityDisplayer';
 import api from '~/services/api';
 
@@ -16,7 +16,8 @@ export default function MailModal({ visible, onSetVisible, onConfirm }) {
       alunos.reduce((acc, cur) => (acc += cur.responsible_id !== '1'), 0);
 
   useEffect(() => {
-    if (curStep !== STEPS.PLATFORMS) return;
+    if (curStep !== STEPS.PLATFORMS && curStep !== BIRTH_STEPS.PLATFORMS)
+      return;
 
     const getCredits = async () => {
       const { data, status } = await api.get('credit/e-mail');
