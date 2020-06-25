@@ -4,6 +4,8 @@ const ERRORS = {
     'Acesso não autorizado. Verifique seu login e senha.',
   'e-mail already in use': 'Já existe uma conta com este e-mail',
   'failed on delete user': 'Falha ao excluir usuário',
+  'unauthorized access. your password does not match':
+    'Falha ao atualizar perfil. verifique sua senha',
   // Alunos
   'student already exists': 'Este aluno já havia sido cadastrado no Envia!',
 };

@@ -1,21 +1,7 @@
 import styled from 'styled-components';
-import { lighten } from 'polished';
-import { getColor } from '../../utils/themeHelper';
 
 export const Container = styled.div`
-  .input {
-    label {
-      color: ${props => lighten(0.1, getColor(props, 'text'))};
-      text-transform: uppercase;
-    }
-
-    span {
-      position: inherit;
-      color: initial;
-      margin-left: 4px;
-    }
-  }
-
+  margin-bottom: 40px;
   button {
     display: block;
     width: 150px;

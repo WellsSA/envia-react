@@ -1,15 +1,19 @@
-import React, { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 import { Form } from '@rocketseat/unform';
+import React, { useState } from 'react';
 import { FaCog } from 'react-icons/fa';
-import { NamedSection, SectionDivisor } from '../../components';
-import { Button } from '../../components/_common';
-import { Container } from './styles';
-import ProfileSection from './ProfileSection';
+import { useDispatch, useSelector } from 'react-redux';
+
+import { NamedSection, SectionDivisor } from '~/components';
+import { Button } from '~/components/_common';
+import { signOut } from '~/store/modules/auth/actions';
+import { addCredits, updateProfileRequest } from '~/store/modules/user/actions';
+
 import ConfigSection from './ConfigSection';
 import CreditModal from './CreditModal';
-import { addCredits } from '../../store/modules/user/actions';
-import { signOut } from '../../store/modules/auth/actions';
+import ProfileSection from './ProfileSection';
+import { Container } from './styles';
+
+import ProfileSchema from './profile.schema';
 
 export default function Configuracoes() {
   const dispatch = useDispatch();
@@ -26,6 +30,10 @@ export default function Configuracoes() {
   const addCredit = (kind, quantity) =>
     dispatch(addCredits({ kind, quantity }));
 
+  const submit = data => {
+    dispatch(updateProfileRequest({ user: data }));
+  };
+
   return (
     <>
       <CreditModal
@@ -36,7 +44,7 @@ export default function Configuracoes() {
       />
       <NamedSection name="Configurações" icon={FaCog}>
         <Container>
-          <Form initialData={profile}>
+          <Form initialData={profile} schema={ProfileSchema} onSubmit={submit}>
             <SectionDivisor>
               <ProfileSection onAddCredit={openCreditModal} />
               <ConfigSection />
