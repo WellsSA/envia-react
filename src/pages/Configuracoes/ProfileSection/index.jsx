@@ -1,9 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { FaUserCircle } from 'react-icons/fa';
-import { SectionMarker, InputWrapper } from '../../../components';
-import { Button } from '../../../components/_common';
-// import { Container } from './styles';
+import { SectionMarker, InputWrapper } from '~/components';
+import { Button } from '~/components/_common';
 
 function ProfileSection({ onAddCredit }) {
   const mailQuantity = 98880909;
@@ -12,9 +11,7 @@ function ProfileSection({ onAddCredit }) {
   const placeholder = {
     name: 'Nome da escola',
     email: 'E-mail da escola',
-    password: '*******',
   };
-
   return (
     <section>
       <SectionMarker label="Informações do perfil" icon={FaUserCircle} />

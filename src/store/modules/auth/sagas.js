@@ -11,7 +11,6 @@ export function* signIn({ payload: { email, password } }) {
       password,
     });
 
-    console.log('aaaa', { data, status });
     if (status !== 200) throw Error('Unauthorized');
 
     const { token, user } = data;

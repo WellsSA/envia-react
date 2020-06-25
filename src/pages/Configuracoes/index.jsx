@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Form } from '@rocketseat/unform';
 import { FaCog } from 'react-icons/fa';
 import { NamedSection, SectionDivisor } from '../../components';
@@ -13,6 +13,8 @@ import { signOut } from '../../store/modules/auth/actions';
 
 export default function Configuracoes() {
   const dispatch = useDispatch();
+  const profile = useSelector(state => state.user.profile);
+
   const [creditModalVisible, setCreditModalVisible] = useState(false);
   const [creditKind, setCreditKind] = useState();
 
@@ -34,7 +36,7 @@ export default function Configuracoes() {
       />
       <NamedSection name="Configurações" icon={FaCog}>
         <Container>
-          <Form>
+          <Form initialData={profile}>
             <SectionDivisor>
               <ProfileSection onAddCredit={openCreditModal} />
               <ConfigSection />
