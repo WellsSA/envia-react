@@ -27,10 +27,7 @@ const AniversariantesModal = () => {
 
     async function getAniversariantes() {
       const { data, status } = await api.post(
-        `filters/${CRITERION.BIRTHDAYS.endpoint}`,
-        {
-          filters: [-1],
-        }
+        `filters/${CRITERION.BIRTHDAYS.endpoint}`
       );
 
       if (status !== 200) return;

@@ -9,4 +9,11 @@ const currencyFormat = value =>
     currency: 'BRL',
   }).format(value);
 
-export { capitalize, currencyFormat };
+const yearsFromNow = value => {
+  const date = new Date(value);
+  const now = new Date();
+
+  return now.getFullYear() - date.getFullYear();
+};
+
+export { capitalize, currencyFormat, yearsFromNow };

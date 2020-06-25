@@ -38,7 +38,7 @@ export default function NavGroup({ clickHandler }) {
       />
       <NavLink
         to="/modelosMensagens"
-        label="Modelos de Mensagem"
+        label="Modelos de Mensagens"
         icon={FaEnvelope}
         onClick={clickHandler}
       />

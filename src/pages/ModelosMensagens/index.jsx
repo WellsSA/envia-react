@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { FaUsers } from 'react-icons/fa';
+import { FaEnvelope } from 'react-icons/fa';
 import ModelosMensagensTable from './ModelosMensagensTable';
 import ModelosMensagensModal from './ModelosMensagensModal';
 import api from '../../services/api';
@@ -82,7 +82,7 @@ export default function ModelosMensagens() {
         handleSubmit={!selectedObject ? handleInsertSubmit : handleUpdateSubmit}
         initialData={selectedObject}
       />
-      <NamedSection name="Turmas" icon={FaUsers}>
+      <NamedSection name="Modelos de mensagens" icon={FaEnvelope}>
         <AddImportActions
           onAdd={() => enableInserting()}
           importLabel="modelos de mensagens"
