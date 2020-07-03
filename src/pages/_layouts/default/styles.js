@@ -9,7 +9,7 @@ export const Wrapper = styled.div`
 
   ::-webkit-scrollbar {
     width: 0px;
-    background: transparent; /* make scrollbar transparent */
+    background: transparent;
   }
 `;
 

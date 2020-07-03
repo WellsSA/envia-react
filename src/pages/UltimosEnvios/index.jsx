@@ -1,8 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
+import { format, parseISO } from 'date-fns';
+import pt from 'date-fns/locale/pt';
 
 import { FaEnvelopeOpen } from 'react-icons/fa';
-import api from '../../services/api';
-import { NamedSection } from '../../components';
+import api from '~/services/api';
+import { NamedSection } from '~/components';
 import { Container, Message, Marker, InformationSection } from './styles';
 
 export default function Configuracoes() {
@@ -20,6 +22,14 @@ export default function Configuracoes() {
     loadEnvios();
   }, []);
 
+  const formatDate = useCallback(
+    date =>
+      format(parseISO(date), "d 'de' MMMM 'de' yyyy 'às' HH:mm:ss", {
+        locale: pt,
+      }),
+    []
+  );
+
   return (
     <NamedSection name="Últimos Envios" icon={FaEnvelopeOpen}>
       <Container>
@@ -30,7 +40,7 @@ export default function Configuracoes() {
               <InformationSection>
                 <div>
                   <strong>Enviado em:</strong>
-                  <span>{envio.sentAt}</span>
+                  <span>{formatDate(envio.sentAt)}</span>
                 </div>
                 <div>
                   <strong>Mensagem:</strong>
@@ -57,7 +67,7 @@ export default function Configuracoes() {
               <InformationSection>
                 <div>
                   <strong>alunos:</strong>
-                  <span>{envio.students}</span>
+                  <span>{envio.to.map(({ name }) => name).join(',')}</span>
                 </div>
               </InformationSection>
             </Marker>
