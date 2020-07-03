@@ -17,7 +17,7 @@ import ProfileSchema from './profile.schema';
 
 export default function Configuracoes() {
   const dispatch = useDispatch();
-  const profile = useSelector(state => state.user.profile);
+  const { profile, licence } = useSelector(state => state.user);
 
   const [creditModalVisible, setCreditModalVisible] = useState(false);
   const [creditKind, setCreditKind] = useState();
@@ -47,7 +47,7 @@ export default function Configuracoes() {
           <Form initialData={profile} schema={ProfileSchema} onSubmit={submit}>
             <SectionDivisor>
               <ProfileSection onAddCredit={openCreditModal} />
-              <ConfigSection />
+              <ConfigSection licence={licence} />
             </SectionDivisor>
             <Button type="submit" kind="confirm">
               Finalizar edição
