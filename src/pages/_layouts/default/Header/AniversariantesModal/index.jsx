@@ -1,17 +1,19 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { ModalHelper, ProgressBar, MessageStep } from '~/components';
-import { Container } from './styles';
+import { MessageStep, ModalHelper, ProgressBar } from '~/components';
+import { Title } from '~/components/_common';
+import { alunosBFF } from '~/pages/Alunos/alunos.util';
 import {
   BirthdaysSetup,
+  ConfirmEnvio,
   MessageSetup,
   PlatformsSetup,
-  ConfirmEnvio,
 } from '~/pages/EnviarMensagens/Steps';
 import api from '~/services/api';
-import { alunosBFF } from '~/pages/Alunos/alunos.util';
-import { setStep, setAniversariantes } from '~/store/modules/message/actions';
+import { setAniversariantes, setStep } from '~/store/modules/message/actions';
 import { BIRTH_STEPS, CRITERION } from '~/store/modules/message/data';
+import AniversariantesIMG from '~/assets/dashboard/aniversariantes.png';
+import { Container, Content, OnEmpty } from './styles';
 
 const AniversariantesModal = () => {
   const dispatch = useDispatch();
@@ -46,27 +48,32 @@ const AniversariantesModal = () => {
       noFooter
     >
       <Container>
-        <ProgressBar
-          step={step <= maxSteps ? step : 1}
-          maxSteps={maxSteps}
-          onBulletClick={_step => dispatch(setStep({ step: _step }))}
-        />
-
-        <MessageStep active={step === BIRTH_STEPS.STUDENTS}>
-          <BirthdaysSetup alunos={alunos} />
-        </MessageStep>
-
-        <MessageStep active={step === BIRTH_STEPS.MESSAGE}>
-          <MessageSetup unique="aniv" />
-        </MessageStep>
-
-        <MessageStep active={step === BIRTH_STEPS.PLATFORMS}>
-          <PlatformsSetup />
-        </MessageStep>
-
-        <MessageStep active={step === BIRTH_STEPS.CONFIRM}>
-          <ConfirmEnvio />
-        </MessageStep>
+        {!alunos || !alunos.length ? (
+          <OnEmpty>
+            <img src={AniversariantesIMG} alt="Aniversariantes" />
+            <Title>Sem aniversáriantes hoje</Title>
+          </OnEmpty>
+        ) : (
+          <Content>
+            <ProgressBar
+              step={step <= maxSteps ? step : 1}
+              maxSteps={maxSteps}
+              onBulletClick={_step => dispatch(setStep({ step: _step }))}
+            />
+            <MessageStep active={step === BIRTH_STEPS.STUDENTS}>
+              <BirthdaysSetup alunos={alunos} />
+            </MessageStep>
+            <MessageStep active={step === BIRTH_STEPS.MESSAGE}>
+              <MessageSetup unique="aniv" />
+            </MessageStep>
+            <MessageStep active={step === BIRTH_STEPS.PLATFORMS}>
+              <PlatformsSetup />
+            </MessageStep>
+            <MessageStep active={step === BIRTH_STEPS.CONFIRM}>
+              <ConfirmEnvio />
+            </MessageStep>
+          </Content>
+        )}
       </Container>
     </ModalHelper>
   );
