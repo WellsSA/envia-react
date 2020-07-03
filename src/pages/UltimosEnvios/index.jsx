@@ -6,6 +6,7 @@ import { FaEnvelopeOpen } from 'react-icons/fa';
 import api from '~/services/api';
 import { NamedSection } from '~/components';
 import { Container, Message, Marker, InformationSection } from './styles';
+import { CRITERION } from '~/store/modules/message/data';
 
 export default function Configuracoes() {
   const [envios, setEnvios] = useState([]);
@@ -36,6 +37,7 @@ export default function Configuracoes() {
         {envios.map((envio, index) => (
           <Message key={index}>
             <h2>#{envios.length - index}</h2>
+            {console.log(envio.criteria)}
             <Marker>
               <InformationSection>
                 <div>
@@ -48,7 +50,11 @@ export default function Configuracoes() {
                 </div>
                 <div>
                   <strong>Critério:</strong>
-                  <span>{envio.criteria}</span>
+                  <span>
+                    {CRITERION[envio.criteria]
+                      ? CRITERION[envio.criteria].label
+                      : 'ENVIA'}
+                  </span>
                 </div>
                 <div>
                   <strong>Plataforma:</strong>
