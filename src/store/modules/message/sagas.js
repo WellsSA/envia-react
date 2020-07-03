@@ -104,13 +104,14 @@ export function* handleClear() {
 
 export function* handleSendMessage() {
   try {
-    const { message, alunos } = yield select(state => state.message);
+    const { message, alunos, criteria } = yield select(state => state.message);
 
     const { data, status } = yield call(api.post, 'send/email', {
       message,
       to: alunos.map(({ id }) => id),
       options: {
         replyToResponsible: true,
+        criteria,
       },
     });
 

@@ -16,7 +16,7 @@ export const Column = styled.div`
   flex-direction: column;
   flex: 1;
   border-right: thin solid #ccc;
-  padding: 25px;
+  padding: 5px 25px;
 
   &:last-child {
     border-right: none;
@@ -83,7 +83,7 @@ export const Aluno = styled.li`
 
 export const Marker = styled.div`
   width: 90%;
-  margin: 20px auto 10px auto;
+  margin: 10px auto;
   height: 20px;
   background: ${props => getColor(props, 'backgroundHighlight')};
   border-radius: 0 0 12px 12px;

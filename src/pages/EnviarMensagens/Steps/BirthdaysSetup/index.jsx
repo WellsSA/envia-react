@@ -27,6 +27,9 @@ function BirthdaysSetup({ alunos }) {
       <Title>Aniversariantes do dia:</Title>
       <SectionDivisor>
         <section>
+          <img src={AniversariantesIMG} alt="Aniversariantes" />
+        </section>
+        <section>
           <List
             list={alunos.map(({ name, birthDate }) => ({
               label: `${yearsFromNow(birthDate)} anos,`,
@@ -34,9 +37,6 @@ function BirthdaysSetup({ alunos }) {
             }))}
             onEmptyLabel="Nenhum aluno faz aniversário hoje"
           />
-        </section>
-        <section>
-          <img src={AniversariantesIMG} alt="Aniversariantes" />
         </section>
       </SectionDivisor>
 

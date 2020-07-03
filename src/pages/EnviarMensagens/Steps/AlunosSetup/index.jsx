@@ -29,7 +29,7 @@ function AlunosSetup() {
       const { data, status } = await api.post(
         `filters/${CRITERION[criteria].endpoint}`,
         {
-          filters: filters.map(({ id }) => id),
+          filters: filters.map(({ id }) => id || -1),
         }
       );
       if (status !== 200) return;
