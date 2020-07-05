@@ -15,7 +15,7 @@ export default function OverlayHelper({
 
   return (
     <Container visible={visible}>
-      <Content>{children}</Content>
+      <Content visible={visible}>{children}</Content>
       <Background onClick={handleCancel} />
     </Container>
   );
