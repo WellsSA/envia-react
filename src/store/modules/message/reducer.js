@@ -2,6 +2,7 @@ import produce from 'immer';
 
 const INITIAL_STATE = {
   curStep: 1,
+  isNext: true,
   keepEase: false,
   message: {
     title: '',
@@ -24,13 +25,16 @@ export default function message(state = INITIAL_STATE, action) {
     switch (action.type) {
       case '@message/NEXT_STEP': {
         draft.curStep = state.curStep + 1;
+        draft.isNext = true;
         break;
       }
       case '@message/PREV_STEP': {
         draft.curStep = state.curStep - 1;
+        draft.isNext = false;
         break;
       }
       case '@message/SET_STEP': {
+        draft.isNext = state.curStep <= action.payload.step;
         draft.curStep = action.payload.step;
         break;
       }

@@ -1,9 +1,9 @@
 import React from 'react';
 import { FaTelegramPlane } from 'react-icons/fa';
 import { useDispatch, useSelector } from 'react-redux';
-import { NamedSection, ProgressBar } from '../../components';
+import { NamedSection, ProgressBar, MessageStep } from '../../components';
 import { setStep } from '~/store/modules/message/actions';
-import { Container, MessageStep } from './styles';
+import { Container } from './styles';
 import {
   MessageSetup,
   CriteriaSetup,

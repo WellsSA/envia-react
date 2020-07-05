@@ -19,15 +19,14 @@ export const Container = styled.div`
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.3);
-  z-index: 100;
+  z-index: 101;
 
   /* display: ${props => (props.visible ? 'flex' : 'none')}; */
   display: flex;
   visibility: ${props => (props.visible ? 'visible' : 'hidden')};
   opacity: ${props => (props.visible ? '1' : '0')};
-  transition: visibility ${animation.timeOut} ease-in-out, opacity ${
-  animation.timeOut
-} ease-in-out;
+  transition: visibility ${animation.timeOut} ease-in-out,
+    opacity ${animation.timeOut} ease-in-out;
   justify-content: center;
   align-items: center;
 `;
@@ -37,7 +36,7 @@ export const Content = styled.div`
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
   background: ${props => getColor(props, 'background')};
   border-radius: 4px;
-  z-index: 101;
+  z-index: 102;
 
   > div {
     border-radius: 4px;

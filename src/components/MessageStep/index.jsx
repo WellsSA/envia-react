@@ -1,9 +1,15 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Container } from './styles';
 
 function MessageStep({ active, children }) {
-  return <Container active={active}>{children}</Container>;
+  const isNext = useSelector(state => state.message.isNext);
+  return (
+    <Container active={active} next={isNext}>
+      {children}
+    </Container>
+  );
 }
 
 MessageStep.propTypes = {
