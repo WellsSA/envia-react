@@ -1,38 +1,15 @@
 import styled, { keyframes, css } from 'styled-components';
 import {
-  fadeInDown,
-  fadeOutDown,
-  fadeInLeft,
-  fadeOutRight,
-  fadeInUp,
-  fadeOutUp,
+  fadeInLeft as animationIn,
+  fadeOutRight as animationOut,
 } from 'react-animations';
 import { getColor } from '../../utils/themeHelper';
-
-const randomicChoise = array =>
-  array && array[Math.ceil(Math.random() * (array.length - 1))];
-
-const animationPossibilities = [
-  {
-    in: keyframes`${fadeInDown}`,
-    out: keyframes`${fadeOutDown}`,
-  },
-  {
-    in: keyframes`${fadeInLeft}`,
-    out: keyframes`${fadeOutRight}`,
-  },
-  {
-    in: keyframes`${fadeInUp}`,
-    out: keyframes`${fadeOutUp}`,
-  },
-];
 
 const animation = {
   timeIn: '1s',
   timeOut: '0.5s',
-  ...randomicChoise(animationPossibilities),
-  // in: keyframes`${animationIn}`,
-  // out: keyframes`${animationOut}`,
+  in: keyframes`${animationIn}`,
+  out: keyframes`${animationOut}`,
 };
 
 export const Container = styled.div`
@@ -66,16 +43,14 @@ export const Content = styled.div`
     border-radius: 4px;
   }
 
-  ${props => {
-    const _animation = randomicChoise(animationPossibilities);
-    return props.visible
+  ${props =>
+    props.visible
       ? css`
-          animation: ${animation.timeIn} ${_animation.in} forwards;
+          animation: ${animation.timeIn} ${animation.in} forwards;
         `
       : css`
-          animation: ${animation.timeOut} ${_animation.out} forwards;
-        `;
-  }}
+          animation: ${animation.timeOut} ${animation.out} forwards;
+        `}
 `;
 
 export const Background = styled.div`
