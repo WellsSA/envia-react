@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-import { getColor } from '../../../../../utils/themeHelper';
-import { fonts } from '../../../../../styles/scale';
+import { getColor } from '~/utils/themeHelper';
+import { fonts, z_index } from '~/styles/scale';
 
 export const Container = styled.div`
   display: block;
@@ -8,7 +8,7 @@ export const Container = styled.div`
   height: 100vh;
   top: 0;
   right: 0;
-  z-index: 100;
+  z-index: ${z_index.sidebar.main};
   visibility: ${props => (props.isOpen ? 'visible' : 'hidden')};
   width: ${props => (props.isOpen ? '304px' : '0')};
   transition: width 0.5s ease-in, visibility 0.5s ease-in;
@@ -45,6 +45,6 @@ export const Background = styled.div`
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: 99;
+  z-index: ${z_index.sidebar.background};
   background: rgba(0, 0, 0, 0.4);
 `;

@@ -3,6 +3,7 @@ import {
   fadeInRight as animationIn,
   fadeInLeft as animationOut,
 } from 'react-animations';
+import { z_index } from '~/styles/scale';
 
 const animation = {
   time: '0.5s',
@@ -15,7 +16,7 @@ export const Container = styled.div`
   margin: 0 auto;
   display: ${props => (props.active ? 'block' : 'none')};
   position: relative;
-  z-index: 101;
+  z-index: ${z_index.messageStep.main};
 
   ${props =>
     props.next

@@ -8,4 +8,26 @@ const fonts = {
   subMarkerFontSize: '13px',
 };
 
-export { fonts };
+const z_index = {
+  sidebar: {
+    main: 100,
+    background: 99,
+  },
+  header: {
+    main: 89,
+  },
+  profile: {
+    main: 100,
+    optionBar: 101,
+    background: 99,
+  },
+  overlay: {
+    main: 100,
+    content: 101,
+  },
+  messageStep: {
+    main: 70,
+  },
+};
+
+export { fonts, z_index };

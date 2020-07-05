@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { darken } from 'polished';
 import { getColor } from '~/utils/themeHelper';
-import { fonts } from '~/styles/scale';
+import { fonts, z_index } from '~/styles/scale';
 
 export const Container = styled.div`
   /* background: #fff; */
@@ -10,7 +10,7 @@ export const Container = styled.div`
   /* padding: 2px; */
   position: fixed;
   width: 100%;
-  z-index: 100;
+  z-index: ${z_index.header.main};
 `;
 
 export const Content = styled.div`

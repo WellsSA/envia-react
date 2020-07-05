@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { darken } from 'polished';
-import { getColor } from '../../../../../utils/themeHelper';
-// import { fonts } from '../../../../../styles/scale';
+import { getColor } from '~/utils/themeHelper';
+import { z_index } from '~/styles/scale';
 
 export const Container = styled.div`
   cursor: pointer;
@@ -9,7 +9,7 @@ export const Container = styled.div`
   height: 120px;
   border-radius: 50%;
   position: relative;
-  z-index: 200;
+  z-index: ${z_index.profile.main};
 `;
 
 export const Image = styled.div`
@@ -39,7 +39,7 @@ export const OptionBar = styled.ul`
 
   display: flex;
   flex-direction: column;
-  z-index: 201;
+  z-index: ${z_index.profile.optionBar};
 `;
 
 export const Option = styled.li`
@@ -64,9 +64,8 @@ export const Background = styled.div`
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: 99;
   background: rgba(0, 0, 0, 0.4);
-  z-index: 199;
+  z-index: ${z_index.profile.background};
 `;
 
 export const FileLabel = styled.label`

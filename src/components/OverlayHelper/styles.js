@@ -3,7 +3,8 @@ import {
   fadeInLeft as animationIn,
   fadeOutRight as animationOut,
 } from 'react-animations';
-import { getColor } from '../../utils/themeHelper';
+import { getColor } from '~/utils/themeHelper';
+import { z_index } from '~/styles/scale';
 
 const animation = {
   timeIn: '1s',
@@ -19,7 +20,7 @@ export const Container = styled.div`
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.3);
-  z-index: 101;
+  z-index: ${z_index.overlay.main};
 
   /* display: ${props => (props.visible ? 'flex' : 'none')}; */
   display: flex;
@@ -36,7 +37,7 @@ export const Content = styled.div`
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
   background: ${props => getColor(props, 'background')};
   border-radius: 4px;
-  z-index: 102;
+  z-index: ${z_index.overlay.content};
 
   > div {
     border-radius: 4px;
