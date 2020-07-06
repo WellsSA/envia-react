@@ -14,7 +14,7 @@ const z_index = {
     background: 99,
   },
   header: {
-    main: 89,
+    main: 90,
   },
   profile: {
     main: 100,
@@ -24,9 +24,6 @@ const z_index = {
   overlay: {
     main: 100,
     content: 101,
-  },
-  messageStep: {
-    main: 70,
   },
 };
 
