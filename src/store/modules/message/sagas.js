@@ -115,7 +115,7 @@ export function* handleSendMessage() {
       },
     });
 
-    if (data.email.error) {
+    if (status !== 200 || data.email.error) {
       return notifyError(
         'Houve um erro ao enviar os e-mails. Tente novamente mais tarde.'
       );

@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { es } from 'date-fns/esm/locale';
 import AlunosTable from '~/pages/Alunos/AlunosTable/index.jsx';
 import { alunosBFF, alunosStore } from '~/pages/Alunos/alunos.util';
 import { setupAlunos, clear } from '~/store/modules/message/actions';
