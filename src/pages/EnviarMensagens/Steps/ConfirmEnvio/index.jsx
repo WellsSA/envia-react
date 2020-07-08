@@ -54,13 +54,14 @@ export default function ConfirmEnvio() {
           <Criteria>
             <ColumnTitle>Plataforma:</ColumnTitle>
             <Platforms>
-              {platforms.map(value => (
-                <Criterion
-                  key={`plat${value}`}
-                  icon={PLATFORMS[value].icon}
-                  label={PLATFORMS[value].label}
-                />
-              ))}
+              {platforms &&
+                platforms.map(value => (
+                  <Criterion
+                    key={`plat${value}`}
+                    icon={PLATFORMS[value].icon}
+                    label={PLATFORMS[value].label}
+                  />
+                ))}
             </Platforms>
           </Criteria>
         </Column>
@@ -71,9 +72,8 @@ export default function ConfirmEnvio() {
               <Aluno>Todos os alunos</Aluno>
             ) : (
               <>
-                {alunos.map(({ id, name }) => (
-                  <Aluno key={id}>{name}</Aluno>
-                ))}
+                {alunos &&
+                  alunos.map(({ id, name }) => <Aluno key={id}>{name}</Aluno>)}
               </>
             )}
           </Alunos>

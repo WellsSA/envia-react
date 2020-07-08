@@ -1,7 +1,7 @@
 import styled, { keyframes, css } from 'styled-components';
 import {
-  fadeInLeft as animationIn,
-  fadeOutRight as animationOut,
+  fadeInDown as animationIn,
+  fadeOutDown as animationOut,
 } from 'react-animations';
 import { getColor } from '~/utils/themeHelper';
 import { z_index } from '~/styles/scale';
