@@ -3,7 +3,6 @@ import { notifySuccess, notifyError } from '../../utils/notifyHelper';
 
 export function handleInsert(newData, setTableData, dispatch) {
   return new Promise((resolve, reject) => {
-    console.log('inside handler');
     api
       .post('professores', {
         name: newData.name,
@@ -30,10 +29,6 @@ export function handleUpdate(newData, oldData, setTableData) {
       .catch(reject());
 
     if (oldData) {
-      console.log('update', {
-        newData,
-        oldData,
-      });
       setTableData(prevState => {
         const data = [...prevState];
         data[data.indexOf(oldData)] = newData;

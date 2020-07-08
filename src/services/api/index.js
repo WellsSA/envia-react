@@ -9,7 +9,7 @@ const api = axios.create({ baseURL });
 api.interceptors.response.use(
   response => response,
   error => {
-    console.log(`interceptor, ${error}`);
+    // console.log(`interceptor, ${error}`);
     if (error.response && error.response.data) {
       notifyError(getErrorMessage(error.response.data.error.message));
       return error.response;

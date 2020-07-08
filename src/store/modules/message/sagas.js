@@ -121,8 +121,6 @@ export function* handleSendMessage() {
       );
     }
 
-    console.log('sendMessage', { data, status });
-
     notifySuccess('Enviando mensagens!...');
   } catch (err) {
     console.tron.error(err);

@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { es } from 'date-fns/esm/locale';
 import AlunosTable from '~/pages/Alunos/AlunosTable/index.jsx';
-import { alunosBFF } from '~/pages/Alunos/alunos.util';
+import { alunosBFF, alunosStore } from '~/pages/Alunos/alunos.util';
 import { setupAlunos, clear } from '~/store/modules/message/actions';
 import { Title } from '~/components/_common';
 import api from '~/services/api';
@@ -20,12 +21,9 @@ function AlunosSetup() {
   useEffect(() => {
     if (!criteria || curStep !== STEPS.STUDENTS) return;
 
-    if (criteria === CRITERION.ALL.value) {
-      setConfirmAll(true);
-      return;
-    }
-    setConfirmAll(false);
-    (async () => {
+    setConfirmAll(criteria === CRITERION.ALL.value);
+
+    async function getStudentsByFilter() {
       const { data, status } = await api.post(
         `filters/${CRITERION[criteria].endpoint}`,
         {
@@ -35,7 +33,9 @@ function AlunosSetup() {
       if (status !== 200) return;
 
       setTableData(alunosBFF(data));
-    })();
+    }
+
+    getStudentsByFilter();
   }, [criteria, curStep, filters]);
 
   useEffect(() => {
@@ -49,15 +49,7 @@ function AlunosSetup() {
       onClick: async (evt, data) => {
         if (data) {
           setKeepEase(true);
-          dispatch(
-            setupAlunos({
-              alunos: data.map(({ id, name, responsible_id }) => ({
-                id,
-                name,
-                responsible_id,
-              })),
-            })
-          );
+          dispatch(setupAlunos({ alunos: alunosStore(data) }));
         }
         return null;
       },
@@ -80,7 +72,9 @@ function AlunosSetup() {
                   dispatch(clear({ criteria: '', filters: [] }));
                   setKeepEase(true);
                 }}
-                onConfirm={() => dispatch(setupAlunos({ id: -1 }))}
+                onConfirm={() =>
+                  dispatch(setupAlunos({ alunos: alunosStore(tableData) }))
+                }
               />
             </>
           ) : (

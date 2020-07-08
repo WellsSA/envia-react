@@ -7,7 +7,6 @@ export function handleInsert(
   dispatch
 ) {
   return new Promise((resolve, reject) => {
-    console.log('inside handler');
     api
       .post('modelosMensagens', { title, greeting, content })
       .then(({ data }) => {

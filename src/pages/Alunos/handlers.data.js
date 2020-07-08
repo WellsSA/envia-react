@@ -11,7 +11,6 @@ const handleInsert = async (newData, setTableData, dispatch) => {
 };
 
 const handleUpdate = async (upData, setTableData, tableDataId, dispatch) => {
-  // console.log({ upData, new: alunoFFB(upData) });
   const { data, status } = await api.put(
     `alunos/${+upData.id}`,
     alunoFFB(upData)

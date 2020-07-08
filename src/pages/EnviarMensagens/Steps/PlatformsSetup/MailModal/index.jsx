@@ -7,7 +7,9 @@ import QuantityDisplayer from './QuantityDisplayer';
 import api from '~/services/api';
 
 export default function MailModal({ visible, onSetVisible, onConfirm }) {
-  const { curStep, alunos } = useSelector(state => state.message);
+  const { curStep, aniversariantes, alunos } = useSelector(
+    state => state.message
+  );
 
   const [credits, setCredits] = useState(0);
   const quantity =
@@ -16,7 +18,10 @@ export default function MailModal({ visible, onSetVisible, onConfirm }) {
       alunos.reduce((acc, cur) => (acc += cur.responsible_id !== '1'), 0);
 
   useEffect(() => {
-    if (curStep !== STEPS.PLATFORMS && curStep !== BIRTH_STEPS.PLATFORMS)
+    if (
+      curStep !== STEPS.PLATFORMS ||
+      (aniversariantes && curStep !== BIRTH_STEPS.PLATFORMS)
+    )
       return;
 
     const getCredits = async () => {
@@ -28,7 +33,7 @@ export default function MailModal({ visible, onSetVisible, onConfirm }) {
     };
 
     getCredits();
-  }, [curStep]);
+  }, [aniversariantes, curStep]);
 
   function handleConfirm() {
     onConfirm(PLATFORMS.EMAIL.value);

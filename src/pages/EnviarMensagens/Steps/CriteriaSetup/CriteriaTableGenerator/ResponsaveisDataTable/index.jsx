@@ -18,7 +18,7 @@ export default function ProfessoresDataTable({ actions }) {
 
   // return <ProfessoresTable tableData={tableData} actions={actions} />;
   console.log(actions);
-  return <>Not implemented yet</>;
+  return <> Not implemented yet</>;
 }
 
 ProfessoresDataTable.propTypes = {

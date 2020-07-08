@@ -87,4 +87,11 @@ const alunoFFB = aluno => {
   };
 };
 
-export { alunoBFF, alunosBFF, alunoFFB };
+const alunosStore = alunos =>
+  alunos.map(({ id, name, responsible_id }) => ({
+    id,
+    name,
+    responsible_id,
+  }));
+
+export { alunoBFF, alunosBFF, alunoFFB, alunosStore };

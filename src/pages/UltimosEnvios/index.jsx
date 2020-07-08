@@ -37,7 +37,6 @@ export default function Configuracoes() {
         {envios.map((envio, index) => (
           <Message key={index}>
             <h2>#{envios.length - index}</h2>
-            {console.log(envio.criteria)}
             <Marker>
               <InformationSection>
                 <div>
