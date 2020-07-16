@@ -3,7 +3,7 @@ import axios from 'axios';
 import { notifyError } from '../../utils/notifyHelper';
 import { getErrorMessage, DEFAULT_ERROR } from './errors.data';
 
-const baseURL = 'http://localhost:4000';
+const baseURL = process.env.REACT_APP_API_URL;
 const api = axios.create({ baseURL });
 
 api.interceptors.response.use(
