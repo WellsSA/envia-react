@@ -3,7 +3,6 @@ import axios from 'axios';
 import { notifyError } from '../../utils/notifyHelper';
 import { getErrorMessage, DEFAULT_ERROR } from './errors.data';
 
-console.log({ env: process.env.REACT_APP_API_URL });
 const baseURL = 'http://localhost:4000';
 const api = axios.create({ baseURL });
 
