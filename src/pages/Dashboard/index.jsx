@@ -1,8 +1,10 @@
-import React, { useRef } from 'react';
+import React, { useRef, memo } from 'react';
 import { FaQuestion } from 'react-icons/fa';
 import { MdNavigateNext, MdNavigateBefore } from 'react-icons/md';
 
-import { NamedSection } from '~/components';
+import licencaImage from '~/assets/dashboard/licenca.png';
+
+import { NamedSection, SectionMarker } from '~/components';
 import { Button } from '~/components/_common';
 import { Container, Carousel, QuestionContainer, Question } from './styles';
 
@@ -35,7 +37,7 @@ const questions = [
   },
 ];
 
-export default function Dashboard() {
+const Dashboard = () => {
   const scrollRef = useRef();
   const scrollUnit = 500;
 
@@ -64,19 +66,15 @@ export default function Dashboard() {
             </Button>
           </>
           <QuestionContainer ref={scrollRef}>
-            <Question />
-            <Question />
-            <Question />
-            <Question />
-            <Question />
-            <Question />
-            <Question />
-            <Question />
-            <Question />
-            <Question />
-            <Question />
-            <Question />
-            <Question />
+            {questions.map(({ label }, i) => (
+              <Question key={`question${i}`}>
+                <SectionMarker
+                  icon={() => <img src={licencaImage} alt="Licença" />}
+                  label={label}
+                  isMain
+                />
+              </Question>
+            ))}
           </QuestionContainer>
           <>
             <Button kind="contrast" onClick={scrollRight}>
@@ -87,4 +85,6 @@ export default function Dashboard() {
       </NamedSection>
     </Container>
   );
-}
+};
+
+export default memo(Dashboard);

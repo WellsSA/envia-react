@@ -31,6 +31,7 @@ export const Container = styled.div`
   }
 
   &.main {
+    display: flex;
     div {
       width: 100%;
     }
