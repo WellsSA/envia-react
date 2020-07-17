@@ -1,67 +1,46 @@
-import api from '../../services/api';
-import { notifySuccess, notifyError } from '../../utils/notifyHelper';
+import api from '~/services/api';
+import { notifySuccess } from '~/utils/notifyHelper';
 
-export function handleInsert(
-  { title, greeting, content },
-  setTableData,
-  dispatch
-) {
-  return new Promise((resolve, reject) => {
-    api
-      .post('modelosMensagens', { title, greeting, content })
-      .then(({ data }) => {
-        setTableData(prevState => [...prevState, data]);
-        notifySuccess('Modelo cadastrado com sucesso!', dispatch);
-        resolve();
-      })
-      .catch(data => {
-        notifyError('Falha ao cadastrar modelo!', dispatch);
-        reject(data);
-      });
-  });
-}
+const handleInsert = async (newData, setTableData, dispatch) => {
+  const { data, status } = await api.post('modelosMensagens', newData);
+  if (status !== 200) return;
 
-export function handleUpdate(
-  { id, title, greeting, content },
+  setTableData(prevState => [...prevState, data]);
+  notifySuccess('Modelo cadastrado com sucesso!', dispatch);
+};
+
+const handleUpdate = async (
+  { id, ...newData },
   setTableData,
   tableDataId,
   dispatch
-) {
-  return new Promise((resolve, reject) => {
-    api
-      .put(`modelosMensagens/${+id}`, { id: +id, title, greeting, content })
-      .then(({ data: newData }) => {
-        setTableData(prevState => {
-          const data = [...prevState];
-          data[tableDataId] = newData;
-          return data;
-        });
-        notifySuccess('Modelo editado com sucesso!', dispatch);
-        resolve();
-      })
-      .catch(data => {
-        notifyError('Falha ao editar Modelo!', dispatch);
-        reject(data);
-      });
-  }, 600);
-}
-
-export function handleDelete({ id, tableDataId }, setTableData) {
-  return new Promise((resolve, reject) => {
-    api
-      .delete(`modelosMensagens/${+id}`)
-      .then(() => {
-        setTableData(prevState => {
-          const data = [...prevState];
-          data.splice(tableDataId, 1);
-          return data;
-        });
-        notifySuccess('Modelo apagado com sucesso!');
-        resolve();
-      })
-      .catch(data => {
-        notifyError('Falha ao apagadar Modelo!');
-        reject(data);
-      });
+) => {
+  const { status } = await api.put(`modelosMensagens/${+id}`, {
+    id: +id,
+    ...newData,
   });
-}
+  if (status !== 200) return;
+
+  setTableData(prevState => {
+    const data = [...prevState];
+    data[tableDataId] = newData;
+    return data;
+  });
+
+  notifySuccess('Modelo editado com sucesso!', dispatch);
+};
+
+const handleDelete = async (id, tableDataId, setTableData) => {
+  const { status } = await api.delete(`modelosMensagens/${+id}`);
+  if (status !== 200) return;
+
+  setTableData(prevState => {
+    const data = [...prevState];
+    data.splice(tableDataId, 1);
+    return data;
+  });
+
+  notifySuccess('Modelo apagado com sucesso!');
+};
+
+export { handleInsert, handleUpdate, handleDelete };

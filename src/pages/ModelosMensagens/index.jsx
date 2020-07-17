@@ -3,60 +3,53 @@ import { useDispatch } from 'react-redux';
 import { FaEnvelope } from 'react-icons/fa';
 import ModelosMensagensTable from './ModelosMensagensTable';
 import ModelosMensagensModal from './ModelosMensagensModal';
-import api from '../../services/api';
-import {
-  NamedSection,
-  AddImportActions,
-  ConfirmDialog,
-} from '../../components';
-// import { Container } from './styles';
+import api from '~/services/api';
+import { NamedSection, AddImportActions, ConfirmDialog } from '~/components';
 import { handleInsert, handleUpdate, handleDelete } from './handlers.data';
+
+const DEFAULT_MODAL_STATE = {
+  visible: false,
+  selectedObject: null,
+  tableRefId: 0,
+};
 
 export default function ModelosMensagens() {
   const dispatch = useDispatch();
   const [tableData, setTableData] = useState([]);
-  const [insertModalVisible, setInsertModalVisible] = useState(false);
+  const [modalState, setModalState] = useState(DEFAULT_MODAL_STATE);
   const [confirmBoxVisible, setConfirmBoxVisible] = useState(false);
-  const [selectedObject, setSelectedObject] = useState(null);
-  const [tableDataId, setTableDataId] = useState(0);
 
-  function handleInsertSubmit({ title, greeting, content }) {
-    handleInsert({ title, greeting, content }, setTableData, dispatch);
-  }
+  const enable = {
+    insert: () => setModalState({ ...DEFAULT_MODAL_STATE, visible: true }),
+    edit: ({ tableData: _tableData, ...data }) =>
+      setModalState({
+        visible: true,
+        selectedObject: { ...data, id: data.id.toString() },
+        tableRefId: _tableData.id,
+      }),
+    delete: ({ id, tableData: _tableData }) => {
+      setModalState({
+        visible: false,
+        selectedObject: { id: id.toString() },
+        tableRefId: _tableData.id,
+      });
+      setConfirmBoxVisible(true);
+    },
+  };
 
-  function handleUpdateSubmit({ id, title, greeting, content }) {
-    handleUpdate(
-      { id, title, greeting, content },
-      setTableData,
-      tableDataId,
-      dispatch
-    );
-
-    setInsertModalVisible(false);
-  }
-
-  function handleDeleteSubmit() {
-    handleDelete({ id: selectedObject.id, tableDataId }, setTableData);
-  }
-
-  function enableInserting() {
-    setSelectedObject(null);
-    setInsertModalVisible(true);
-  }
-
-  function enableDeleting({ id, tableData: tableDataInfo }) {
-    setSelectedObject({ id: id.toString() });
-    setTableDataId(tableDataInfo.id);
-    setConfirmBoxVisible(true);
-  }
-
-  function enableEditing({ tableData: tableDataInfo, ...data }) {
-    data.id = data.id.toString();
-
-    setTableDataId(tableDataInfo.id);
-    setSelectedObject(data);
-    setInsertModalVisible(true);
-  }
+  const handle = {
+    insert: data => handleInsert(data, setTableData, dispatch),
+    edit: data => {
+      handleUpdate(data, setTableData, modalState.tableRefId, dispatch);
+      setModalState(DEFAULT_MODAL_STATE);
+    },
+    delete: () =>
+      handleDelete(
+        modalState.selectedObject.id,
+        modalState.tableRefId,
+        setTableData
+      ),
+  };
 
   useEffect(() => {
     async function loadModelos() {
@@ -74,17 +67,17 @@ export default function ModelosMensagens() {
         visible={confirmBoxVisible}
         onSetVisible={setConfirmBoxVisible}
         message="Tem certeza que deseja excluir este modelo?"
-        onConfirm={() => handleDeleteSubmit()}
+        onConfirm={() => handle.delete()}
       />
       <ModelosMensagensModal
-        visible={insertModalVisible}
-        onSetVisible={setInsertModalVisible}
-        handleSubmit={!selectedObject ? handleInsertSubmit : handleUpdateSubmit}
-        initialData={selectedObject}
+        visible={modalState.visible}
+        onSetVisible={visible => setModalState(prev => ({ ...prev, visible }))}
+        handleSubmit={!modalState.selectedObject ? handle.insert : handle.edit}
+        initialData={modalState.selectedObject}
       />
       <NamedSection name="Modelos de mensagens" icon={FaEnvelope}>
         <AddImportActions
-          onAdd={() => enableInserting()}
+          onAdd={() => enable.insert()}
           importLabel="modelos de mensagens"
           importModelURL="/modelos/Envia_modelos_mensagens.xlsx"
         />
@@ -96,12 +89,12 @@ export default function ModelosMensagens() {
             {
               tooltip: 'Editar modelo',
               icon: 'edit',
-              onClick: (evt, data) => enableEditing(data),
+              onClick: (evt, data) => enable.edit(data),
             },
             {
               tooltip: 'Apagar modelo',
               icon: 'delete',
-              onClick: (evt, data) => enableDeleting(data),
+              onClick: (evt, data) => enable.delete(data),
             },
           ]}
         />
