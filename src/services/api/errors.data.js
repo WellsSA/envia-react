@@ -8,6 +8,9 @@ const ERRORS = {
     'Falha ao atualizar perfil. verifique sua senha',
   // Alunos
   'student already exists': 'Este aluno já havia sido cadastrado no Envia!',
+
+  // General
+  'name is a required field': 'Nome é um campo requerido',
 };
 
 const DEFAULT_ERROR = 'Houve um erro inesperado. Verifique sua conexão';

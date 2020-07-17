@@ -49,10 +49,11 @@ export default function Professores() {
           tableData={tableData}
           setTableData={setTableData}
           editableOptions={{
-            onRowAdd: newData => handleInsert(newData, setTableData),
+            onRowAdd: newData => handleInsert(newData, setTableData, dispatch),
             onRowUpdate: (newData, oldData) =>
-              handleUpdate(newData, oldData, setTableData),
-            onRowDelete: oldData => handleDelete(oldData, setTableData),
+              handleUpdate(newData, oldData, setTableData, dispatch),
+            onRowDelete: oldData =>
+              handleDelete(oldData, setTableData, dispatch),
           }}
           actions={[
             {

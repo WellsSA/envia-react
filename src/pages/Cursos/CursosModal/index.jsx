@@ -3,6 +3,7 @@ import { Form } from '@rocketseat/unform';
 import PropTypes from 'prop-types';
 import { ModalHelper, Notifier, InputWrapper } from '../../../components';
 import { Container } from './styles';
+import { CURSO_SCHEMA } from '~/utils/schema';
 
 export default function CursosModal({
   visible,
@@ -11,6 +12,7 @@ export default function CursosModal({
   initialData,
 }) {
   const formId = 'cursos-modal';
+
   const placeholder = {
     name: 'ex.: Informática',
   };
@@ -29,7 +31,12 @@ export default function CursosModal({
         formId={formId}
       >
         <Notifier />
-        <Form id={formId} initialData={initialData} onSubmit={_handleSubmit}>
+        <Form
+          id={formId}
+          schema={CURSO_SCHEMA}
+          initialData={initialData}
+          onSubmit={_handleSubmit}
+        >
           <InputWrapper
             id="name"
             label="Nome:"

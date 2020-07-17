@@ -3,6 +3,7 @@ import { Form } from '@rocketseat/unform';
 import PropTypes from 'prop-types';
 import { ModalHelper, Notifier, InputWrapper } from '../../../components';
 import { Container } from './styles';
+import { PROFESSOR_SCHEMA } from '~/utils/schema';
 
 export default function ProfessoresModal({
   visible,
@@ -29,7 +30,12 @@ export default function ProfessoresModal({
         formId={formId}
       >
         <Notifier />
-        <Form id={formId} initialData={initialData} onSubmit={_handleSubmit}>
+        <Form
+          id={formId}
+          schema={PROFESSOR_SCHEMA}
+          initialData={initialData}
+          onSubmit={_handleSubmit}
+        >
           <InputWrapper
             id="name"
             label="Nome:"
