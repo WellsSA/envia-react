@@ -30,11 +30,16 @@ export function* signUp({ payload }) {
   try {
     const { name, email, password } = payload;
 
-    yield call(api.post, 'users', {
+    const { status } = yield call(api.post, 'users', {
       name,
       email,
       password,
     });
+
+    if (status !== 200) {
+      yield put(signFailure());
+      return;
+    }
 
     history.push('/');
     notifySuccess('Conta criada com sucesso!');
