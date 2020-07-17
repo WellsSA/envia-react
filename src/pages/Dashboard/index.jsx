@@ -1,12 +1,43 @@
 import React, { useRef } from 'react';
 import { FaQuestion } from 'react-icons/fa';
+import { MdNavigateNext, MdNavigateBefore } from 'react-icons/md';
+
 import { NamedSection } from '~/components';
 import { Button } from '~/components/_common';
 import { Container, Carousel, QuestionContainer, Question } from './styles';
 
+const questions = [
+  { label: 'Evasão' },
+  { label: 'Cancelamentos' },
+  { label: 'Alunos faltosos' },
+  { label: 'Inadimplência' },
+  { label: 'Comunicação individual com alunos' },
+  { label: 'Comunicação individual com responsáveis' },
+  { label: 'Comunicação frequente com alunos' },
+  { label: 'Comunicação frequente com responsáveis' },
+  {
+    label: 'Avisos sobre imprevistos',
+  },
+  {
+    label: 'Acompanhamento diário individual durante o curso',
+  },
+  {
+    label: 'Mobilização excessiva de colaboradores',
+  },
+  {
+    label: 'Eventos, ações e datas comemorativas',
+  },
+  {
+    label: 'Contato com ex-alunos',
+  },
+  {
+    label: 'Comunicação com aniversariantes',
+  },
+];
+
 export default function Dashboard() {
   const scrollRef = useRef();
-  const scrollUnit = 200;
+  const scrollUnit = 500;
 
   const scrollLeft = () => {
     if (scrollRef) {
@@ -29,7 +60,7 @@ export default function Dashboard() {
         <Carousel>
           <>
             <Button kind="contrast" onClick={scrollLeft}>
-              prev
+              <MdNavigateBefore />
             </Button>
           </>
           <QuestionContainer ref={scrollRef}>
@@ -49,7 +80,7 @@ export default function Dashboard() {
           </QuestionContainer>
           <>
             <Button kind="contrast" onClick={scrollRight}>
-              next
+              <MdNavigateNext />
             </Button>
           </>
         </Carousel>

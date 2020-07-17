@@ -1,4 +1,6 @@
 import styled from 'styled-components';
+import { darken } from 'polished';
+import { getColor } from '~/utils/themeHelper';
 
 export const Container = styled.div`
   width: 100%;
@@ -10,8 +12,9 @@ export const Carousel = styled.div`
   display: flex;
   height: 500px;
   button {
-    width: 10%;
-    margin: 0;
+    width: 8%;
+    margin: 1%;
+    font-size: 48px;
   }
 
   > div {
@@ -20,7 +23,6 @@ export const Carousel = styled.div`
 `;
 
 export const QuestionContainer = styled.div`
-  background: #f00;
   display: flex;
   flex: 1;
   overflow-x: scroll;
@@ -32,11 +34,13 @@ export const QuestionContainer = styled.div`
 `;
 
 export const Question = styled.div`
+  cursor: pointer;
   display: flex;
   flex-shrink: 0;
-  width: 100px;
-  height: 100px;
-  background: #000;
-  margin: 10px;
-  padding: 10px;
+  width: 400px;
+  height: 400px;
+  margin: 50px 25px;
+  padding: 25px;
+  border-radius: 12px;
+  background: ${props => darken(0.1, getColor(props, 'background'))};
 `;

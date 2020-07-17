@@ -32,7 +32,7 @@ const colorByKind = {
     color: 'highlight',
     background: 'background',
     hover: 'background',
-    hoverBackground: 'backgroundHighlight',
+    hoverBackground: 'highlight',
   },
 };
 
@@ -62,4 +62,6 @@ export const CustomButton = styled.button`
   svg {
     margin: 0 4px;
   }
+
+  transition: color 0.3s ease-in-out, background 0.3s ease-in-out;
 `;
