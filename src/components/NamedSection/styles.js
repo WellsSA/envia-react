@@ -3,6 +3,7 @@ import { fonts } from '../../styles/scale';
 import { getColor } from '../../utils/themeHelper';
 
 export const Container = styled.div`
+  width: 100%;
   .title {
     display: block;
     font-size: ${fonts.sectionTitleSize};
