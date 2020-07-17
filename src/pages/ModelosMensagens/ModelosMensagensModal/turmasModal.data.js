@@ -1,4 +1,4 @@
-import * as Yup from 'yup';
+import { MODELO_SCHEMA } from '~/utils/schema';
 
 const placeholder = {
   title: 'ex.: Modelo de Parabenização',
@@ -7,12 +7,6 @@ const placeholder = {
     'ex.: Vimos que hoje é seu aniversário e não pudemos deixar de dizer o quanto é especial tê-lo conosco!',
 };
 
-const schema = Yup.object().shape({
-  title: Yup.string().required('O Título é obrigatório *'),
-  greeting: Yup.string().required('A saudação é obrigatória *'),
-  content: Yup.string().required('A mensagem é obrigatória *'),
-  // course: Yup.string().required('O curso é obrigatório *'),
-  // teacher: Yup.string().required('O professor é obrigatório *'),
-});
+const schema = MODELO_SCHEMA;
 
 export { schema, placeholder };

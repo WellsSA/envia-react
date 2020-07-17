@@ -1,5 +1,5 @@
-import * as Yup from 'yup';
-import { clearPhone } from '../../../components/InputWrapper/PhoneInputMask/phoneInputMask.data';
+import { clearPhone } from '~/components/InputWrapper/PhoneInputMask/phoneInputMask.data';
+import { ALUNO_SHEMA } from '~/utils/schema';
 
 const placeholder = {
   name: 'ex.: João da Silva',
@@ -12,17 +12,7 @@ const placeholder = {
   // turmas: [1, 2, 3],
 };
 
-const schema = Yup.object().shape({
-  name: Yup.string().required('O nome é obrigatório *'),
-  email: Yup.string()
-    .email('Informe um e-mail válido!')
-    .required('O e-mail é obrigatório *'),
-  // birthDate: Yup.date().required('A data de nascimento é obrigatória *'),
-  // phone: 'ex.: (11) 9555-5533',
-  responsible: Yup.string(),
-  responsible_email: Yup.string().email('Informe um e-mail válido'),
-  // responsible_phone: 'ex.: (11) 9555-5533',
-});
+const schema = ALUNO_SHEMA;
 
 function verifyAndAdd(ids = [], reference = {}) {
   ids.forEach(id => {
