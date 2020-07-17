@@ -10,6 +10,8 @@ import {
 } from './styles';
 import { signOut } from '~/store/modules/auth/actions';
 
+import EnviaShortcut from '~/assets/shortcut.png';
+
 export default function ProfileAvatar() {
   const dispatch = useDispatch();
   const [optionBarOpen, setOptionBarOpen] = useState(false);
@@ -29,7 +31,7 @@ export default function ProfileAvatar() {
   return (
     <>
       <Container onClick={toggleOptionBar}>
-        <Image src="https://wellsadev.com/images/well.jpg" alt="Envia" />
+        <Image src={EnviaShortcut} alt="Envia" />
         <OptionBar open={optionBarOpen}>
           {/* <FileLabel htmlFor="avatar">
             <Option>
