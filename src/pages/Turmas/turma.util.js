@@ -27,10 +27,10 @@ esquema de dados das tabelas:
    */
 
 const turmaBFF = turma => {
-  const { id, course, teacher } = turma;
+  const { id, course, teacher, ...rest } = turma;
 
   return {
-    ...turma,
+    ...rest,
     id: id.toString(),
     course: course ? course.id.toString() : '',
     teacher: teacher ? teacher.id.toString() : '',
@@ -41,7 +41,7 @@ const turmaFFB = turma => {
   const { id, course, teacher } = turma;
   return {
     ...turma,
-    id: id.toString(),
+    id: id ? id.toString() : null,
     course: course ? { id: +course } : null,
     teacher: teacher ? { id: +teacher } : null,
   };

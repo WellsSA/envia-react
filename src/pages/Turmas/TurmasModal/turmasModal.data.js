@@ -1,5 +1,5 @@
-import * as Yup from 'yup';
-import api from '../../../services/api';
+import api from '~/services/api';
+import { TURMA_SCHEMA } from '~/utils/schema';
 
 const placeholder = {
   name: 'ex.: 1º Informática Noite',
@@ -9,13 +9,7 @@ const placeholder = {
   teacher: 'Selecionar professor...',
 };
 
-const schema = Yup.object().shape({
-  name: Yup.string().required('O nome é obrigatório *'),
-  days: Yup.string().required('O dia é obrigatório *'),
-  hours: Yup.string().required('O horário é obrigatório *'),
-  course: Yup.string().required('O curso é obrigatório *'),
-  teacher: Yup.string().required('O professor é obrigatório *'),
-});
+const schema = TURMA_SCHEMA;
 
 async function loadCourses(callback) {
   const { status, data } = await api.get('cursos');
