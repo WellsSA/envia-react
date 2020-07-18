@@ -12,6 +12,8 @@ import history from './services/history';
 import { store, persistor } from './store';
 import GlobalStyle from './styles/global';
 
+import { Loading } from '~/components';
+
 function App() {
   return (
     <Provider store={store}>
@@ -21,6 +23,7 @@ function App() {
             <Routes />
             <GlobalStyle />
             <ToastContainer autoClose={3000} />
+            <Loading />
           </Router>
         </ThemeProvider>
       </PersistGate>

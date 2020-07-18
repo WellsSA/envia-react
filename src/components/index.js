@@ -12,6 +12,7 @@ import SectionDivisor from './SectionDivisor';
 import ImportModal from './ImportModal';
 import ProgressBar from './ProgressBar';
 import MessageStep from './MessageStep';
+import Loading from './Loading';
 
 export {
   EnviaDataTable,
@@ -28,4 +29,5 @@ export {
   ImportModal,
   ProgressBar,
   MessageStep,
+  Loading,
 };

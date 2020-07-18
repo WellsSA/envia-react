@@ -1,4 +1,4 @@
-import React, { useRef, memo } from 'react';
+import React, { useRef } from 'react';
 import { FaQuestion } from 'react-icons/fa';
 import { MdNavigateNext, MdNavigateBefore } from 'react-icons/md';
 
@@ -87,4 +87,4 @@ const Dashboard = () => {
   );
 };
 
-export default memo(Dashboard);
+export default Dashboard;
