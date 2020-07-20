@@ -24,6 +24,7 @@ const z_index = {
   overlay: {
     main: 100,
     content: 101,
+    loading: 110,
   },
 };
 

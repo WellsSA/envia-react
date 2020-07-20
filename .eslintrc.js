@@ -41,6 +41,7 @@ module.exports = {
     'no-restricted-syntax': 'off',
     'react/no-array-index-key': 'off',
     'no-return-assign': 'off',
+    'no-unused-expressions': 'off',
   },
   settings: {
     'import/resolver': {

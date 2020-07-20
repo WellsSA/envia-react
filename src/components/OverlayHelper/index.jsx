@@ -5,18 +5,22 @@ import { Container, Content, Background } from './styles';
 export default function OverlayHelper({
   visible,
   onSetVisible,
-  children,
   onCancel,
+  children,
+  className,
+  locked,
 }) {
   function handleCancel() {
-    onSetVisible(false);
+    !locked && onSetVisible(false);
     onCancel();
   }
 
   return (
-    <Container visible={visible}>
-      <Content visible={visible}>{children}</Content>
-      <Background onClick={handleCancel} />
+    <Container className={className} visible={visible}>
+      <Content className="content" visible={visible}>
+        {children}
+      </Content>
+      <Background className="background" onClick={handleCancel} />
     </Container>
   );
 }
@@ -30,10 +34,14 @@ OverlayHelper.propTypes = {
     PropTypes.any,
   ]).isRequired,
   onCancel: PropTypes.func,
+  className: PropTypes.string,
+  locked: PropTypes.bool,
 };
 
 OverlayHelper.defaultProps = {
   visible: false,
   onSetVisible: () => {},
   onCancel: () => {},
+  className: '',
+  locked: false,
 };
