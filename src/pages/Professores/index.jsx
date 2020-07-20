@@ -22,6 +22,10 @@ export default function Professores() {
     handleInsert({ name }, setTableData, dispatch);
   }
 
+  function handleImport(data) {
+    setTableData(prev => [...prev, ...data.inserted]);
+  }
+
   useEffect(() => {
     async function loadProfessores() {
       const { status, data } = await api.get('professores');
@@ -44,6 +48,7 @@ export default function Professores() {
           onAdd={() => setInsertModalVisible(true)}
           importLabel="professores"
           importModelURL="/modelos/Envia_professores.xlsx"
+          onImport={handleImport}
         />
         <ProfessoresTable
           tableData={tableData}

@@ -15,6 +15,7 @@ export default function ImportModal({
   onSetVisible,
   importLabel,
   modelURL,
+  onImport,
 }) {
   const title = `Importar ${capitalize(importLabel)}`;
   const url = `${baseURL}${modelURL}`;
@@ -33,11 +34,12 @@ export default function ImportModal({
       return notifyError('Selecione um arquivo para importar', dispatch);
     }
 
-    const { status } = await api.post(`import/${importLabel}`, file);
+    const { data, status } = await api.post(`import/${importLabel}`, file);
 
     if (status !== 200) return;
 
     notifySuccess(`${importLabel} importados com sucesso!`, dispatch);
+    return onImport(data);
   }
 
   return (
@@ -76,4 +78,5 @@ ImportModal.propTypes = {
   onSetVisible: PropTypes.func.isRequired,
   importLabel: PropTypes.string.isRequired,
   modelURL: PropTypes.string.isRequired,
+  onImport: PropTypes.func.isRequired,
 };

@@ -15,7 +15,6 @@ export default function AddImportActions({
 
   function _onImport() {
     setImportModalVisible(true);
-    onImport();
   }
 
   return (
@@ -25,6 +24,7 @@ export default function AddImportActions({
         onSetVisible={setImportModalVisible}
         importLabel={importLabel}
         modelURL={importModelURL}
+        onImport={onImport}
       />
       <Container>
         <Button kind="confirm" onClick={onAdd}>
