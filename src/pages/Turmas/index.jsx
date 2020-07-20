@@ -55,6 +55,7 @@ export default function Turmas() {
         modalState.tableRefId,
         setTableData
       ),
+    import: data => setTableData(prev => [...prev, ...data.inserted]),
   };
 
   useEffect(() => {
@@ -83,9 +84,10 @@ export default function Turmas() {
       />
       <NamedSection name="Turmas" icon={FaUsers}>
         <AddImportActions
-          onAdd={() => enable.insert()}
+          onAdd={enable.insert}
           importLabel="turmas"
           importModelURL="/modelos/Envia_turmas.xlsx"
+          onImport={handle.import}
         />
         <TurmasTable
           tableData={tableData}
@@ -95,12 +97,12 @@ export default function Turmas() {
             {
               tooltip: 'Editar turma',
               icon: 'edit',
-              onClick: (evt, data) => enable.edit(data),
+              onClick: (_, data) => enable.edit(data),
             },
             {
               tooltip: 'Apagar turma',
               icon: 'delete',
-              onClick: (evt, data) => enable.delete(data),
+              onClick: (_, data) => enable.delete(data),
             },
           ]}
         />

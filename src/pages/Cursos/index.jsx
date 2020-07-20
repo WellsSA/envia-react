@@ -22,6 +22,10 @@ export default function Cursos() {
     handleInsert({ name }, setTableData, dispatch);
   }
 
+  function handleImport(data) {
+    setTableData(prev => [...prev, ...data.inserted]);
+  }
+
   useEffect(() => {
     async function loadCursos() {
       const { status, data } = await api.get('cursos');
@@ -44,6 +48,7 @@ export default function Cursos() {
           onAdd={() => setInsertModalVisible(true)}
           importLabel="cursos"
           importModelURL="/modelos/Envia_cursos.xlsx"
+          onImport={handleImport}
         />
         <CursosTable
           tableData={tableData}
