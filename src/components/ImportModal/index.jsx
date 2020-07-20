@@ -2,13 +2,13 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
 import { FaRegFileExcel } from 'react-icons/fa';
-import { notifySuccess, notifyError } from '../../utils/notifyHelper';
+import { notifySuccess, notifyError } from '~/utils/notifyHelper';
 import ModalHelper from '../ModalHelper';
 import Notifier from '../Notifier';
-import { Title } from '../_common';
-import api, { baseURL } from '../../services/api';
+import { Title, Alert } from '../_common';
+import api, { baseURL } from '~/services/api';
 import { Container, SpreadSheetContainer, ViewModel } from './styles';
-import { capitalize } from '../../utils/textHelper';
+import { capitalize } from '~/utils/textHelper';
 
 export default function ImportModal({
   visible,
@@ -55,6 +55,14 @@ export default function ImportModal({
         <p>
           Você pode importar seus {importLabel} de uma <b>planilha excel</b>!
         </p>
+        <Alert>
+          <b>Nota:</b> Você pode importar a mesma planilha quantas vezes
+          precisar, <br /> os registros só serão criados uma única vez!
+        </Alert>
+        <Alert kind="alert">
+          <b>Nota:</b> Não utilize a importação para atualizar registros,
+          <br /> eles serão inseridos apenas uma vez.
+        </Alert>
         <Title>Baixe e preencha o modelo:</Title>
         <ViewModel href={url}>
           <FaRegFileExcel /> Planilha modelo de {importLabel}
