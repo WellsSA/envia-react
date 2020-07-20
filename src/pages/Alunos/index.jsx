@@ -59,6 +59,8 @@ export default function Alunos() {
         modalState.tableRefId,
         setTableData
       ),
+    import: data =>
+      setTableData(prev => [...prev, ...alunosBFF(data.inserted)]),
   };
 
   useEffect(() => {
@@ -90,6 +92,7 @@ export default function Alunos() {
           onAdd={() => enable.insert()}
           importLabel="alunos"
           importModelURL="/modelos/Envia_alunos.xlsx"
+          onImport={handle.import}
         />
         <AlunosTable
           tableData={tableData}

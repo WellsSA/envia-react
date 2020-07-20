@@ -49,6 +49,7 @@ export default function ModelosMensagens() {
         modalState.tableRefId,
         setTableData
       ),
+    import: data => setTableData(prev => [...prev, ...data.inserted]),
   };
 
   useEffect(() => {
@@ -80,6 +81,7 @@ export default function ModelosMensagens() {
           onAdd={() => enable.insert()}
           importLabel="modelos de mensagens"
           importModelURL="/modelos/Envia_modelos_mensagens.xlsx"
+          onImport={handle.import}
         />
         <ModelosMensagensTable
           tableData={tableData}
