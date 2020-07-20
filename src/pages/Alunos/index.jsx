@@ -89,7 +89,7 @@ export default function Alunos() {
       />
       <NamedSection name="Alunos" icon={FaUser}>
         <AddImportActions
-          onAdd={() => enable.insert()}
+          onAdd={enable.insert}
           importLabel="alunos"
           importModelURL="/modelos/Envia_alunos.xlsx"
           onImport={handle.import}

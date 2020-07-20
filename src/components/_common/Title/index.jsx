@@ -7,8 +7,10 @@ export default function Title({ centered, children }) {
 }
 
 Title.propTypes = {
-  // eslint-disable-next-line react/forbid-prop-types
-  children: PropTypes.any.isRequired,
+  children: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.node),
+    PropTypes.node,
+  ]).isRequired,
   centered: PropTypes.bool,
 };
 
