@@ -15,6 +15,8 @@ import { Container } from './styles';
 import { handleInsert, handleUpdate, handleDelete } from './handlers.data';
 
 import { alunosBFF } from './alunos.util';
+import { notifySuccess } from '~/utils/notifyHelper';
+import { notifyError } from '~/store/modules/notify/actions';
 
 const DEFAULT_MODAL_STATE = {
   visible: false,
@@ -59,8 +61,25 @@ export default function Alunos() {
         modalState.tableRefId,
         setTableData
       ),
-    import: data =>
-      setTableData(prev => [...prev, ...alunosBFF(data.inserted)]),
+    import: data => {
+      setTableData(prev => [...prev, ...alunosBFF(data.inserted)]);
+      if (data.inserted.length) {
+        notifySuccess(
+          `Alunos ${data.inserted
+            .map(({ name }) => name)
+            .join(',')} inseridos com sucesso!`
+        );
+      }
+      if (data.errored.length) {
+        const errorMessage = data.errored.map(({ item, error }) => ({
+          label: `Registro: ${item.name}.`,
+          value: `Erro: ${error}`,
+        }));
+
+        console.log(data.errored);
+        dispatch(notifyError(errorMessage));
+      }
+    },
   };
 
   useEffect(() => {

@@ -1,0 +1,6 @@
+export const NOTIFY_STATE = {
+  SUCCESS: 'SUCCESS',
+  NEUTRAL: 'NEUTRAL',
+  ERROR: 'ERROR',
+  CLOSED: 'CLOSED',
+};

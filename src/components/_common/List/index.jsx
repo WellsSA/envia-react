@@ -7,7 +7,7 @@ const List = ({ list, onEmptyLabel, kind }) => {
     <Container kind={kind}>
       {list.length ? (
         list.map(({ label, value }, index) => (
-          <li key={index}>
+          <li key={`${value}${index + 1}`}>
             <strong>{label}</strong>
             <span>{value}</span>
           </li>

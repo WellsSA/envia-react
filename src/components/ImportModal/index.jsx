@@ -9,6 +9,7 @@ import { Title, Alert } from '../_common';
 import api, { baseURL } from '~/services/api';
 import { Container, SpreadSheetContainer, ViewModel } from './styles';
 import { capitalize } from '~/utils/textHelper';
+import { disposeNotify } from '~/store/modules/notify/actions';
 
 export default function ImportModal({
   visible,
@@ -43,14 +44,15 @@ export default function ImportModal({
   }
 
   return (
-    <Container>
-      <ModalHelper
-        title={title}
-        visible={visible}
-        onSetVisible={onSetVisible}
-        onConfirm={sendRequest}
-        confirmLabel="Importar"
-      >
+    <ModalHelper
+      title={title}
+      visible={visible}
+      onSetVisible={onSetVisible}
+      onConfirm={sendRequest}
+      confirmLabel="Importar"
+      onCancel={() => dispatch(disposeNotify())}
+    >
+      <Container>
         <Notifier />
         <p>
           Você pode importar seus {importLabel} de uma <b>planilha excel</b>!
@@ -76,8 +78,8 @@ export default function ImportModal({
             onChange={handleChange}
           />
         </SpreadSheetContainer>
-      </ModalHelper>
-    </Container>
+      </Container>
+    </ModalHelper>
   );
 }
 

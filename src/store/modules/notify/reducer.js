@@ -1,14 +1,10 @@
 import produce from 'immer';
 
-export const NOTIFY_STATE = {
-  SUCCESS: 'SUCCESS',
-  NEUTRAL: 'NEUTRAL',
-  ERROR: 'ERROR',
-};
+import { NOTIFY_STATE } from './data';
 
 const INITIAL_STATE = {
-  type: NOTIFY_STATE.NEUTRAL,
-  message: 'just a test',
+  type: NOTIFY_STATE.CLOSED,
+  message: '',
 };
 
 export default function notify(state = INITIAL_STATE, action) {
@@ -22,6 +18,11 @@ export default function notify(state = INITIAL_STATE, action) {
       case '@notify/NOTIFY_ERROR': {
         draft.type = NOTIFY_STATE.ERROR;
         draft.message = action.payload.message;
+        break;
+      }
+      case '@notify/NOTIFY_DISPOSE': {
+        draft.type = INITIAL_STATE.type;
+        draft.message = INITIAL_STATE.message;
         break;
       }
       default:

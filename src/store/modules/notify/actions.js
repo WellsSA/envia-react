@@ -11,3 +11,9 @@ export function notifyError(message) {
     payload: { message },
   };
 }
+
+export function disposeNotify() {
+  return {
+    type: '@notify/NOTIFY_DISPOSE',
+  };
+}

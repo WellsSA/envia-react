@@ -4,7 +4,14 @@ import { fonts } from '../../styles/scale';
 import { getColor } from '../../utils/themeHelper';
 
 export const Container = styled.div`
+  max-width: 600px;
+  max-height: 400px;
   font-size: ${fonts.labelFontSize};
+  overflow-y: auto;
+  ::-webkit-scrollbar {
+    width: 0px;
+    background: transparent;
+  }
 `;
 
 export const ViewModel = styled.a`
