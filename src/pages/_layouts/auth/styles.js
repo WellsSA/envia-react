@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { darken, lighten, transparentize } from 'polished';
-import { getColor } from '../../../utils/themeHelper';
+import { getColor } from '../../../utils/theme';
 // import { darken } from 'polished';
 
 /*

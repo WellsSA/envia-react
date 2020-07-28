@@ -1,5 +1,5 @@
 import api from '../../services/api';
-import { notifySuccess } from '../../utils/notifyHelper';
+import { notifySuccess } from '../../utils/notify';
 import { alunoFFB, alunoBFF } from './alunos.util';
 
 const handleInsert = async (newData, setTableData, dispatch) => {

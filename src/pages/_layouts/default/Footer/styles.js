@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { transparentize } from 'polished';
-import { getColor } from '~/utils/themeHelper';
+import { getColor } from '~/utils/theme';
 
 export const Mark = styled.div`
   width: 100%;

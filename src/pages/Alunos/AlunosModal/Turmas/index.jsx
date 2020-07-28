@@ -4,7 +4,7 @@ import { FaPlus } from 'react-icons/fa';
 import { InputWrapper } from '../../../../components';
 import { Button } from '../../../../components/_common';
 import api from '../../../../services/api';
-import { notifyError } from '../../../../utils/notifyHelper';
+import { notifyError } from '../../../../utils/notify';
 import { Container, Turma } from './styles';
 
 function Turmas({ initialData }) {

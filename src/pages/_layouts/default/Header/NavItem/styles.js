@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { darken } from 'polished';
-import { getColor } from '~/utils/themeHelper';
+import { getColor } from '~/utils/theme';
 import { fonts } from '~/styles/scale';
 
 export const Container = styled.div`

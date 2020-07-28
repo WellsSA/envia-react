@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
 import { transparentize } from 'polished';
 import { fonts } from '~/styles/scale';
-import { getColor } from '~/utils/themeHelper';
+import { getColor } from '~/utils/theme';
 
 export const Container = styled.ul`
   padding: 20px;

@@ -3,7 +3,7 @@ import axios from 'axios';
 import { store } from '~/store';
 import { showLoading, disposeLoading } from '~/store/modules/loading/actions';
 import { signOut } from '~/store/modules/auth/actions';
-import { notifyError } from '~/utils/notifyHelper';
+import { notifyError } from '~/utils/notify';
 import { getErrorMessage, DEFAULT_ERROR } from './errors.data';
 
 const baseURL = process.env.REACT_APP_API_URL;

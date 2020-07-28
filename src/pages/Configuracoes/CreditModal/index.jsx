@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { ModalHelper, Notifier, InputWrapper } from '../../../components';
 import { Label, Title } from '../../../components/_common';
 import { Container, SectionDivisor, QuantityContainer } from './styles';
-import { currencyFormat } from '../../../utils/textHelper';
+import { currencyFormat } from '../../../utils/text';
 
 function CreditModal({ visible, onSetVisible, handleSubmit, creditKind }) {
   const formId = 'credit-modal';

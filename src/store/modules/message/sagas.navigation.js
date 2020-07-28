@@ -1,5 +1,5 @@
 import { put, select } from 'redux-saga/effects';
-import { notifySuccess, notifyError } from '../../../utils/notifyHelper';
+import { notifySuccess, notifyError } from '../../../utils/notify';
 import { setStep } from './actions';
 
 import { CRITERION, STEPS, BIRTH_STEPS } from './data';

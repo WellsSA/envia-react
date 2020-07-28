@@ -2,7 +2,7 @@ import { takeLatest, call, put, all } from 'redux-saga/effects';
 import history from '~/services/history';
 import api from '~/services/api';
 import { signInSuccess, signFailure } from './actions';
-import { notifySuccess, notifyError } from '~/utils/notifyHelper';
+import { notifySuccess, notifyError } from '~/utils/notify';
 
 export function* signIn({ payload: { email, password } }) {
   try {

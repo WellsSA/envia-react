@@ -15,7 +15,7 @@ import { Container } from './styles';
 import { handleInsert, handleUpdate, handleDelete } from './handlers.data';
 
 import { alunosBFF } from './alunos.util';
-import { notifySuccess } from '~/utils/notifyHelper';
+import { notifySuccess } from '~/utils/notify';
 import { notifyError } from '~/store/modules/notify/actions';
 
 const DEFAULT_MODAL_STATE = {

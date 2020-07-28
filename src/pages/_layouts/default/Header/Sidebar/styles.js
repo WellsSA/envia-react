@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { getColor } from '~/utils/themeHelper';
+import { getColor } from '~/utils/theme';
 import { fonts, z_index } from '~/styles/scale';
 
 export const Container = styled.div`

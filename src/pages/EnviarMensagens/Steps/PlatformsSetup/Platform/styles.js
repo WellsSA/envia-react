@@ -2,7 +2,7 @@ import styled, { css } from 'styled-components';
 
 import { lighten, darken, transparentize } from 'polished';
 import { fonts } from '~/styles/scale';
-import { getColor } from '~/utils/themeHelper';
+import { getColor } from '~/utils/theme';
 import { Button } from '~/components/_common';
 
 export const Container = styled(Button)`

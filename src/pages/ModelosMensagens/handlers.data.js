@@ -1,5 +1,5 @@
 import api from '~/services/api';
-import { notifySuccess } from '~/utils/notifyHelper';
+import { notifySuccess } from '~/utils/notify';
 
 const handleInsert = async (newData, setTableData, dispatch) => {
   const { data, status } = await api.post('modelosMensagens', newData);

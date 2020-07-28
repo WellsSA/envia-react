@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { darken } from 'polished';
 import { fonts } from '../../../styles/scale';
-import { getColor } from '../../../utils/themeHelper';
+import { getColor } from '../../../utils/theme';
 
 export const Container = styled.h1`
   font-size: ${fonts.titleFontSize};

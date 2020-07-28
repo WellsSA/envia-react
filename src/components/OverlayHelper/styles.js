@@ -3,7 +3,7 @@ import {
   fadeInDown as animationIn,
   fadeOutDown as animationOut,
 } from 'react-animations';
-import { getColor } from '~/utils/themeHelper';
+import { getColor } from '~/utils/theme';
 import { z_index } from '~/styles/scale';
 
 const animation = {

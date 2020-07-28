@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
 import { darken, lighten, transparentize } from 'polished';
 import { fonts } from '../../styles/scale';
-import { getColor } from '../../utils/themeHelper';
+import { getColor } from '../../utils/theme';
 
 export const Container = styled.div`
   margin: 15px 5px;

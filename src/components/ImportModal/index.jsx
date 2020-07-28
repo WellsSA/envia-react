@@ -2,13 +2,13 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
 import { FaRegFileExcel } from 'react-icons/fa';
-import { notifySuccess, notifyError } from '~/utils/notifyHelper';
+import { notifySuccess, notifyError } from '~/utils/notify';
 import ModalHelper from '../ModalHelper';
 import Notifier from '../Notifier';
 import { Title, Alert } from '../_common';
 import api, { baseURL } from '~/services/api';
 import { Container, SpreadSheetContainer, ViewModel } from './styles';
-import { capitalize } from '~/utils/textHelper';
+import { capitalize } from '~/utils/text';
 import { disposeNotify } from '~/store/modules/notify/actions';
 
 export default function ImportModal({

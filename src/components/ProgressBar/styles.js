@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { getColor } from '~/utils/themeHelper';
+import { getColor } from '~/utils/theme';
 
 export const Container = styled.div`
   height: 100px;

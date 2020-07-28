@@ -1,5 +1,5 @@
 import { takeLatest, put, all, select, call } from 'redux-saga/effects';
-import { notifyError, notifySuccess } from '../../../utils/notifyHelper';
+import { notifyError, notifySuccess } from '../../../utils/notify';
 import {
   nextStep,
   setupFiltersSuccess,

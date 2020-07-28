@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { transparentize, lighten } from 'polished';
-import { getColor } from '../../../utils/themeHelper';
+import { getColor } from '../../../utils/theme';
 
 export const Container = styled.div`
   display: inline-flex;

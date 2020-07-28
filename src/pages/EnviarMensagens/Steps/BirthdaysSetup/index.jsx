@@ -7,7 +7,7 @@ import { setupAniversariantes } from '~/store/modules/message/actions';
 import { CRITERION } from '~/store/modules/message/data';
 import AniversariantesIMG from '~/assets/dashboard/aniversariantes.png';
 import StepNavigator from '../../StepNavigator';
-import { yearsFromNow } from '~/utils/textHelper';
+import { yearsFromNow } from '~/utils/text';
 
 import { Container } from './styles';
 

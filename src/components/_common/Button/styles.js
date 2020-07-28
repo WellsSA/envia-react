@@ -1,7 +1,7 @@
 import { darken } from 'polished';
 import styled from 'styled-components';
 import { fonts } from '../../../styles/scale';
-import { getColor } from '../../../utils/themeHelper';
+import { getColor } from '../../../utils/theme';
 
 const colorByKind = {
   confirm: {

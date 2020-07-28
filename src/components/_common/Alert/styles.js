@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { transparentize } from 'polished';
 import { fonts } from '~/styles/scale';
-import { getColor } from '~/utils/themeHelper';
+import { getColor } from '~/utils/theme';
 
 const getColorByKind = props => {
   switch (props.kind) {

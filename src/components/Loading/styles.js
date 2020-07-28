@@ -4,7 +4,7 @@ import { z_index } from '~/styles/scale';
 
 // import { transparentize } from 'polished';
 // import { fonts } from '../../styles/scale';
-// import { getColor } from '../../utils/themeHelper';
+// import { getColor } from '../../utils/theme';
 
 export const LoadingOverlay = styled(OverlayHelper)`
   z-index: ${z_index.overlay.loading};
