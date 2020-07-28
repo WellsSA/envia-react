@@ -5,7 +5,7 @@ import { fonts, z_index } from '~/styles/scale';
 export const Container = styled.div`
   display: block;
   position: fixed;
-  height: 100vh;
+  height: 100%;
   top: 0;
   right: 0;
   z-index: ${z_index.sidebar.main};

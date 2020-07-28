@@ -10,7 +10,6 @@ export const Container = styled.div`
 
 export const Carousel = styled.div`
   display: flex;
-  height: 500px;
 
   button {
     width: 8%;
@@ -38,10 +37,10 @@ export const Question = styled.div`
   cursor: pointer;
   display: flex;
   flex-shrink: 0;
-  width: 400px;
-  height: 400px;
-  margin: 50px 25px;
-  padding: 25px;
+  width: 300px;
+  height: 300px;
+  margin: 30px 15px;
+  padding: 15px;
   border-radius: 12px;
   background: ${props => darken(0.05, getColor(props, 'background'))};
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);

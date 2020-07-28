@@ -19,5 +19,12 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   padding-top: 80px;
-  min-height: calc(97% - 50px);
+  height: calc(97% - 50px);
+  overflow-y: auto;
+  overflow-x: hidden;
+
+  ::-webkit-scrollbar {
+    width: 0px;
+    background: transparent;
+  }
 `;

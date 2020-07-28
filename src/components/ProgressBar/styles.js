@@ -3,6 +3,7 @@ import { getColor } from '~/utils/themeHelper';
 
 export const Container = styled.div`
   height: 100px;
+  width: 80%;
   max-width: 800px;
   background: ${props => getColor(props, 'background')};
   margin: 0 auto;

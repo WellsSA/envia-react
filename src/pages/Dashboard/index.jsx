@@ -67,7 +67,7 @@ const Dashboard = () => {
           </>
           <QuestionContainer ref={scrollRef}>
             {questions.map(({ label }, i) => (
-              <Question key={`question${i}`}>
+              <Question key={`question${i + 1}`}>
                 <SectionMarker
                   icon={() => <img src={licencaImage} alt="Licença" />}
                   label={label}
