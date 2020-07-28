@@ -1,7 +1,9 @@
 import React from 'react';
 import { Form } from '@rocketseat/unform';
 import PropTypes from 'prop-types';
-import { ModalHelper, Notifier, InputWrapper } from '../../../components';
+import { Link } from 'react-router-dom';
+import { ModalHelper, Notifier, InputWrapper } from '~/components';
+import { Alert } from '~/components/_common';
 import { Container } from './styles';
 import { PROFESSOR_SCHEMA } from '~/utils/schema';
 
@@ -30,6 +32,10 @@ export default function ProfessoresModal({
         formId={formId}
       >
         <Notifier />
+        <Alert>
+          Nota: A planilha de importação de Turmas também cria Cursos e
+          Professores! <Link to="turmas">Confira</Link>.
+        </Alert>
         <Form
           id={formId}
           schema={PROFESSOR_SCHEMA}

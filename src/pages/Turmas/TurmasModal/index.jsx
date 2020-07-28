@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Form } from '@rocketseat/unform';
 import PropTypes from 'prop-types';
-import { ModalHelper, Notifier, InputWrapper } from '../../../components';
+import { ModalHelper, Notifier, InputWrapper } from '~/components';
+import { Alert } from '~/components/_common';
 import { Container } from './styles';
 import {
   placeholder,
@@ -49,6 +50,10 @@ export default function TurmasModal({
         confirmLabel={initialData ? 'Atualizar' : 'Cadastrar'}
       >
         <Notifier />
+        <Alert>
+          Nota: A planilha de importação de Turmas também cria Cursos e
+          Professores!
+        </Alert>
         <Form
           id={formId}
           schema={schema}
