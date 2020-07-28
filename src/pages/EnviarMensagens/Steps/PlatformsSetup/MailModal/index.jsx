@@ -1,12 +1,16 @@
 import React, { useState, useEffect } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
-import { ModalHelper } from '~/components';
+import { Link } from 'react-router-dom';
+import { ModalHelper, Notifier } from '~/components';
+import { Alert } from '~/components/_common';
 import { PLATFORMS, STEPS, BIRTH_STEPS } from '~/store/modules/message/data';
 import QuantityDisplayer from './QuantityDisplayer';
 import api from '~/services/api';
+import { notifyError } from '~/utils/notify';
 
 export default function MailModal({ visible, onSetVisible, onConfirm }) {
+  const dispatch = useDispatch();
   const { curStep, aniversariantes, alunos } = useSelector(
     state => state.message
   );
@@ -24,18 +28,22 @@ export default function MailModal({ visible, onSetVisible, onConfirm }) {
     )
       return;
 
-    const getCredits = async () => {
+    async function getCredits() {
       const { data, status } = await api.get('credit/e-mail');
 
       if (status !== 200) return;
 
       setCredits(data.credits);
-    };
+    }
 
     getCredits();
   }, [aniversariantes, curStep]);
 
   function handleConfirm() {
+    if (quantity > credits) {
+      notifyError('Você não possui crédito suficiente.', dispatch);
+      return;
+    }
     onConfirm(PLATFORMS.EMAIL.value);
     onSetVisible(false);
   }
@@ -48,6 +56,11 @@ export default function MailModal({ visible, onSetVisible, onConfirm }) {
       onConfirm={handleConfirm}
       confirmLabel="Confirmar"
     >
+      <Notifier />
+      <Alert>
+        Nota: Você pode adquirir mais créditos a qualquer momento em{' '}
+        <Link to="/settings">Configurações</Link>.
+      </Alert>
       <QuantityDisplayer
         label="e-mails"
         quantity={`${quantity}`}
