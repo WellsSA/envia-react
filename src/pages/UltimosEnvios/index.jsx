@@ -35,7 +35,7 @@ export default function Configuracoes() {
     <NamedSection name="Últimos Envios" icon={FaEnvelopeOpen}>
       <Container>
         {envios.map((envio, index) => (
-          <Message key={index}>
+          <Message key={`messageKey${index + 1}`}>
             <h2>#{envios.length - index}</h2>
             <Marker>
               <InformationSection>

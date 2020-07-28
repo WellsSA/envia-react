@@ -2,6 +2,7 @@ import axios from 'axios';
 
 import { store } from '~/store';
 import { showLoading, disposeLoading } from '~/store/modules/loading/actions';
+import { signOut } from '~/store/modules/auth/actions';
 import { notifyError } from '~/utils/notifyHelper';
 import { getErrorMessage, DEFAULT_ERROR } from './errors.data';
 
@@ -24,7 +25,12 @@ api.interceptors.response.use(
   error => {
     store.dispatch(disposeLoading());
     if (error.response && error.response.data) {
-      notifyError(getErrorMessage(error.response.data.error.message));
+      const { message } = error.response.data.error;
+
+      notifyError(getErrorMessage(message));
+
+      if (message === 'invalid token') store.dispatch(signOut());
+
       return error.response;
     }
     notifyError(DEFAULT_ERROR);

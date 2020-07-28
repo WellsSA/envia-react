@@ -11,6 +11,8 @@ const ERRORS = {
 
   // General
   'name is a required field': 'Nome é um campo requerido',
+
+  'invalid token': 'Sua sessão expirou. Faça login novamente.',
 };
 
 const DEFAULT_ERROR = 'Houve um erro inesperado. Verifique sua conexão';
