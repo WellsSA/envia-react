@@ -10,8 +10,14 @@ export default function Notifier() {
 
   const getAlertKind = useCallback(_type => {
     switch (_type) {
-      default:
+      case NOTIFY_STATE.ERROR:
         return 'danger';
+      case NOTIFY_STATE.NEUTRAL:
+        return 'warning';
+      case NOTIFY_STATE.SUCCESS:
+      case NOTIFY_STATE.CLOSED:
+      default:
+        return 'success';
     }
   }, []);
 

@@ -11,7 +11,7 @@ export default function AuthLayout({ children }) {
       ) : (
         <MobileWarning>
           <h1>
-            Ancioso pela versão mobile do ENVIA? <br />
+            Ansioso pela versão mobile do ENVIA? <br />
             Ela estará disponível em breve!
           </h1>
           <br />
