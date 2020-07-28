@@ -28,3 +28,17 @@ export const Container = styled.div`
     background: transparent;
   }
 `;
+
+export const MobileWarning = styled.div`
+  width: 100%;
+  height: 100%;
+  color: #fff;
+  background: linear-gradient(-90deg, #558fc6, #33b5e5);
+  display: flex;
+  flex-direction: column;
+  font-size: 16px;
+  padding: 40px;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+`;
