@@ -1,17 +1,27 @@
-import React from 'react';
+import React, { memo, useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { FaUserCircle } from 'react-icons/fa';
 import { SectionMarker, InputWrapper } from '~/components';
 import { Button } from '~/components/_common';
+import api from '~/services/api';
 
 function ProfileSection({ onAddCredit }) {
-  const mailQuantity = 98880909;
-  const smsQuantity = 98880909;
+  const [mailQuantity, setMailQuantity] = useState(0);
+  // const smsQuantity = 0;
 
   const placeholder = {
     name: 'Nome da escola',
     email: 'E-mail da escola',
   };
+
+  useEffect(() => {
+    async function getMailQuantity() {
+      const { data, status } = await api.get('/credit/e-mail');
+      if (status !== 200) return;
+      setMailQuantity(data.credits);
+    }
+    getMailQuantity();
+  }, []);
   return (
     <section>
       <SectionMarker label="Informações do perfil" icon={FaUserCircle} />
@@ -29,10 +39,10 @@ function ProfileSection({ onAddCredit }) {
         <span>{mailQuantity}</span>
         <Button onClick={() => onAddCredit('e-mail')}>Adquirir mais</Button>
       </InputWrapper>
-      <InputWrapper label="Quantidade de SMS:" labelOnly styled="none">
+      {/* <InputWrapper label="Quantidade de SMS:" labelOnly styled="none">
         <span>{smsQuantity}</span>
         <Button onClick={() => onAddCredit('sms')}>Adquirir mais</Button>
-      </InputWrapper>
+      </InputWrapper> */}
     </section>
   );
 }
@@ -45,4 +55,4 @@ ProfileSection.defaultProps = {
   onAddCredit: () => {},
 };
 
-export default ProfileSection;
+export default memo(ProfileSection);
