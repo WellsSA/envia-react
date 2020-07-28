@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
   width: 600px;
+  max-height: 500px;
   overflow-y: ${({ isResponsible }) => (!isResponsible ? 'auto' : 'none')};
   ::-webkit-scrollbar {
     display: none;
