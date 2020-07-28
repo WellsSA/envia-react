@@ -22,7 +22,7 @@ export default function Criteria() {
       <Content>
         {CRITERION_ARR.map(({ label, icon, value }, i) => (
           <Criterion
-            key={`criterion${i}`}
+            key={`criterion${i + 1}`}
             label={label}
             icon={icon}
             onClick={() => setCriteria(value)}

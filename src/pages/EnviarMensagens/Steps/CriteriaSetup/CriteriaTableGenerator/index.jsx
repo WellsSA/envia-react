@@ -24,7 +24,6 @@ export default function CriteriaTableGenerator() {
 
   return (
     <Container>
-      {criteria}
       {!keepEase ? (
         (() => {
           switch (criteria) {

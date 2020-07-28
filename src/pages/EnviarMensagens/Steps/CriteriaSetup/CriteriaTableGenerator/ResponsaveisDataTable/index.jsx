@@ -1,26 +1,41 @@
-import React from 'react';
-// import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-// import ProfessoresTable from '~/pages/Professores/ProfessoresTable/index.jsx';
-// import api from '~/services/api';
+import api from '~/services/api';
+import { EnviaDataTable } from '~/components';
 
-export default function ProfessoresDataTable({ actions }) {
-  // const [tableData, setTableData] = useState([]);
+export default function ResponsaveisDataTable({ actions }) {
+  const columns = [
+    { title: 'Nome', field: 'name' },
+    { title: 'E-mail', field: 'email' },
+  ];
 
-  // useEffect(() => {
-  //   (async () => {
-  //     const { data, status } = await api.get('professores');
-  //     if (status !== 200) return;
+  const [tableData, setTableData] = useState([]);
 
-  //     setTableData(data);
-  //   })();
-  // }, []);
+  useEffect(() => {
+    (async () => {
+      const { data, status } = await api.get('responsaveis');
+      if (status !== 200) return;
 
-  // return <ProfessoresTable tableData={tableData} actions={actions} />;
-  console.log(actions);
-  return <> Not implemented yet</>;
+      setTableData(data);
+    })();
+  }, []);
+
+  return (
+    <EnviaDataTable
+      title="Envia - Responsáveis"
+      columns={columns}
+      tableData={tableData}
+      setTableData={setTableData}
+      dataVisualization={{
+        singular: 'responsável',
+        plural: 'responsáveis',
+      }}
+      isSelectable
+      actions={actions}
+    />
+  );
 }
 
-ProfessoresDataTable.propTypes = {
+ResponsaveisDataTable.propTypes = {
   actions: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
