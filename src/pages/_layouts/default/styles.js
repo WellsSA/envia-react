@@ -6,7 +6,7 @@ export const Wrapper = styled.div`
   /* background: linear-gradient(-90deg, #558fc6, #33b5e5); */
   background: ${props => getColor(props, 'background')};
   overflow-x: hidden;
-
+  zoom: 85%;
   ::-webkit-scrollbar {
     width: 0px;
     background: transparent;

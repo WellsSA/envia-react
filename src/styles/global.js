@@ -16,7 +16,6 @@ export default createGlobalStyle`
 
   html, body, #root {
     height: 100%;
-    zoom: 95%;
   }
 
   body {
