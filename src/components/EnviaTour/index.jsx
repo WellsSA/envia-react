@@ -1,46 +1,37 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import Tour from 'reactour';
+import { ThemeContext } from 'styled-components';
 import { Container } from './styles';
+import steps from './steps.data';
 
 function EnviaTour() {
   const firstAccess = true;
-
-  const steps = [
-    {
-      selector: '.first-step',
-      content: 'This is my first Step',
-    },
-    {
-      selector: '.first-step',
-      content: 'This is my first Step',
-    },
-    {
-      selector: '.first-step',
-      content: 'This is my first Step',
-    },
-    {
-      selector: '.first-step',
-      content: 'This is my first Step',
-    },
-    {
-      selector: '.first-step',
-      content: 'This is my first Step',
-    },
-  ];
+  const currentStep = 3; // TODO: REMOVE IT
+  const { colors } = useContext(ThemeContext);
 
   return (
-    <Container>
+    <>
       {!firstAccess ? (
         <></>
       ) : (
-        <Tour
-          steps={steps}
-          className="envia-tour"
-          isOpen
-          onRequestClose={() => alert('closing')}
-        />
+        <Container>
+          <span id="envia-sidebar" />
+          <span id="envia-sidebar-expanded" />
+          {/* <span id="envia-sidebar-expanded" /> */}
+
+          <Tour
+            steps={steps}
+            className="envia-tour"
+            isOpen={firstAccess}
+            accentColor={colors.primary}
+            onRequestClose={() => alert('closing')}
+            rounded={12}
+            showCloseButton={false}
+            startAt={currentStep}
+          />
+        </Container>
       )}
-    </Container>
+    </>
   );
 }
 

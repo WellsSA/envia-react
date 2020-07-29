@@ -30,7 +30,7 @@ export default function ProfileAvatar() {
 
   return (
     <>
-      <Container onClick={toggleOptionBar}>
+      <Container onClick={toggleOptionBar} id="envia-avatar">
         <Image src={EnviaShortcut} alt="Envia" />
         <OptionBar open={optionBarOpen}>
           {/* <FileLabel htmlFor="avatar">
