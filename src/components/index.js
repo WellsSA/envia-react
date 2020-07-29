@@ -13,6 +13,7 @@ import ImportModal from './ImportModal';
 import ProgressBar from './ProgressBar';
 import MessageStep from './MessageStep';
 import Loading from './Loading';
+import EnviaTour from './EnviaTour';
 
 export {
   EnviaDataTable,
@@ -30,4 +31,5 @@ export {
   ProgressBar,
   MessageStep,
   Loading,
+  EnviaTour,
 };
