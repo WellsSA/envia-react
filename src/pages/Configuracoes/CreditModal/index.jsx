@@ -34,7 +34,6 @@ function CreditModal({ visible, onSetVisible, handleSubmit, creditKind }) {
       <Container>
         <Notifier />
         <Form id={formId} onSubmit={_handleSubmit}>
-          <Label content="10">Seu saldo atual:</Label>
           <Title>Selecione a quantidade de {creditKind} desejada</Title>
           <QuantityContainer>
             <InputWrapper
@@ -43,6 +42,7 @@ function CreditModal({ visible, onSetVisible, handleSubmit, creditKind }) {
               label="Quantidade:"
               placeholder="ex.: 20"
               type="number"
+              min="0"
               value={quantity}
               onChange={e => setQuantity(e.target.value)}
             />
