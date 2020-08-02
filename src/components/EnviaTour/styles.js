@@ -23,6 +23,30 @@ export const Container = styled.div`
     width: 250px;
     height: 100%;
   }
+
+  #envia-sidebar-home {
+    position: absolute;
+    top: ${`${45 * 2}px`};
+    right: 0;
+    width: 250px;
+    height: 40px;
+  }
+
+  #envia-sidebar-send {
+    position: absolute;
+    top: ${`${45 * 3}px`};
+    right: 0;
+    width: 250px;
+    height: 40px;
+  }
+
+  #envia-sidebar-cruds {
+    position: absolute;
+    top: ${`${45 * 7}px`};
+    right: 0;
+    width: 250px;
+    height: ${`${45 * 5}px`};
+  }
 `;
 
 export const Marker = styled(Label)`

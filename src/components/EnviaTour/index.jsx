@@ -6,7 +6,7 @@ import steps from './steps.data';
 
 function EnviaTour() {
   const firstAccess = true;
-  const currentStep = 3; // TODO: REMOVE IT
+  const currentStep = 0; // TODO: REMOVE IT
   const { colors } = useContext(ThemeContext);
 
   return (
@@ -17,7 +17,9 @@ function EnviaTour() {
         <Container>
           <span id="envia-sidebar" />
           <span id="envia-sidebar-expanded" />
-          {/* <span id="envia-sidebar-expanded" /> */}
+          <span id="envia-sidebar-home" />
+          <span id="envia-sidebar-send" />
+          <span id="envia-sidebar-cruds" />
 
           <Tour
             steps={steps}

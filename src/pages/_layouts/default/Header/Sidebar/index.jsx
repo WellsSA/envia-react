@@ -11,7 +11,7 @@ export default function Sidebar({ isOpen, onSetOpen }) {
 
   return (
     <>
-      <Container isOpen={isOpen}>
+      <Container id="sidebar" isOpen={isOpen}>
         <aside>
           <div />
           <MdClose onClick={closeSidebar} />

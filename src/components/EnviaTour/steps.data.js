@@ -33,18 +33,32 @@ export default [
         </Marker>
       </>
     ),
+    stepInteraction: false,
   }, // SIDEBAR ABERTA
   {
-    selector: '#teste-teste',
+    selector: '#envia-sidebar-cruds',
     content: () => (
       <>
         <Marker>
-          Com a <b>navegação principal</b> <strong>aberta</strong>. Você pode
-          <strong> navegar</strong> para <strong>qualquer parte</strong> da
-          aplicação.
+          Aqui você pode <b>gerenciar</b> seus <strong>Cursos</strong>,
+          <strong> Professores</strong>,<strong> Turmas</strong> e
+          <strong> Alunos</strong>.
         </Marker>
       </>
     ),
+    stepInteraction: false,
+  }, // CURSOS, PROFESSORES, TURMAS E ALUNOS
+  {
+    selector: '#envia-sidebar-send',
+    content: () => (
+      <>
+        <Marker>
+          Aqui você pode <b>enviar mensagens</b> para seus{' '}
+          <strong>Alunos já cadastrados</strong>.
+        </Marker>
+      </>
+    ),
+    stepInteraction: false,
   },
   // {
   //   selector: '#envia-avatar',
