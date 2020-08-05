@@ -6,7 +6,6 @@ import steps from './steps.data';
 
 function EnviaTour() {
   const firstAccess = true;
-  const currentStep = 0; // TODO: REMOVE IT
   const { colors } = useContext(ThemeContext);
 
   return (
@@ -20,6 +19,9 @@ function EnviaTour() {
           <span id="envia-sidebar-home" />
           <span id="envia-sidebar-send" />
           <span id="envia-sidebar-cruds" />
+          <span id="envia-sidebar-sent" />
+          <span id="envia-sidebar-models" />
+          <span id="envia-master-classes" />
 
           <Tour
             steps={steps}
@@ -29,7 +31,7 @@ function EnviaTour() {
             onRequestClose={() => alert('closing')}
             rounded={12}
             showCloseButton={false}
-            startAt={currentStep}
+            startAt={0}
           />
         </Container>
       )}

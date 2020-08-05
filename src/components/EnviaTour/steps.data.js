@@ -12,6 +12,17 @@ export default [
     ),
   }, // BEM VINDO
   {
+    selector: '#envia-avatar',
+    content: () => (
+      <>
+        <Marker>
+          Aqui fica o <b>gerenciamento</b> do <strong>seu perfil</strong>.
+        </Marker>
+      </>
+    ),
+    stepInteraction: false,
+  },
+  {
     selector: '#envia-sidebar',
     content: () => (
       <>
@@ -59,26 +70,43 @@ export default [
       </>
     ),
     stepInteraction: false,
-  },
-  // {
-  //   selector: '#envia-avatar',
-  //   content: () => (
-  //     <>
-  //       <Marker>Aqui fica o gerenciamento do seu perfil.</Marker>
-  //     </>
-  //   ),
-  //   position: [150, 120],
-  // },
+  }, // ENVIAR MENSAGENS
   {
-    selector: '.first-step',
-    content: 'This is my first Step',
-  },
+    selector: '#envia-sidebar-sent',
+    content: () => (
+      <>
+        <Marker>
+          Depois de <b>enviar as mensagens</b>, você pode{' '}
+          <strong>conferir seus últimos envios</strong> aqui.
+        </Marker>
+      </>
+    ),
+    stepInteraction: false,
+  }, // ÚLTIMOS ENVIOS
   {
-    selector: '.first-step',
-    content: 'This is my first Step',
-  },
+    selector: '#envia-sidebar-models',
+    content: () => (
+      <>
+        <Marker>
+          Para <b>as mensagens que você mais envia</b>, você pode{' '}
+          <strong>criar modelos pré-definidos</strong> aqui. (ou aproveitar os
+          que já disponibilizamos para você)
+        </Marker>
+      </>
+    ),
+    stepInteraction: false,
+  }, // MODELOS DE MENSAGENS
   {
-    selector: '.first-step',
-    content: 'This is my first Step',
-  },
+    selector: '#envia-master-classes',
+    content: () => (
+      <>
+        <Marker>
+          Além disso, você pode desfrutar de nossas <b>master classes</b>{' '}
+          elaboradas para você se especializar nos{' '}
+          <strong>3 principais pilares da fidelização de alunos!</strong>
+        </Marker>
+      </>
+    ),
+    stepInteraction: false,
+  }, // MASTER CLASSES
 ];

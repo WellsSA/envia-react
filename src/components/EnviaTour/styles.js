@@ -40,12 +40,35 @@ export const Container = styled.div`
     height: 40px;
   }
 
+  #envia-sidebar-sent {
+    position: absolute;
+    top: ${`${49 * 4}px`};
+    right: 0;
+    width: 250px;
+    height: 40px;
+  }
+
+  #envia-sidebar-models {
+    position: absolute;
+    top: ${`${51 * 5}px`};
+    right: 0;
+    width: 250px;
+    height: 40px;
+  }
+
   #envia-sidebar-cruds {
     position: absolute;
     top: ${`${45 * 7}px`};
     right: 0;
     width: 250px;
     height: ${`${45 * 5}px`};
+  }
+
+  #envia-master-classes {
+    position: absolute;
+    bottom: 10%;
+    width: 100%;
+    height: 80%;
   }
 `;
 
