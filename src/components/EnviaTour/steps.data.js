@@ -13,6 +13,7 @@ export default [
   }, // BEM VINDO
   {
     selector: '#envia-avatar',
+    // TODO: abrir menu automaticamente
     content: () => (
       <>
         <Marker>
@@ -24,17 +25,19 @@ export default [
   },
   {
     selector: '#envia-sidebar',
+    // TODO: fechar menu avatar automaticamente
     content: () => (
       <>
         <Marker>
-          Aqui fica a <b>navegação principal</b>. <strong>Passe o mouse</strong>{' '}
-          para abrir.
+          Aqui fica a <b>navegação principal</b>. <strong>Clique</strong> para
+          abrir.
         </Marker>
       </>
     ),
   }, // SIDEBAR
   {
     selector: '#envia-sidebar-expanded',
+    // TODO: abrir sidebar automaticamente se não estiver aberta
     content: () => (
       <>
         <Marker>
