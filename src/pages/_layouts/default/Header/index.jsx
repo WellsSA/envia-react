@@ -11,6 +11,7 @@ import ProfileAvatar from './ProfileAvatar';
 import NavItem from './NavItem';
 import AniversariantesModal from './AniversariantesModal';
 import { setAniversariantes } from '~/store/modules/message/actions';
+import { updateFirstAccess } from '~/store/modules/user/actions';
 
 export default function Header() {
   const dispatch = useDispatch();
@@ -23,6 +24,10 @@ export default function Header() {
 
   function openAniversariantes() {
     dispatch(setAniversariantes({ open: true }));
+  }
+
+  function openTour() {
+    dispatch(updateFirstAccess({ to: true }));
   }
 
   return (
@@ -39,7 +44,7 @@ export default function Header() {
             <NavItem icon={FaHome} />
           </Link>
           <NavItem icon={FaBirthdayCake} onClick={openAniversariantes} />
-          <NavItem icon={MdHelpOutline} />
+          <NavItem icon={MdHelpOutline} onClick={openTour} />
           <NavItem
             id="header-sidebar-displayer"
             icon={AiOutlineBars}

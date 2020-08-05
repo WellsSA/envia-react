@@ -7,7 +7,10 @@ import {
   closeSidebar,
 } from './steps.actions';
 
-export default setIsOpen => [
+import { store } from '~/store';
+import { updateFirstAccess } from '~/store/modules/user/actions';
+
+export default [
   {
     content: () => (
       <>
@@ -117,7 +120,10 @@ export default setIsOpen => [
           Além disso, você pode desfrutar de nossas <b>master classes</b>{' '}
           elaboradas para você se especializar nos{' '}
           <strong>3 principais pilares da fidelização de alunos!</strong>
-          <button type="button" onClick={() => setIsOpen(false)}>
+          <button
+            type="button"
+            onClick={() => store.dispatch(updateFirstAccess({ to: false }))}
+          >
             Fechar
           </button>
         </Marker>

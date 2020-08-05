@@ -22,6 +22,10 @@ export default function user(state = INITIAL_STATE, action) {
         draft.profile = null;
         break;
       }
+      case '@user/UPDATE_FIRST_ACCESS': {
+        draft.profile.firstAccess = action.payload.to;
+        break;
+      }
       default:
     }
   });

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import {
   Container,
@@ -44,6 +45,9 @@ export default function ProfileAvatar() {
               />
             </Option>
           </FileLabel> */}
+          <Link to="settings">
+            <Option>Configurações</Option>
+          </Link>
           <Option onClick={() => dispatch(signOut())}>Sair</Option>
         </OptionBar>
       </Container>

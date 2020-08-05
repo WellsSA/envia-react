@@ -1,14 +1,14 @@
-import React, { useState, useContext } from 'react';
+import React, { useContext } from 'react';
 import { useSelector } from 'react-redux';
 import Tour from 'reactour';
 import { ThemeContext } from 'styled-components';
 import { Container } from './styles';
-import getSteps from './steps.data';
+import steps from './steps.data';
 
 function EnviaTour() {
-  const firstAccess = useSelector(state => state.user.profile.firstAccess);
+  const profile = useSelector(state => state.user.profile);
+  const firstAccess = profile && profile.firstAccess;
   const { colors } = useContext(ThemeContext);
-  const [isOpen, setIsOpen] = useState(firstAccess);
 
   return (
     <>
@@ -27,9 +27,9 @@ function EnviaTour() {
           <span id="envia-master-classes" />
 
           <Tour
-            steps={getSteps(setIsOpen)}
+            steps={steps}
             className="envia-tour"
-            isOpen={isOpen}
+            isOpen={firstAccess}
             accentColor={colors.primary}
             onRequestClose={() => {}}
             rounded={12}

@@ -58,7 +58,22 @@ export function* addCredit({ payload: { kind, quantity } }) {
   }
 }
 
+export function* updateFirstAccess({ payload: { to } }) {
+  try {
+    if (!to) {
+      const { status } = yield call(api.post, '/sessions/firstAccess');
+
+      if (status === 200)
+        notifySuccess('Você concluiu o tutorial! Seja bem vindo!');
+    }
+  } catch (err) {
+    console.tron.error(err);
+    notifyError(err.message);
+  }
+}
+
 export default all([
   takeLatest('@user/UPDATE_PROFILE_REQUEST', updateProfile),
   takeLatest('@user/ADD_CREDITS_REQUEST', addCredit),
+  takeLatest('@user/UPDATE_FIRST_ACCESS', updateFirstAccess),
 ]);

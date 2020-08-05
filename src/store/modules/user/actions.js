@@ -24,3 +24,9 @@ export function addCredits({ kind, quantity }) {
     payload: { kind, quantity },
   };
 }
+export function updateFirstAccess({ to }) {
+  return {
+    type: '@user/UPDATE_FIRST_ACCESS',
+    payload: { to },
+  };
+}
