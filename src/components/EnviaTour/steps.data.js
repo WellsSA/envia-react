@@ -39,8 +39,8 @@ export default [
       <>
         {closeAvatar()}
         <Marker>
-          Aqui fica a <b>navegação principal</b>. <strong>Clique</strong> para
-          abrir.
+          Aqui fica a <b>navegação principal</b>. <strong>Passe o mouse</strong>{' '}
+          para abrir.
         </Marker>
       </>
     ),
@@ -63,6 +63,7 @@ export default [
     selector: '#envia-sidebar-cruds',
     content: () => (
       <>
+        {openSidebar()}
         <Marker>
           Aqui você pode <b>gerenciar</b> seus <strong>Cursos</strong>,
           <strong> Professores</strong>,<strong> Turmas</strong> e
@@ -76,6 +77,7 @@ export default [
     selector: '#envia-sidebar-send',
     content: () => (
       <>
+        {openSidebar()}
         <Marker>
           Aqui você pode <b>enviar mensagens</b> para seus{' '}
           <strong>Alunos já cadastrados</strong>.
@@ -89,6 +91,7 @@ export default [
     content: () => (
       <>
         <Marker>
+          {openSidebar()}
           Depois de <b>enviar as mensagens</b>, você pode{' '}
           <strong>conferir seus últimos envios</strong> aqui.
         </Marker>

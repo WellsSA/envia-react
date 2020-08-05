@@ -48,6 +48,7 @@ export default function Header() {
           <NavItem
             id="header-sidebar-displayer"
             icon={AiOutlineBars}
+            onMouseEnter={toggleSidebar}
             onClick={toggleSidebar}
           />
         </MainNavigation>
