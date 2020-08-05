@@ -32,7 +32,7 @@ export default function ProfileAvatar() {
     <>
       <Container onClick={toggleOptionBar} id="envia-avatar">
         <Image src={EnviaShortcut} alt="Envia" />
-        <OptionBar open={optionBarOpen}>
+        <OptionBar open={optionBarOpen} id="avatar-option-bar">
           {/* <FileLabel htmlFor="avatar">
             <Option>
               {file ? 'Confirmar' : 'Alterar imagem'}

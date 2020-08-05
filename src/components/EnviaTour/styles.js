@@ -8,7 +8,15 @@ export const Container = styled.div`
   position: absolute;
   top: 0;
 
-  #envia-sidebar {
+  #envia-avatar-marker {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 260px;
+    height: 200px;
+  }
+
+  #envia-sidebar-marker {
     position: absolute;
     top: 0;
     right: 0;

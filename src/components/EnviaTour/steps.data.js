@@ -1,7 +1,13 @@
 import React from 'react';
 import { Marker } from './styles';
+import {
+  openAvatar,
+  closeAvatar,
+  openSidebar,
+  closeSidebar,
+} from './steps.actions';
 
-export default [
+export default setIsOpen => [
   {
     content: () => (
       <>
@@ -12,10 +18,10 @@ export default [
     ),
   }, // BEM VINDO
   {
-    selector: '#envia-avatar',
-    // TODO: abrir menu automaticamente
+    selector: '#envia-avatar-marker',
     content: () => (
       <>
+        {openAvatar()}
         <Marker>
           Aqui fica o <b>gerenciamento</b> do <strong>seu perfil</strong>.
         </Marker>
@@ -24,10 +30,11 @@ export default [
     stepInteraction: false,
   },
   {
-    selector: '#envia-sidebar',
-    // TODO: fechar menu avatar automaticamente
+    selector: '#envia-sidebar-marker',
+
     content: () => (
       <>
+        {closeAvatar()}
         <Marker>
           Aqui fica a <b>navegação principal</b>. <strong>Clique</strong> para
           abrir.
@@ -37,9 +44,9 @@ export default [
   }, // SIDEBAR
   {
     selector: '#envia-sidebar-expanded',
-    // TODO: abrir sidebar automaticamente se não estiver aberta
     content: () => (
       <>
+        {openSidebar()}
         <Marker>
           Com a <b>navegação principal</b> <strong>aberta</strong>. Você pode
           <strong> navegar</strong> para <strong>qualquer parte</strong> da
@@ -90,6 +97,7 @@ export default [
     selector: '#envia-sidebar-models',
     content: () => (
       <>
+        {openSidebar()}
         <Marker>
           Para <b>as mensagens que você mais envia</b>, você pode{' '}
           <strong>criar modelos pré-definidos</strong> aqui. (ou aproveitar os
@@ -101,12 +109,17 @@ export default [
   }, // MODELOS DE MENSAGENS
   {
     selector: '#envia-master-classes',
+
     content: () => (
       <>
+        {closeSidebar()}
         <Marker>
           Além disso, você pode desfrutar de nossas <b>master classes</b>{' '}
           elaboradas para você se especializar nos{' '}
           <strong>3 principais pilares da fidelização de alunos!</strong>
+          <button type="button" onClick={() => setIsOpen(false)}>
+            Fechar
+          </button>
         </Marker>
       </>
     ),

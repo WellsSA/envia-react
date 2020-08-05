@@ -11,7 +11,7 @@ export default function Sidebar({ isOpen, onSetOpen }) {
 
   return (
     <>
-      <Container id="sidebar" isOpen={isOpen}>
+      <Container id="envia-sidebar" isOpen={isOpen}>
         <aside>
           <div />
           <MdClose onClick={closeSidebar} />

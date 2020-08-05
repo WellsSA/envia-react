@@ -40,7 +40,11 @@ export default function Header() {
           </Link>
           <NavItem icon={FaBirthdayCake} onClick={openAniversariantes} />
           <NavItem icon={MdHelpOutline} />
-          <NavItem icon={AiOutlineBars} onClick={toggleSidebar} />
+          <NavItem
+            id="header-sidebar-displayer"
+            icon={AiOutlineBars}
+            onClick={toggleSidebar}
+          />
         </MainNavigation>
 
         <Sidebar isOpen={sidebarOpen} onSetOpen={setSidebarOpen} />

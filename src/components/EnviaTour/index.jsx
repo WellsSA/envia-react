@@ -1,12 +1,14 @@
-import React, { useContext } from 'react';
+import React, { useState, useContext } from 'react';
+import { useSelector } from 'react-redux';
 import Tour from 'reactour';
 import { ThemeContext } from 'styled-components';
 import { Container } from './styles';
-import steps from './steps.data';
+import getSteps from './steps.data';
 
 function EnviaTour() {
-  const firstAccess = true;
+  const firstAccess = useSelector(state => state.user.profile.firstAccess);
   const { colors } = useContext(ThemeContext);
+  const [isOpen, setIsOpen] = useState(firstAccess);
 
   return (
     <>
@@ -14,7 +16,8 @@ function EnviaTour() {
         <></>
       ) : (
         <Container>
-          <span id="envia-sidebar" />
+          <span id="envia-avatar-marker" />
+          <span id="envia-sidebar-marker" />
           <span id="envia-sidebar-expanded" />
           <span id="envia-sidebar-home" />
           <span id="envia-sidebar-send" />
@@ -24,11 +27,11 @@ function EnviaTour() {
           <span id="envia-master-classes" />
 
           <Tour
-            steps={steps}
+            steps={getSteps(setIsOpen)}
             className="envia-tour"
-            isOpen={firstAccess}
+            isOpen={isOpen}
             accentColor={colors.primary}
-            onRequestClose={() => alert('closing')}
+            onRequestClose={() => {}}
             rounded={12}
             showCloseButton={false}
             startAt={0}
