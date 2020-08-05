@@ -1,5 +1,5 @@
+import React, { useState, useEffect } from 'react';
 import { Form } from '@rocketseat/unform';
-import React, { useState } from 'react';
 import { FaCog } from 'react-icons/fa';
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -10,10 +10,9 @@ import { addCredits, updateProfileRequest } from '~/store/modules/user/actions';
 
 import ConfigSection from './ConfigSection';
 import CreditModal from './CreditModal';
+import ProfileSchema from './profile.schema';
 import ProfileSection from './ProfileSection';
 import { Container } from './styles';
-
-import ProfileSchema from './profile.schema';
 
 export default function Configuracoes() {
   const dispatch = useDispatch();
@@ -34,6 +33,12 @@ export default function Configuracoes() {
     dispatch(updateProfileRequest({ user: data }));
   };
 
+  useEffect(() => {
+    const url = window.location.href.split('/settings');
+    if (url[1]) {
+      window.location.href = `${url[0]}/settings`;
+    }
+  }, []);
   return (
     <>
       <CreditModal
