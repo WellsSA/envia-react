@@ -62,9 +62,47 @@ export function signOut() {
   history.push('/');
 }
 
+export function* forgotPassword({ payload: { email } }) {
+  try {
+    const { status } = yield call(api.post, 'forgotPassword', {
+      email,
+    });
+
+    if (status !== 200) {
+      yield put(signFailure());
+      return;
+    }
+
+    notifySuccess('Recebemos sua solicitação! Verifique seu e-mail');
+  } catch (err) {
+    yield put(signFailure());
+  }
+}
+
+export function* changePassword({ payload: { auth, password } }) {
+  try {
+    const { status } = yield call(api.put, 'forgotPassword', {
+      auth,
+      password,
+    });
+
+    if (status !== 200) {
+      yield put(signFailure());
+      return;
+    }
+
+    notifySuccess('Sua senha foi alterada com sucesso!');
+    history.push('/');
+  } catch (err) {
+    yield put(signFailure());
+  }
+}
+
 export default all([
   takeLatest('persist/REHYDRATE', setToken),
   takeLatest('@auth/SIGN_IN_REQUEST', signIn),
   takeLatest('@auth/SIGN_UP_REQUEST', signUp),
   takeLatest('@auth/SIGN_OUT', signOut),
+  takeLatest('@auth/FORGOT_PASSWORD', forgotPassword),
+  takeLatest('@auth/CHANGE_PASSWORD', changePassword),
 ]);

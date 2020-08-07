@@ -13,12 +13,14 @@ import Turmas from '../pages/Turmas';
 import ModelosMensagens from '../pages/ModelosMensagens';
 import Configuracoes from '../pages/Configuracoes';
 import UltimosEnvios from '../pages/UltimosEnvios';
+import ForgotPassword from '../pages/ForgotPassword';
 
 export default function Routes() {
   return (
     <Switch>
       <Route path="/" exact component={SignIn} />
       <Route path="/register" component={SignUp} />
+      <Route path="/forgot" component={ForgotPassword} />
       <Route path="/dashboard" component={Dashboard} isPrivate />
       <Route path="/enviarMensagens" component={EnviarMensagens} isPrivate />
       <Route path="/professores" component={Professores} isPrivate />
@@ -26,9 +28,8 @@ export default function Routes() {
       <Route path="/cursos" component={Cursos} isPrivate />
       <Route path="/turmas" component={Turmas} isPrivate />
       <Route path="/modelosMensagens" component={ModelosMensagens} isPrivate />
-      <Route path="/settings" component={Configuracoes} isPrivate />
       <Route path="/ultimosEnvios" component={UltimosEnvios} isPrivate />
-
+      <Route path="/settings" component={Configuracoes} isPrivate />
       <Route path="/" component={() => <h1>404</h1>} />
     </Switch>
   );

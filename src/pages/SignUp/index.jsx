@@ -47,9 +47,9 @@ export default function SignUp() {
           <Button kind="contrast">Já possuo uma conta</Button>
         </Link>
       </Form>
-      <a href="https://envia.io" className="forgot">
+      <Link to="/forgot" className="forgot">
         Esqueceu sua senha?
-      </a>
+      </Link>
     </>
   );
 }

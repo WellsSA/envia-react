@@ -28,7 +28,7 @@ export default function SignIn() {
     <>
       <img className="logo" src={logo} alt="Envia.io" />
       <Form schema={schema} onSubmit={handleSubmit}>
-        <a href="https://envia.io" className="main">
+        <a href="https://app.envia.io" className="main">
           <FaGlobeAmericas />
         </a>
         <label htmlFor="email">Login</label>
@@ -43,9 +43,9 @@ export default function SignIn() {
           <Button kind="contrast">Criar conta</Button>
         </Link>
       </Form>
-      <a href="https://envia.io" className="forgot">
+      <Link to="/forgot" className="forgot">
         Esqueceu sua senha?
-      </a>
+      </Link>
     </>
   );
 }

@@ -30,3 +30,17 @@ export function signOut() {
     type: '@auth/SIGN_OUT',
   };
 }
+
+export function forgotPassword({ email }) {
+  return {
+    type: '@auth/FORGOT_PASSWORD',
+    payload: { email },
+  };
+}
+
+export function changePassword({ auth, password }) {
+  return {
+    type: '@auth/CHANGE_PASSWORD',
+    payload: { auth, password },
+  };
+}

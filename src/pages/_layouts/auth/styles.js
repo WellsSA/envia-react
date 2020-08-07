@@ -122,6 +122,20 @@ export const Content = styled.div`
       color: ${props => transparentize(0.2, getColor(props, 'text'))};
     }
   }
+
+  p {
+    color: ${props => transparentize(0.2, getColor(props, 'text'))};
+    margin-bottom: 25px;
+    strong {
+      color: ${props => getColor(props, 'primary')};
+    }
+    br {
+      content: '';
+      display: block;
+      margin: 2em;
+      font-size: 24%;
+    }
+  }
 `;
 
 export const MobileWarning = styled.div`
