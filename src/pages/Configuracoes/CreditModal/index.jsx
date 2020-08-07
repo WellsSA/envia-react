@@ -9,7 +9,7 @@ import { currencyFormat } from '../../../utils/text';
 function CreditModal({ visible, onSetVisible, handleSubmit, creditKind }) {
   const formId = 'credit-modal';
   const inputId = 'quantity';
-  const unit_amount = creditKind === 'e-mail' ? 0.05 : 0.1;
+  const unit_amount = creditKind === 'e-mail' ? 0.01 : 0.1;
 
   const [quantity, setQuantity] = useState('');
 
