@@ -4,7 +4,6 @@ import { fonts } from '../../styles/scale';
 
 export const Container = styled.div`
   padding: 10px 0;
-  max-height: calc(100vh - 200px);
   overflow: auto;
 
   ::-webkit-scrollbar {
